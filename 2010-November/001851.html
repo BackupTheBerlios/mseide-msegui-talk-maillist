@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Why ifi called?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Why%20ifi%20called%3F&In-Reply-To=%3CAANLkTik5Lvb51SctScMAAU3SdcEzKPXkuO6wGXF%3Dvhwv%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001850.html">
+   <LINK REL="Next"  HREF="001852.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Why ifi called?</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Why%20ifi%20called%3F&In-Reply-To=%3CAANLkTik5Lvb51SctScMAAU3SdcEzKPXkuO6wGXF%3Dvhwv%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Why ifi called?">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Sun Nov 14 07:14:28 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001850.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+        <LI>Next message: <A HREF="001852.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1851">[ date ]</a>
+              <a href="thread.html#1851">[ thread ]</a>
+              <a href="subject.html#1851">[ subject ]</a>
+              <a href="author.html#1851">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I don't use any IFI features, but I activated dmse_with_ifi in MSEide.
+But in my app, I got error about ifi at procedure :
+
+function tcustommseform.canclose(const newfocus: twidget): boolean;
+var
+ modres: modalresultty;
+begin
+.....
+.....
+ {$ifdef mse_with_ifi}
+   if fifiserverintf &lt;&gt; nil then begin
+    fifiserverintf.sendmodalresult(iificlient(self),window.modalresult);
+======&gt;SIGSEGV at here????????
+   end;
+ {$endif}
+   if (fo_terminateonclose in foptions) and not application.terminating and
+                  not (csdesigning in componentstate) then begin
+....
+....
+end;
+
+Why fifiserverintf is not nil?
+
+Thanks
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001850.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+	<LI>Next message: <A HREF="001852.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1851">[ date ]</a>
+              <a href="thread.html#1851">[ thread ]</a>
+              <a href="subject.html#1851">[ subject ]</a>
+              <a href="author.html#1851">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

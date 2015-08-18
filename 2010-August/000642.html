@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tdbdataimage - upload
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci4al8m%245h3%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000638.html">
+   <LINK REL="Next"  HREF="000647.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tdbdataimage - upload</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci4al8m%245h3%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tdbdataimage - upload">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Aug 16 08:20:00 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000638.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+        <LI>Next message: <A HREF="000647.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#642">[ date ]</a>
+              <a href="thread.html#642">[ thread ]</a>
+              <a href="subject.html#642">[ subject ]</a>
+              <a href="author.html#642">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;<i> Sorry, but I do simply not get head and tail in this.
+</I>&gt;<i> 
+</I>&gt;<i> If not setting the tmsezquery1 to active at design time, I can connect
+</I>&gt;<i> the tmsegraphicfield to the image field in tmsezquery1 dataset.
+</I>&gt;<i> 
+</I>&gt;<i> However the program now crashes the very moment (without any warnings)
+</I>&gt;<i> it is executed.
+</I>&gt;<i> 
+</I>I'll extend the ZEOS example in msedocumenting with an image field.
+
+&gt;<i> So I consider going another way:
+</I>&gt;<i> 
+</I>&gt;<i> procedure tmainfo.upload_picture(const sender: TObject);
+</I>&gt;<i> var
+</I>&gt;<i>    Jpg: timage;
+</I>&gt;<i>    Stream: TMemoryStream;
+</I>&gt;<i> begin
+</I>&gt;<i> if tfiledialog1.execute(fdk_open) = mr_ok then
+</I>&gt;<i>    begin
+</I>&gt;<i>      Stream := TMemoryStream.Create;
+</I>&gt;<i>      Jpg := timage.Create;
+</I>&gt;<i>      Jpg.bitmap.LoadFromFile(tfiledialog1.controller.filename);
+</I>&gt;<i>      Jpg.bitmap.SaveToStream(Stream);
+</I>&gt;<i>      Stream.Position := 0;
+</I>&gt;<i>      TBlobField(tmsedatasource1.dataset.FieldByName('img')).
+</I>&gt;<i>      LoadFromStream(Stream);
+</I>&gt;<i>      jpg.Free;
+</I>&gt;<i>      Stream.Free;
+</I>&gt;<i>    end;
+</I>&gt;<i> end;
+</I>&quot;
+procedure tmainfo.upload_picture(const sender: TObject);
+begin
+ if tfiledialog1.execute(fdk_open) = mr_ok then begin
+   TBlobField(tmsedatasource1.dataset.FieldByName(
+    'img')).LoadFromfile(tfiledialog1.controller.filename);
+ end;
+end;
+&quot;
+(Not tested).
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000638.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+	<LI>Next message: <A HREF="000647.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#642">[ date ]</a>
+              <a href="thread.html#642">[ thread ]</a>
+              <a href="subject.html#642">[ subject ]</a>
+              <a href="author.html#642">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

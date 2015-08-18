@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSE Installer project has built!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSE%20Installer%20project%20has%20built%21&In-Reply-To=%3CAANLkTimWc%3D24fmjTiqN%3Dhq94D7Exh8LnT%2Bte9Kp3Fg7-%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002749.html">
+   <LINK REL="Next"  HREF="002755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSE Installer project has built!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSE%20Installer%20project%20has%20built%21&In-Reply-To=%3CAANLkTimWc%3D24fmjTiqN%3Dhq94D7Exh8LnT%2Bte9Kp3Fg7-%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSE Installer project has built!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Thu Feb  3 14:30:19 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002749.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+        <LI>Next message: <A HREF="002755.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2751">[ date ]</a>
+              <a href="thread.html#2751">[ thread ]</a>
+              <a href="subject.html#2751">[ subject ]</a>
+              <a href="author.html#2751">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yesterday I have trouble to commit to SVN.
+BTW, I think your installer is very flexible. It's good improvement of MSEGUI.
+
+Thanks
+
+2011/2/3, IvankoB &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ivankob4mse2 at gmail.com</A>&gt;:
+&gt;&gt;<i> So, &quot;regcomponents.inc&quot; is absent now.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Me already see it restored :).
+</I>&gt;<i> But for InnoSetup, me recreate this file based on install time selections :
+</I>&gt;<i>
+</I>&gt;<i> //----------------------------
+</I>&gt;<i> [Code]
+</I>&gt;<i>
+</I>&gt;<i> [..]
+</I>&gt;<i>
+</I>&gt;<i> function MakeAddonsBuild(Param: String): String;
+</I>&gt;<i> var
+</I>&gt;<i>    ResultCode: Integer;
+</I>&gt;<i>    use_addons: boolean;
+</I>&gt;<i> begin
+</I>&gt;<i>    result:= '';
+</I>&gt;<i>    use_addons:= false;
+</I>&gt;<i>
+</I>&gt;<i>    if isComponentSelected('addons') then begin
+</I>&gt;<i>
+</I>&gt;<i>      if isTaskSelected('videoplayer') then begin
+</I>&gt;<i>        SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),
+</I>&gt;<i> 'regvideoplayer,', true);
+</I>&gt;<i>        use_addons:= true;
+</I>&gt;<i>      end;
+</I>&gt;<i>
+</I>&gt;<i>      if isTaskSelected('repaz') then begin
+</I>&gt;<i>        SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),
+</I>&gt;<i> 'regrepaz,', true);
+</I>&gt;<i>        use_addons:= true;
+</I>&gt;<i>      end;
+</I>&gt;<i>
+</I>&gt;<i>      if isTaskSelected('repaz\compdesigner') then begin
+</I>&gt;<i>        SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),
+</I>&gt;<i> 'regcompdesigner,', true);
+</I>&gt;<i>        use_addons:= true;
+</I>&gt;<i>      end;
+</I>&gt;<i>
+</I>&gt;<i>      if isTaskSelected('osprinter') then begin
+</I>&gt;<i>        SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),
+</I>&gt;<i> 'regosprinter,', true);
+</I>&gt;<i>        use_addons:= true;
+</I>&gt;<i>      end;
+</I>&gt;<i>
+</I>&gt;<i>       if use_addons then begin
+</I>&gt;<i>        result:= '-dmorecomponents -Fulib\addon\*
+</I>&gt;<i> -Fulib\addon\osprinter\i386-win32';
+</I>&gt;<i>      end;
+</I>&gt;<i>    end;
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>&gt;<i> //-------------
+</I>&gt;<i>
+</I>&gt;<i> function MakeIFIOptions(Param: String): String;
+</I>&gt;<i> begin
+</I>&gt;<i>    result:= '';
+</I>&gt;<i>    if isTaskSelected('ifi') then result:= '-dmse_with_ifi';
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>&gt;<i> //-------------
+</I>&gt;<i>
+</I>&gt;<i> [Run]
+</I>&gt;<i>
+</I>&gt;<i> Filename: &quot;fpc.exe&quot;; StatusMsg: &quot;Building IDE...&quot;; WorkingDir: &quot;{app}&quot;;
+</I>&gt;<i> Parameters: &quot;-Mobjfpc -Sh -B apps\ide\mseide.pas -Fulib\common\*
+</I>&gt;<i> -Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel
+</I>&gt;<i> {code:MakeIFIOptions} {code:MakeAddonsBuild}&quot;
+</I>&gt;<i>
+</I>&gt;<i> //----------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002749.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+	<LI>Next message: <A HREF="002755.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2751">[ date ]</a>
+              <a href="thread.html#2751">[ thread ]</a>
+              <a href="subject.html#2751">[ subject ]</a>
+              <a href="author.html#2751">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

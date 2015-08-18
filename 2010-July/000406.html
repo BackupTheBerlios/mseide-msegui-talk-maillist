@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C32F1B2.3010402%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000404.html">
+   <LINK REL="Next"  HREF="000402.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C32F1B2.3010402%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Tue Jul  6 11:04:50 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000404.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000402.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#406">[ date ]</a>
+              <a href="thread.html#406">[ thread ]</a>
+              <a href="subject.html#406">[ subject ]</a>
+              <a href="author.html#406">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> liuzg2 wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>      tmsesqlscript1.sql.text:='select top 1 * into #x from  r_sale';
+</I>&gt;&gt;&gt;&gt;<i>      tmsesqlscript1.execute();&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-----
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    YES  !
+</I>&gt;&gt;<i> tmsesqlscript1 : SQL statement not set
+</I>&gt;&gt;<i> An exception occurred at $004B7398 :
+</I>&gt;&gt;<i> EDatabaseError : tmsesqlscript1 : SQL statement not set
+</I>&gt;<i>
+</I>&gt;<i> The trailing ';' is missing. Use
+</I>&gt;<i> &quot;
+</I>&gt;<i>   tmsesqlscript1.sql.text:='select top 1 * into #x from  r_sale;';
+</I>&gt;<i> &quot;
+</I>&gt;<i>                                                                ^
+</I>&gt;<i>
+</I>yes  it do
+but  get this
+can not find the temp table  #X
+
+Could not execute statement. ODBC error details: Record 1: SqlState: 
+42S02; NativeError: 208; Message: [Microsoft][ODBC SQL Server Driver] 
+[SQL Server]&#23545;&#35937;&#21517; '#x' ; Record 2: SqlState: 42000; NativeError: 8180; 
+Message: [Microsoft][ODBC SQL Server Driver][SQL Server]&#26080;&#27861;&#39044;&#23450;;
+An exception occurred at $00521D10 :
+EODBCException : Could not execute statement. ODBC error details: Record 
+1: SqlState: 42S02; NativeError: 208; Message: [Microsoft][ODBC SQL 
+Server Driver][SQL Server]&#23545;&#35937;&#21517; '#x' ; Record 2: SqlState: 42000; 
+NativeError: 8180; Message: [Microsoft][ODBC SQL Server Driver][SQL 
+Server]&#26080;&#27861;&#39044;&#23450;;
+   $00521D10  ODBCCHECKRESULT,  line 348 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $0052329F  TODBCCONNECTION__INTERNALEXECUTE,  line 851 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $004DD5B0  TCUSTOMSQLCONNECTION__EXECUTE,  line 1597 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DBA94  DOEXECUTE,  line 819 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DF569  TSQLQUERY__EXECUTE,  line 2586 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E003C  TSQLQUERY__CONNECT,  line 2946 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E0363  TSQLQUERY__INTERNALOPEN,  line 2991 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DABA1  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 392 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004D905F  TDSCONTROLLER__INTERNALOPEN,  line 5679 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msedb.pas
+   $004DAC9D  TMSESQLQUERY__INTERNALOPEN,  line 417 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004B85F2
+   $004B95D8
+   $004CCEC2  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004DEEA7  TSQLQUERY__SETACTIVE,  line 2458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DB3AC  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DAB37  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004306A6  TMAINFO__ODBCCONN,  line 89 of main.pas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000404.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000402.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#406">[ date ]</a>
+              <a href="thread.html#406">[ thread ]</a>
+              <a href="subject.html#406">[ subject ]</a>
+              <a href="author.html#406">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

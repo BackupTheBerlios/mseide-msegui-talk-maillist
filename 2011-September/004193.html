@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] interfaces corba vs IInterface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeY-A_VL84xb7XoPVcuGfqRxVnmKBsq58kVTLCggTtY6vA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004192.html">
+   <LINK REL="Next"  HREF="004194.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] interfaces corba vs IInterface</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeY-A_VL84xb7XoPVcuGfqRxVnmKBsq58kVTLCggTtY6vA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] interfaces corba vs IInterface">md at delfire.net
+       </A><BR>
+    <I>Mon Sep 19 16:20:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004192.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+        <LI>Next message: <A HREF="004194.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4193">[ date ]</a>
+              <a href="thread.html#4193">[ thread ]</a>
+              <a href="subject.html#4193">[ subject ]</a>
+              <a href="author.html#4193">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Sep 19, 2011 at 11:10 AM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> On Monday 19 September 2011 15.55:57 Marcos Douglas wrote:
+</I>&gt;&gt;<i> I understood, but that case is the same that TInterfacedObject, isn't?
+</I>&gt;&gt;<i>
+</I>&gt;<i> TInterfacedObject with COM interface _Addref()/_Release uses compiler magic
+</I>&gt;<i> which is more magic in FPC (intermediate variables) than in Delphi. ;-)
+</I>&gt;<i> With CORBA interface and explicitly calling Addref()/Release() there is better
+</I>&gt;<i> control to define the destroying event.
+</I>
+So, my implementation of ref-counted using CORBA will be equal to
+TInterfaceObject, but I have to call _AddRef/_Release explicitly. Ok,
+that is not a problem... a little less magic, but works  ;-)
+
+&gt;&gt;<i> You're right.
+</I>&gt;&gt;<i> So, if my code will have compatibility with Delphi, is better to use
+</I>&gt;&gt;<i> CORBA interfaces and no reference counted if I compile it on Delhi. Is
+</I>&gt;&gt;<i> this the best way?
+</I>&gt;&gt;<i>
+</I>&gt;<i> So it is done in MSEgui. Or use COM interfaces and *never* explicitly destroy
+</I>&gt;<i> an implementing object instance. BTW newer Delphi have CORBA interfaces too
+</I>&gt;<i> AFAIK.
+</I>
+COM interfaces is to use in Windows, AFAIK. I don't think using COM is
+the better way to use interfaces in FPC, so you too.
+
+To FPC I choose CORBA and instances of class variables and to compile
+in Delphi something like tnullinterfacedobject.  ;-)
+
+Thank you very much.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004192.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+	<LI>Next message: <A HREF="004194.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4193">[ date ]</a>
+              <a href="thread.html#4193">[ thread ]</a>
+              <a href="subject.html#4193">[ subject ]</a>
+              <a href="author.html#4193">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

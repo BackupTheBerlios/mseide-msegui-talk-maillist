@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110827213815.482fd462.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004129.html">
+   <LINK REL="Next"  HREF="004119.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110827213815.482fd462.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sat Aug 27 21:38:15 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004129.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004119.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4123">[ date ]</a>
+              <a href="thread.html#4123">[ thread ]</a>
+              <a href="subject.html#4123">[ subject ]</a>
+              <a href="author.html#4123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo &#1052;&#1080;&#1085;&#1086;&#1096;&#1080;,
+
+Du schriebst am Sat, 27 Aug 2011 18:37:49 +0400:
+
+&gt;<i> time tterminal broke output (swaps strings). Some time tterminal works
+</I>&gt;<i> correctly. 
+</I>
+Do you execute pacman directly (via fork/exec) or through a shell?
+If the latter, you might try to add a &quot;2&gt;&amp;1&quot; to the command line, merging
+the stdout and stderr streams in one, so no race condition between the
+streams may arise for the terminal component.
+
+(With unusual output conditions, it might be advisable to check what's
+output on what stream - on Linux, amny programs still use stdout and stderr
+for their intended purposes or at least to distinguish &quot;important&quot; from
+&quot;normal&quot; output.)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004129.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004119.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4123">[ date ]</a>
+              <a href="thread.html#4123">[ thread ]</a>
+              <a href="subject.html#4123">[ subject ]</a>
+              <a href="author.html#4123">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

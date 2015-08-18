@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci79egm%245ju%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001120.html">
+   <LINK REL="Next"  HREF="001149.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci79egm%245ju%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Sep 21 07:13:17 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001120.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001149.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1121">[ date ]</a>
+              <a href="thread.html#1121">[ thread ]</a>
+              <a href="subject.html#1121">[ subject ]</a>
+              <a href="author.html#1121">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> Du schriebst am Mon, 20 Sep 2010 08:04:09 +0200:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> &gt; BTW, the compilation control program to produce the &quot;language&quot;
+</I>&gt;&gt;<i> &gt; libraries is a bit fragile - there are numerous causes to keep it from
+</I>&gt;&gt;<i> &gt; working at
+</I>&gt;<i> ...
+</I>&gt;&gt;<i> The properties of the different MSEgui versions you mix must match. For
+</I>&gt;<i> 
+</I>&gt;<i> Yes, I expected that, and I _did_ keep the versions separate; nontheless
+</I>&gt;<i> the msei18n sometimes bailed out, right upon startup, complaining about an
+</I>&gt;<i> unsatisfied assertion like this:
+</I>&gt;<i> 
+</I>&gt;<i>  msei18n: xcb_io.c:183: process_responses: Assertion `!(req &amp;&amp;
+</I>&gt;<i>  current_request &amp;&amp; !(((long) (req-&gt;sequence) - (long) (current_request))
+</I>&gt;<i>  &lt;= 0))' failed.
+</I>&gt;<i>  Aborted
+</I>&gt;<i> 
+</I>That is a problem with threading. Does it still exist with MSEi18n from
+current trunk?
+
+&gt;<i> BTW, even though you claimed that the &quot;old&quot; IDE should be able to compile
+</I>&gt;<i> a &quot;new&quot; (trunk) program - yes, it does, but there seem to be _some_ places
+</I>&gt;<i> it still seems to use some internal heuristic to parse the .mfm file of an
+</I>&gt;<i> application.
+</I>
+The IDE must create a form instance in order to show the form. None the less
+the project can be compiled.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001120.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001149.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1121">[ date ]</a>
+              <a href="thread.html#1121">[ thread ]</a>
+              <a href="subject.html#1121">[ subject ]</a>
+              <a href="author.html#1121">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

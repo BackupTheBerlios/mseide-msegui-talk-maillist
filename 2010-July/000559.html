@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] To PostgreSQL users
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20To%20PostgreSQL%20users&In-Reply-To=%3CAANLkTinrbdojMa9veq0yGAcsuXuRy4TEZuB3x_xd_v9d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000558.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] To PostgreSQL users</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20To%20PostgreSQL%20users&In-Reply-To=%3CAANLkTinrbdojMa9veq0yGAcsuXuRy4TEZuB3x_xd_v9d%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] To PostgreSQL users">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Sat Jul 31 00:16:33 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000558.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30 July 2010 17:50, Ivanko B wrote:
+&gt;<i>
+</I>&gt;<i> Massive deleting 99% records from a table of 1.3 millons records
+</I>&gt;<i> didn't bear any speed improvement to SELECT queries to the table.
+</I>
+
+I find PostgreSQL quite hard to tweak to get good performance. A fresh
+install is *very* slow, and database server optimization is rather
+hard. Compare that to a fresh install of Firebird 2.x which is fast
+without any tweaks.  I ran the same test suite (from tiOPF project),
+using SqlDB database components (included with FPC). PostgreSQL was
+very slow compared to Firebird - doing the exact same tests. I really
+like the features of PostgreSQL, and the admin tools are very good, I
+just don't know how to get good performance out of it. :-(  Any tips
+or good websites I can look at?
+
+To get back to your statement. Have you run any profile on you queries
+to see where it is slow?  Do you use sufficient indexes on your
+tables?  Do you pull only the required data, or everything and then
+sort through the mess in the client-side?
+
+I found that many queries can be improved by simply optimizing how you
+write a query, and adding sufficient Indexes to those tables. When I
+started working at our company, one of our reports took 5-8 minutes to
+complete. It took me 15 minutes to rewrite the query, and now that
+same report is generated in 20 seconds. :)
+
+So not all SQL Queries are equal. ;-)
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000558.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

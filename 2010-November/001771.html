@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PG8.x%20%26%20PODPISKA%3A%20can%27t%20load%20%26%20run%20the%0A%09project&In-Reply-To=%3Cvvh8d6trfv6gc0hvnfei6icfpfi8h79i1v%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001765.html">
+   <LINK REL="Next"  HREF="001657.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PG8.x%20%26%20PODPISKA%3A%20can%27t%20load%20%26%20run%20the%0A%09project&In-Reply-To=%3Cvvh8d6trfv6gc0hvnfei6icfpfi8h79i1v%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Fri Nov  5 19:12:41 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001765.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+        <LI>Next message: <A HREF="001657.html">[MSEide-MSEgui-talk] Relative path in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1771">[ date ]</a>
+              <a href="thread.html#1771">[ thread ]</a>
+              <a href="subject.html#1771">[ subject ]</a>
+              <a href="author.html#1771">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> procedure tdmmainmo.acnt1monthlistcalcfields(DataSet: TDataSet);
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i> with dataset do begin
+</I>&gt;&gt;<i>   fields[1].aswidestring:= monthnames[fields[0].asinteger];
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i> 
+</I>
+&gt;<i>Possibly fixed in trunk 4075.
+</I>
+The qryAcnt1* queries run slowly (up to 10 seconds on my home machine
+in Linux  against 1 sec on 10 times as slower work machine in win-32,
+possibly proper indexing may help) but don't hang anymore on run-time
+- and it's a success :)
+
+Me'll ry to update to pg 8.3.7+ to have same versioning on both
+machines.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001765.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+	<LI>Next message: <A HREF="001657.html">[MSEide-MSEgui-talk] Relative path in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1771">[ date ]</a>
+              <a href="thread.html#1771">[ thread ]</a>
+              <a href="subject.html#1771">[ subject ]</a>
+              <a href="author.html#1771">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

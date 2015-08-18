@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2Bixmeap3%2Bpf8k8LAbE8hyJmrB9CmnM%3D%2BFBxJH-PMaeQ_hPB7g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003973.html">
+   <LINK REL="Next"  HREF="003980.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2Bixmeap3%2Bpf8k8LAbE8hyJmrB9CmnM%3D%2BFBxJH-PMaeQ_hPB7g%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Sat Jul 30 20:17:34 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003973.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003980.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3979">[ date ]</a>
+              <a href="thread.html#3979">[ thread ]</a>
+              <a href="subject.html#3979">[ subject ]</a>
+              <a href="author.html#3979">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jul 30, 2011 at 7:27 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> On 30 July 2011 01:01, Marcos Douglas &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">md at delfire.net</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i> var
+</I>&gt;&gt;&gt;<i> &#160;lList: TCustomerList;
+</I>&gt;&gt;&gt;<i> begin
+</I>&gt;&gt;&gt;<i> &#160;lList := TCustomerList.Create;
+</I>&gt;&gt;&gt;<i> &#160;lList.Filter.GreaterThan('JoinDate', EncodeDate(2010, 1, 1));
+</I>&gt;&gt;&gt;<i> &#160;lList.Read;
+</I>&gt;&gt;&gt;<i> &#160;// we now have a list of customer objects who joined us since 2010-01-01
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Humm... agree in part. If you have a simple list, ok... but if you
+</I>&gt;&gt;<i> have a JOIN, complex filters, etc these classes lose their meaning.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> That was just a very simple example. Much more complex cases are
+</I>&gt;<i> easily handled too - and are the norm in real-word applications.
+</I>&gt;<i>
+</I>&gt;<i> Here is a more complex example. Say I want to pull out data for a
+</I>&gt;<i> report. The data comes from various tables. Again there are many ways
+</I>&gt;<i> to approach this, but I am pro OOP, so I would recreate a set of
+</I>&gt;<i> objects for each report I generate. This has many knock-on benefits.
+</I>&gt;<i> Here is how I would extract my data.
+</I>&gt;<i>
+</I>&gt;<i> var
+</I>&gt;<i> &#160;lList: TReportDataList
+</I>&gt;<i> &#160;lReportVistor: TReportVisitor.
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;lList := TReportDataList.Create;
+</I>&gt;<i> &#160;lReportVisitor := TReportVisitor.Create;
+</I>&gt;<i> &#160;lReportVisitor.Execute(lList);
+</I>&gt;<i> &#160;//.... lList is now populate with report data objects
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> TReportVisitor is a TtiVisitor descendant that contains the hard-coded
+</I>&gt;<i> SQL (or auto-generated SQL), knows how to create report data objects
+</I>&gt;<i> and populate them from the resultset. Internally database transactions
+</I>&gt;<i> are managed automatically by the OPF framework.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Anyway, if you wanted to know more about tiOPF there are lots of
+</I>&gt;<i> information on the website.
+</I>
+I got it. But I see two problems here:
+a) An explosion of objects and b) You still have SQL hard-coded.
+
+a) If you have many, many reports, will have a ReportVisitor class for
+each report?
+b) For reasons performance, you still have SQL hard-coded... this is a
+fact. But is really necessary create these overhead with objects to
+show a report? See, I like your thoughts, but I am trying to be the
+&quot;devil's advocate&quot;.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003973.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003980.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3979">[ date ]</a>
+              <a href="thread.html#3979">[ thread ]</a>
+              <a href="subject.html#3979">[ subject ]</a>
+              <a href="author.html#3979">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2Bixmeb6SHpLMs_X6oJ3%3D1i7_z6Dmdzf_KJokZnao%2B%3D0Hi8XCA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004001.html">
+   <LINK REL="Next"  HREF="004004.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2Bixmeb6SHpLMs_X6oJ3%3D1i7_z6Dmdzf_KJokZnao%2B%3D0Hi8XCA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Mon Aug  1 01:49:08 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004001.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004004.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3999">[ date ]</a>
+              <a href="thread.html#3999">[ thread ]</a>
+              <a href="subject.html#3999">[ subject ]</a>
+              <a href="author.html#3999">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Jul 31, 2011 at 5:22 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> On 30 July 2011 21:28, Marcos Douglas wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Those report objects are &quot;lite&quot; objects. They don't necessarily
+</I>&gt;&gt;&gt;<i> descend from the same class as your business objects.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> But you will have many names for each class, long names...
+</I>&gt;<i>
+</I>&gt;<i> And what is the problem with that? Every report probably has a
+</I>&gt;<i> different name, so simply base the class name on the report name.
+</I>&gt;<i>
+</I>&gt;<i> I have many object instances in my applications, giving me no troubles
+</I>&gt;<i> what so every. Objects as business objects, reports, mementos (undo
+</I>&gt;<i> facility), menus, actions etc. Performance is brilliant (compared to
+</I>&gt;<i> our previous version of the application which was written in Delphi
+</I>&gt;<i> RAD-style). eg: We are a company producing Maths and Science tutoring
+</I>&gt;<i> software. If I had to populate a treeview with all our exercises we
+</I>&gt;<i> would have around 100 000 to 150 000 object instances. Obviously we
+</I>&gt;<i> don't load the whole tree, we only load sections of the tree - as the
+</I>&gt;<i> user navigates and expands nodes.
+</I>
+In your list of objects you have a TDataSet and can transform each
+register in an object or you have a real list of objects without a
+TDataSet?
+
+&gt;<i> You too have many similar cases in your current software. Just look at
+</I>&gt;<i> menu entries. Many many different names for each TMenuItem instance?
+</I>&gt;<i> :) &#160;I really don't see what you are confused or complaining about,
+</I>&gt;<i> sorry.
+</I>
+The objects created by IDE that are not part of my business rules I
+simply ignore them.
+But I understood what you said.
+
+&gt;&gt;<i> I prefer write my own SQL (for search). Just CRUD I do with something like OPF.
+</I>&gt;<i>
+</I>&gt;<i> Same here, even for CRUD. I often load master/detail relationships
+</I>&gt;<i> with a single visitor and a single sql statement. Yet the resulting
+</I>&gt;<i> data are various List objects and Data objects.
+</I>
+If you don't use TDataSet then you do not uses DBGrid, right?
+So which component - community maintained - I should use, StringGrid?
+It is a pain use it!
+
+&gt;&gt;<i> I talk about an explosion of names.
+</I>&gt;<i>
+</I>&gt;<i> Neither Delphi nor FPC has a limitation on the amount of names you may
+</I>&gt;<i> use for classes, identifiers etc. So what's the problem? Large
+</I>&gt;<i> applications have large numbers of objects and identifier names, this
+</I>&gt;<i> is normal. Your IDE of choice might just auto-generate those names for
+</I>&gt;<i> you without you actually paying attention to them. Easy examples of
+</I>&gt;<i> this are TMenuItem instances or TField instances.
+</I>
+Many classes is more complex than less. Many classes with long names
+is more complex even more.
+Classes and objects managed by the IDE is not a problem of programmer.
+I have concern just with my objects of business.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004001.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004004.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3999">[ date ]</a>
+              <a href="thread.html#3999">[ thread ]</a>
+              <a href="subject.html#3999">[ subject ]</a>
+              <a href="author.html#3999">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

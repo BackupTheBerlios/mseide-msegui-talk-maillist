@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEgui's order of processing keyboard shortcuts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%27s%20order%20of%20processing%20keyboard%20shortcuts&In-Reply-To=%3CAANLkTintWbVyLJD3P6sUCXEcbo7ESDT7mOtP59IiPMH_%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000062.html">
+   <LINK REL="Next"  HREF="000064.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEgui's order of processing keyboard shortcuts</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%27s%20order%20of%20processing%20keyboard%20shortcuts&In-Reply-To=%3CAANLkTintWbVyLJD3P6sUCXEcbo7ESDT7mOtP59IiPMH_%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEgui's order of processing keyboard shortcuts">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Jun  3 12:46:17 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000062.html">[MSEide-MSEgui-talk] How to replace mr_windowclosed with	mr_cancel on closing a form by WM facilities, in OnCloseQuery ?
+</A></li>
+        <LI>Next message: <A HREF="000064.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+What's the order that MSEgui follows to process keyboard shortcuts.
+I'm thinking in line of a multi-form (non-modal) application design.
+
+Using our company project as an example: We have one main form which
+basically has a main menu and toolbar buttons. We have one non-modal
+form which shows a listing of learners - this form also has a menu
+with keyboard shortcuts (eg: Print, Export List, Refresh, Add Learner
+etc). Then if they double click a learner, it opens a non-model
+Learner Maint screen, which might have shortcuts via labels.
+
+Now say I have a Learner Maint form open and it has focus. I then
+press say Ctrl+O which is the keyboard shortcut on the main form to
+open a new School database. How doesn't the Ctrl+O keyboard shortcut
+get traversed through the program to execute the correct menu item (or
+action)?
+
+eg:
+  Learner Maint &gt; Leaner List &gt; Main Form &gt; Application instance variable
+
+or
+
+  Learner Maint &gt; Main form &gt; Application
+
+or
+
+  Learner Maint &gt; Application &gt; then any open form in application (one-by-one)
+
+???
+
+
+-- 
+Regards,
+  - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000062.html">[MSEide-MSEgui-talk] How to replace mr_windowclosed with	mr_cancel on closing a form by WM facilities, in OnCloseQuery ?
+</A></li>
+	<LI>Next message: <A HREF="000064.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] create and using datamodule
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20create%20and%20using%20datamodule&In-Reply-To=%3Ci0k7b7%24e2v%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000267.html">
+   <LINK REL="Next"  HREF="000312.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] create and using datamodule</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20create%20and%20using%20datamodule&In-Reply-To=%3Ci0k7b7%24e2v%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] create and using datamodule">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jul  2 10:19:02 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000267.html">[MSEide-MSEgui-talk] create and using datamodule
+</A></li>
+        <LI>Next message: <A HREF="000312.html">[MSEide-MSEgui-talk] create and using datamodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#277">[ date ]</a>
+              <a href="thread.html#277">[ thread ]</a>
+              <a href="subject.html#277">[ subject ]</a>
+              <a href="author.html#277">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Zsolt Szokolai wrote:
+
+&gt;<i> I tried the datamodule because it is good thing.
+</I>&gt;<i> But something goes wrong. The date disappear from grid and so on.
+</I>&gt;<i> I called the create method from oncreate handler on main form:
+</I>&gt;<i> 
+</I>&gt;<i> procedure tmainfo.createevent1(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i> {$ifdef linux}
+</I>&gt;<i>  tstatfile1.filedir:= GetEnvironmentVariable('HOME');
+</I>&gt;<i> {$endif}
+</I>&gt;<i> {$ifdef mswindows}
+</I>&gt;<i>  tstatfile1.filedir:= GetEnvironmentVariable('APPDATA');
+</I>&gt;<i> {$endif}
+</I>&gt;<i>  datamodulmo:= tdatamodulmo.create(mainfo);
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>&gt;<i> My be isn't the best place for this.
+</I>&gt;<i> Where need create datamodule and how?
+</I>&gt;<i> 
+</I>Normally in the main program:
+&quot;
+program test;
+{$ifdef FPC}{$mode objfpc}{$h+}{$INTERFACES CORBA}{$endif}
+{$ifdef FPC}
+ {$ifdef mswindows}{$apptype gui}{$endif}
+{$endif}
+uses
+ {$ifdef FPC}{$ifdef linux}cthreads,{$endif}{$endif}msegui,mseforms,
+           main,datamod;
+begin
+ application.createdatamodule(tdatamodmo,datamodmo);
+ application.createform(tmainfo,mainfo);
+ application.run;
+end.
+&quot;
+Datamodules which have component links to other datamodules or forms must be
+created by application.createdatamodule, forms which have component links
+to other datamodules or forms by application.createform in order to be
+registered for inter module component resolving.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000267.html">[MSEide-MSEgui-talk] create and using datamodule
+</A></li>
+	<LI>Next message: <A HREF="000312.html">[MSEide-MSEgui-talk] create and using datamodule
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#277">[ date ]</a>
+              <a href="thread.html#277">[ thread ]</a>
+              <a href="subject.html#277">[ subject ]</a>
+              <a href="author.html#277">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

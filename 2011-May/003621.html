@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent fixes ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%20fixes%20%3F&In-Reply-To=%3Cop.vvkrk9m7yl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003619.html">
+   <LINK REL="Next"  HREF="003622.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent fixes ?</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%20fixes%20%3F&In-Reply-To=%3Cop.vvkrk9m7yl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent fixes ?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon May 16 14:56:59 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003619.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+        <LI>Next message: <A HREF="003622.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3621">[ date ]</a>
+              <a href="thread.html#3621">[ thread ]</a>
+              <a href="subject.html#3621">[ subject ]</a>
+              <a href="author.html#3621">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Me have a datamodule with two quries:
+
+- reqular SQL query &quot;qry1&quot; active on loading (will provide datasource for  
+&quot;some_form.grid1&quot; contents)
+- local mode query &quot;qry2&quot; active on loading too (will provide datasource  
+for bottom fixrows of &quot;some_form.grid1&quot;)
+
+In &quot;OnLoaded&quot; of the datamodule, &quot;qry1&quot; is:
+- positioned &quot;first&quot;
+- scrolled &quot;while not eof&quot; so that its field values are accumulated into  
+fields of &quot;qry2&quot;
+
+Currently, qry1 is at &quot;eof&quot; on the &quot;while not eof&quot; check so the cycle  
+isn'y entered at all.
+BTW, the grid isn't empty at diplay so it shows qry1 isn't empty.
+
+The &quot;OnLoaded&quot; code:
+[..]
+  with qry1 as tmsesqlquery do begin
+     first;
+     disablecontrols;
+     while not eof do begin // HERE &lt;&lt;&lt;&lt;
+       case fields[42].asinteger of //deliv_code
+         1: make_one(bm_addr); // ACCUMULATING METHODS
+         2: make_one(bm_box);
+         3: make_one(bm_edition);
+         4: make_one(bm_lgot);
+       end;
+       next;
+     end;
+     first;
+     enablecontrols;
+   end;
+[..]
+
+PS:
+It's the PODPISKA, so a testcase will be on Your request :)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003619.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+	<LI>Next message: <A HREF="003622.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3621">[ date ]</a>
+              <a href="thread.html#3621">[ thread ]</a>
+              <a href="subject.html#3621">[ subject ]</a>
+              <a href="author.html#3621">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

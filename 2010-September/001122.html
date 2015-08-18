@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%2BPODPISKA&In-Reply-To=%3Cp9fg9694tslfldnhq4qncgil23r6o8mhnv%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001118.html">
+   <LINK REL="Next"  HREF="001123.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%2BPODPISKA&In-Reply-To=%3Cp9fg9694tslfldnhq4qncgil23r6o8mhnv%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Sep 21 07:18:17 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001118.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="001123.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1122">[ date ]</a>
+              <a href="thread.html#1122">[ thread ]</a>
+              <a href="subject.html#1122">[ subject ]</a>
+              <a href="author.html#1122">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>There are some more changes. For me all works OK now.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - apply the attached RAR-file to your PODPISKA (the PRJ-file is
+</I>&gt;&gt;<i> present within as well)
+</I>&gt;&gt;<i> - activate refcompanyviewform in the designer
+</I>&gt;&gt;<i> - RClick  &quot;Revert to inherited&quot; for dbddOperDay
+</I>&gt;&gt;<i> - RClick  &quot;show as text&quot; for the form but refuse to save the change
+</I>&gt;&gt;<i> - RClick  &quot;show as form&quot; for the form, at me it results in the below
+</I>&gt;<i>
+</I>&gt;<i>Can not reproduce with trunk 3935.
+</I>&gt;<i>
+</I>
+Still here. Since a datasouce if reference in the crash dump, Do You
+have working DB setup for the project ?
+
+Get the latest DB (ss_forms_utf8_devel 21sep2010) from the BINARIES.
+
+# createdb -E utf8 ss_forms_utf8_devel
+# pg_restore {file} &gt; ./mumu.sql
+# psql -f ./mumu.sql ss_forms_utf8_devel
+
+Or use &quot;pg_admin&quot;).
+
+Adjust dmmainmo.mfm's conn.HostNamet &amp; ~/podpiska/dbconn.ini:HostName
+to Yours.
+
+ Reconnect dmmmainmo.conn &amp; acivate queries on REF{catalog,company etc
+loaded to the IDE}VIEWFORM.
+
+(win-32)
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001118.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="001123.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1122">[ date ]</a>
+              <a href="thread.html#1122">[ thread ]</a>
+              <a href="subject.html#1122">[ subject ]</a>
+              <a href="author.html#1122">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

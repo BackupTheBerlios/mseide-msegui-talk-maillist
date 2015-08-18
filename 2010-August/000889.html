@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5ffig%24bn7%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000886.html">
+   <LINK REL="Next"  HREF="000894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5ffig%24bn7%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Aug 30 07:28:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000886.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000894.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#889">[ date ]</a>
+              <a href="thread.html#889">[ thread ]</a>
+              <a href="subject.html#889">[ subject ]</a>
+              <a href="author.html#889">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> Du schriebst am Sun, 29 Aug 2010 15:46:31 +0200:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> &gt; I got the effect that _none_ of the form events were processed when I
+</I>&gt;<i> ...
+</I>&gt;&gt;<i> The i18n demo in the distribution has event handlers which are working.
+</I>&gt;<i> 
+</I>&gt;<i> As provided, yes. Did you try to add an OnCreate handler to preset a
+</I>&gt;<i> specified language on startup yet? I'd bet not.
+</I>&gt;<i> 
+</I>&gt;<i> If you did, and not selected &quot;default&quot;, it would show similar problems.
+</I>&gt;<i> Obviously, there are some stringent, but as yet unspecified, restrictions
+</I>&gt;<i> when and to which elements one may apply this function. It won't work
+</I>&gt;<i> every time nor with everything, it seems. Granted, it wasn't meant for
+</I>&gt;<i> what I did, but there are even restrictions to what it _was_ meant for.
+</I>&gt;<i> 
+</I>You should not change the language module in oncreate because oncreate is
+called form the loading process itself. Please use oneventloopstart instead
+or change the language module before creating the form.
+
+&gt;&gt;<i> I don't think that the tskincontroller component is well suited for the
+</I>&gt;<i> 
+</I>&gt;<i> Ok, I didn't think so either, just as a kind of last resort.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> task. Please use inherited forms.
+</I>&gt;<i> 
+</I>&gt;<i> If I can figure out how those might help - their mechanism seems to be
+</I>&gt;<i> intended for the opposite direction, deriving different forms from one
+</I>&gt;<i> layout. I have to derive different layouts from one form functionality.
+</I>&gt;<i> 
+</I>It probably makes exactly what what you make with your scripts, it stores
+the differences from ancestor in a *.mfm. But maybe you know it better. ;-)
+
+&gt;&gt;<i> Then you must debug why the event handlers are deleted by loading the
+</I>&gt;&gt;<i> difference *.mfm data.
+</I>&gt;<i> 
+</I>&gt;<i> If you can give me a hint where to start out?
+</I>&gt;<i> And, they _don't_ seem to be _deleted_ - they just don't work, i.e. aren't
+</I>&gt;<i> called.
+</I>&gt;<i> 
+</I>I repeat:
+
+&quot;
+&gt;<i> Set a breakpoint on lib/common/widgets/mseforms.pas
+</I>&gt;<i> &quot;
+</I>&gt;<i> function tcustommseform.canclose(const newfocus: twidget): boolean;
+</I>&gt;<i> var
+</I>&gt;<i> &#160;modres: modalresultty;
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;result:= inherited canclose(newfocus);
+</I>&gt;<i> &#160;if result and (newfocus = nil) then begin
+</I>&gt;<i> &#160; if canevent(tmethod(fonclosequery)) then begin
+</I>&gt;<i> &#160; &#160;modres:= twindow1(window).fmodalresult;
+</I>&gt;<i> &#160; &#160;if modres = mr_none then begin
+</I>&gt;<i> &#160; &#160; modres:= mr_canclose;
+</I>&gt;<i> &#160; &#160;end;
+</I>&gt;<i> &#160; &#160;fonclosequery(self,modres);
+</I>&gt;<i> &#160; &#160;result:= modres &lt;&gt; mr_none;
+</I>&gt;<i> &#160; &#160;if twindow1(window).fmodalresult &lt;&gt; mr_canclose then begin
+</I>&gt;<i> &#160; &#160; twindow1(window).fmodalresult:= modres;
+</I>&gt;<i> &#160; &#160;end;
+</I>&gt;<i> &#160; end;
+</I>&gt;<i> &#160; if result and ((twindow1(window).fmodalresult &lt;&gt; mr_none) or 
+</I>&gt;<i> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; (application.terminating)) then begin
+</I>&gt;<i> &#160; &#160;if canevent(tmethod(fonclose)) then begin &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;--------here
+</I>&gt;<i> &#160; &#160; fonclose(self);
+</I>&gt;<i> &#160; &#160;end;
+</I>&gt;<i> &quot;
+</I>&gt;<i> check why fonclose is not called.
+</I>&gt;<i> An event property has to pointer values (see tmethod), I don't know if gdb
+</I>&gt;<i> checks both, probably not.
+</I>&quot; 
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000886.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000894.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#889">[ date ]</a>
+              <a href="thread.html#889">[ thread ]</a>
+              <a href="subject.html#889">[ subject ]</a>
+              <a href="author.html#889">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

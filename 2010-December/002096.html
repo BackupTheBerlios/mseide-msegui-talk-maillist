@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Simple text animation in MSEgui show blink
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Simple%20text%20animation%20in%20MSEgui%20show%20blink&In-Reply-To=%3C201012150642.21175.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002089.html">
+   <LINK REL="Next"  HREF="002070.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Simple text animation in MSEgui show blink</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Simple%20text%20animation%20in%20MSEgui%20show%20blink&In-Reply-To=%3C201012150642.21175.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Simple text animation in MSEgui show blink">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Dec 15 06:42:21 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002089.html">[MSEide-MSEgui-talk] Simple text animation in MSEgui show blink
+</A></li>
+        <LI>Next message: <A HREF="002070.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2096">[ date ]</a>
+              <a href="thread.html#2096">[ thread ]</a>
+              <a href="subject.html#2096">[ subject ]</a>
+              <a href="author.html#2096">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday, 14. December 2010 20.05:09 Sri Wahono wrote:
+&gt;<i>
+</I>&gt;<i> You say that ttimer in windows not in millisecond, so animation
+</I>&gt;<i> couldn't look smooth than in Linux. Than you add
+</I>&gt;<i> application.beginhighrestimer to make it more smooth. And you say
+</I>&gt;<i> Windows need timeBeginPeriod procedure to activate millisecond timer,
+</I>&gt;<i> but I don't see you implement it to ttimer. If I debugging step by
+</I>&gt;<i> step, application.beginhighrestimer only call API initialitation from
+</I>&gt;<i> winmm.dll, but it doesn't call timebeginperiod.
+</I>&gt;<i>
+</I>timeBeginPeriod/timeEndPeriod affects the Windows task tick and has an 
+influence on overall performance of the computer. So I don't change it with 
+beginhighrestimer, instead I use the Windows multimedia timer by 
+timeSetEvent() with 1ms resolution instead of the normal timer by SetTimer():
+&quot;
+function setsystimer(us: longword): guierrorty;
+var
+ ms: longword;
+begin
+ killtimer;
+ if usemmtimer then begin
+  ms:= us div 1000;
+  if ms &lt; ticaps.wperiodmin then begin
+   ms:= ticaps.wperiodmin;
+  end;
+  mmtimer:= timesetevent(<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ms,1, at mmtimerproc</A>,0,time_oneshot);
+                        //1ms resolution
+  if mmtimer = 0 then begin
+   result:= gue_timer;
+  end
+  else begin
+   result:= gue_ok;
+  end;
+ end
+ else begin
+  timer:= windows.settimer(0,0,us div <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">1000, at timerproc</A>);
+  if timer = 0 then begin
+   result:= gue_timer;
+  end
+  else begin
+   result:= gue_ok;
+  end;
+ end;
+end;
+&quot;
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002089.html">[MSEide-MSEgui-talk] Simple text animation in MSEgui show blink
+</A></li>
+	<LI>Next message: <A HREF="002070.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2096">[ date ]</a>
+              <a href="thread.html#2096">[ thread ]</a>
+              <a href="subject.html#2096">[ subject ]</a>
+              <a href="author.html#2096">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

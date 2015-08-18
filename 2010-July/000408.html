@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C32F960.7050601%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000407.html">
+   <LINK REL="Next"  HREF="000409.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C32F960.7050601%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Tue Jul  6 11:37:36 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000407.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000409.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#408">[ date ]</a>
+              <a href="thread.html#408">[ thread ]</a>
+              <a href="subject.html#408">[ subject ]</a>
+              <a href="author.html#408">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;&gt;<i> liuzg2 wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> <A HREF="http://msdn.microsoft.com/en-us/library/ms811006.aspx">http://msdn.microsoft.com/en-us/library/ms811006.aspx</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> i do not know how to set the Params
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Add them to tmseodbcconnection.Params, every line a param in the form
+</I>&gt;&gt;<i> &lt;paramname&gt;=&lt;paramvalue&gt;.
+</I>&gt;&gt;<i>
+</I>&gt;<i> i means is it somthing Params i must add for multiple
+</I>&gt;<i> SQL statement.
+</I>&gt;<i> like this
+</I>&gt;<i>
+</I>&gt;<i> declare @aa
+</I>&gt;<i> select @aa=11
+</I>&gt;<i> select * into #x from r_sale
+</I>&gt;<i> select * from r_bbbb a ,#x b where a.a=b.a and cc=@aa
+</I>&gt;<i>
+</I>&gt;<i> in delphi ado can do this well
+</I>
+
+i can use tsqlresult do this
+tsqlresult .sql.text:='declare @aa nvarchar(10)   select @aa=''1553''; 
+select top 1 *   from  r_sale where wareid=@aa';'
+but ' select top 1 * into #x from  r_sale ; select top 1 *   from #x '
+get this
+Could not fetch new row from result set ODBC error details: Record 1: 
+SqlState: 24000; NativeError: 0; Message: [Microsoft][ODBC SQL Server 
+Driver]&#26080;&#25928;&#30340;?
+An exception occurred at $00521DE0 :
+EODBCException : Could not fetch new row from result set ODBC error 
+details: Record 1: SqlState: 24000; NativeError: 0; Message: 
+[Microsoft][ODBC SQL Server Driver]&#26080;&#25928;&#30340;?
+   $00521DE0  ODBCCHECKRESULT,  line 348 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $005233BF  TODBCCONNECTION__FETCH,  line 869 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $00509A76  TSQLRESULT__NEXT,  line 1249 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqlresult.pas
+   $005093A6  TSQLRESULT__OPEN,  line 1120 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqlresult.pas
+   $0050916C  TSQLRESULT__SETACTIVE,  line 1051 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqlresult.pas
+   $004306E4  TMAINFO__ODBCCONN,  line 89 of main.pas
+   $00488586  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+   $004A9D66  TCUSTOMBUTTON__DOEXECUTE,  line 684 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/widgets/msesimplewidgets.pas
+   $00492495  TACTIONSIMPLEBUTTON__INTERNALEXECUTE,  line 1799 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004924B7  TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE,  line 1806 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004993F6  UPDATEMOUSESHAPESTATE,  line 405 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseshapes.pas
+   $0049254E  TACTIONSIMPLEBUTTON__CLIENTMOUSEEVENT,  line 1820 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $0041E5D7  DOCLIENTMOUSEEVENT,  line 8544 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $0041E4B8  TWIDGET__MOUSEEVENT,  line 8661 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $004965F9  TACTIONWIDGET__MOUSEEVENT,  line 4260 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004261B8  TWINDOW__DISPATCHMOUSEEVENT,  line 12458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $00428B5D  TINTERNALAPPLICATION__PROCESSMOUSEEVENT,  line 13807 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+
+
+if use   tmsesqlquery.sql.text
+:<i>= declare @aa nvarchar(10)   select @aa=''11''; select top 1 *   from 
+</I>r_sale where wareid=@aa';
+
+tmsesqlquery1 : Cannot open a non-select statement
+An exception occurred at $004B6B28 :
+EDatabaseError : tmsesqlquery1 : Cannot open a non-select statement
+   $004B6B28
+   $004E02C2  TSQLQUERY__CONNECT,  line 2979 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E0433  TSQLQUERY__INTERNALOPEN,  line 2991 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DAC71  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 392 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004D912F  TDSCONTROLLER__INTERNALOPEN,  line 5679 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msedb.pas
+   $004DAD6D  TMSESQLQUERY__INTERNALOPEN,  line 417 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004B86C2
+   $004B96A8
+   $004CCF92  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004DEF77  TSQLQUERY__SETACTIVE,  line 2458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DB47C  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DAC07  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004306E7  TMAINFO__ODBCCONN,  line 89 of main.pas
+   $00488586  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+   $004A9D66  TCUSTOMBUTTON__DOEXECUTE,  line 684 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/widgets/msesimplewidgets.pas
+   $00492495  TACTIONSIMPLEBUTTON__INTERNALEXECUTE,  line 1799 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004924B7  TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE,  line 1806 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000407.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000409.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#408">[ date ]</a>
+              <a href="thread.html#408">[ thread ]</a>
+              <a href="subject.html#408">[ subject ]</a>
+              <a href="author.html#408">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%22not%20decorated%22%20exception%20when%20building%0A%09project&In-Reply-To=%3Ci4ga27%24bsh%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000682.html">
+   <LINK REL="Next"  HREF="000687.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%22not%20decorated%22%20exception%20when%20building%0A%09project&In-Reply-To=%3Ci4ga27%24bsh%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Aug 18 11:45:41 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000682.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building project
+</A></li>
+        <LI>Next message: <A HREF="000687.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> Hi Martin,
+</I>&gt;<i> 
+</I>&gt;<i> When I do a 'Project &gt; Build' I kept getting a &quot;not decorated&quot;
+</I>&gt;<i> exception in one of my projects, but the project seems to have built
+</I>&gt;<i> correctly. I then played with the Project Option &quot;close window after
+</I>&gt;<i> build&quot;. It was checked, so I unchecked it, so I can see if any errors
+</I>&gt;<i> relating to this exception showed up in the Messages window. Then
+</I>&gt;<i> suddenly the builds started working fine without any exceptions.
+</I>&gt;<i> Checking the &quot;close window after build&quot; again, and still it's fixed. A
+</I>&gt;<i> 'self healing IDE' - cool!  :-)
+</I>&gt;<i> 
+</I>&gt;<i> No idea what caused it, but I thought I would mention the problem....
+</I>&gt;<i> maybe you know the code that raises an &quot;not decorated&quot; exception.
+</I>&gt;<i> 
+</I>&gt;<i> I'm using r3836 and MSEide is compiled with FPC 2.4.3 (64-bit) running
+</I>&gt;<i> on Ubuntu 10.04
+</I>&gt;<i> 
+</I>
+It sometimes happens for unknown reasons.
+&quot;not decorated&quot; exception means that the window manager does not reparent a
+new window into a container window with window manager frame elements in a
+given time. A WM theme with many long running motion effects at window
+creation can produce the error.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000682.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building project
+</A></li>
+	<LI>Next message: <A HREF="000687.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

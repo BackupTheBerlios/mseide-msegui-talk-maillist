@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] LCL in MSEide - is possible?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3C4CD25FDA.7000307%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001737.html">
+   <LINK REL="Next"  HREF="001788.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] LCL in MSEide - is possible?</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3C4CD25FDA.7000307%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] LCL in MSEide - is possible?">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 08:25:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001737.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+        <LI>Next message: <A HREF="001788.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1738">[ date ]</a>
+              <a href="thread.html#1738">[ thread ]</a>
+              <a href="subject.html#1738">[ subject ]</a>
+              <a href="author.html#1738">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-03 21:03, Marcos Douglas het geskryf:
+&gt;<i> Multiplataform is in my plans for the future. But if you did
+</I>&gt;<i> crossplatform applications with the Lazarus &quot;native widgetset&quot;
+</I>&gt;<i> approach is impossible... I have to think more about.
+</I>
+The problem with LCL's approach is that on the surface it looks all great.
+But when you put it in a commercial/production environment, it falls over
+pretty fast. We initially tried to use LCL in our commercial software for a
+year and a bit. Most of the things we wanted to do worked different on each
+platform or wasn't possible on certain platforms but was on others, so our
+code started containing IFDEF Linux.... IFDEF Windows....  This defeats the
+whole purpose of a &quot;cross-platform framework&quot;. OK, this was 5 years ago,
+and the Lazarus team has probably fixed some of those issues, but many
+still remain, and the LCL is just plain unstable. What works today is
+broken tomorrow. Even inside the IDE itself, some windows work different on
+various platforms, or even on the same platform but with different gui
+toolkit backends. &quot;Procedure List&quot; window is just one such example of many.
+One just can't code applications with such issues - it is too inconsistent.
+
+Yes initially LCL's &quot;it's so close to Delphi&quot; wins over a few developers,
+but it's definitely not production ready. In the long run, LCL gives more
+grief that solutions.
+
+For this reason our company opted to go fully custom written/drawn, and we
+started working on fpGUI. We now use fpGUI for all our commercial products
+and internal software. We don't have a single IFDEF Linux...IFDEF Windows
+in any of our applications code. This is true &quot;single source, compile
+everywhere&quot;! And the end-user experiences consistent behaviour across all
+platforms.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001737.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+	<LI>Next message: <A HREF="001788.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1738">[ date ]</a>
+              <a href="thread.html#1738">[ thread ]</a>
+              <a href="subject.html#1738">[ subject ]</a>
+              <a href="author.html#1738">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

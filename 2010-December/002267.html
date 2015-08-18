@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTikMX%3DTotCwH1kuMB_vsi3D9nmctqoEeXC8yyAnd%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002266.html">
+   <LINK REL="Next"  HREF="002268.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTikMX%3DTotCwH1kuMB_vsi3D9nmctqoEeXC8yyAnd%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 12:53:46 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002266.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002268.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2267">[ date ]</a>
+              <a href="thread.html#2267">[ thread ]</a>
+              <a href="subject.html#2267">[ subject ]</a>
+              <a href="author.html#2267">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&#183;$$&amp;%/&amp;(/)/(&amp;(&amp;$%%()&amp;/&amp;%$&amp;)(%(
+
+eureka!!!
+
+export LANG=us_US.utf8
+ fixed it :(
+
+
+2010/12/28 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+
+&gt;<i> probably this:
+</I>&gt;<i>
+</I>&gt;<i> Entry point=Punto de entrada: 0x8194f40  (Punto de entrada)  if
+</I>&gt;<i> startsstr('Entry point',ar1[int1]) then begin
+</I>&gt;<i>
+</I>&gt;<i> It's spanish.. startsstr look for 'Entry point'  (english)
+</I>&gt;<i>
+</I>&gt;<i> may be this?
+</I>&gt;<i>
+</I>&gt;<i> 2010/12/28 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> if getcliresult('info file',ar1) = gdb_ok   is true
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ar1 dump:
+</I>&gt;&gt;<i> high(ar1)=25
+</I>&gt;&gt;<i> Entry point=S&#237;mbolos desde &#171;/home/jujibo/Dev/proyectos/borrar1/borrar1&#187;.
+</I>&gt;&gt;<i> Entry point=Local exec file:
+</I>&gt;&gt;<i> Entry point=`/home/jujibo/Dev/proyectos/borrar1/borrar1', tipo de archivo
+</I>&gt;&gt;<i> elf32-i386.
+</I>&gt;&gt;<i> Entry point=Punto de entrada: 0x8194f40
+</I>&gt;&gt;<i> Entry point=0x080480f4 - 0x08048107 is .interp
+</I>&gt;&gt;<i> Entry point=0x08048108 - 0x080487d4 is .hash
+</I>&gt;&gt;<i> Entry point=0x080487d4 - 0x08049694 is .dynsym
+</I>&gt;&gt;<i> Entry point=0x08049694 - 0x0804a2c1 is .dynstr
+</I>&gt;&gt;<i> Entry point=0x0804a2c2 - 0x0804a49a is .gnu.version
+</I>&gt;&gt;<i> Entry point=0x0804a49c - 0x0804a55c is .gnu.version_r
+</I>&gt;&gt;<i> Entry point=0x0804a55c - 0x0804a564 is .rel.dyn
+</I>&gt;&gt;<i> Entry point=0x0804a564 - 0x0804ac8c is .rel.plt
+</I>&gt;&gt;<i> Entry point=0x0804ac8c - 0x0804acbc is .init
+</I>&gt;&gt;<i> Entry point=0x0804acbc - 0x0804bb1c is .plt
+</I>&gt;&gt;<i> Entry point=0x0804bb20 - 0x08194fec is .text
+</I>&gt;&gt;<i> Entry point=0x08194fec - 0x08195008 is .fini
+</I>&gt;&gt;<i> Entry point=0x08195008 - 0x0819500c is .eh_frame
+</I>&gt;&gt;<i> Entry point=0x0819600c - 0x08196014 is .ctors
+</I>&gt;&gt;<i> Entry point=0x08196014 - 0x0819601c is .dtors
+</I>&gt;&gt;<i> Entry point=0x0819601c - 0x08196020 is .jcr
+</I>&gt;&gt;<i> Entry point=0x08196020 - 0x08196100 is .dynamic
+</I>&gt;&gt;<i> Entry point=0x08196100 - 0x08196104 is .got
+</I>&gt;&gt;<i> Entry point=0x08196104 - 0x081964a4 is .got.plt
+</I>&gt;&gt;<i> Entry point=0x081964b0 - 0x08228e28 is .data
+</I>&gt;&gt;<i> Entry point=0x08228e30 - 0x0822d4c4 is .bss
+</I>&gt;&gt;<i> Entry point=
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> if startsstr('Entry point',ar1[int1]) then begin  &lt;&lt;&lt;  never true that's
+</I>&gt;&gt;<i> why str1 is empyty I guess
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2010/12/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Tuesday, 28. December 2010 12.04:08 Julio Jim&#233;nez wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> &gt; synccommand('-break-insert -t main'); &lt;&lt;&lt;&lt;----
+</I>&gt;&gt;&gt;<i> &gt;  end;
+</I>&gt;&gt;&gt;<i> &gt;
+</I>&gt;&gt;&gt;<i> &gt; at this point, str1 is empty and 'synccommand('-break-insert -t
+</I>&gt;&gt;&gt;<i> main');' is
+</I>&gt;&gt;&gt;<i> &gt; executed.
+</I>&gt;&gt;&gt;<i> &gt;
+</I>&gt;&gt;&gt;<i> Why is str1 empty?
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/b269e4ef/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/b269e4ef/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002266.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002268.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2267">[ date ]</a>
+              <a href="thread.html#2267">[ thread ]</a>
+              <a href="subject.html#2267">[ subject ]</a>
+              <a href="author.html#2267">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

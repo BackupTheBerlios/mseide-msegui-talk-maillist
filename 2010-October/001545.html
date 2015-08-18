@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] HOME directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C20101023154619.95048ead.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001544.html">
+   <LINK REL="Next"  HREF="001547.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] HOME directory</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C20101023154619.95048ead.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] HOME directory">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sat Oct 23 15:46:19 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001544.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+        <LI>Next message: <A HREF="001547.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1545">[ date ]</a>
+              <a href="thread.html#1545">[ thread ]</a>
+              <a href="subject.html#1545">[ subject ]</a>
+              <a href="author.html#1545">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Sat, 23 Oct 2010 14:20:54 +0200:
+
+&gt;<i> &gt; So if &quot;sys_getapphomedir()&quot; is by any means meant for storing _user_
+</I>&gt;<i> &gt; _dependend_ settings, it should at least return &quot;~/.config/&lt;program
+</I>...
+&gt;<i> Thanks for explanation. &quot;sys_&quot; is the prefix for system dependent
+</I>
+But don't just jump - the explanation is _not_ &quot;authoritative&quot; by any
+means, finding a second opinion _might_ be advisable.
+Thanks for the explanation of the name prefixes - this kind of information
+is something that belongs into the end user documentation, chapter &quot;naming
+conventions&quot;.
+
+&gt;<i> &quot;^/&lt;thedirectorypath&gt;&quot; -&gt; sys_getapphomedir&lt;thedirectorypath&gt; is mainly
+</I>&gt;<i> used in tstatfile.filedir property. What do you suggest should be
+</I>&gt;<i> supplied for &quot;^/&quot; in Linux and Windows?
+</I>
+If you could kindly explain what the caret should signify here?
+
+BTW, I cannot in any respect give you information, not even own opinion,
+about the system prepared / required directory hierarchies under any of the
+current Windows. You probabely should check in the corresponding groups,
+even &quot;de.comp.lang.delphi.misc&quot; carried some very interesting information
+already (but I didn't save it for lack of relevance).
+
+Judging from your mentioning of &quot;tstatfile.filedir&quot; I would suppose this
+might be a directory for storing more or less user dependant data - in this
+case, under any unixoid, the user's home directory should be the first
+target, and the file(s) or directory created should be made &quot;hidden&quot; by
+the common convention of prefixing the name with a period (&quot;.&quot;).
+You might consider to create an application specific subdirectory if there
+were several files to save, or use one of the desktop environment prepared
+subdirectory trees - though the latter should be restricted to programs in
+fact depending on the respective environment, because it might happen that
+someone changes to a different one, thereby completely removing the
+previous environment's hierarchy.
+BTW, the &quot;~/.config&quot; hierarchy seems to belong to the &quot;open desktop&quot;
+specification newly introduced lately.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001544.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+	<LI>Next message: <A HREF="001547.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1545">[ date ]</a>
+              <a href="thread.html#1545">[ thread ]</a>
+              <a href="subject.html#1545">[ subject ]</a>
+              <a href="author.html#1545">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Can't run IDE-in-IDE in win-32
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Can%27t%20run%20IDE-in-IDE%20in%20win-32&In-Reply-To=%3C3l0fg6d10k64sgk4t9g9vuj83iaq1d5tm7%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002071.html">
+   <LINK REL="Next"  HREF="002080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Can't run IDE-in-IDE in win-32</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Can%27t%20run%20IDE-in-IDE%20in%20win-32&In-Reply-To=%3C3l0fg6d10k64sgk4t9g9vuj83iaq1d5tm7%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Can't run IDE-in-IDE in win-32">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Dec 14 15:44:25 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002071.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+        <LI>Next message: <A HREF="002080.html">[MSEide-MSEgui-talk] Can't run IDE-in-IDE in win-32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2079">[ date ]</a>
+              <a href="thread.html#2079">[ thread ]</a>
+              <a href="subject.html#2079">[ subject ]</a>
+              <a href="author.html#2079">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The call stack is :
+
+#0  7C90E4FF :0 ntdll!LdrAlternateResourcesEnabled()
+#1  7C90E514 :0 ntdll!LdrAccessOutOfProcessResource()
+#2  7C90D0FA :0 ntdll!ZwCreateKey()
+#3  77DC76AC :0 GetSecurityDescriptorOwner()
+#4  77DC7830 :0 RegCreateKeyExW()
+#5  7C9EEEB2 :0 StrStrIW()
+#6  7C9EED59 :0 StrStrIW()
+#7  7C9EECD9 :0 StrStrIW()
+#8  7C9EEBF4 :0 SHELL32!IsLFNDriveA()
+#9  7C9EEC94 :0 StrStrIW()
+#10  0050BBD2 msesysintf.pas:2007 DOINIT()
+#11  0050BD98 msesysintf.pas:2036 MSESYSINTF_init()
+#12  0040CEF4 msesysintf.pas:0 fpc_initializeunits()
+#13  7FFDF000 msesysintf.pas:0 ??()
+#14  00410FC1 msesysintf.pas:0 SYSTEM_EXE_ENTRY$TENTRYINFORMATION()
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002071.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+	<LI>Next message: <A HREF="002080.html">[MSEide-MSEgui-talk] Can't run IDE-in-IDE in win-32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2079">[ date ]</a>
+              <a href="thread.html#2079">[ thread ]</a>
+              <a href="subject.html#2079">[ subject ]</a>
+              <a href="author.html#2079">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

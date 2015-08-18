@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Chartrecorder
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3C20100907223531.7675868b.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000956.html">
+   <LINK REL="Next"  HREF="000970.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Chartrecorder</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3C20100907223531.7675868b.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Chartrecorder">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Sep  7 22:35:31 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000956.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+        <LI>Next message: <A HREF="000970.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#958">[ date ]</a>
+              <a href="thread.html#958">[ thread ]</a>
+              <a href="subject.html#958">[ subject ]</a>
+              <a href="author.html#958">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Tue, 07 Sep 2010 19:57:46 +0200:
+
+&gt;<i> &gt;&gt; The settings could be done with an &quot;options&quot; property, I'll have a
+</I>&gt;<i> &gt;&gt; look.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; That would be fine and possibly useful for others too - and what do you
+</I>&gt;<i> &gt; think about the new &quot;feature&quot;?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> I think it is useful although it probably could be achieved with tchart
+</I>
+That's certainly right, and it was a posibility I pondered also, especially
+as that would have been nearly what I had implemented already.
+
+&gt;<i> too. tchart does not use bitmap scrolling so it needs more CPU than
+</I>&gt;<i> tchartrecorder for a moving time window.
+</I>
+That's a neat trick to save quite an amount of memory and processing. Also,
+you used a variation on Bresenham's line drawing algorithm to smooth out the
+positioning errors during drawing, I saw. I tried to not break these
+features by adding the &quot;sweep&quot; modification.
+
+&gt;<i> Grid behind the traces requires a pixmap with alpha channel, it should be
+</I>&gt;<i> feasible.
+</I>
+I'm not really sure how the grid is produced - it seems to be drawn onto
+the - a secondary - bitmap after the curves have been refreshed. So the
+main curve bitmap would have to be the one having the alpha property, so
+the background, where the grid was drawn, would not be changed on refresh?
+This implies, though, that there had to be _3_ bitmaps, then: one for the
+curves, one for the grid, and one for combining them for display - correct?
+Or do you constantly redraw the grid on the display bitmap, after the curve
+bitmap was copied? Then the grid redraw had to be moved to occur before
+copying the curves.
+(That's about what I did with my self made solution, except that I had the
+grid drawn before the curves, which were also redrawn on each iteration
+from data arrays - like the solution using a chart that you mentioned. It
+did work quite well, but the way I had done it, it had no buffering, and I
+had not implemented an X grid (yet).)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000956.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+	<LI>Next message: <A HREF="000970.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#958">[ date ]</a>
+              <a href="thread.html#958">[ thread ]</a>
+              <a href="subject.html#958">[ subject ]</a>
+              <a href="author.html#958">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

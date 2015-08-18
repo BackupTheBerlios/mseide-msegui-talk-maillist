@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pipe%20usage%20in%20MSE%20-%20a%20pipe%20dream%3F&In-Reply-To=%3Ci9i027%24i8u%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001502.html">
+   <LINK REL="Next"  HREF="001510.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pipe%20usage%20in%20MSE%20-%20a%20pipe%20dream%3F&In-Reply-To=%3Ci9i027%24i8u%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Oct 18 19:29:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001502.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+        <LI>Next message: <A HREF="001510.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1503">[ date ]</a>
+              <a href="thread.html#1503">[ thread ]</a>
+              <a href="subject.html#1503">[ subject ]</a>
+              <a href="author.html#1503">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> In one project, I did some separation of data acquisition and data
+</I>&gt;<i> display / storage functions, as to have an easy means to exchange the
+</I>&gt;<i> aquisition part without affecting the rest of the software.
+</I>&gt;<i> I did that very bluntly by pipeing from stdout of the aquisition programm
+</I>&gt;<i> into stdin of the application main program, which happens to be a MSEGUI
+</I>&gt;<i> application doing some visualization, using a shell construct.
+</I>&gt;<i> Now, I thought it might be a good idea to avoid the shell construct and
+</I>&gt;<i> have the main application program call the data deliverer directly (so it
+</I>&gt;<i> is safely running and able to accept data when it starts).
+</I>&gt;<i> So I reaearched a bit and found your &quot;pipereadercomp&quot;, which seems to
+</I>&gt;<i> provide a convenient interface to accept the data. It does not, though,
+</I>&gt;<i> provide a mechanism to start an external program (understandably), so I
+</I>&gt;<i> came up with FPCs &quot;Popen&quot; to do this and at the same time provide the pipe
+</I>&gt;<i> handle. (Or something akin to that. It does start up the external program
+</I>&gt;<i> correctly, but always delivers an errno &quot;ENOTTY&quot;; but this might even be
+</I>&gt;<i> correct, as the returned file isn't a TTY in fact.)
+</I>
+There is tmseprocess with a pipereader for stdin, stderr and a pipewriter
+for stdout, tab NoGui.
+execmse2() accepts tpipereader/tpipewriter parameters.
+
+&gt;<i> But here comes the big problem:
+</I>&gt;<i> How on earth do I give the pipereader notice about the file's handle?
+</I>
+Please use tpipereadercomp.pipereader.handle.
+
+&gt;<i> I didn't find anything accessible, though there are a couple functions
+</I>&gt;<i> that look like they might be able to do the job - but they're private or
+</I>&gt;<i> protected, and the final components seem _not_ to provide _anything_ to
+</I>&gt;<i> pass them this handle - neither a procedure or function, nor a property;
+</I>&gt;<i> though strangely the pipe_reader_ gives access to a &quot;_write_handle&quot;
+</I>&gt;<i> property, but not a &quot;_read_handle&quot;.
+</I>&gt;<i> And, as another aside, although there _is_ a &quot;pipewriter&quot; component, it
+</I>&gt;<i> doesn't seem to be accessible in any way, though the &quot;pipe_reader_&quot;
+</I>&gt;<i> contains a property &quot;_write_handle&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> So, there remains the question whether this is at all a finished construct
+</I>&gt;<i> (though its appearence in the component palette suggests so), or how it
+</I>&gt;<i> could be used for any meaningful purpose.
+</I>&gt;<i> 
+</I>tpipereader/tpipewriter are used for example in MSEide for communication
+with gdb. File lib/common/designutils/msegdbutils.pas, procedure
+tgdbmi.startgdb().
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001502.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+	<LI>Next message: <A HREF="001510.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1503">[ date ]</a>
+              <a href="thread.html#1503">[ thread ]</a>
+              <a href="subject.html#1503">[ subject ]</a>
+              <a href="author.html#1503">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] IDE editor slowdown
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20IDE%20editor%20slowdown&In-Reply-To=%3C4DE4C412.9040209%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003705.html">
+   <LINK REL="Next"  HREF="003706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] IDE editor slowdown</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20IDE%20editor%20slowdown&In-Reply-To=%3C4DE4C412.9040209%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] IDE editor slowdown">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue May 31 12:33:54 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003705.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+        <LI>Next message: <A HREF="003706.html">[MSEide-MSEgui-talk] IDE editor slowdown
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3700">[ date ]</a>
+              <a href="thread.html#3700">[ thread ]</a>
+              <a href="subject.html#3700">[ subject ]</a>
+              <a href="author.html#3700">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+In the last two months I have noticed a visible slowdown in the IDE's
+editor performance. Strangely this only affects the IDE if compiled as a
+64bit version under Linux. I'm using FPC 2.4.3 on both system with the
+latest MSEide&amp;MSEgui from svn.
+
+My system specs are as follows:
+
+System #1 (home):
+  - Dell Inspiron 9100
+  - P4 3GHz CPU with HyperThreading enabled
+  - 2GB memory
+  - 32bit Linux: Ubuntu 8.04.4
+  - ATI Radeon Mobility 9600 (using the open-source X11 drivers)
+
+System #2 (work):
+  - Custom build system
+  - Intel Quad Core Q9400 2.66GHz CPU
+  - 4GB memory
+  - 64bit Linux: Fedora 14
+  - ATI Radeon HD 4350 (using the open-source X11 drivers)
+
+
+The work system is considerably faster in all aspects, yet in MSEide it
+is much slower in response. Weird??
+
+When I say &quot;slower&quot; I mean the following. In both cases I use the exact
+same project too.
+
+ - Ctrl+F4 to close editor tabs has just under a second delay. So when
+   closing a few tabs, there is a clear delay where I have to wait for
+   the IDE to catch up.
+
+ - Selecting and deleting a line. Again the same (just under a second)
+   delay before the editor updates.
+
+ - I have all my project files added to the &quot;Source Tree&quot; window. Dbl
+   clicking a item, then I need to wait just over one second for the
+   editor to have the new file open.
+
+ - PgUp / PgDwn also has a slight delay.
+
+
+As I said, this all happens on my faster work system. At home all these
+same actions are near instant.
+
+I first thought it was my Syntax Highlighter file causing the problem,
+so I switched to the default highlighter for *.pas files. That made NO
+difference on my work system, so it doesn't seem to be my custom syntax
+highlighter.
+
+
+I compile MSEide as follows under my 64-bit system and a simple script:
+
+rm units/x86_64-linux/*
+fpc \
+  -Mobjfpc -Xs -ve -O1 -B \
+  -FUunits/x86_64-linux \
+  -Fi${PWD}/lib/common/kernel \
+  -Fu${PWD}/lib/common/kernel -Fu${PWD}/lib/common/db \
+  -Fu${PWD}/lib/common/designutils -Fu${PWD}/lib/common/dialogs \
+  -Fu${PWD}/lib/common/editwidgets -Fu${PWD}/lib/common/i18n \
+  -Fu${PWD}/lib/common/ifi -Fu${PWD}/lib/common/image \
+  -Fu${PWD}/lib/common/opengl -Fu${PWD}/lib/common/pascalscript \
+  -Fu${PWD}/lib/common/printer -Fu${PWD}/lib/common/regcomponents \
+  -Fu${PWD}/lib/common/report -Fu${PWD}/lib/common/serialcomm \
+  -Fu${PWD}/lib/common/sysutils -Fu${PWD}/lib/common/unicode \
+  -Fu${PWD}/lib/common/widgets -Fu${PWD}/lib/common/kernel/i386-linux \
+  -Fu${PWD}/lib/common/math -Fu${PWD}/lib/common/graphics \
+  -Fu${PWD}/lib/common/audio \
+  -dmse_withoutdb \
+  -o./mseide.elf apps/ide/mseide.pas
+
+If I include the -XX -XC it fails to link the IDE. If I add -O2 the user
+input is totally corrupt. eg: clicking on a menu opens it above the IDE
+main form, covering the mainmenu bar. Simply moving the mouse over the
+IDE makes windows jump all over my screen. All very weird.
+
+Running the 32-bit Linux binary on my 64-bit system doesn't make any
+difference. I'm going to reinstall my work system with Ubuntu 10.04
+(64-bit) later this week and will test again. But I can't think why that
+would make a difference - after all, all other applications and Lazarus
+IDE performs fine on my current OS, it's just MSEide that performs sluggish.
+
+
+Is this a known problem?
+
+Anybody else experiencing this?
+
+Anybody else running 64-bit MSEide?
+
+
+If it will help, I can checkout older versions of MSEgui and try and
+figure out where the slowdown started. But like I said earlier, I have
+started noticing it about 2 or so months ago.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003705.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+	<LI>Next message: <A HREF="003706.html">[MSEide-MSEgui-talk] IDE editor slowdown
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3700">[ date ]</a>
+              <a href="thread.html#3700">[ thread ]</a>
+              <a href="subject.html#3700">[ subject ]</a>
+              <a href="author.html#3700">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

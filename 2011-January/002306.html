@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] AV reading values of non existan fields.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3C201101031923.36401.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002305.html">
+   <LINK REL="Next"  HREF="002307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] AV reading values of non existan fields.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3C201101031923.36401.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] AV reading values of non existan fields.">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Jan  3 19:23:36 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002305.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+        <LI>Next message: <A HREF="002307.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2306">[ date ]</a>
+              <a href="thread.html#2306">[ thread ]</a>
+              <a href="subject.html#2306">[ subject ]</a>
+              <a href="author.html#2306">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 3. January 2011 19.16:24 Julio Jim&#233;nez wrote:
+&gt;<i> 2011/1/3 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt; Are you sure you see the first exception?
+</I>&gt;<i> &gt; Is 'Project'-'Options'-'Debugger'-'Stop on Exception' activated and
+</I>&gt;<i> &gt; EDatabaseError not ignored?
+</I>&gt;<i>
+</I>&gt;<i> Yes, only Activate on Break and Value Hints are active in Debugger page. No
+</I>&gt;<i> exceptions marked.
+</I>
+fieldbyname() is :
+&quot;
+Function TDataset.FieldByName(const FieldName: string): TField;
+
+
+begin
+  Result:=FindField(FieldName);
+  If Result=Nil then
+    DatabaseErrorFmt(SFieldNotFound,[FieldName],Self);
+end;
+&quot;
+So the AV probably has another reason.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002305.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+	<LI>Next message: <A HREF="002307.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2306">[ date ]</a>
+              <a href="thread.html#2306">[ thread ]</a>
+              <a href="subject.html#2306">[ subject ]</a>
+              <a href="author.html#2306">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

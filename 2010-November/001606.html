@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] StringGrid usage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3C4CCE9813.1010605%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001604.html">
+   <LINK REL="Next"  HREF="001608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] StringGrid usage</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3C4CCE9813.1010605%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] StringGrid usage">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Mon Nov  1 11:36:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001604.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+        <LI>Next message: <A HREF="001608.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1606">[ date ]</a>
+              <a href="thread.html#1606">[ thread ]</a>
+              <a href="subject.html#1606">[ subject ]</a>
+              <a href="author.html#1606">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-01 12:01, Martin Schreiber het geskryf:
+&gt;&gt;<i> How do I do this in MSEgui's stringgrid?
+</I>&gt;<i> 
+</I>&gt;<i> grid1[lCol][ lRow] := 'my value';
+</I>
+
+Thanks Martin.
+
+Bellow is the button press event handler for my StringGrid speed test.
+
+procedure tmainfo.buttonpressed(const sender: TObject);
+var
+ i: integer;
+begin
+  et.Clear;     // &lt;-  et is a TEpikTimer instance
+  et.Start;
+  Grid1.BeginUpdate;
+  for i := 1 to 8000000 do
+  begin
+    Grid1.RowCount := i;
+    Grid1[0][i-1] := InttoStr(i);
+  end;
+  Grid1.EndUpdate(True);
+  lblTime.Caption := et.ElapsedDHMS;
+end;
+
+
+The Lazarus folks can say what they want, but &quot;custom drawn&quot; good toolkits
+like MSEgui and fpGUI kick ass! I wrote a log window app over the weekend
+that must display huge volumns of verbose log entries, and wanted to see if
+there was any issue with speed painting to fpGUI's stringgrid, and if there
+was any obvious limit in row count. fpGUI's SringGrid is a component I use
+very frequently in all my apps.
+
+I was pleasantly surprised to see the speed performance of my stringgrid
+implementation in fpGUI. MSEgui's Stringgrid was double as slow but still a
+very respectable result, and about a million times faster that LCL's
+TStringGrid. :-)
+
+My system
+  Core2Quad Q9400 @ 2.66GHz
+  4GB RAM
+  Ubuntu 10.04 (64-bit)
+
+Timing was done with EpikTimer. A non-gui high precision timer usable in
+LCL, fpGUI, MSEgui or even a Free Pascal console app.
+
+My test is identical in all GUI toolkits. Delay screen updates while adding
+rows, Add 8 million rows in total. After each new row, insert the row
+number, then add next row etc.. The grids are identical in size and the
+single column is identical in width under all gui toolkit tests.
+
+fpGUI:  5.3 seconds
+MSEgui: 11.6 seconds
+LCL GTK2:  My one core is stuck at 100% cpu load since I clicked the
+           button. It's been over two hours and still nothing is
+           displayed. :-D
+
+
+So Lazarus LCL users can stick their framework, I'll not touch it any time
+soon. ;-)
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: msegui.png
+Type: image/png
+Size: 13943 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101101/fbf5be86/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101101/fbf5be86/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: fpgui.png
+Type: image/png
+Size: 13575 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101101/fbf5be86/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101101/fbf5be86/attachment-0001.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001604.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+	<LI>Next message: <A HREF="001608.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1606">[ date ]</a>
+              <a href="thread.html#1606">[ thread ]</a>
+              <a href="subject.html#1606">[ subject ]</a>
+              <a href="author.html#1606">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

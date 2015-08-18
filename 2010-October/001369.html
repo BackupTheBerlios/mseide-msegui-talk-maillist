@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Strange%20reset%20of%20T%2AField%20on%20return%20from%0A%20BeforeApplyUpdate%20%28the%20PODPISKA%29&In-Reply-To=%3Ci8f2k4%24tt4%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001368.html">
+   <LINK REL="Next"  HREF="001371.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Strange%20reset%20of%20T%2AField%20on%20return%20from%0A%20BeforeApplyUpdate%20%28the%20PODPISKA%29&In-Reply-To=%3Ci8f2k4%24tt4%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Oct  5 13:43:38 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001368.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+        <LI>Next message: <A HREF="001371.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1369">[ date ]</a>
+              <a href="thread.html#1369">[ thread ]</a>
+              <a href="subject.html#1369">[ subject ]</a>
+              <a href="author.html#1369">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 05.10.2010 13:23, Ivanko B wrote:
+&gt;<i>  fieldbyname('office_code')  is set (to a not null value - checked !)
+</I>&gt;<i> in  trefoperatorviewfo.onbeforeapplyupdate(t) 
+</I>&gt;<i> and to be written in trefviewfo.applyrecupdate() but surprisingly
+</I>&gt;<i> resets to NULL in the latter. 
+</I>&gt;<i> Currently,  fieldbyname('office_code') is ftMemo but the occures with
+</I>&gt;<i> ftString.
+</I>&gt;<i> 
+</I>&gt;<i> //---------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> // fieldbyname('office_code') is NOT null here 
+</I>&gt;<i> // and it's the only place referenced in code
+</I>&gt;<i> 
+</I>&gt;<i> procedure trefoperatorviewfo.onbeforeapplyupdate(DataSet: TDataSet);
+</I>&gt;<i> var
+</I>&gt;<i>  s1: msestring;
+</I>&gt;<i> begin
+</I>&gt;<i>  with dataset do begin
+</I>&gt;<i>   s1:=  dmmainmo.fldWPOfficeCode.aswidestring; // &lt;&lt;&lt; NOT NULL here 
+</I>&gt;<i>    edit;
+</I>
+And here after &quot;edit()&quot;? If you think it is a bug please provide a
+simple testcase.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001368.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+	<LI>Next message: <A HREF="001371.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1369">[ date ]</a>
+              <a href="thread.html#1369">[ thread ]</a>
+              <a href="subject.html#1369">[ subject ]</a>
+              <a href="author.html#1369">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

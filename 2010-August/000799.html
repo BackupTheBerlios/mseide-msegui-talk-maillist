@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100824211207.0c2f049b.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000779.html">
+   <LINK REL="Next"  HREF="000803.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100824211207.0c2f049b.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Aug 24 21:12:07 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000779.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000803.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#799">[ date ]</a>
+              <a href="thread.html#799">[ thread ]</a>
+              <a href="subject.html#799">[ subject ]</a>
+              <a href="author.html#799">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Tue, 24 Aug 2010 15:47:02 +0200:
+
+&gt;<i> &gt; (I found a couple other &quot;interesting&quot; problems, too; e.g. terminating a
+</I>&gt;<i> &gt; program using the mouse activating a button giving a SIGSEGV, while
+</I>&gt;<i> &gt; activating the very same button by space or Enter doesn't - I'm still at
+</I>...
+&gt;<i> How do you terminate the application?
+</I>
+Well... that's a bit involved. ;-]
+
+There are a few things that have to be shut down correctly in the process,
+like timers and, of course, the &quot;keep alive&quot; &quot;thread&quot; (it's not a cthreads
+thread, though). And at some time, I had the problem that the application
+couldn't be terminated regularly, probabely because of some error in the
+code. Because of time issues then, I just used a &quot;Halt&quot; to &quot;tear it down&quot;
+forcedly, when it should simply stop.
+But normally, it isn't terminated regularly at all, but &quot;chain&quot; executes
+another program to do further processing.
+BTW, I found the cause of the problem now, I think - it was caused by
+freeing a string list used for keeping data. Strangely, this was freed
+_twice_, even though only _one_ call could possibly have been processed
+because of the Halt!?
+I removed that now, and terminating works now, but only after I inserted a
+statement to set the string list variable to NIL after freeing it -
+otherwise it _still_ gets me a SIGSEGV exception! I'll probabely have to
+investigate this further, but that's a problem of mine...
+
+&gt;<i> &gt; Could it be that these are related to my version of the gdb? I realize
+</I>...
+&gt;<i> I use gdb 7.1 too, no problems found up to now.
+</I>
+Ok - it does work now here, too. For some reason, breakpoints were turned
+off for this program's project. There seem to be too many components
+involved already to keep everything straight... Or I might have hit Ctrl-B
+accidentally some time.
+
+Thank you for your patience - though the real problems were quite minor,
+I used up quite some of tour valuable time.
+And thanks to your help, even the (automatic) layout switching works now.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000779.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000803.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#799">[ date ]</a>
+              <a href="thread.html#799">[ thread ]</a>
+              <a href="subject.html#799">[ subject ]</a>
+              <a href="author.html#799">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

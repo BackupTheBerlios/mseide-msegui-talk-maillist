@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3Cib84o1%24u3h%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001801.html">
+   <LINK REL="Next"  HREF="001810.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3Cib84o1%24u3h%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Nov  8 07:21:47 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001801.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001810.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1807">[ date ]</a>
+              <a href="thread.html#1807">[ thread ]</a>
+              <a href="subject.html#1807">[ subject ]</a>
+              <a href="author.html#1807">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>MSEide MSEgui wrote:
+
+&gt;<i> 
+</I>&gt;<i>  I create tstringedit to enter product serial number, if user type or
+</I>&gt;<i> select one serial number, the dialog form is displayed, they should
+</I>&gt;<i> choose &quot;yes&quot; or &quot;no&quot; (with keyboard), and for POS users always use
+</I>&gt;<i> numpad from keyboard, enter is quickly to press than space bar.
+</I>&gt;<i> 
+</I>Please use t*edit.onsetvalue for data validation. Example for a trealedit
+onsetvalue handler for salary entry:
+&quot;
+procedure tmainfo.salarysetvalue(const sender: TObject; var avalue: realty;
+               var accept: Boolean);
+begin
+ if avalue &gt; 80000 then begin
+  case askyesnocancel('We think 60''000 is enough.'+lineend+
+                      'Do you accept?','Question') of
+   mr_yes: begin
+    avalue:= 60000;
+   end;
+   mr_no: begin
+    if avalue &gt; 100000 then begin
+     showmessage('We don''t accept your salary, please try again.',
+                                                            '***ERROR***');
+     accept:= false;
+    end;
+   end;
+   else begin
+    accept:= false;
+   end;
+  end;
+ end;
+end;
+&quot;
+&gt;<i> I can't use ondataentered event, because sometimes they can select
+</I>&gt;<i> only from dropdown or just press enter with default serial number from
+</I>&gt;<i> default.
+</I>
+I don't understand, please explain why ondataentered does not work here. Or
+did you forget to enable t*edit.optionsedit oe_forcereturncheckvalue?
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001801.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001810.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1807">[ date ]</a>
+              <a href="thread.html#1807">[ thread ]</a>
+              <a href="subject.html#1807">[ subject ]</a>
+              <a href="author.html#1807">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

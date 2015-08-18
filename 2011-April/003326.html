@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] mysql database add
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mysql%20database%20add&In-Reply-To=%3Cloom.20110402T162726-855%40post.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003328.html">
+   <LINK REL="Next"  HREF="003327.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] mysql database add</H1>
+    <B>Patrick Goupell</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mysql%20database%20add&In-Reply-To=%3Cloom.20110402T162726-855%40post.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] mysql database add">pgoupell at upmerchants.com
+       </A><BR>
+    <I>Sat Apr  2 16:44:22 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003328.html">[MSEide-MSEgui-talk] about tabs
+</A></li>
+        <LI>Next message: <A HREF="003327.html">[MSEide-MSEgui-talk] mysql database add
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3326">[ date ]</a>
+              <a href="thread.html#3326">[ thread ]</a>
+              <a href="subject.html#3326">[ subject ]</a>
+              <a href="author.html#3326">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have an MySQL database project that successfully added records in the past.
+The sName and sPropertyId are class variables.  sqlInsert is a tmsesqlquery 
+with a defined database and transaction.
+  
+SQL readonly queries work fine without anyproblem.  
+
+This worked under svn branch 4333.  I recently updated to branch 4456.
+
+The error is get is:
+mysqlDB:  Failed to prepare statement: You have an error in your sql syntax; 
+Check the manual that corresponds to your MySQL Server version for the right
+syntax to user near '' at line 1;
+
+The code is:
+procedure tmainfo.PropertyAddOnExecute(const sender: TObject);
+
+begin
+	with sqlInsert 
+	do begin
+		sql.clear;
+		sql.add ('Select * from Properties where Id = -1');  
+		active := true;
+		insert;
+		fieldbyname ('Name').asstring := sName;
+		fieldbyname ('PropertyId').asinteger := strtoint(sPropertyId); 
+		post;
+		active := false;
+	end;
+end;
+
+I don't know if I accidently changed some option in the sqlquery, 
+transaction or database objects.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003328.html">[MSEide-MSEgui-talk] about tabs
+</A></li>
+	<LI>Next message: <A HREF="003327.html">[MSEide-MSEgui-talk] mysql database add
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3326">[ date ]</a>
+              <a href="thread.html#3326">[ thread ]</a>
+              <a href="subject.html#3326">[ subject ]</a>
+              <a href="author.html#3326">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

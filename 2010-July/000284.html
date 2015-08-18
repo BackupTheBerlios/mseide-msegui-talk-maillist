@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Stable MSE* v2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Stable%20MSE%2A%20v2&In-Reply-To=%3Ci0k8sv%24j6n%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000273.html">
+   <LINK REL="Next"  HREF="000289.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Stable MSE* v2</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Stable%20MSE%2A%20v2&In-Reply-To=%3Ci0k8sv%24j6n%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Stable MSE* v2">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jul  2 09:45:33 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000273.html">[MSEide-MSEgui-talk] Stable MSE* v2
+</A></li>
+        <LI>Next message: <A HREF="000289.html">[MSEide-MSEgui-talk] Stable MSE* v2 - msefftw.png (0/1)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ivanko B schrieb:
+&gt;&gt;&gt;<i> At me, it has been just reopening reports of the latest POPDISKA then
+</I>&gt;&gt;&gt;<i> right resizing (extending) them. And as contrary, left resizing (sqeezing)
+</I>&gt;&gt;&gt;<i> doesn't cause h-scrollbat to display as expected.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> (LINUX).
+</I>&gt;&gt;<i> Please try again with trunk 3781.
+</I>&gt;<i> 
+</I>&gt;<i> It doesn't build - &quot;msefftw.pas(182,3)&quot; at &quot;try&quot; and &quot;;&quot;
+</I>&gt;<i> 
+</I>&gt;<i> ( win-32)
+</I>&gt;<i> 
+</I>Works for me. The code:
+&quot;
+begin
+  try
+   if length(sonames) = 0 then begin
+   ^182:3
+    initializedynlib(libinfo,fftwlib,funcs,[]);
+   end
+   else begin
+    initializedynlib(libinfo,sonames,funcs,[]);
+   end;
+  except
+   on e: exception do begin
+    e.message:= 'Can not load Firebird library. '+e.message;
+    raise;
+   end;
+  end;
+end;
+&quot;
+Which error message?
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000273.html">[MSEide-MSEgui-talk] Stable MSE* v2
+</A></li>
+	<LI>Next message: <A HREF="000289.html">[MSEide-MSEgui-talk] Stable MSE* v2 - msefftw.png (0/1)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#284">[ date ]</a>
+              <a href="thread.html#284">[ thread ]</a>
+              <a href="subject.html#284">[ subject ]</a>
+              <a href="author.html#284">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

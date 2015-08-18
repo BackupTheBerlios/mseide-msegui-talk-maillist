@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20WM_IME_COMPOSITION%20or%20wm_ime_char&In-Reply-To=%3C4C1F23FE.6080305%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000149.html">
+   <LINK REL="Next"  HREF="000140.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20WM_IME_COMPOSITION%20or%20wm_ime_char&In-Reply-To=%3C4C1F23FE.6080305%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Mon Jun 21 10:34:06 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000149.html">[MSEide-MSEgui-talk] how to replay message
+</A></li>
+        <LI>Next message: <A HREF="000140.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>i got some code in gtk+
+i do not know how to do ,but is it much better?
+
+
+case WM_IME_COMPOSITION:
+/* On Win2k WM_IME_CHAR doesn't work correctly for non-Unicode
+* applications. Thus, handle WM_IME_COMPOSITION with
+* GCS_RESULTSTR instead, fetch the Unicode chars from the IME
+* with ImmGetCompositionStringW().
+*
+* See for instance
+*
+<A HREF="http://groups.google.com/groups?selm=natX5.57%24g77.19788%40nntp2.onemain.com">http://groups.google.com/groups?selm=natX5.57%24g77.19788%40nntp2.onemain.com</A>
+* and
+* <A HREF="http://groups.google.com/groups?selm=u2XfrXw5BHA.1628%40tkmsftngp02">http://groups.google.com/groups?selm=u2XfrXw5BHA.1628%40tkmsftngp02</A>
+* for comments by other people that seems to have the same
+* experience. WM_IME_CHAR just gives question marks, apparently
+* because of going through some conversion to the current code
+* page.
+*
+* WM_IME_CHAR might work on NT4 or Win9x with ActiveIMM, but
+* use WM_IME_COMPOSITION there, too, to simplify the code.
+*/
+GDK_NOTE (EVENTS, g_print (&quot; %#lx&quot;, (long) msg-&gt;lParam));
+
+if (!(msg-&gt;lParam &amp; GCS_RESULTSTR))
+break;
+
+if (!propagate (&amp;window, msg,
+_gdk_display-&gt;keyboard_grab.window,
+_gdk_display-&gt;keyboard_grab.owner_events,
+GDK_ALL_EVENTS_MASK,
+doesnt_want_char, FALSE))
+break;
+
+if (GDK_WINDOW_DESTROYED (window))
+break;
+
+himc = ImmGetContext (msg-&gt;hwnd);
+ccount = ImmGetCompositionStringW (himc, GCS_RESULTSTR,
+wbuf, sizeof (wbuf));
+ImmReleaseContext (msg-&gt;hwnd, himc);
+
+ccount /= 2;
+
+API_CALL (GetKeyboardState, (key_state));
+
+for (i = 0; i &lt; ccount; i++)
+{
+if (((GdkWindowObject *) window)-&gt;event_mask &amp; GDK_KEY_PRESS_MASK)
+{
+/* Build a key press event */
+event = gdk_event_new (GDK_KEY_PRESS);
+event-&gt;key.window = window;
+build_wm_ime_composition_event (event, msg, wbuf[i], key_state);
+
+append_event (event);
+}
+
+if (((GdkWindowObject *) window)-&gt;event_mask &amp; GDK_KEY_RELEASE_MASK)
+{
+/* Build a key release event. */
+event = gdk_event_new (GDK_KEY_RELEASE);
+event-&gt;key.window = window;
+build_wm_ime_composition_event (event, msg, wbuf[i], key_state);
+
+append_event (event);
+}
+}
+return_val = TRUE;
+break;
+
+
+
+
+
+build_wm_ime_composition_event (GdkEvent *event,
+MSG *msg,
+wchar_t wc,
+BYTE *key_state)
+{
+event-&gt;key.time = _gdk_win32_get_next_tick (msg-&gt;time);
+
+build_key_event_state (event, key_state);
+
+event-&gt;key.hardware_keycode = 0; /* FIXME: What should it be? */
+event-&gt;key.string = NULL;
+event-&gt;key.length = 0;
+event-&gt;key.keyval = gdk_unicode_to_keyval (wc);
+}
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000149.html">[MSEide-MSEgui-talk] how to replay message
+</A></li>
+	<LI>Next message: <A HREF="000140.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

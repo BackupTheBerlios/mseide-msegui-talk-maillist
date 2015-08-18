@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTimRnXtZK-JV1cX3ArqQ6LXh9_4Cax9VZ%2B9i%3DyCj%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000826.html">
+   <LINK REL="Next"  HREF="000830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)</H1>
+    <B>dan</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTimRnXtZK-JV1cX3ArqQ6LXh9_4Cax9VZ%2B9i%3DyCj%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)">kungfusoccer at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 12:11:11 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000826.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+        <LI>Next message: <A HREF="000830.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#827">[ date ]</a>
+              <a href="thread.html#827">[ thread ]</a>
+              <a href="subject.html#827">[ subject ]</a>
+              <a href="author.html#827">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> ea_undo replaces text with backup:
+</I>&gt;<i> &quot;
+</I>&gt;<i> procedure tinplaceedit.undo;
+</I>&gt;<i> begin
+</I>&gt;<i>  if checkaction(ea_undo) then begin
+</I>&gt;<i>   finfo.text.text:= fbackup;
+</I>IMO, not tcustomedit.text changed, only in tinplaceedit.
+
+&gt;<i> You want to cancel edit instead to enter edit value on focus exit?
+</I>Yes, in my case. When esc pressed and oe_undoonesc is set true,
+tcustomedit.text is changed without exit the focus.
+
+&gt;<i> Do you have a concrete example why?
+</I>I make a new class that the text input by user become to value
+directly, key by key (in that case trealedit), despite it's not Msegui
+philoshopy about t*edit.
+
+&gt;<i> Maybe we can introduce oe_cancelonexit.
+</I>oe_cancelonexit is mean that the tcustomedit,text is replaced by
+fbackup when ESC pressed and then focus exit. Right?
+
+IMO, me just only need fbackup to be a read property now.. :)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000826.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+	<LI>Next message: <A HREF="000830.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#827">[ date ]</a>
+              <a href="thread.html#827">[ thread ]</a>
+              <a href="subject.html#827">[ subject ]</a>
+              <a href="author.html#827">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

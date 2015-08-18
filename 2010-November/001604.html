@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] StringGrid usage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3C201011011101.35094.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001603.html">
+   <LINK REL="Next"  HREF="001606.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] StringGrid usage</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3C201011011101.35094.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] StringGrid usage">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Nov  1 11:01:34 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001603.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+        <LI>Next message: <A HREF="001606.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1604">[ date ]</a>
+              <a href="thread.html#1604">[ thread ]</a>
+              <a href="subject.html#1604">[ subject ]</a>
+              <a href="author.html#1604">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 1. November 2010 10.44:57 Graeme Geldenhuys wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> In fpGUI I can set the value of a cell in a stringgrid as follows:
+</I>&gt;<i>
+</I>&gt;<i>    grid1.Cells[lCol, lRow] := 'my value';
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> How do I do this in MSEgui's stringgrid?
+</I>
+grid1[lCol][ lRow] := 'my value';
+
+&gt;<i> I found a DataCols property, but 
+</I>&gt;<i> it doesn't look like there is any reference to a row, so I don't think that
+</I>&gt;<i> property is correct.
+</I>&gt;<i>
+</I>The reference is in tcustomstringcol:
+&quot;
+   property items[aindex: integer]: msestring 
+                          read getitems write setitems; default;
+&quot;
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001603.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+	<LI>Next message: <A HREF="001606.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1604">[ date ]</a>
+              <a href="thread.html#1604">[ thread ]</a>
+              <a href="subject.html#1604">[ subject ]</a>
+              <a href="author.html#1604">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

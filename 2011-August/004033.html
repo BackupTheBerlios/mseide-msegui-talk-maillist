@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E3BA35D.3040401%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004032.html">
+   <LINK REL="Next"  HREF="004034.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E3BA35D.3040401%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Aug  5 10:01:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004032.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004034.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4033">[ date ]</a>
+              <a href="thread.html#4033">[ thread ]</a>
+              <a href="subject.html#4033">[ subject ]</a>
+              <a href="author.html#4033">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 08/05/2011 09:19 AM, IvankoB wrote:
+&gt;<i> 
+</I>&gt;<i> Anyway, a tiOPF+MSEgui (once MSEgui bindings to tiOPF were established)  
+</I>&gt;<i> tutorial project is highly welcome :)
+</I>
+There are many &quot;feature specific&quot; tutorials/demos already. Each
+specifically designed to explain one thing at a time. Then there are the
+more &quot;complete&quot; demos like Demo 21 (Address Book) that I designed to
+explain how a more real-world application would look like using MGM.
+I'll port Demo 21 to MSEgui too.
+
+
+&gt;<i> Best, as a DB (SQlite3) application.
+</I>
+Once you have DB support via tiOPF, it is irrelevant what backend you
+use. Any DB demo will work with any DB backend. Simply toggle the
+backend via any one of the LINK_xxx compiler defines. See the
+tiOPFManager.pas unit in the uses clause of the implementation section,
+to get a listing of all available compiler defines. There are many!
+SQLite3 is currently supported via the SqlDB database components
+(accessed via the LINK_SQLDB_SQLite3 compiler define).
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004032.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004034.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4033">[ date ]</a>
+              <a href="thread.html#4033">[ thread ]</a>
+              <a href="subject.html#4033">[ subject ]</a>
+              <a href="author.html#4033">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

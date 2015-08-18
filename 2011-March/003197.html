@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] some data in prj file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20some%20data%20in%20prj%20file&In-Reply-To=%3C4D7DFFA0.8050606%40ya.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003192.html">
+   <LINK REL="Next"  HREF="003198.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] some data in prj file</H1>
+    <B>&quot;Coyot.RusH aka &#1045;&#1074;&#1075;&#1077;&#1085;&#1080;&#1081;&quot;</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20some%20data%20in%20prj%20file&In-Reply-To=%3C4D7DFFA0.8050606%40ya.ru%3E"
+       TITLE="[MSEide-MSEgui-talk] some data in prj file">coyot.rush at ya.ru
+       </A><BR>
+    <I>Mon Mar 14 12:44:32 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003192.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+        <LI>Next message: <A HREF="003198.html">[MSEide-MSEgui-talk] Updated mseconsts_es.pas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3197">[ date ]</a>
+              <a href="thread.html#3197">[ thread ]</a>
+              <a href="subject.html#3197">[ subject ]</a>
+              <a href="author.html#3197">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>14.03.2011 08:37, Martin Schreiber &#1087;&#1080;&#1096;&#1077;&#1090;:
+&gt;&gt;<i> If you place the MSEgui source tree in all OS at the same place relative
+</I>&gt;<i> to
+</I>&gt;&gt;<i> the project directory relocating will work. If you can't do so I suggest
+</I>&gt;<i> to
+</I>&gt;&gt;<i> use different *.prj in the different OS (myproject_win.prj,
+</I>&gt;&gt;<i> myproject_lin.prj). There can be a common myproject.prj which can be
+</I>&gt;&gt;<i> synchronized with 'Project'-'Settings'+'Load' or 'Save'.
+</I>&gt;<i> Or mount the Windows partition on &quot;/c&quot; and install MSEgui on Windows in
+</I>&gt;<i> &quot;c:\home\user\opt\mse\msegui&quot; then
+</I>&gt;<i> &quot;c:\home\user\opt\mse\msegui\trunk\lib\common\kernel\mseglob.pas&quot;
+</I>&gt;<i> will become
+</I>&gt;<i> &quot;/c/home/user/opt/mse/msegui/trunk/lib/common/kernel/mseglob.pas&quot;
+</I>&gt;<i> on Linux which are the same paths in MSEgui.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>or use existing macros MSEIDE
+===========================================
+sourcedirs = 4
+$ {MSEDIR} lib / addon / * /
+$ {MSELIBDIR} kernel / $ TARGET /
+$ {MSELIBDIR} * /
+===========================================
+for mseglob.pas
+[edit]
+...
+$ {MSELIBDIR} kernel / mseglob.pas
+
+
+
+Martin Schreiber
+
+&quot;I want to have all settings and the complete environment in the project file.&quot;
+
+If the project is developing a single person maybe it's good, but if this team?
+
+IMHO, for the team project file should contain
+
+1) the compiler flags
+
+2) breakpoint
+
+3) project files (unit)
+
+4) develop forms
+
+5) optionally, configuration tools and panels in a separate file.For
+  example, one developer's computer screen 1280 * 1024, another 800 * 600
+  (laptop) and each has its own preferences for location of panels and
+instruments
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110314/4e24b208/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110314/4e24b208/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003192.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+	<LI>Next message: <A HREF="003198.html">[MSEide-MSEgui-talk] Updated mseconsts_es.pas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3197">[ date ]</a>
+              <a href="thread.html#3197">[ thread ]</a>
+              <a href="subject.html#3197">[ subject ]</a>
+              <a href="author.html#3197">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] LCL in MSEide - is possible?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTi%3DeR33%2BSTeuMtRK0%3DQbwEyk0U%3D6%2Bk%2BTyb3eOeZa%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001793.html">
+   <LINK REL="Next"  HREF="001840.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] LCL in MSEide - is possible?</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTi%3DeR33%2BSTeuMtRK0%3DQbwEyk0U%3D6%2Bk%2BTyb3eOeZa%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] LCL in MSEide - is possible?">md at delfire.net
+       </A><BR>
+    <I>Wed Nov 10 13:52:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001793.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+        <LI>Next message: <A HREF="001840.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1838">[ date ]</a>
+              <a href="thread.html#1838">[ thread ]</a>
+              <a href="subject.html#1838">[ subject ]</a>
+              <a href="author.html#1838">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Nov 6, 2010 at 8:39 PM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> I think most of those users only use LCL apps on a single platform, or
+</I>&gt;<i> only use it as a &quot;toy&quot; (and doesn't get much real world use).
+</I>
+I don't understand why they do that... I don't have much time even to
+work in my company, imagine if I would use a software as a &quot;toy&quot;.
+
+&gt;&gt;<i> I don't understand why LCL use IFDEF. Maybe to be compatible with Delphi?
+</I>&gt;<i>
+</I>&gt;<i> Simply because they are trying to do the impossible. They are chasing
+</I>&gt;<i> a moving target: Microsoft stops for nobody, Apple stops for nobody,
+</I>&gt;<i> Qt keeps changing and improving etc. Yet they want a single API across
+</I>&gt;<i> all those frameworks and platform targets.... wishful thinking, and
+</I>&gt;<i> explains why they have so many bugs.
+</I>
+Yes, that is it.
+Even I, who entered the &quot;world of FreePascal&quot; now, I can see it ...
+how the FPC team can not see it?
+
+&gt;<i> I initially started with a discontinued fpGUI (development stopped
+</I>&gt;<i> back in 2000, and I started in 2004/5... the original fpGUI was
+</I>&gt;<i> actually started before Lazarus even existed). Then later I found some
+</I>&gt;<i> design problems and I started with a total rewrite of fpGUI. Only then
+</I>&gt;<i> did I hear about MSEgui. Yes I looked at MSEgui, and was very
+</I>&gt;<i> impressed with its feature list, but I found it very hard to learn,
+</I>&gt;<i> very hard to read, we had different design ideas, and Martin has very
+</I>&gt;<i> strong idea of what he does and doesn't want MSEgui to be (single
+</I>&gt;<i> developer with total control - which he has all the right to have).
+</I>&gt;<i> Too many uphill battles for me and I already made a bad choice in our
+</I>&gt;<i> company in letting us go with LCL at first, so didn't want to make
+</I>&gt;<i> another &quot;potential&quot; bad mistake (which could cost me my job). So it
+</I>&gt;<i> was simply easier for me to continue working on fpGUI, and design it
+</I>&gt;<i> for our company needs. fpGUI fits somewhere between VCL and MSEgui.
+</I>&gt;<i> More flexible that VCL and not as different as MSEgui, so I think
+</I>&gt;<i> easier to learn [Martin will disagree here :-)]. So fpGUI is more in
+</I>&gt;<i> line with what I and our other in-house developers was used to. fpGUI
+</I>&gt;<i> has a slight VCL class style and structure (after all, I used Delphi
+</I>&gt;<i> for many years), but without the VCL binding to native controls and
+</I>&gt;<i> being very Windows centric.
+</I>
+Ok. So, the fpGUI is not just a better vision of widgets but also a
+way to work in your company.
+If you knew the MSEgui before it had begun fpGUI, maybe you and Martin
+were working together.  ;-)
+
+&gt;<i> Martin on the other hand took a total different approach with MSEgui,
+</I>&gt;<i> but he can explain that, and his reasonings, better than I.
+</I>
+Rigth.
+
+&gt;<i> The big difference between MSEgui and fpGUI, compared to LCL, is that
+</I>&gt;<i> we are NOT trying to be VCL clones. We come up with our own ideas and
+</I>&gt;<i> solutions, or borrow ideas from various other frameworks, to build an
+</I>&gt;<i> even better framework.
+</I>
+I think is a good ideia keep compatibility with Delphi using LCL, but
+I don't think this should be a default solution for FPC/Lazarus; maybe
+a separate project.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001793.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+	<LI>Next message: <A HREF="001840.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1838">[ date ]</a>
+              <a href="thread.html#1838">[ thread ]</a>
+              <a href="subject.html#1838">[ subject ]</a>
+              <a href="author.html#1838">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

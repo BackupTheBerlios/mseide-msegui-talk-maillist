@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100830151610.d41123b2.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000889.html">
+   <LINK REL="Next"  HREF="000895.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100830151610.d41123b2.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 30 15:16:10 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000889.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000895.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#894">[ date ]</a>
+              <a href="thread.html#894">[ thread ]</a>
+              <a href="subject.html#894">[ subject ]</a>
+              <a href="author.html#894">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 30 Aug 2010 07:28:47 +0200:
+
+&gt;<i> &gt;&gt; The i18n demo in the distribution has event handlers which are working.
+</I>
+By now, I tested your suggestion where to check the events on closing, and
+found that, with the setup as before, the &quot;componentstate&quot; remained stuck
+at &quot;cs_loading&quot;, which disabled event processing on closing, and
+presumabely at other event processing places as well.
+
+&gt;<i> You should not change the language module in oncreate because oncreate is
+</I>&gt;<i> called form the loading process itself. Please use oneventloopstart
+</I>&gt;<i> instead or change the language module before creating the form.
+</I>
+Ok - how should one know?
+(BTW, did &quot;oneventloopstart&quot; exist in version before 2.0 already? I never
+noticed it yet...)
+
+I changed the logic accordingly, and was greeted by a nice, rouge SIGSEGV
+message in the state line of the main menu window. ;-I
+
+Well, I didn't stop there.
+I tried to find out what happened, and saw that the &quot;oneventloopstart&quot;
+handler was called recursively, probabely caused by &quot;loadlangunit&quot;
+reinitializing event processing.
+So I made the method calling it a &quot;one-shot&quot; action, removing its own entry
+from the event field, and then it (seemed to) worked correctly, even onkey*
+and onclose handlers executing correctly.
+
+&gt;<i> &gt;&gt; task. Please use inherited forms.
+</I>...
+&gt;<i> It probably makes exactly what what you make with your scripts, it stores
+</I>&gt;<i> the differences from ancestor in a *.mfm. But maybe you know it
+</I>&gt;<i> better. ;-)
+</I>
+No, I don't know better with that - not a bit, as I don't know what exactly
+they can or cannot do.
+It's just that &quot;inherited form&quot; seems to imply by the very usage of the
+term that a predefined form is used to serve different purposes, i.e.
+adding a few elements to it, changing handlers and so on.
+Modifying the _layout_ doesn't seem to fit here - for me, anyway. If you
+say it does, I will check it out, but I have to find some information as to
+what this is, how it can be used and where it might fit into this
+application. So to speak, I need to find the entrance door first...
+(BTW, does your above mention of .mfm files mean that these will be loaded
+dynamically, or are all variants compiled in any way as well? Just asking.)
+
+&gt;<i> &gt; An event property has to pointer values (see tmethod), I don't know if
+</I>&gt;<i> &gt; gdb checks both, probably not.
+</I>
+Judging from your watches window, given it just the object field, it only
+returns the code address. Giving it a &quot;tmethod&quot; typed variable, it shows
+both fields; but that's probabely just caused by the type carrying those
+two fields as separate pointers explicitely.
+It might not usually matter, anyway, as normally either both of them should
+have a value &lt;&gt; NIL or both should be NIL at the same time. And there
+shouldn't even be a problem if only the code pointer is NIL, the only case
+where something might go wrong will probabely be a case where the code
+pointer is set and the data pointer is NIL, as any access of object data
+will then cause an exception.
+
+Now, I will have to clean up the mess that's piled up and make the current
+state fit for deploying - then I'll have to find some time to check out
+your recommendation to use &quot;inherited forms&quot;.
+
+Thanks a lot for your help!
+
+(Even though this was another case of &quot;unintended use effects&quot;...
+Perhaps it might be useful to prevent execution of &quot;loadlangunit&quot; within a
+create handler, or at least put a big remark to that effect in the example
+application?)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000889.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000895.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#894">[ date ]</a>
+              <a href="thread.html#894">[ thread ]</a>
+              <a href="subject.html#894">[ subject ]</a>
+              <a href="author.html#894">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

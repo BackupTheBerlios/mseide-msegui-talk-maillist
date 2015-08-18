@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigSegv in the IDE when closing form files in	the source editor's tabs area
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20when%20closing%20form%20files%20in%0A%09the%20source%20editor%27s%20tabs%20area&In-Reply-To=%3C69qla65kl8qbk0mvlfpqeml7mu4toerlmh%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001370.html">
+   <LINK REL="Next"  HREF="001375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigSegv in the IDE when closing form files in	the source editor's tabs area</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20when%20closing%20form%20files%20in%0A%09the%20source%20editor%27s%20tabs%20area&In-Reply-To=%3C69qla65kl8qbk0mvlfpqeml7mu4toerlmh%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SigSegv in the IDE when closing form files in	the source editor's tabs area">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Oct  5 11:08:25 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001370.html">[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging	multiple PODPISKA's windows (win-32)
+</A></li>
+        <LI>Next message: <A HREF="001375.html">[MSEide-MSEgui-talk] SigSegv in the IDE when closing form files in the source editor's tabs area
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1367">[ date ]</a>
+              <a href="thread.html#1367">[ thread ]</a>
+              <a href="subject.html#1367">[ subject ]</a>
+              <a href="author.html#1367">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>With the earlier sent PODPISKA.PRJ, me was closing one-by-one all form
+files via RCLick popup menu over  corresponding tab selectors starting
+from the bottom-most, and it happened on &quot;refintrfaces.pas&quot; (not
+having MFM-file associated).
+
+//------------------------------------------------------
+
+function tmenuitem.getsubmenu: tmenuitems;
+begin
+ if fsubmenu = nil then begin
+  fsubmenu:= tmenuitems.create(self);
+ end;
+ result:= fsubmenu;
+end;
+
+//------------------------------------------------------
+
+#0  004A28CC msemenus.pas:793 TMENUITEM__GETSUBMENU(this=0x0)
+#1  005431FC msemenuwidgets.pas:1270 
+
+TPOPUPMENUWIDGET__INTERNALSETACTIVEITEM(AVALUE=2, ACLICKED=false,
+FORCE=false, NOCHILDRENINACTIVE=true, this=0x4ca2888)
+#2  00542DA2 msemenuwidgets.pas:1160 
+
+(TPOPUPMENUWIDGET) this:===============
+{&lt;TPOPUPWIDGET&gt; = {&lt;TTOPLEVELWIDGET&gt; = {&lt;TCUSTOMEVENTWIDGET&gt; =
+{&lt;TCUSTOMEVENTWIDGETNWR&gt; = {&lt;TPUBLISHEDWIDGETNWR&gt; =
+{&lt;TACTIONPUBLISHEDWIDGETNWR&gt; = {&lt;TACTIONWIDGET&gt; = {&lt;TWIDGET&gt; =
+{&lt;TACTCOMPONENT&gt; = {&lt;TMSECOMPONENT&gt; = {&lt;TCOMPONENT&gt; = {&lt;TPERSISTENT&gt; =
+{&lt;TOBJECT&gt; = {_vptr$ = {0x769e74, 0x0}}, }, FOWNER = 0x0, FNAME = 0x0,
+FTAG = 0, FCOMPONENTS = 0x0, FFREENOTIFIES = 0x0, FDESIGNINFO = 0,
+FVCLCOMOBJECT = 0x0, FCOMPONENTSTATE = [], FCOMPONENTSTYLE =
+[CSINHERITABLE]}, FONBEFOREUPDATESKIN = 0, FONAFTERUPDATESKIN = 0,
+FTAGPO = 0x0, FMSECOMPONENTSTATE = [], FOBJECTLINKER = 0x4d7a240,
+FACTUALCLASSNAME = 0x0, FANCESTORCLASSNAME = 0x0, FHELPCONTEXT = 0x0,
+FIFISERVERINTF = {&lt;INULLINTERFACE&gt; = {}, }}, FACTIVATOR = &lt;incomplete
+type&gt;, FSTATE = [ACS_RELEASING], FDESIGNCHANGEDLOCK = 0},
+FWIDGETREGION = 0, FROOTPOS = {X = 0, Y = 0}, FCURSOR = CR_DEFAULT,
+FTABORDER = 0, FMINSIZE = {CX = 0, CY = 0}, FMAXSIZE = {CX = 0, CY =
+0}, FMINCLIENTSIZE = {CX = 0, CY = 0}, FMINSCROLLSIZE = {CX = 0, CY =
+0}, FFOCUSEDCHILD = 0x0, FFOCUSEDCHILDBEFORE = 0x0, FFONTHEIGHT = 0,
+FSETWIDGETRECTCOUNT = 3, FOPTIONSSKIN = [OSK_CONTAINER], FSKINGROUP =
+0, FONNAVIGREQUEST = 0, FWIDGETS = 0x0, FNOINVALIDATE = 0,
+FOPTIONSWIDGET = [OW_SUBFOCUS, OW_DESTROYWIDGETS, OW_AUTOSCALE],
+FOPTIONSWIDGET1 = [], FPARENTWIDGET = 0x0, FANCHORS =
+[AN_LEFT..AN_TOP], FWIDGETSTATE = [WS_VISIBLE..WS_ENABLED, WS_ENTERED,
+WS_FOCUSED..WS_OPAQUE, WS_MOUSECAPTURED..WS_CLIENTMOUSECAPTURED,
+WS_ISVISIBLE], FWIDGETSTATE1 = [WS1_ROOTVALID], FCOLOR = 2415919109,
+FWINDOW = 0xcc9a0, FWIDGETRECT = {X = 672, Y = 234, CX = 210, CY =
+387, POS = {X = 672, Y = 234}, SIZE = {CX = 210, CY = 387}},
+FPARENTCLIENTSIZE = {CX = 0, CY = 0}, FFRAME = 0x4c6f6f8, FFACE = 0x0,
+FFONT = 0x0, FFONTEMPTY = 0x0, FHINT = 0x0, FDEFAULTFOCUSCHILD = 0x0},
+FPOPUPMENU = 0x0, FONPOPUP = 0, FONSHOWHINT = 0, FONENTER = 0, FONEXIT
+= 0, FONFOCUS = 0, FONDEFOCUS = 0, FONACTIVATE = 0, FONDEACTIVATE = 0,
+FONLOADED = 0, FONMOUSEEVENT = 0, FONMOUSEWHEELEVENT = 0,
+FONCHILDMOUSEEVENT = 0, FONCLIENTMOUSEEVENT = 0, FONKEYUP = 0,
+FONKEYDOWN = 0, FONSHORTCUT = 0, FONPAINT = 0, FONBEFOREPAINT = 0,
+FONAFTERPAINT = 0, FONMOVE = 0, FONRESIZE = 0, FONHIDE = 0, FONSHOW =
+0, FONCLOSEQUERY = 0, FONEVENT = 0, FONASYNCEVENT = 0,
+FONFOCUSEDWIDGETCHANGED = 0, FONPAINTBACKGROUND = 0}, }, }, }, }, },
+FTRANSIENTFOR = 0xd0db0}, FNEXTPOPUP = 0x0, FPREVPOPUP = 0x0, FPOSRECT
+= {X = 882, Y = 234, CX = 0, CY = 0, POS = {X = 882, Y = 234}, SIZE =
+{CX = 0, CY = 0}}, FPOSITION = GD_RIGHT, FACTPOSITION = GD_LEFT,
+FINSTANCEPO = 0x0, FREFPOS = {X = 0, Y = 0}, FSELECTEDITEM =
+0x4e80db0, FTEMPLATES = {FRAME = 0x0, FACE = 0x0, ITEMFRAME = 0x0,
+ITEMFACE = 0x0, ITEMFRAMEACTIVE = 0x0, ITEMFACEACTIVE = 0x0},
+FMENUCOMP = 0x4e85090, FCLICKEDITEM = -1, FMOUSEITEM = 2, FLAYOUT =
+{MENU = 0x0, ACTIVEITEM = 2, POPUPDIRECTION = GD_RIGHT, MOUSEPOS = {X
+= 0, Y = 0}, OPTIONS = [], SIZERECT = {X = 0, Y = 0, CX = 208, CY =
+385, POS = {X = 0, Y = 0}, SIZE = {CX = 208, CY = 385}}, CELLS =
+0x631c540, ITEMFRAMETEMPLATE = 0x0, ITEMFACE = 0x0,
+ITEMFRAMETEMPLATEACTIVE = 0x0, ITEMFACEACTIVE = 0x0},
+FLOCALFRAMEANDFACE = false}
+
+TPOPUPMENUWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_MOUSEMOVE,
+SHIFTSTATE = [], POS = {X = 115, Y = 41}, EVENTSTATE = [], TIMESTAMP =
+3767439192, BUTTON = MB_NONE}, this=0x4ca2888)
+#3  00429EF6 msegui.pas:12669 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE
+= {EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 115, Y = 41},
+EVENTSTATE = [], TIMESTAMP = 3767439192, BUTTON = MB_NONE}, WHEEL =
+{EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 115, Y = 41},
+EVENTSTATE = [], TIMESTAMP = 3767439192, WHEEL = MW_NONE, DELTA = 0}},
+CAPTURE=0x4ca2888, this=0xcc9a0)
+#4  0042CD97 msegui.pas:14088
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0x4d7a600, this=0x77020)
+#5  0042E806 msegui.pas:14857
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=0x77020)
+#6  0042F67C msegui.pas:15299
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=0x77020)
+#7  00517D28 mseapplication.pas:1347
+TCUSTOMAPPLICATION__RUN(this=0x77020)
+#8  004025D7 mseide.pas:61 main()
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001370.html">[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging	multiple PODPISKA's windows (win-32)
+</A></li>
+	<LI>Next message: <A HREF="001375.html">[MSEide-MSEgui-talk] SigSegv in the IDE when closing form files in the source editor's tabs area
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1367">[ date ]</a>
+              <a href="thread.html#1367">[ thread ]</a>
+              <a href="subject.html#1367">[ subject ]</a>
+              <a href="author.html#1367">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

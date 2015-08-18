@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3CAANLkTimeLVuulTy5l7cP9B5XBWjgo1EROJpMNt30ee_s%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000514.html">
+   <LINK REL="Next"  HREF="000516.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fwd: Re: how to use odbc</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3CAANLkTimeLVuulTy5l7cP9B5XBWjgo1EROJpMNt30ee_s%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fwd: Re: how to use odbc">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Thu Jul 15 08:11:42 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000514.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000516.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> MSEide MSEgui wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I got many errors too with last trunk (today) and use MySQL with no
+</I>&gt;&gt;<i> prepared statement.
+</I>&gt;&gt;<i> What should I change to fix it?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Which errors?
+</I>&gt;<i>
+</I>---------------------------
+Error
+---------------------------
+Heap dump by heaptrc unit
+
+52865 memory blocks allocated : 4194767/4364248
+
+52859 memory blocks freed     : 4193909/4363376
+
+6 unfreed memory blocks : 858
+
+True heap size : 1179648 (112 used in System startup)
+
+True free heap : 1179008
+
+Should be : 1178280
+
+Call trace for block $07B73428 size 64
+
+  $0040D8E8
+
+  $0040B641
+
+  $005B95A3  TMYSQLCONNECTION__CHECKERROR,  line 548 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+
+  $005BA5C6  TMYSQLCONNECTION__DOEXECUTEUNPREPARED,  line 891 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+
+  $005BAD82  TMYSQLCONNECTION__INTERNALEXECUTE,  line 1049 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+
+  $0056B870  TCUSTOMSQLCONNECTION__EXECUTE,  line 1639 of
+D:/msegui/lib/common/db/msqldb.pas
+
+  $0056DD0D  TSQLQUERY__EXECUTE,  line 2681 of
+D:/msegui/lib/common/db/msqldb.pas
+
+  $0056E8D5  TSQLQUERY__CONNECT,  line 3056 of
+D:/msegui/lib/common/db/msqldb.pas
+
+Call trace for block $07BDF6B8 size 24
+
+  $0040B641
+
+  $005B95A3  TMYSQLCONNECTION__CHECKERROR,  line 548 of
+D:/msegui/lib/common/db/mmys
+---------------------------
+OK
+---------------------------
+
+In target console I get :
+
+An unhandled exception occurred at $005B9597 :
+emysqlerror : wmysql: Error executing query: You have an error in your
+SQL syntax; check the manual that corresponds to
+your MySQL server version for the right syntax to use near 'END AS
+prodcategory, product.description,productgroup.name A
+S prodgroup,taxes.na' at line 1
+  $005B9597  TMYSQLCONNECTION__CHECKERROR,  line 548 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+  $005BA5C6  TMYSQLCONNECTION__DOEXECUTEUNPREPARED,  line 891 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+  $005BAD82  TMYSQLCONNECTION__INTERNALEXECUTE,  line 1049 of
+D:/msegui/lib/common/db/mmysqlconn.pas
+  $0056B870  TCUSTOMSQLCONNECTION__EXECUTE,  line 1639 of
+D:/msegui/lib/common/db/msqldb.pas
+  $0056DD0D  TSQLQUERY__EXECUTE,  line 2681 of
+D:/msegui/lib/common/db/msqldb.pas
+  $0056E8D5  TSQLQUERY__CONNECT,  line 3056 of
+D:/msegui/lib/common/db/msqldb.pas
+  $0056EC33  TSQLQUERY__INTERNALOPEN,  line 3101 of
+D:/msegui/lib/common/db/msqldb.pas
+  $00568051  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 392 of
+D:/msegui/lib/common/db/msesqldb.pas
+  $00565F9B  TDSCONTROLLER__INTERNALOPEN,  line 5680 of
+D:/msegui/lib/common/db/msedb.pas
+  $00568151  TMSESQLQUERY__INTERNALOPEN,  line 417 of
+D:/msegui/lib/common/db/msesqldb.pas
+  $00541E12
+
+It execute SQL in tmsesqlquery :
+SELECT product.id,
+product.aliasid,
+product.name,
+product.defunit,
+product.salesprice,
+product.salesdisc,
+product.costprice,
+CASE product.category
+ WHEN 0 THEN 'Persediaan'
+ WHEN 1 THEN 'Aktiva'
+END AS prodcategory,
+product.description,
+productgroup.name AS prodgroup,
+taxes.name AS taxname,
+supplier.name AS suppliername,
+factories.name AS factoryname,
+authors.name AS authorname
+FROM (((((product LEFT JOIN supplier ON product.supplier=supplier.id)
+LEFT JOIN taxes ON product.taxtype=taxes.id)
+LEFT JOIN authors ON product.author=authors.id)
+LEFT JOIN factories ON product.factory=factories.id)
+LEFT JOIN productgroup ON product.productgroup=productgroup.id)
+order by id
+limit 100
+
+And with old trunk, it's OK.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000514.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000516.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

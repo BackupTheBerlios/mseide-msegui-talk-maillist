@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C943701314459724%40web14.yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004123.html">
+   <LINK REL="Next"  HREF="004120.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>&#1052;&#1080;&#1085;&#1086;&#1096;&#1080; &#1040;&#1083;&#1077;&#1082;&#1089;&#1072;&#1085;&#1076;&#1088;</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C943701314459724%40web14.yandex.ru%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">minoshi at yandex.ru
+       </A><BR>
+    <I>Sat Aug 27 17:42:04 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004123.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004120.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4119">[ date ]</a>
+              <a href="thread.html#4119">[ thread ]</a>
+              <a href="subject.html#4119">[ subject ]</a>
+              <a href="author.html#4119">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OS - archlinux (with all updates)
+LXDE, iceWM
+mse 2.6 
+fpc 2.4.4 (from reposotory)
+
+i have two forms :  mainfo and askfo 
+tmainfo - main form with button. Click on this button starts our process. 
+there is code : 
+
+procedure tmainfo.on_execute(const sender: TObject);
+var s : string;
+begin
+            &lt;* here I prepare command line and write it in  s *&gt;
+
+            askfo.widgetgrid.clear;
+            askfo.terminal.addline('=====================');
+            askfo.terminal.addline('=&gt; EXECUTE : ' + s);
+            askfo.terminal.addline('=====================');            
+            askfo.terminal.execprog(s);
+end;
+
+askfo - here twidgetgrid and tterminal are placed.
+
+the code tterminal.onreceivetext :
+
+procedure taskfo.on_text(const sender: TObject; var atext: AnsiString; const errorinput: Boolean);
+var i : integer;
+begin
+  while pos_('	', atext) &gt; 0 do
+    begin
+      i := pos_('	', atext);
+      delete(atext, i, length('	'));
+      insert('     ', atext, i);
+    end;
+  if pos_('/var/lib/pacman/db.lck', atext) &gt; 0 then b_del.visible := true;     
+  if (pos_('? [',atext) &gt; 0) then s_.visible := true;    (*s_ - tspacer with buttons for send answer to tterminal*)
+  if (pos_('[Y/n',atext) &gt; 0) then s_.visible := true; 
+  if (pos_('[y/N',atext) &gt; 0) then s_.visible := true; 
+  if (pos_('[n/Y',atext) &gt; 0) then s_.visible := true; 
+  if (pos_(' to abort',atext) &gt; 0) then s_abort.visible := true; 
+  if ((pos_('&#1086;&#1096;&#1080;&#1073;&#1082;&#1072;',atext) = 1)or(pos_('error',atext)=1)) 
+      then begin b_close.visible := true; error := true; end;
+end;
+
+i tried to switch off this procedure, but but problem is still present.
+
+program source code (direct link) <A HREF="http://almin-soft.nx0.ru/media/files/sources/download.php?get=pacmanxg_src.tar.bz2">http://almin-soft.nx0.ru/media/files/sources/download.php?get=pacmanxg_src.tar.bz2</A>
+
+
+Any ideas?
+
+
+Yours,
+Alexandre Minoshi
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004123.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004120.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4119">[ date ]</a>
+              <a href="thread.html#4119">[ thread ]</a>
+              <a href="subject.html#4119">[ subject ]</a>
+              <a href="author.html#4119">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTi%3DV2pU%2BROKG%3De4MuqwjH6R%2B81%3DrAMF29p4dXvS-%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002239.html">
+   <LINK REL="Next"  HREF="002241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTi%3DV2pU%2BROKG%3De4MuqwjH6R%2B81%3DrAMF29p4dXvS-%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Dec 27 18:13:05 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002239.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002241.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2240">[ date ]</a>
+              <a href="thread.html#2240">[ thread ]</a>
+              <a href="subject.html#2240">[ subject ]</a>
+              <a href="author.html#2240">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I forgot to say I use fpc 2.4.2
+</I>
+He, me got an uncopeable problem with GDB resulted in a week of wasted
+time. Even tried full OS reinstallation :) The problem has only
+disappeared with bundled (Freepacal.Org's installer) fpc 2.4.2.
+
+2010/12/27, Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;:
+&gt;<i> I forgot to say I use fpc 2.4.2
+</I>&gt;<i>
+</I>&gt;<i> 2010/12/27 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> 11.04? :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This is weird... I know it isn't gdb  (gdb was working fine before the
+</I>&gt;&gt;<i> update and not changed)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I tried another linux (PCLINUX 2010.11) and all is fine there, even used
+</I>&gt;&gt;<i> gdb 7.1-pclinux in ubuntu and I get the same break :(
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I guess it have something to do with the last ubuntu update (kernel,
+</I>&gt;&gt;<i> libc....) but can't figure out what's wrong... and there aren't break
+</I>&gt;&gt;<i> points.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is like if something is wrong with gdb and mseide communication.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> When it hits a false breakpoint it stay there forever.. even pressing
+</I>&gt;&gt;<i> continue, next step... a gdb session keeps alive after this.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2010/12/27 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  On 12/27/2010 11:50 AM, Julio Jim&#233;nez wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> &gt; I'm getting errors using MSEide+gdb since last update (I have updated
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>  &gt; ubuntu 10.10 and MSEide+MSEgui trunk).
+</I>&gt;&gt;&gt;&gt;<i> &gt;
+</I>&gt;&gt;&gt;&gt;<i> &gt; The error is a non existent Breakpoint hit in the first line of the
+</I>&gt;&gt;&gt;&gt;<i> &gt; program, no matter what program I try.
+</I>&gt;&gt;&gt;&gt;<i> &gt;
+</I>&gt;&gt;&gt;&gt;<i>  Which gdb version?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> GNU gdb (GDB) 7.2-ubuntu
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I updated to 32bit Ubuntu 10.10 (interestingly 'System'-'About Ubuntu'
+</I>&gt;&gt;&gt;<i> reports:
+</I>&gt;&gt;&gt;<i> &quot;
+</I>&gt;&gt;&gt;<i> You are using Ubuntu 11.04 - the Natty Narwhal - released in April 2011
+</I>&gt;&gt;&gt;<i> and supported until October 2012.
+</I>&gt;&gt;&gt;<i> &quot;), GNU gdb (GDB) 7.2-ubuntu, no problems found. Please check the
+</I>&gt;&gt;&gt;<i> breakpoint window, is it empty? Try RightClick-'Delete all'.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Martin
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002239.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002241.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2240">[ date ]</a>
+              <a href="thread.html#2240">[ thread ]</a>
+              <a href="subject.html#2240">[ subject ]</a>
+              <a href="author.html#2240">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

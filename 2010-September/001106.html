@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100919223017.8040f591.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001105.html">
+   <LINK REL="Next"  HREF="001110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100919223017.8040f591.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Sep 19 22:30:17 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001105.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001110.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1106">[ date ]</a>
+              <a href="thread.html#1106">[ thread ]</a>
+              <a href="subject.html#1106">[ subject ]</a>
+              <a href="author.html#1106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+me again... ;-&gt;
+
+Du schriebst am Sun, 19 Sep 2010 13:55:58 +0200:
+
+&gt;<i> Please show the code in oneventloopstart. Possibly the form loading
+</I>
+Same as before for version 2.2, where it worked.
+And I rechecked: it _still_ works - &quot;even&quot; with the addition of your
+suggested lock variabel.
+
+&gt;<i> restores the event handler? Maybe you should use a recursion lock:
+</I>
+I tried that now, and it did work. Though not alone, I _still_ had to
+remove the handler from the event vector on return, and I had to move the
+code setting a signal handler behind the loadlangunit call, otherwise it
+caused a SIGSEGV if the signal occurred, calling the handler.
+
+So there's a significant difference between the working of this routine in
+version 2.2 compared to the trunk version. With version 2.2, the handler
+was executed completely before &quot;loadlangunit&quot; called it again, with the
+trunk version, this is done within &quot;loadlangunit&quot; itself, it does not
+return before.
+
+BTW, the compilation control program to produce the &quot;language&quot; libraries
+is a bit fragile - there are numerous causes to keep it from working at
+all. I had no chance to investigate that yet, but there doesn't seem to be
+a simple pattern - sometimes it suffices to recompile the program, sometimes
+I had to touch one of the pertinent files, sometimes I even had to
+reconstruct the .trd file.
+
+And, may I suggest a slight modification to this program?
+(diff against the version 2.2 source of &quot;msei18n&quot;)
+
+main.pas:
+97d96
+&lt;    procedure exitprogram(const sender: TObject);
+178,184d176
+&lt; 
+&lt;  if (ParamCount &gt;= 1) AND (FileExists (ParamStr (1))) then begin
+&lt;   projectfo.projectstat.filename:= ExpandFileName (ParamStr (1));
+&lt;   SetCurrentDir (ExtractFileDir (projectfo.projectstat.filename));
+&lt;   projectfo.projectstat.readstat;
+&lt;  end;
+&lt; 
+1093,1097d1084
+&lt; end;
+&lt; 
+&lt; procedure tmainfo.exitprogram(const sender: TObject);
+&lt; begin
+&lt;  close (mr_canclose);
+
+and added in main.mfm:
+
+  object mainmenu1: tmainmenu
+    onupdate = mainmenuupdate
+    facetemplate = convexx
+    itemframetemplate = menuitemframe
+    itemframetemplateactive = menuitemframe
+    menu.submenu.count = 9
+    menu.submenu.items = &lt;
+      item
+        caption = 'E&amp;xit'
+        name = 'exit'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = exitprogram
+      end
+      item
+        caption = '&amp;Open'
+        name = 'open'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = onprojectopen
+      end
+...
+
+This adds an &quot;Exit&quot; button and allows to call the program with a .trp file
+(including directory!) as a command line argument, so you don't always have
+to click around your directory tree when you switched projects (which I
+have to do a lot, since I'm usually working on a couple of things in
+parallel). It's not the utmost elegant solution, just a quick hack, though.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001105.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001110.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1106">[ date ]</a>
+              <a href="thread.html#1106">[ thread ]</a>
+              <a href="subject.html#1106">[ subject ]</a>
+              <a href="author.html#1106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

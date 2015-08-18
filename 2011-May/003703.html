@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] mseIFI and CGI application?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3C4DE4E0C6.9050105%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003701.html">
+   <LINK REL="Next"  HREF="003704.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] mseIFI and CGI application?</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3C4DE4E0C6.9050105%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] mseIFI and CGI application?">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue May 31 14:36:22 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003701.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+        <LI>Next message: <A HREF="003704.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3703">[ date ]</a>
+              <a href="thread.html#3703">[ thread ]</a>
+              <a href="subject.html#3703">[ subject ]</a>
+              <a href="author.html#3703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/05/2011 13:50, Sri Wahono wrote:
+&gt;<i> Yes, you're right. It so easy if UI is separated with data. MSEgui has
+</I>&gt;<i> tmsedatamodule for it. But too complex for me to separate data and UI
+</I>&gt;<i> in separated module.
+</I>
+I always find that strange. Delphi, Lazarus and MSEide pride themselves
+as &quot;RAD&quot; development tools. To me that's just marketing speak for &quot;great
+for prototyping but not for final design&quot;. Maybe I'm just different - or
+was burnt too many times by &quot;RAD&quot; designs ending up being a nightmare
+[1] to maintain. I'm quite strict with using Object Oriented Programming
+and Test Driven Development. Also using an Object Persistence Framework
+like tiOPF, instead of TClientDataSet, TDataModule etc. has greatly
+contributed to our projects and there flexibility and stability. The
+latter might be worth looking at, for any future projects you might tackle.
+
+
+[1] This is an actual Delphi 7 n-tier project I had to help maintain a
+    few years back. It's enough to make your eyes tear. :) RAD designs
+    just don't scale very well.
+    <A HREF="http://opensoft.homeip.net:8080/~graemeg/datamodule.png">http://opensoft.homeip.net:8080/~graemeg/datamodule.png</A>
+
+
+&gt;<i> I want to build all my app with MSEgui to
+</I>&gt;<i> simplified maintenance if it possible.
+</I>
+Our apps have very clear separation between UI, Business Objects and
+Data Storage layers. We don't use DB-aware components, but rather
+standard components via a Model-GUI-Mediator (MGM) design pattern that I
+implemented for tiOPF. This allows us to very easily switch our UI to
+any available GUI toolkit (VCL, LCL, fpGUI or even MSEgui). tiOPF
+already has MGM support for VCL, LCL and fpGUI. MSEgui support should
+not be hard to add at all (if you know MSEgui, it will probably take one
+days work). Using tiOPF as our persistence layer, we can switch our
+relational databases (and related data access components) between
+Interbase, Firebird, MySQL, PosgreSQL, Oracle etc by simply changing one
+compiler directive and a recompile. So whatever RDBMS our clients run,
+we can simply slot into that setup without hassle.
+
+Anyway, from what you have said, I believe your project is already
+developed so it's a bit late to switch now to a different design, but I
+thought it worth mentioning to you - for any of your future projects.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003701.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+	<LI>Next message: <A HREF="003704.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3703">[ date ]</a>
+              <a href="thread.html#3703">[ thread ]</a>
+              <a href="subject.html#3703">[ subject ]</a>
+              <a href="author.html#3703">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

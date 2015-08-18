@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20trecordband.tabs%5Bi%5D%3A%20how%20to%20disalow%0A%09displaying%20currency%20unit%20%3F&In-Reply-To=%3Cop.vvqd87z1yl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003664.html">
+   <LINK REL="Next"  HREF="003671.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20trecordband.tabs%5Bi%5D%3A%20how%20to%20disalow%0A%09displaying%20currency%20unit%20%3F&In-Reply-To=%3Cop.vvqd87z1yl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu May 19 15:54:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003664.html">[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?
+</A></li>
+        <LI>Next message: <A HREF="003671.html">[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3668">[ date ]</a>
+              <a href="thread.html#3668">[ thread ]</a>
+              <a href="subject.html#3668">[ subject ]</a>
+              <a href="author.html#3668">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> (ftCurrency is used intead of ftNumeric)
+</I>&gt;&gt;<i>
+</I>&gt;<i> Maybe you confuse ftbcd with ftcurrency? ftcurrency is a ftfloat with  
+</I>&gt;<i> currency
+</I>&gt;<i> formatting.
+</I>
+
+In the below code :
+
+//--------------------
+
+   qryF18Summaries.edit;
+     with qryForm18 do begin
+
+     for i:=1 to 12 do begin // m01..m12 -&gt; cnt01..cnt12
+         qryF18Summaries.fields[i].asinteger:=  
+qryF18Summaries.fields[i].asinteger + fields[i].asinteger;
+         month_totals[i-1]:= month_totals[i-1] + fields[i].asinteger;
+       end;
+
+       // m01_to_m12:[13] -&gt; cnt_all:[37]
+       qryF18Summaries.fields[13].asinteger:=  
+qryF18Summaries.fields[13].asinteger + fields[37].asinteger;
+       m01_t0_m12_totals:= m01_t0_m12_totals + fields[37].asinteger;
+
+       // sum_subs:[14] -&gt; sumall:[38]
+       qryF18Summaries.fields[14].ascurrency:=  
+qryF18Summaries.fields[14].ascurrency + fields[38].ascurrency;
+       sumpricepodp_totals:= sumpricepodp_totals + fields[38].ascurrency;
+
+       // sum_cat:[15] -&gt; sumallcat:[39]
+       qryF18Summaries.fields[15].ascurrency:=  
+qryF18Summaries.fields[15].ascurrency + fields[39].ascurrency;
+       sumpricecat_totals:= sumpricecat_totals + fields[39].ascurrency;
+
+       // sum_profit:[16] -&gt; profit:[41]
+       qryF18Summaries.fields[16].ascurrency:=  
+qryF18Summaries.fields[16].ascurrency + fields[41].ascurrency;
+       summaprofit_totals:= summaprofit_totals + fields[41].ascurrency;
+
+     end;
+     qryF18Summaries.post;
+
+//--------------------
+
+qryF18Summaries.fields[13..16] are ftCurrency &amp; bound to the recordband.
+
+Should me redeclare them as ftBCD ?
+
+Though, trecordband.tabs[i].format:=0.00 is a working workaround.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003664.html">[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?
+</A></li>
+	<LI>Next message: <A HREF="003671.html">[MSEide-MSEgui-talk] trecordband.tabs[i]: how to disalow	displaying currency unit ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3668">[ date ]</a>
+              <a href="thread.html#3668">[ thread ]</a>
+              <a href="subject.html#3668">[ subject ]</a>
+              <a href="author.html#3668">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

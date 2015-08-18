@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] interfaces corba vs IInterface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3C201109191549.05904.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004189.html">
+   <LINK REL="Next"  HREF="004191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] interfaces corba vs IInterface</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3C201109191549.05904.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] interfaces corba vs IInterface">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Sep 19 15:49:05 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004189.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+        <LI>Next message: <A HREF="004191.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4190">[ date ]</a>
+              <a href="thread.html#4190">[ thread ]</a>
+              <a href="subject.html#4190">[ subject ]</a>
+              <a href="author.html#4190">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 19 September 2011 14.40:02 Marcos Douglas wrote:
+&gt;<i> On Mon, Sep 19, 2011 at 2:51 AM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; 
+</I>wrote:
+&gt;<i> 
+</I>&gt;<i> &gt;&gt; The variables are interface type and I'm using ref-counted.
+</I>&gt;<i> &gt;&gt; Using CORBA I think this is inverse: variable are classes and have not
+</I>&gt;<i> &gt;&gt; ref-counted... so, I can only use variables that are classes not
+</I>&gt;<i> &gt;&gt; interface type, right?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You can use CORBA interface variables additionally to the instance
+</I>&gt;<i> &gt; variable.
+</I>&gt;<i> 
+</I>&gt;<i> Here is my doubt: I can use variables additionally to the instance
+</I>&gt;<i> variable -- that is one of advantages, the parameters of some methods
+</I>&gt;<i> will be interfaces -- but I can not instantiate an interface variable,
+</I>&gt;<i> because I can't release it. Is that right?
+</I>&gt;<i> 
+</I>You can add addref()/release() methods to your CORBA interface and do 
+refcounting in the implementing class if necessary.
+
+&gt;<i> Resume:
+</I>&gt;<i> 1- In CORBA, I only can instantiate variables of concret class, but I
+</I>&gt;<i> can use interfaces variables additionally to the instance variable, of
+</I>&gt;<i> course;
+</I>
+Correct.
+
+&gt;<i> 2- In IUnknow, I only can instantiate variables of interfaces.
+</I>&gt;<i> 
+</I>In FPC correct. In Delphi it is usually possible to use COM interfaces with 
+not ref counted object instances for example with TComponent.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004189.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+	<LI>Next message: <A HREF="004191.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4190">[ date ]</a>
+              <a href="thread.html#4190">[ thread ]</a>
+              <a href="subject.html#4190">[ subject ]</a>
+              <a href="author.html#4190">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

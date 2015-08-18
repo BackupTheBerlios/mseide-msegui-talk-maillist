@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about msequery or msesqlresult insert
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20msequery%20or%20msesqlresult%20insert&In-Reply-To=%3C4C89C3F7.2040804%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000977.html">
+   <LINK REL="Next"  HREF="000984.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about msequery or msesqlresult insert</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20msequery%20or%20msesqlresult%20insert&In-Reply-To=%3C4C89C3F7.2040804%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about msequery or msesqlresult insert">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Fri Sep 10 07:36:55 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000977.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+        <LI>Next message: <A HREF="000984.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#983">[ date ]</a>
+              <a href="thread.html#983">[ thread ]</a>
+              <a href="subject.html#983">[ subject ]</a>
+              <a href="author.html#983">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+  tmsesqlquery1.database:=birdconn;
+    tmsesqlquery1.transaction:=birdconn.Transaction;
+       tmsesqlquery1.ParseSQL:=false;
+   tmsesqlquery1.StatementType:=stSelect;
+    bdquery.SQL.text:='insert into plantable (VENDORNO,WAREID, 
+PALNQTY,PLANPURPRICE) values (''33'',''33'',33,33) returning  VENDORNO ';
+
+
+  tmsesqlquery1.active:=true;
+
+
+i dont know what is wrong .
+the sql.text works in msescript without  'returning  VENDORNO'
+
+birdconn: Fetch
+  -Dynamic SQL Error
+  -SQL error code = -504
+  -Invalid cursor reference
+  -Cursor is not open
+An exception occurred at $00526070 :
+eiberror : birdconn: Fetch
+  -Dynamic SQL Error
+  -SQL error code = -504
+  -Invalid cursor reference
+  -Cursor is not open
+   $00526070  TIBCONNECTION__CHECKERROR,  line 308 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/mibconnection.pas
+   $00527B2A  TIBCONNECTION__FETCH,  line 1005 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/mibconnection.pas
+   $004F50D8  TSQLQUERY__FETCH,  line 2671 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DCADB  TMSEBUFDATASET__LOADBUFFER,  line 2294 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004DC6A8  TMSEBUFDATASET__GETNEXTPACKET,  line 2177 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004DC0D5  TMSEBUFDATASET__GETRECORD,  line 2017 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004CD3E9
+   $004E36C1  TMSEBUFDATASET__GETNEXTRECORD,  line 5452 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004CD4BF
+   $004CDCC2
+   $004CDA78
+   $004E13F2  TMSEBUFDATASET__SETACTIVE,  line 4325 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004F4AA7  TSQLQUERY__SETACTIVE,  line 2555 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004F0D4C  TMSESQLQUERY__SETACTIVE,  line 566 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004F04D7  TMSESQLQUERY__SETACTIVE1,  line 378 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $0043327B  TMAINFO__ODBCCONN,  line 456 of main.pas
+   $0048F27D  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000977.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+	<LI>Next message: <A HREF="000984.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#983">[ date ]</a>
+              <a href="thread.html#983">[ thread ]</a>
+              <a href="subject.html#983">[ subject ]</a>
+              <a href="author.html#983">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

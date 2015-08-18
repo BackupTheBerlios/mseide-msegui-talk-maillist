@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] --macrodef parameter not working
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20--macrodef%20parameter%20not%20working&In-Reply-To=%3C4CD161F7.6090908%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001705.html">
+   <LINK REL="Next"  HREF="001707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] --macrodef parameter not working</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20--macrodef%20parameter%20not%20working&In-Reply-To=%3C4CD161F7.6090908%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] --macrodef parameter not working">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Wed Nov  3 14:21:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001705.html">[MSEide-MSEgui-talk] --macrodef parameter not working
+</A></li>
+        <LI>Next message: <A HREF="001707.html">[MSEide-MSEgui-talk] --macrodef parameter not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1706">[ date ]</a>
+              <a href="thread.html#1706">[ thread ]</a>
+              <a href="subject.html#1706">[ subject ]</a>
+              <a href="author.html#1706">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-03 15:04, Martin Schreiber het geskryf:
+&gt;<i> &quot;
+</I>&gt;<i> --macrodef=&lt;name&gt;,&lt;value&gt;{,&lt;name&gt;,&lt;value&gt;}
+</I>&gt;<i>  Macro definition, will be overridden by 'Project'-'Options'-'Macros'.
+</I>                          ^^^^^^^^^^^^^^^^^^^^^
+I clearly misunderstood this. I thought that the parameter passed in will
+override the macro in Project &gt; Options &gt; Macros, but in fact it is other
+way round.
+
+
+&gt;<i> .... or select a
+</I>&gt;<i> macrogroup where it is disabled at commandline.
+</I>
+OK, this worked for the Project based macros. Thanks.
+
+...but it still doesn't allow me to override the global IDE macros. My
+example command line where I try and override the COMPILER macro:
+
+./mseide.elf --macrogroup=4
+--macrodef=FPGUI_DIR=/opt/fpgui,COMPILER,/my/fake/fpc
+
+
+...See the attachment for the value of ${COMPILER} in my project options.
+Is there still something I misunderstood?
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: macparam.png
+Type: image/png
+Size: 6937 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101103/38b68cd9/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101103/38b68cd9/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001705.html">[MSEide-MSEgui-talk] --macrodef parameter not working
+</A></li>
+	<LI>Next message: <A HREF="001707.html">[MSEide-MSEgui-talk] --macrodef parameter not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1706">[ date ]</a>
+              <a href="thread.html#1706">[ thread ]</a>
+              <a href="subject.html#1706">[ subject ]</a>
+              <a href="author.html#1706">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

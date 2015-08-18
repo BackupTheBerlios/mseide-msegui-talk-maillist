@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5dobp%24gpc%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000879.html">
+   <LINK REL="Next"  HREF="000886.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5dobp%24gpc%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Aug 29 15:46:31 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000879.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000886.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> 
+</I>&gt;<i> I got the effect that _none_ of the form events were processed when I used
+</I>&gt;<i> such a program - I did quite some digging around what might be wrong with
+</I>&gt;<i> my event methods, until I decided to counter check with that very same
+</I>&gt;<i> program, just disabling the &quot;loadlangunit&quot; call.
+</I>&gt;<i> Well, what do you think? _Everything_ I had problems with suddenly worked
+</I>&gt;<i> correctly!
+</I>&gt;<i> It even honoured the form options again (I used &quot;fo_screencentered&quot;, but
+</I>&gt;<i> had to do the positioning explicitly with the &quot;loadlangunit&quot; call)!
+</I>&gt;<i> 
+</I>The i18n demo in the distribution has event handlers which are working.
+
+&gt;<i> Is that a known restriction, an unknown problem, an easyly resolvable
+</I>&gt;<i> issue, something requiring digging deeply into the innards, or what?
+</I>&gt;<i> If it could be resolved by some simple means, I would like to be able to
+</I>&gt;<i> still use this method; if it gets complicated (for me or for you), I'd
+</I>&gt;<i> rather try some alternative. (Skins, perhaps - but I've yet to figure out
+</I>&gt;<i> how they're supposed to be used, I've not done anything with them as yet.)
+</I>&gt;<i> 
+</I>I don't think that the tskincontroller component is well suited for the
+task. Please use inherited forms.
+
+&gt;<i> BTW, just to avoid false assumptions as to how I used the mechanism, I
+</I>&gt;<i> think I should mention that I stripped down the *.trd files to _only_
+</I>&gt;<i> contain the relaocations and size modifications, i.e. the things that are
+</I>&gt;<i> _different_ between the versions. I did not retain anything common, as it
+</I>&gt;<i> was difficult enough to set up a script that would derive the final .trd
+</I>&gt;<i> file from the two form template files; it still requires the intermediate
+</I>&gt;<i> generation of a basic .trd file for every form version, renamed
+</I>&gt;<i> correspondingly for input to the script. Your use of multiple levels of
+</I>&gt;<i> comma separated field names made it somewhat less that trivial...
+</I>&gt;<i> (I used awk as a text processor - but this cannot really cope with such a
+</I>&gt;<i> setup.)
+</I>
+Then you must debug why the event handlers are deleted by loading the
+difference *.mfm data.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000879.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000886.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

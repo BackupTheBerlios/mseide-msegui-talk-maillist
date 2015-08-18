@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20101001004958.8d09f4dc.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001311.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20101001004958.8d09f4dc.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Fri Oct  1 00:49:58 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001311.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1309">[ date ]</a>
+              <a href="thread.html#1309">[ thread ]</a>
+              <a href="subject.html#1309">[ subject ]</a>
+              <a href="author.html#1309">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Thu, 30 Sep 2010 09:42:41 +0200:
+
+&gt;<i> &gt; Seitenwahl.tab_fontactivetab.shadow_color: Access violation&quot;!
+</I>&gt;<i> &gt; I didn't even _look up_ this value!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Access violations should never happen. :-)
+</I>&gt;<i> Steps to reproduce? An assumption is that something went wrong while
+</I>
+Ugh - that's tough... This was an unexpected incident (of course), and I
+wasn't very attentious as to what I had exactly done before...
+
+&gt;<i> reading the old *.mfm where the tab properties are stored differently.
+</I>
+I'd rather not think this was the cause, because the conversion should have
+been done long before already, since I had tried quite some time to get the
+program working as expected by then. The IDE should've read the .mfm only
+once, at the beginning of this &quot;session&quot;, shouldn't it?
+
+&gt;<i> &gt; And upon trying to move the error message dialog to the workspace where
+</I>&gt;<i> &gt; I'm typing this, the message window got lost ....
+</I>&gt;<i> 
+</I>&gt;<i> After an AV you should close MSEide immediately because there is a big
+</I>&gt;<i> risk that it has become unstable.
+</I>
+I just wanted to avoid constant switching between the workspaces - this
+didn't do anything harmful. And &quot;just&quot; moving an existing window between
+workspaces should be a window-manager-only-issue, shouldn't it?
+But maybe not; the old IBM backing store patent issue still seems to be a
+hindrance to implement simple and effective window manipulation functions...
+
+&gt;<i> &gt; BTW, the focus behaviour of the IDE is somewhat, err, unusual, as to
+</I>...
+&gt;<i> If the pointer moves from outside in the area of the main menu and MSEide
+</I>&gt;<i> has the focus the main menu window will be brought to front in order all
+</I>&gt;<i> items are visible. Another Openbox effect maybe?
+</I>
+But here, and only with the newly compiled trunk IDE, it doesn't succeed
+usually. Most often, the component palette wins over all others.
+My openbox is version 3.4.11.2.
+
+&gt;<i> It is possible to switch off Z-order handling with the comand line
+</I>&gt;<i> parameter --NOZORDERHANDLING.
+</I>
+Just tried - it behaves now. Seems like you're trying to do too much with
+your own code.
+
+&gt;<i> &gt; (s), where the editor also had the old behaviour of &quot;jumping&quot; to the
+</I>&gt;<i> &gt; nearest word begin whether forward or backward. The new behaviour is
+</I>&gt;<i> &gt; really awkward, always jumping to the _farthest_ end of the nearest
+</I>&gt;<i> &gt; word. I _heartily_ _dislike_ it so. And it is _not_ configurable!
+</I>
+&gt;<i> Ctrl+Left/Ctrl+Right?
+</I>
+Yes.
+
+&gt;<i> Ctrl+Left/Ctrl+Right? It has been changed on repeatedly user request and I
+</I>
+I know, and I opposed against it here before. I _knew_ the behaviour from
+my mail editor, and I _did_ mention that I regard this as awkward. Others
+didn't opine so firmly, but there were not many voices in favour of the new
+behaviour. I seem to remember just one...
+
+&gt;<i> find it logical. If the cursor is in the middle of a word Ctrl+Left jumps
+</I>&gt;<i> to left word border, Ctrl+Right to the right.
+</I>
+If it were just _within_ a word, that was alright with me. But it also
+jumps to the _far_ end of the nearest word if it is outside any word, e.g.
+at the left margin of a line. Pressing Ctrl-Right there sends the cursor to
+the _end_ of the first word in the line, and pressing Ctrl-Left sends it to
+the _beginning_ of the last word on the previous line.
+If you want to set it to the beginning of the word at the right (from
+within a current one), you have to perform what I once saw called the
+&quot;monkey motion&quot; of sending it right _twice_, then backing up left another
+time, instead of just sending it right to the next word's beginning as with
+most editors, or only twice to the right, first to the current word's end,
+then to the start of the next word.
+
+&gt;<i> &gt; I consider switching to Lazarus because of this...  ;-&gt;
+</I>&gt;<i> 
+</I>&gt;<i> Feel free to do so. :-)
+</I>
+What about you? When asked for an adjustment to the editor's behaviour
+once, you responded saying you'd set it up so that it provides the most
+productivity for you. Does it now still?
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001311.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1309">[ date ]</a>
+              <a href="thread.html#1309">[ thread ]</a>
+              <a href="subject.html#1309">[ subject ]</a>
+              <a href="author.html#1309">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

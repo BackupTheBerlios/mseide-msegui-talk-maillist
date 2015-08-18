@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and tdbwidgetgrid issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ttabwidget%20%2B%20tdbstringgrid%20%2B%20tdbstringgrid%0A%20and%20tdbwidgetgrid%20issue&In-Reply-To=%3CBANLkTimqW4jntx5JXfS1iZBoyWQTeGyq6A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003794.html">
+   <LINK REL="Next"  HREF="003796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and tdbwidgetgrid issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ttabwidget%20%2B%20tdbstringgrid%20%2B%20tdbstringgrid%0A%20and%20tdbwidgetgrid%20issue&In-Reply-To=%3CBANLkTimqW4jntx5JXfS1iZBoyWQTeGyq6A%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and tdbwidgetgrid issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Jun 14 12:31:00 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003794.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and tdbwidgetgrid issue
+</A></li>
+        <LI>Next message: <A HREF="003796.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid	and tdbwidgetgrid issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3795">[ date ]</a>
+              <a href="thread.html#3795">[ thread ]</a>
+              <a href="subject.html#3795">[ subject ]</a>
+              <a href="author.html#3795">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Execute the attached project.
+
+show &quot;Facturas&quot; tab and watch how it is (sizes)
+
+Close project
+
+Execute the project again. Maximize window (pressing maximize button in
+window) restore to original position (pressing the same button) show
+&quot;Facturas&quot; tab and watch.
+
+
+I did it using copy/paste from an old version of the project. Nothing
+functional.. just for testing. I removed some parts to make it working and
+show the issue.
+
+
+Thanks.
+
+
+Julio
+
+
+2011/6/14 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+
+&gt;<i> Both, Linux (debian testing/gnome)  and Windows.
+</I>&gt;<i>
+</I>&gt;<i> FPC 2.4.4 i386
+</I>&gt;<i>
+</I>&gt;<i> I'll try to do a  test project and will send it later.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Julio
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2011/6/14 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Tuesday 14 June 2011 10:10:44 Julio Jim&#233;nez wrote:
+</I>&gt;&gt;<i> &gt; Hi.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; I have a forms with a ttabwidgetgrid, a few ttabpage and in every
+</I>&gt;&gt;<i> ttabpage
+</I>&gt;&gt;<i> &gt; tdbstringgrids and tdbwidgetgrids.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Not too long ago, I've watched an issue with fill and expand. If I
+</I>&gt;&gt;<i> maximize
+</I>&gt;&gt;<i> &gt; the windows all look fine for the visible tabpage (all the columns
+</I>&gt;&gt;<i> &gt; grow/fill as expected) but if I restore the window to the original
+</I>&gt;&gt;<i> position
+</I>&gt;&gt;<i> &gt; the columns shrink like if not maximized so you can see an empty space
+</I>&gt;&gt;<i> in
+</I>&gt;&gt;<i> &gt; the right size of the tdbstringgrid or tdbwidgetgrid. The same happens
+</I>&gt;&gt;<i> for
+</I>&gt;&gt;<i> &gt; non visible tabs.. so if you active another tab you see all the columns
+</I>&gt;&gt;<i> &gt; shrinked and an empty space in the right size.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Not long time ago this was working as expected.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; the tdbstringgrid and tdbwidgetgrid have all the anchors set to true (so
+</I>&gt;&gt;<i> &gt; they fill the form when resizing)
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Just curious, this only happens when pressing maximize/restore window
+</I>&gt;&gt;<i> &gt; buttons.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; If I resize the window using the mouse and dragging, all is fine.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> Please send a simple test project. Which OS?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Martin
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Pantallazo-Ventana sin t?tulo.png
+Type: image/png
+Size: 83865 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Pantallazo-Ventana sin t?tulo-1.png
+Type: image/png
+Size: 84197 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment-0001.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: textfillexpand.7z
+Type: application/x-7z-compressed
+Size: 40452 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.7z">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110614/2a7b86f2/attachment.7z</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003794.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and tdbwidgetgrid issue
+</A></li>
+	<LI>Next message: <A HREF="003796.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid	and tdbwidgetgrid issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3795">[ date ]</a>
+              <a href="thread.html#3795">[ thread ]</a>
+              <a href="subject.html#3795">[ subject ]</a>
+              <a href="author.html#3795">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

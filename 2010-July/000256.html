@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3CAANLkTime7CpP74VVck18SedN-raRrE12mYO_DX7xYC1W%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000247.html">
+   <LINK REL="Next"  HREF="000258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto</H1>
+    <B>Zsolt Szokolai</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3CAANLkTime7CpP74VVck18SedN-raRrE12mYO_DX7xYC1W%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto">soky64 at gmail.com
+       </A><BR>
+    <I>Fri Jul  2 08:48:36 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000247.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+        <LI>Next message: <A HREF="000258.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/7/2 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> Use a tsequencelink (tab DBf) in order to automatically fetch the value from
+</I>&gt;<i> the sequence generator and store into the &quot;id&quot; field before inserting a
+</I>&gt;<i> record.
+</I>
+This good idea because may need the fresh id other reasons. For
+example insert other child record to a details table.
+But how can I use this nextval in the insert statement?
+I tried SQLInsert property but don't made any parameter from &quot;:value&quot;
+like in query does.
+
+&gt;<i> Or if you don't need to know the value of the &quot;id&quot; field exclude it from the
+</I>&gt;<i> select statement or make &quot;id&quot; a persistent field and deactivate
+</I>&gt;<i> TField.ProviderFlags pfInUpdate.
+</I>&gt;<i>
+</I>
+The update missed id which is the primary key. This is why I included
+id into query. Or does the tmsesqlquery automatically include the
+primary key for doing the update later?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000247.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+	<LI>Next message: <A HREF="000258.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

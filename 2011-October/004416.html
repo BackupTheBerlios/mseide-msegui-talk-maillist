@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] bug reports and wishes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20bug%20reports%20and%20wishes&In-Reply-To=%3C4EA82D26.6000807%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004412.html">
+   <LINK REL="Next"  HREF="004420.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] bug reports and wishes</H1>
+    <B>minoshi</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20bug%20reports%20and%20wishes&In-Reply-To=%3C4EA82D26.6000807%40yandex.ru%3E"
+       TITLE="[MSEide-MSEgui-talk] bug reports and wishes">minoshi at yandex.ru
+       </A><BR>
+    <I>Wed Oct 26 17:54:14 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004412.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+        <LI>Next message: <A HREF="004420.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4416">[ date ]</a>
+              <a href="thread.html#4416">[ thread ]</a>
+              <a href="subject.html#4416">[ subject ]</a>
+              <a href="author.html#4416">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>25.10.2011 17:00, Martin Schreiber &#1087;&#1080;&#1096;&#1077;&#1090;:
+&gt;&gt;<i> 1). Design time : access violation when cut components connected via
+</I>&gt;&gt;<i> tspacer (tspacer.linkleft =&lt;some widget1&gt;,tspacer.linkright =&lt;some
+</I>&gt;&gt;<i> widget2&gt;, etc)
+</I>&gt;&gt;<i>
+</I>&gt;<i> Works for me. Please send a test project and steps how to reproduce.
+</I>&gt;<i>
+</I>
+here link to video with step by step 
+<A HREF="http://almin-soft.nx0.ru/media/files/binaries/video.tar.bz2">http://almin-soft.nx0.ru/media/files/binaries/video.tar.bz2</A>
+
+&gt;<i> Activate tspacer.options spao_glue_right.
+</I>Oh! unexpectedly ... works fine, sorry.
+
+&gt;&gt;<i> 3). Ttabwidget : mainfo.onchildmouseevent not work with widgets placed
+</I>&gt;&gt;<i> on ttabwidget. Why?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Probably because a widget in the hierarchy eats the event by setting
+</I>&gt;<i> es_processed. Only not used mouse and key events are reported to parent.
+</I>&gt;<i>
+</I>
+Sorry, Martin, can`t catch what you mean :( (Google.translate not ideal) 
+  And where this &quot;es_processed&quot; ?
+
+&gt;&gt;<i> 4). Ttabwidget.tab_size not work when ttabwidget.color = cl_transporent
+</I>&gt;&gt;<i> and tabo_opposite in ttabwidget.tab_options. In design time all show ok
+</I>&gt;&gt;<i> but when run program ttabwidget.tab_size sets to Ttabwidget.tab_sizemin.
+</I>&gt;&gt;<i> With others colors all ok both designtime and runtime.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Should be fixed in git master 797ed492d07bc34c1718b8da4326015d8ba03496.
+</I>&gt;&gt;<i>
+</I>
+Yes, thanks.
+
+&gt;&gt;<i> A couple wishes :
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1).Is there way to change tab position of source page without recompilng
+</I>&gt;&gt;<i> MSEide?
+</I>&gt;&gt;<i>
+</I>&gt;<i> No. Why?
+</I>
+Are you work with EEEPC 701  netbook?  I`m happy owner of it :) Great 
+device but maximum screen resolution 800x480. Of cause, I can change 
+width of tabs, but in this case i can`t read captions on tabs. So i need 
+to recompile mseide with tabs placed on top.
+
+&gt;<i>
+</I>&gt;&gt;<i> 2).caption property write to statfile?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Which components?
+</I>&gt;<i>
+</I>
+All.  With captions in statfile - there is very simple way to make 
+multilanguage programs. Make copy of statfile and translate second copy. 
+Then runtime change language something like this:
+
+procedure tmainfo.on_set_ru(const sender: TObject);
+begin
+   tstatfile1.filename := 'ru.lng';
+   tstatfile1.readstat;
+end;
+
+procedure tmainfo.on_set_en(const sender: TObject);
+begin
+   tstatfile1.filename := 'en.lng';
+   tstatfile1.readstat;
+end;
+
+Statfile translate simply via text editor
+
+
+&gt;&gt;<i> 3).borderless without stayontop form state.
+</I>&gt;<i>
+</I>&gt;<i> Difficult to implement platform independent and problematic because users
+</I>&gt;<i> always should be able to move, resize and close windows. Borderless fullscreen
+</I>&gt;<i> should work.
+</I>&gt;<i>
+</I>
+it's a pity :(
+
+-- 
+Yours,
+Alexandre Minoshi
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004412.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+	<LI>Next message: <A HREF="004420.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4416">[ date ]</a>
+              <a href="thread.html#4416">[ thread ]</a>
+              <a href="subject.html#4416">[ subject ]</a>
+              <a href="author.html#4416">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

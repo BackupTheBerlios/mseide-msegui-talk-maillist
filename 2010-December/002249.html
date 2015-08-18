@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTinw7ga2CxUM4CTXNx8d4GB%3D%2BwLvvsZ0mUMHoFOK%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002248.html">
+   <LINK REL="Next"  HREF="002250.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTinw7ga2CxUM4CTXNx8d4GB%3D%2BwLvvsZ0mUMHoFOK%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 10:06:49 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002248.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002250.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2249">[ date ]</a>
+              <a href="thread.html#2249">[ thread ]</a>
+              <a href="subject.html#2249">[ subject ]</a>
+              <a href="author.html#2249">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I use ubuntu 32 bits. Tried two different computers. in a computer I have
+ubuntu 10.10 (upgraded from 10.04) and pclinux 2010.11 (only ubuntu fails)
+at home I have two partitions ubuntu 10.04 (working fine)  and ubuntu 10.10
+(fresh install) failing.
+
+All the computers use freepascal 2.4.2 downloaded from freepascal.org (the
+link I gave you) I also compile fpc for cross-win32 (I tried a fresh fpc
+installation and failing too ,without fpc cross-win).
+
+I have read in the forums a lot of gdb fails...
+
+I used gdb 7.1 from pclinux partition and get the same problem so it seems
+is not gdb itself.
+
+I also tried detach (in debug menu) and the program runs but it get stucked
+at some point.. (writing to files). May be is not fully detached.
+
+ps reports:
+
+ps aux | grep gdb
+jujibo    2813  0.0  0.0   1896   508 ?        S    10:04   0:00 /bin/sh -c
+/usr/bin/gdb  --interpreter=mi --nx
+jujibo    2816  6.3  2.1  52752 43840 ?        S    10:04   0:00
+/usr/bin/gdb --interpreter=mi --nx
+jujibo    2848  0.0  0.0   5172   764 pts/5    S+   10:05   0:00 grep
+--color=auto gdb
+
+two gdb running
+
+2010/12/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Tuesday, 28. December 2010 09.49:38 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; I also tried   'gdb  program'   and gdb was working that's why I said it
+</I>&gt;<i> &gt; seems something between the ide (MSEide) and gdb, but it's strange
+</I>&gt;<i> &gt;
+</I>&gt;<i> It is strange that I can not reproduce. Are you using 32 or 64 bit Ubuntu
+</I>&gt;<i> and
+</I>&gt;<i> FPC?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/3086750c/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/3086750c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002248.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002250.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2249">[ date ]</a>
+              <a href="thread.html#2249">[ thread ]</a>
+              <a href="subject.html#2249">[ subject ]</a>
+              <a href="author.html#2249">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image in a widgetgrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C4DD0B38E.8070407%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003614.html">
+   <LINK REL="Next"  HREF="003618.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image in a widgetgrid</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C4DD0B38E.8070407%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Image in a widgetgrid">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon May 16 07:18:06 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003614.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+        <LI>Next message: <A HREF="003618.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3617">[ date ]</a>
+              <a href="thread.html#3617">[ thread ]</a>
+              <a href="subject.html#3617">[ subject ]</a>
+              <a href="author.html#3617">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 15.05.2011 22:52, schrieb Christian Nobel:
+&gt;&gt;&gt;<i> On 12-05-2011 15:23, Martin Schreiber wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> msestream.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> Ok, I can get it to work, but I still do not quite understand the logic.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> If I drop a tstringedit on a form I would do like this:
+</I>&gt;<i>
+</I>&gt;<i>   tstringedit1.value:='xxx';
+</I>&gt;<i>
+</I>&gt;<i> If I drop a tdataimage on a form I would do like this:
+</I>&gt;<i>
+</I>&gt;<i>   tdataimage1.bitmap.LoadFromfile(tfiledialog1.controller.filename);
+</I>&gt;<i>
+</I>Please use a timage instead a tdataimage, tdataimage is foreseen for 
+placement into twidgetgrid only.
+
+[...]
+&gt;<i>
+</I>&gt;<i> But as you have explained earlier this it not  the case, which to me
+</I>&gt;<i> seems very counterintuitive, so my question is simply - why?
+</I>&gt;<i>
+</I>Because there is a single image widget and bitmap instance for the grid 
+colum.
+
+&gt;<i> And how come that the picture has to be loaded as an Ansistring?
+</I>&gt;<i>
+</I>The ansistring is used as bytestream in the choosen image format 
+(JPG,PNG...).
+
+&gt;<i> Lastly, if I want to manipulate my picture (eg. resizing) how do I then
+</I>&gt;<i> load the tmaskedbitmap into the tdataimage in the widgetgrid?
+</I>&gt;<i>
+</I>It must be converted to a supported image data format (JPG,PNG...)
+BTW, the FPC image converting functions and the whole fpimage 
+environment is not very fast, an impolite person even would say it is 
+very slow. ;-)
+Maybe it is better to use a tdbwidgetgrid, tdbdataimage and to store the 
+image data in a tmsebufdataset descendant and to use a tmsegraphicfield. 
+tmsegraphicfield has a cache for the converted images in displayable 
+internal format. The size of the cache buffer can be set by 
+tmsegraphicfield.imagecachekb (kilo bytes).
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003614.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+	<LI>Next message: <A HREF="003618.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3617">[ date ]</a>
+              <a href="thread.html#3617">[ thread ]</a>
+              <a href="subject.html#3617">[ subject ]</a>
+              <a href="author.html#3617">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

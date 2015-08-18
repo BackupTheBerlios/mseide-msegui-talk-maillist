@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101108000126.2069a927.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001808.html">
+   <LINK REL="Next"  HREF="001811.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101108000126.2069a927.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Nov  8 00:01:26 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001808.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001811.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1805">[ date ]</a>
+              <a href="thread.html#1805">[ thread ]</a>
+              <a href="subject.html#1805">[ subject ]</a>
+              <a href="author.html#1805">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Sun, 7 Nov 2010 16:38:05 +0100:
+
+&gt;<i> Seems as designed to me. The edit has the focus, in onkeyup you call 
+</I>&gt;<i> showmessage, in modal dialog with default button 'OK', you press Enter
+</I>&gt;<i> again, key_return keydown clicks the button and closes the message
+</I>&gt;<i> window, the edit widget has the focus again and receives the key_return
+</I>&gt;<i> keyup event. Press the OK button with mouse or Space key and there will
+</I>&gt;<i> be no second message window.
+</I>
+Maybe that's as designed, but it certainly is _not_ as expected by the
+average user used to average applications. This is _not_ commonly done so,
+and there's absolutely _no_ reason why anybody should expect a program to
+react so.
+And _no_ - requiring to use the mouse is _no_ work around.
+E.g. - _what_ mouse, after all? There are applications where there is no
+mouse and no work-alike device either.
+
+&gt;<i> Do you remember, I did not want to add all this published event
+</I>&gt;<i> properties to the edit widgets because using them is not so easy as it
+</I>&gt;<i> seems? ;-) What do you want to achieve?
+</I>
+Simply a dialog working as expected by an average user.
+
+BTW, why, in the first place, _does_ the edit widget act on the key_return
+keyup event at all? Didn't it act on the keydown event already? Or did the
+loss of focus change its behaviour? Then the resulting behaviour is wrong,
+as a stray key release (keyup) after regaining focus cannot be assumed to
+be meant for processing by this application window. It cannot be assumed to
+be meant for this application window in any case if there wasn't an
+unmistakably associated key press (keydown) before.
+Trash the stray event, and everything will be fine.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001808.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001811.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1805">[ date ]</a>
+              <a href="thread.html#1805">[ thread ]</a>
+              <a href="subject.html#1805">[ subject ]</a>
+              <a href="author.html#1805">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

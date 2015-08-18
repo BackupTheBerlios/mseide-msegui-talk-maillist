@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100920223336.56641dc9.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001110.html">
+   <LINK REL="Next"  HREF="001121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100920223336.56641dc9.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Sep 20 22:33:36 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001110.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001121.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1120">[ date ]</a>
+              <a href="thread.html#1120">[ thread ]</a>
+              <a href="subject.html#1120">[ subject ]</a>
+              <a href="author.html#1120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 20 Sep 2010 08:04:09 +0200:
+
+&gt;<i> &gt; BTW, the compilation control program to produce the &quot;language&quot; libraries
+</I>&gt;<i> &gt; is a bit fragile - there are numerous causes to keep it from working at
+</I>...
+&gt;<i> The properties of the different MSEgui versions you mix must match. For
+</I>
+Yes, I expected that, and I _did_ keep the versions separate; nontheless
+the msei18n sometimes bailed out, right upon startup, complaining about an
+unsatisfied assertion like this:
+
+ msei18n: xcb_io.c:183: process_responses: Assertion `!(req &amp;&amp;
+ current_request &amp;&amp; !(((long) (req-&gt;sequence) - (long) (current_request)) &lt;=
+ 0))' failed.
+ Aborted
+
+Often, recompiling the pertinent program did help - like said before.
+
+BTW, even though you claimed that the &quot;old&quot; IDE should be able to compile a
+&quot;new&quot; (trunk) program - yes, it does, but there seem to be _some_ places it
+still seems to use some internal heuristic to parse the .mfm file of an
+application. At least I got an error from the attempt to display the form
+of a program using your - recently deeply reworked - msechart and -recorder
+components, complaining:
+
+ Can not read formfile &quot;/ext/dos_Daten/Projekte/Kunstmann/BCS/Anzeigen.mfm&quot;.
+ Error reading Graph_Ifahr.traces.items: Error reading trecordertrace.start:
+ Unknown property: &quot;start&quot;
+
+But the pertaining - and _active_ - msechart.pas shows a property &quot;start&quot;
+for type &quot;trecordertrace&quot;! It's just the IDE that doesn't recognize it.
+
+&gt;<i> &gt; And, may I suggest a slight modification to this program?
+</I>..
+&gt;<i> Thanks, please use unified diff format.
+</I>
+Ok, I will do so next time (if I remember... ;).
+Did you succeed applying this, or do you need another diff here too?
+
+&gt;<i> The last used *.trp's are in the dropdown list of 'Open'-'Name'.
+</I>
+That's fine if you want to select the project, but passed on the command
+line, you can add the utility as a tool, complete with the project path,
+and all you have to do then is to click &quot;Make&quot; to produce the libraries.
+Next step was to add a switch to even perform that step automatically, then
+close the result window if no error occured and terminate the program
+again. You see - no manual interaction needed, all fully automatic. ;-)
+(It could even be set up as an after-compilation action, but this might be
+a bit too much - rebuilding of the libraries may not be neccessary after
+every compilstion.)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001110.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001121.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1120">[ date ]</a>
+              <a href="thread.html#1120">[ thread ]</a>
+              <a href="subject.html#1120">[ subject ]</a>
+              <a href="author.html#1120">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

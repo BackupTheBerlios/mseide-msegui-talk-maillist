@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Max length in tdbstring*edit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Max%20length%20in%20tdbstring%2Aedit&In-Reply-To=%3C201103242002.58345.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003275.html">
+   <LINK REL="Next"  HREF="003274.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Max length in tdbstring*edit</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Max%20length%20in%20tdbstring%2Aedit&In-Reply-To=%3C201103242002.58345.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Max length in tdbstring*edit">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Mar 24 20:02:58 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003275.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+        <LI>Next message: <A HREF="003274.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3271">[ date ]</a>
+              <a href="thread.html#3271">[ thread ]</a>
+              <a href="subject.html#3271">[ subject ]</a>
+              <a href="author.html#3271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Donnerstag 24 M&#228;rz 2011, 18:17:06 schrieb Sri Wahono:
+&gt;<i> &gt; Works for me, probably a problem with the character set. Do you use MySQL
+</I>&gt;<i> &gt; with utf-8 on Windows? I found that setting the characterset with &quot;SET
+</I>&gt;<i> &gt; CHARACTER SET UTF8&quot; parameter does not change the values returned by
+</I>&gt;<i> &gt; mysql_get_character_set_info().
+</I>&gt;<i> &gt; Trunk 4445 calls mysql_set_character_set() with the value of &quot;CharSet&quot;,
+</I>&gt;<i> &gt; please set CharSet to 'utf8' and activate
+</I>&gt;<i> &gt; &lt;connection&gt;.controller.options dbo_utf8.
+</I>&gt;<i> 
+</I>&gt;<i> Fixed now, thank you very much.
+</I>
+What was the problem? utf-8 on Windows?
+
+&gt;<i> BTW is oed_limitcharlen really needed for tmsetringfield? It will add
+</I>&gt;<i> more options, and I think for string field, truncate as field size is
+</I>&gt;<i> required without exception.
+</I>&gt;<i> Or any other goal for this options?
+</I>&gt;<i> 
+</I>Edit widget maxsize can be set independent of the datafield length.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003275.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+	<LI>Next message: <A HREF="003274.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3271">[ date ]</a>
+              <a href="thread.html#3271">[ thread ]</a>
+              <a href="subject.html#3271">[ subject ]</a>
+              <a href="author.html#3271">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

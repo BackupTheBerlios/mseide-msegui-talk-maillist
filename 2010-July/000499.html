@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3C4C3D7654.4090307%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000494.html">
+   <LINK REL="Next"  HREF="000513.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fwd: Re: how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3C4C3D7654.4090307%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fwd: Re: how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Wed Jul 14 10:33:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000494.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+        <LI>Next message: <A HREF="000513.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>  As I wrote before I don't think it is possible to use multiple statements in
+</I>&gt;<i>  tsqlquery and with ODBC. What happens if you don't use declare?
+</I>&gt;<i>
+</I>&gt;<i>  tmsesqlquery1.SQL.text:='select top 1 * into #x from  r_sale where
+</I>&gt;<i>  wareid= ''1553'' select top 1 * from  #x where wareid=''1553''';
+</I>&gt;<i>
+</I>&gt;<i>  Do you really need this form of query, is there no other way to achieve the
+</I>&gt;<i>  result?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>in fact   it  work,
+i use  script and query
+
+i  only want use the sql simple  ,and not use msescript and msequery two
+component ,and
+only msequery or msesqlresult .
+i will test the sql nexttime,i out of workhome someday.  thanks  ,you
+are great.
+
+tmsesqlquery1.SQL.text:='select top 1 * into #x from  r_sale where
+wareid= ''1553'' select top 1 * from  #x where wareid=''1553''';
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000494.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+	<LI>Next message: <A HREF="000513.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

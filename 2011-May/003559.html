@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TSESQLQuery - sets BOF | EOF to true on &lt;query&gt;.Bookmark:=&lt;saved_bookmark&gt;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TSESQLQuery%20-%20sets%20BOF%20%7C%20EOF%20to%20true%20on%0A%20%3Cquery%3E.Bookmark%3A%3D%3Csaved_bookmark%3E&In-Reply-To=%3Cop.vuzvxqy7yl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003568.html">
+   <LINK REL="Next"  HREF="003560.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TSESQLQuery - sets BOF | EOF to true on &lt;query&gt;.Bookmark:=&lt;saved_bookmark&gt;</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TSESQLQuery%20-%20sets%20BOF%20%7C%20EOF%20to%20true%20on%0A%20%3Cquery%3E.Bookmark%3A%3D%3Csaved_bookmark%3E&In-Reply-To=%3Cop.vuzvxqy7yl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] TSESQLQuery - sets BOF | EOF to true on &lt;query&gt;.Bookmark:=&lt;saved_bookmark&gt;">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu May  5 08:21:16 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003568.html">[MSEide-MSEgui-talk] set selected column,	row in stringgrdi with code
+</A></li>
+        <LI>Next message: <A HREF="003560.html">[MSEide-MSEgui-talk] TSESQLQuery - sets BOF | EOF to true on &lt;query&gt;.Bookmark:=&lt;saved_bookmark&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3559">[ date ]</a>
+              <a href="thread.html#3559">[ thread ]</a>
+              <a href="subject.html#3559">[ subject ]</a>
+              <a href="author.html#3559">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>//---------------
+procedure tdmf18mo.loaded(const sender: TObject);
+var
+     i: integer;
+     bm_addr,bm_box,bm_edition,bm_lgot{,bm_total}: string;
+
+     procedure make_one(const deliv_bm: string /* SAVED BOOKMARK */);
+     var
+        i: integer;
+        begin
+           qryF18Summaries.bookmark:= deliv_bm;
+           i:= qryF18Summaries.recordcount;
+
+           //  TEMPORAL - USUALLY UNNEEDED SINCE EACH deliv_bm SHOULD MATCH
+           if not qryF18Summaries.bof or qryF18Summaries.eof then begin
+              exit; // &gt;&gt; ALWAYS ENTERS HERE
+          end;
+       [...]
+    end;
+
+//qryF18Summaries is filled and handled as:
+
+with qryF18Summaries do begin
+     refresh; // clearing local MSESQLQUERY
+     appendrecord(['Address: ', 0,0,0,0,0,0,0,0,0,0,0,0, 0, 0,0,0]); last;  
+bm_addr:= bookmark;
+     appendrecord(['Box: ', 0,0,0,0,0,0,0,0,0,0,0,0, 0, 0,0,0]);  last;  
+bm_box:= bookmark;
+     appendrecord(['Edition: ', 0,0,0,0,0,0,0,0,0,0,0,0, 0, 0,0,0]);last;  
+bm_edition:= bookmark;
+    appendrecord(['Discounted.: ', 0,0,0,0,0,0,0,0,0,0,0,0, 0,  
+0,0,0]);last; bm_lgot:= bookmark;
+  end;
+  with qryForm18 as tmsesqlquery do begin
+     first;
+     disablecontrols;
+     while not eof do begin
+        case fields[42].asinteger of //deliv_code
+           1: make_one(bm_addr);
+           2: make_one(bm_box);
+           3: make_one(bm_edition);
+           4: make_one(bm_lgot);
+       end;
+     next;
+   end;
+   first;
+   enablecontrols;
+  end;
+//---------------
+--
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003568.html">[MSEide-MSEgui-talk] set selected column,	row in stringgrdi with code
+</A></li>
+	<LI>Next message: <A HREF="003560.html">[MSEide-MSEgui-talk] TSESQLQuery - sets BOF | EOF to true on &lt;query&gt;.Bookmark:=&lt;saved_bookmark&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3559">[ date ]</a>
+              <a href="thread.html#3559">[ thread ]</a>
+              <a href="subject.html#3559">[ subject ]</a>
+              <a href="author.html#3559">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

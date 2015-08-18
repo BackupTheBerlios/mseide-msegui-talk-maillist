@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTi%3DSucjGCc0am2oXsqGoDGH6vFEBJdnz-NuEyzif%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000830.html">
+   <LINK REL="Next"  HREF="000835.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)</H1>
+    <B>dan</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTi%3DSucjGCc0am2oXsqGoDGH6vFEBJdnz-NuEyzif%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)">kungfusoccer at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 13:23:28 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000830.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+        <LI>Next message: <A HREF="000835.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 8/26/10, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> But tcustomedit.text *is* tinplaceedit.text?
+</I>Almost Yes. :)
+
+&gt;<i> Anyway, tinplaceedit.fbackup is protected in trunk 3876 so you can access
+</I>&gt;<i> it.
+</I>Very thanks.
+
+&gt;<i> This is normal behaviour of the t*edit widgets if there was a validation
+</I>&gt;<i> error.
+</I>&gt;<i> You want that the new focus widget gets the focus after editing has been
+</I>&gt;<i> aborted by the user? This is complicated. You need to store the destination
+</I>&gt;<i> widget into the edit widget. Please use tmsecomponent.setlinkedvar() in
+</I>&gt;<i> order to get automatically NIL'd reference if the destination widget has
+</I>&gt;<i> been destroyed. It looks a little bit overengineered to me. ;-)
+</I>&gt;<i> The user could focus the new widget after canceling edit again. Possibly
+</I>&gt;<i> he/she wants to focus the new widget anymore after he/she observes the
+</I>&gt;<i> entry error? Hmm, i feel I do still not understand.
+</I>&gt;<i>
+</I>Let us think, when the user make mistakes key pressing(not number, not
+dot, not comma) in edit of trealedit, it will waste time. Even, the
+user often will see format error( '' is invalid).
+It can be boring. That is a conclusion what i want is encapsulation
+about checking format error, not in user interaction.
+
+&gt;<i> That is interresting. So if I press the keys '1','2','3' then the values
+</I>&gt;<i> reported by onchange and onsetvalue are &quot;1&quot;, &quot;12&quot;, &quot;123&quot;? Why is this
+</I>&gt;<i> useful? Probably I misunderstand, please explain more.
+</I>example the realedit already have realty value 100 and text '100'
+
+before we focus the realedit, fbackup is set to 100
+if i press the key '1', the realty value become 1, text become '1'
+and then if i press the key '2', the realty value become 12, text become '12'
+and so on.
+when ESC pressed, the realty value become back to 100 and text '100'
+
+and the user cannot press keys except number, dot, comma keys.
+
+That is,.:D
+
+&gt;<i>
+</I>&gt;<i> I like to know and understand what people do with my components. :-)
+</I>:<i>-) You're welcome. Me too.
+</I>
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000830.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+	<LI>Next message: <A HREF="000835.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

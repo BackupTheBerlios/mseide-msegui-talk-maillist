@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3Ci0k300%24vhp%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000256.html">
+   <LINK REL="Next"  HREF="000265.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3Ci0k300%24vhp%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jul  2 09:04:45 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000256.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+        <LI>Next message: <A HREF="000265.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Zsolt Szokolai wrote:
+
+&gt;<i> 2010/7/2 Martin Schreiber
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+</I>&gt;&gt;<i> Use a tsequencelink (tab DBf) in order to automatically fetch the value
+</I>&gt;&gt;<i> from the sequence generator and store into the &quot;id&quot; field before
+</I>&gt;&gt;<i> inserting a record.
+</I>&gt;<i> 
+</I>&gt;<i> This good idea because may need the fresh id other reasons. For
+</I>&gt;<i> example insert other child record to a details table.
+</I>&gt;<i> But how can I use this nextval in the insert statement?
+</I>&gt;<i> I tried SQLInsert property but don't made any parameter from &quot;:value&quot;
+</I>&gt;<i> like in query does.
+</I>&gt;<i> 
+</I>- Place a tsequencelink in the form or datamodule.
+- Enter the sequencename.
+- Select database.
+- Select datasource and datafield (the &quot;id&quot;-field).
+
+Now the id field will be set with nextval('&lt;sequencename&gt;') by TDataset.Post
+after insert.
+
+&gt;&gt;<i> Or if you don't need to know the value of the &quot;id&quot; field exclude it from
+</I>&gt;&gt;<i> the select statement or make &quot;id&quot; a persistent field and deactivate
+</I>&gt;&gt;<i> TField.ProviderFlags pfInUpdate.
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> The update missed id which is the primary key. This is why I included
+</I>&gt;<i> id into query. Or does the tmsesqlquery automatically include the
+</I>&gt;<i> primary key for doing the update later?
+</I>
+No.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000256.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+	<LI>Next message: <A HREF="000265.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#258">[ date ]</a>
+              <a href="thread.html#258">[ thread ]</a>
+              <a href="subject.html#258">[ subject ]</a>
+              <a href="author.html#258">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

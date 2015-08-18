@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msegui compile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msegui%20compile&In-Reply-To=%3C201102191914.21297.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002901.html">
+   <LINK REL="Next"  HREF="002903.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msegui compile</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msegui%20compile&In-Reply-To=%3C201102191914.21297.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] msegui compile">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Feb 19 19:14:21 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002901.html">[MSEide-MSEgui-talk] msegui compile
+</A></li>
+        <LI>Next message: <A HREF="002903.html">[MSEide-MSEgui-talk] msegui compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2902">[ date ]</a>
+              <a href="thread.html#2902">[ thread ]</a>
+              <a href="subject.html#2902">[ subject ]</a>
+              <a href="author.html#2902">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 19 February 2011 18:45:59 Patrick Goupell wrote:
+&gt;<i> I had not pulled the svn source code for a few months so I did that today
+</I>&gt;<i> (branch 4333).
+</I>&gt;<i>
+</I>&gt;<i> Went to compile it and got the following messages:
+</I>&gt;<i>
+</I>&gt;<i> Compiling
+</I>&gt;<i> /home/patrick/data/mseide/lib/common/regcomponents/regunitgroups.pas
+</I>&gt;<i> Linking /home/patrick/data/mseide/apps/ide/mseide
+</I>&gt;<i> /usr/bin/ld: warning: link.res contains output sections; did you forget -T?
+</I>&gt;<i> 406472 lines compiled, 58.4 sec
+</I>&gt;<i> 320 warning(s) issued
+</I>&gt;<i> 642 note(s) issued
+</I>&gt;<i> Free Pascal Compiler version 2.4.0-2 [2010/02/20] for i386
+</I>&gt;<i> Copyright (c) 1993-2009 by Florian Klaempfl
+</I>&gt;<i> Target OS: Linux for i386
+</I>&gt;<i> Compiling /home/patrick/data/mseide/apps/ide/mseide.pas
+</I>&gt;<i> Fatal: Can't find unit mseskindesign used by mseide
+</I>&gt;<i> Fatal: Compilation aborted
+</I>&gt;<i> Error: /usr/bin/ppc386 returned an error exitcode (normal if you did not
+</I>&gt;<i> specify a source file to be compiled)
+</I>&gt;<i>
+</I>&gt;<i> Note the fatal error for mseskindesign.
+</I>&gt;<i>
+</I>&gt;<i> These are my compile commands:
+</I>&gt;<i>
+</I>&gt;<i> fpc -Fu/home/patrick/data/mseide/lib/common/*
+</I>&gt;<i> -Fu/home/patrick/data/mseide/lib/common/kernel/i386-linux
+</I>&gt;<i> -Fu/home/patrick/data/mseide/lib/common/kernel/i386-win32 -B
+</I>&gt;<i> /home/patrick/data/mseide/apps/ide/mseide.pas
+</I>&gt;<i>
+</I>&gt;<i> fpc -Fi/home/patrick/data/mseide/lib/common/*
+</I>&gt;<i> -Fl/home/patrick/data/mseide/lib/common/kernel/i386-linux -B
+</I>&gt;<i> /home/patrick/data/mseide/apps/ide/mseide.pas
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Do I have to do something different to compile the mseide now?
+</I>&gt;<i>
+</I>The necessary FPC commandline has not chanaged.
+Please try
+&quot;
+ppc386 -B -Fulib/common/* -Fulib/common/kernel/i386-linux -Fi/lib/common/kernel 
+apps/ide/mseide.pas 
+&quot;
+Martin
+&quot;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002901.html">[MSEide-MSEgui-talk] msegui compile
+</A></li>
+	<LI>Next message: <A HREF="002903.html">[MSEide-MSEgui-talk] msegui compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2902">[ date ]</a>
+              <a href="thread.html#2902">[ thread ]</a>
+              <a href="subject.html#2902">[ subject ]</a>
+              <a href="author.html#2902">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

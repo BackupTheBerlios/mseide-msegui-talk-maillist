@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Accelerated framebuffer in LINUX,	also for non-standard resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Accelerated%20framebuffer%20in%20LINUX%2C%0A%09also%20for%20non-standard%20resolutions&In-Reply-To=%3Cop.vs7n93fzyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003315.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Accelerated framebuffer in LINUX,	also for non-standard resolutions</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Accelerated%20framebuffer%20in%20LINUX%2C%0A%09also%20for%20non-standard%20resolutions&In-Reply-To=%3Cop.vs7n93fzyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] Accelerated framebuffer in LINUX,	also for non-standard resolutions">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Mar 31 16:09:29 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003315.html">[MSEide-MSEgui-talk] DB news in trunk
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3311">[ date ]</a>
+              <a href="thread.html#3311">[ thread ]</a>
+              <a href="subject.html#3311">[ subject ]</a>
+              <a href="author.html#3311">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Named &quot;inteldrmfb&quot;, works well on integrated Intel GPUs.
+
+Assumes that DRM is in kernel config &amp; GPU specific DRM setting is also in  
+the config. And no framebuffer drivers should activate on loading LINUX.
+
+Kernel boot parameters &quot;video=VGA-1:X_RESxY_RES&quot; &amp; &quot;i915.modeset=1&quot; make  
+all the magic for Intel :)
+
+Xorg's driver for that is &quot;intel&quot; (OpenGL compatible) or &quot;fbdev&quot; (no  
+OpenGL).
+
+Helped me a lot to get native 1366x786 screen resolution.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003315.html">[MSEide-MSEgui-talk] DB news in trunk
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3311">[ date ]</a>
+              <a href="thread.html#3311">[ thread ]</a>
+              <a href="subject.html#3311">[ subject ]</a>
+              <a href="author.html#3311">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

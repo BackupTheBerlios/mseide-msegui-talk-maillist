@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] New Repaz updated!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20New%20Repaz%20updated%21&In-Reply-To=%3CAANLkTi%3DgCiyFBPim7Z6mAct_N15dfq0Mx_s0u_Jn66gr%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002939.html">
+   <LINK REL="Next"  HREF="002942.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] New Repaz updated!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20New%20Repaz%20updated%21&In-Reply-To=%3CAANLkTi%3DgCiyFBPim7Z6mAct_N15dfq0Mx_s0u_Jn66gr%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] New Repaz updated!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Tue Mar  1 22:22:25 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002939.html">[MSEide-MSEgui-talk] Form on top/front Windows.
+</A></li>
+        <LI>Next message: <A HREF="002942.html">[MSEide-MSEgui-talk] New Repaz updated!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2941">[ date ]</a>
+              <a href="thread.html#2941">[ thread ]</a>
+              <a href="subject.html#2941">[ subject ]</a>
+              <a href="author.html#2941">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I change all printing and exporting with libcairo, currently OSPrinter
+is deleted and I create new component TUniversalPrinter. This new
+component can print in Windows GDI printer, CUPS, export to PDF, PNG,
+SVG and PostScript. It's only 2 file (as IvankoB like) :)
+
+All unproportional drawing in printer is fixed now with all printer
+type, except in printing text in dot matrix printer, but it can fixed
+with check &quot;Print text as graphic&quot; in printer dialog.
+But for RAW printing all is OK.
+
+Hi Martin, but I got some trouble. I hope you can help :
+1) I can translate gui_fillarc in libcairo, I try with some way but
+still got problem, but in gui_drawarc it's OK. Please you update from
+SVN and open RepazDemo.
+* &quot;Connect DB&quot;, choose &quot;Chart&quot; from repaz file, than click preview.
+* please you click in chart area in preview form to change chart type
+to Pie Chart.
+* export it as PDF os PS.
+* The pie chart is different with preview. But if you set unactive in
+cairo_fillarc procedure, you can see in draw arc is OK.
+
+2) What is graphic type in stockbitmapty?
+I got different result in PDF and PostScript, but with some procedure
+(cairoimage), I can convert tsimplebitmap to cairo image.
+
+Thanks
+
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002939.html">[MSEide-MSEgui-talk] Form on top/front Windows.
+</A></li>
+	<LI>Next message: <A HREF="002942.html">[MSEide-MSEgui-talk] New Repaz updated!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2941">[ date ]</a>
+              <a href="thread.html#2941">[ thread ]</a>
+              <a href="subject.html#2941">[ subject ]</a>
+              <a href="author.html#2941">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

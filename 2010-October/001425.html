@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%20for%20arm-linux%20%28Android%29&In-Reply-To=%3CAANLkTimRskFM9X%2B4M2%2BS78tKdjt-qFHm16QRs%2B3fL0e0%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001426.html">
+   <LINK REL="Next"  HREF="001433.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%20for%20arm-linux%20%28Android%29&In-Reply-To=%3CAANLkTimRskFM9X%2B4M2%2BS78tKdjt-qFHm16QRs%2B3fL0e0%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Tue Oct 12 19:22:42 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001426.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+        <LI>Next message: <A HREF="001433.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1425">[ date ]</a>
+              <a href="thread.html#1425">[ thread ]</a>
+              <a href="subject.html#1425">[ subject ]</a>
+              <a href="author.html#1425">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I can't compile MSEgui for arm-linux in msebits.pas at :
+
+
+function scaleexp10(const value: currency; const exp: integer): currency;
+begin
+{$ifdef FPC}
+ if exp &lt; 0 then begin
+  int64(result):= int64(value) div int64exp10ar[-exp];
+ end
+ else begin
+  int64(result):= int64(value) * int64exp10ar[exp];
+ end;
+
+Than I change to this and OK:
+
+
+function scaleexp10(const value: currency; const exp: integer): currency;
+var
+ int1: int64;
+begin
+{$ifdef FPC}
+ if exp &lt; 0 then begin
+  int1:= int64(value) div int64exp10ar[-exp];
+ end
+ else begin
+  int1:= int64(value) * int64exp10ar[exp];
+ end;
+ result:= int64(int1);
+
+And I got error to at :
+
+
+procedure scaleexp101(var value: currency; const exp: integer);
+begin
+{$ifdef FPC}
+ if exp &lt; 0 then begin
+  int64(value):= int64(value) div int64exp10ar[-exp];
+ end
+ else begin
+  int64(value):= int64(value) * int64exp10ar[exp];
+ end;
+{$else}
+
+And I change to this than OK :
+
+
+procedure scaleexp101(var value: currency; const exp: integer);
+var
+ int1: int64;
+begin
+{$ifdef FPC}
+ if exp &lt; 0 then begin
+  int1:= int64(value) div int64exp10ar[-exp];
+ end
+ else begin
+  int1:= int64(value) * int64exp10ar[exp];
+ end;
+ value:= int64(int1);
+
+BTW, my experiment in Android did'nt success, but only on linking. I
+think this error in toolchain library.
+
+Any MSEgui users have success compile MSEgui for Android?
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001426.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+	<LI>Next message: <A HREF="001433.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1425">[ date ]</a>
+              <a href="thread.html#1425">[ thread ]</a>
+              <a href="subject.html#1425">[ subject ]</a>
+              <a href="author.html#1425">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

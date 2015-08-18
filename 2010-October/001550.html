@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] HOME directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C20101024162546.a00fbe74.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001549.html">
+   <LINK REL="Next"  HREF="001542.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] HOME directory</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C20101024162546.a00fbe74.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] HOME directory">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Oct 24 16:25:46 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001549.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+        <LI>Next message: <A HREF="001542.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1550">[ date ]</a>
+              <a href="thread.html#1550">[ thread ]</a>
+              <a href="subject.html#1550">[ subject ]</a>
+              <a href="author.html#1550">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Sun, 24 Oct 2010 09:42:15 +0200:
+
+&gt;<i> &gt;&gt; Should sys_getapphomedir() return &quot;&lt;home&gt;/.config/&quot; if it exists on
+</I>&gt;<i> &gt;&gt; linux? &quot;
+</I>...
+&gt;<i> Where to get the application name? I don't think the binary name is
+</I>&gt;<i> correct because the binary can be renamed or several binaries belong to a
+</I>&gt;<i> common application with a common directory for configuration files. Maybe
+</I>
+Where does a Windows application get it? There must be some special source,
+if it knows when linux doesn't.
+
+&gt;<i> it is better the programmer adds the application directory himself?
+</I>
+I'd say so - maybe a &quot;macro&quot; variable is in order here? (It could be preset
+with the same value as the project binary name on project creation. Or the
+equivalent to what's done under Windows.)
+
+&gt;<i> MSEide and MSEi18n have &quot;^/.mseide&quot; in tstatfile.filedir for example.
+</I>
+This looks correct.
+
+[open desktop standard]
+&gt;<i> In this case one should not use &quot;^/&quot;. It is rather difficult for MSEgui to
+</I>&gt;<i> check if an application confirms to the open desktop standard. ;-)
+</I>
+No, there's no reason to refrain from using this construct - if the &quot;^&quot;
+returns the user's home directory, the writer of a conformant application
+need only append the &quot;.config/&quot; himself - who else would know, after all?
+
+&gt;<i> &gt;&gt; On Windows it returns the result of SHGetFolderPathW() with
+</I>&gt;<i> &gt;&gt; CSIDL_APPDATA.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; On Windows, Microsoft thinks for you.  ];-&gt;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> That's not always bad. :-)
+</I>
+It just restricts you to only that one way Microsoft deems warranted. If
+you need something else, you're out of luck. That's why there are so few
+alternative desktop environments and only rather few extensions for Windows.
+Windows may be an easy going way for many - but it is a road without
+branches to explore.
+
+&gt;<i> Now we have to find the equivalence for Linux.
+</I>
+I'm sure it's simple. Like &quot;just take the user's home directory&quot;.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001549.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+	<LI>Next message: <A HREF="001542.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1550">[ date ]</a>
+              <a href="thread.html#1550">[ thread ]</a>
+              <a href="subject.html#1550">[ subject ]</a>
+              <a href="author.html#1550">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823205120.3c9fd3e2.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000764.html">
+   <LINK REL="Next"  HREF="000640.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823205120.3c9fd3e2.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 23 20:51:20 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000764.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000640.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 23 Aug 2010 14:43:49 +0200:
+
+&gt;<i> &gt; My latest problem, concerning the background activity of an application
+</I>&gt;<i> &gt; ceasing with time if not constantly &quot;retriggered&quot; by a separately
+</I>...
+&gt;<i> It was a problem in your code or in MSEgui? Do you use Linux signals in
+</I>
+The handler problem was my fault - I probabely mixed up some fields of a
+&quot;struct&quot; when assigning the value to another variable.
+It does work now, so I don't have to keep a modified version of your unit
+in the project which had to be kept up to date when the code base changed.
+
+&gt;<i> your code? IIRC you had the problem that the MSEgui timer stopped working
+</I>&gt;<i> after some hours of run time. Is it OK now?
+</I>
+Well, I really cannot tell...
+For one, I'm just now again busy at this project, and there are &quot;a few&quot;
+other places to observe, so it will take some time to determine the state
+with any confidence.
+On the other hand, I did run a test quite some time ago, after you had
+annouced an important change to the timer handling, and it did seem to be
+much better. But there were still problems, and so I kept the auxiliary
+&quot;retrigger&quot; code for the time being. It's not really easy to perform
+prolonged tests, too, as my customer doesn't have a test facility, so this
+would have to be done at the end user's site as long as the appliances
+aren't handed over yet. I cannot really do it on my machine either, though
+I have set up a test environment (virtualized), but I cannot let the
+machine run constantly for days on end, which was needed for reliable
+results. But I will have to check this out - I just don't know when.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000764.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000640.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

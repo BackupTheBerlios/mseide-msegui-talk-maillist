@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image processing - resize, thumbnails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci55i07%24v3r%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000828.html">
+   <LINK REL="Next"  HREF="000833.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image processing - resize, thumbnails</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci55i07%24v3r%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Image processing - resize, thumbnails">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 13:10:22 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000828.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+        <LI>Next message: <A HREF="000833.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;&gt;<i> MSEgui &quot;on board&quot; facility is tbitmap.paint with appropriate
+</I>&gt;&gt;<i> aalignment parameter (al_stretchx,al_stretchy,al_fit,al_intpol).
+</I>&gt;&gt;<i>
+</I>&gt;<i> As I can see, this primarily applies to how the image is shown in the
+</I>&gt;<i> application, not the size of the image as such.
+</I>&gt;<i> 
+</I>&gt;<i> My idea was to change the size of an image, eventually loaded as a
+</I>&gt;<i> stream from a blop field in my MySQL database, resize it, and store the
+</I>&gt;<i> new picture in another blop something like this:
+</I>&gt;<i> 
+</I>Use &quot;theoriginalsizebitmap.paint(thenewsizebitmap.canvas,...&quot;. tmaskedbitmap
+has stretch() function for convenience, tmsegraphicfield has loadbitmap()
+and storebitmap().
+
+&gt;<i> Another problem I have faced in my testing is (if we look apart from the
+</I>&gt;<i> nonexistent image.resize) that the program compiles ok, but if trying to
+</I>&gt;<i> run resizepic I get an error:
+</I>&gt;<i> 
+</I>&gt;<i> Graphic format error (probably the Jpg.bitmap.LoadFromStream(Stream) is
+</I>&gt;<i> the culprit, as the remaining streamhandling works.
+</I>&gt;<i> 
+</I>Do you have mseformatjpg in  uses?
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000828.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+	<LI>Next message: <A HREF="000833.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

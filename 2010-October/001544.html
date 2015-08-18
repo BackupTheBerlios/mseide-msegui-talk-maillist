@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] HOME directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C201010231420.54973.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001543.html">
+   <LINK REL="Next"  HREF="001545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] HOME directory</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3C201010231420.54973.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] HOME directory">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Oct 23 14:20:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001543.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+        <LI>Next message: <A HREF="001545.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1544">[ date ]</a>
+              <a href="thread.html#1544">[ thread ]</a>
+              <a href="subject.html#1544">[ subject ]</a>
+              <a href="author.html#1544">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 23 October 2010 02:25:40 Sieghard wrote:
+
+&gt;<i> &quot;&lt;home&gt;/.config/&quot; (aka &quot;~/.config&quot;) is meant for well organized _user_
+</I>&gt;<i> _dependend_ settings storage of programs installed on the system.
+</I>&gt;<i> Most of the programs (there _are_ already some &quot;wild crocodiles&quot; again)
+</I>&gt;<i> keep to the convention that they should put their data into a subdirectory
+</I>&gt;<i> with the same name as the binary.
+</I>&gt;<i> So if &quot;sys_getapphomedir()&quot; is by any means meant for storing _user_
+</I>&gt;<i> _dependend_ settings, it should at least return &quot;~/.config/&lt;program name&gt;&quot;.
+</I>&gt;<i> If ths should be intended to store anything of system-wide validity, as the
+</I>&gt;<i> &quot;sys&quot;-part in its name suggests, this is a blatantly wrong place.
+</I>&gt;<i> You might contemplate using some subdirectory of the new waste dump area
+</I>&gt;<i> named &quot;/usr/share&quot; on linux, then.
+</I>
+Thanks for explanation. &quot;sys_&quot; is the prefix for system dependent procedures 
+located in lib/common/kernel/&lt;thesystem&gt;/msesysintf.pas. Analogous is &quot;gui_&quot; 
+the prefix for system dependent procedures located in 
+lib/common/kernel/&lt;thesystem&gt;/mseguiintf.pas.
+&quot;^/&lt;thedirectorypath&gt;&quot; -&gt; sys_getapphomedir&lt;thedirectorypath&gt; is mainly used 
+in tstatfile.filedir property. What do you suggest should be supplied 
+for &quot;^/&quot; in Linux and Windows?
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001543.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+	<LI>Next message: <A HREF="001545.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1544">[ date ]</a>
+              <a href="thread.html#1544">[ thread ]</a>
+              <a href="subject.html#1544">[ subject ]</a>
+              <a href="author.html#1544">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

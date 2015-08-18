@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Win89 gdbserver
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Win89%20gdbserver&In-Reply-To=%3Ci8crgq%24g6t%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001355.html">
+   <LINK REL="Next"  HREF="001359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Win89 gdbserver</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Win89%20gdbserver&In-Reply-To=%3Ci8crgq%24g6t%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Win89 gdbserver">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Oct  4 17:30:07 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001355.html">[MSEide-MSEgui-talk] Win89 gdbserver
+</A></li>
+        <LI>Next message: <A HREF="001359.html">[MSEide-MSEgui-talk] Win89 gdbserver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1358">[ date ]</a>
+              <a href="thread.html#1358">[ thread ]</a>
+              <a href="subject.html#1358">[ subject ]</a>
+              <a href="author.html#1358">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 04.10.2010 16:51, Ivanko B wrote:
+
+&gt;&gt;<i> How do you start gdbserver? 
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> - put D:\mingw32\bin to the PATH variable &amp; rebooted
+</I>&gt;<i> - run the FAR manager &amp; went to the MSEide.exe's directory
+</I>
+What is &quot;FAR manger&quot;?
+
+&gt;<i> - called &quot;gdbserver 192.168.1.2:9999 mseide.exe&quot;, on the WinXP
+</I>
+What means &quot;called&quot;?
+&gt;<i> 
+</I>&gt;<i> 1) non-default IP-filreing in TCP/IP settings
+</I>
+What is &quot;IP-filreing&quot;?
+
+&gt;<i> 2) 3-rd parties - avtiviruses, s/w firewalls like Comodo,.. 
+</I>&gt;<i> 
+</I>I don't have a SW firewall and not even gdb/gdbserver localhost access
+works. With gdbserver 7.1 the inferrior crashes with &quot;Die Anwendung
+konnte nicht richtig initialisiert werden (0x80000003)...&quot;.
+And 'Interrupt Target' does not work with gdb 7.1, ARGH!!!!
+Cygwin gdbserver 6.8 does not crash but mseide.exe is not stopped and
+eats 25% CPU load. gdb:
+&quot;
+GNU gdb 6.8.0.20080328-cvs (cygwin-special)
+Copyright (C) 2008 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later
+&lt;<A HREF="http://gnu.org/licenses/gpl.html">http://gnu.org/licenses/gpl.html</A>&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i686-pc-cygwin&quot;.
+(gdb) target remote 127.0.0.1:9999
+127.0.0.1:9999: Operation not permitted.
+(gdb)
+&quot;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001355.html">[MSEide-MSEgui-talk] Win89 gdbserver
+</A></li>
+	<LI>Next message: <A HREF="001359.html">[MSEide-MSEgui-talk] Win89 gdbserver
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1358">[ date ]</a>
+              <a href="thread.html#1358">[ thread ]</a>
+              <a href="subject.html#1358">[ subject ]</a>
+              <a href="author.html#1358">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeYiQs5myRn7MXn614Pm%2BBrPgC%3D-XeX9xyxPUBwtndH7_w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003964.html">
+   <LINK REL="Next"  HREF="003973.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeYiQs5myRn7MXn614Pm%2BBrPgC%3D-XeX9xyxPUBwtndH7_w%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Sat Jul 30 01:01:14 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003964.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003973.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3966">[ date ]</a>
+              <a href="thread.html#3966">[ thread ]</a>
+              <a href="subject.html#3966">[ subject ]</a>
+              <a href="author.html#3966">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jul 29, 2011 at 7:15 PM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> On 29 July 2011 23:13, Marcos Douglas wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I agree with KISS principle... but an OPF serves to abstract the
+</I>&gt;&gt;<i> persistence making the code easier to read and reuse.
+</I>&gt;<i>
+</I>&gt;<i> Exactly... What can be easier than this:
+</I>&gt;<i>
+</I>&gt;<i> var
+</I>&gt;<i> &#160;lCustomer: TCustomer
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;lCustomer := TCustomer.Create;
+</I>&gt;<i> &#160;lCustomer.Load('xxx');
+</I>&gt;<i> &#160; //....
+</I>&gt;<i> &#160;lCustomer.Save;
+</I>&gt;<i> &#160;//...
+</I>
+I agree.
+
+&gt;<i> or....
+</I>&gt;<i>
+</I>&gt;<i> var
+</I>&gt;<i> &#160;lList: TCustomerList;
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;lList := TCustomerList.Create;
+</I>&gt;<i> &#160;lList.Filter.GreaterThan('JoinDate', EncodeDate(2010, 1, 1));
+</I>&gt;<i> &#160;lList.Read;
+</I>&gt;<i> &#160;// we now have a list of customer objects who joined us since 2010-01-01
+</I>
+Humm... agree in part. If you have a simple list, ok... but if you
+have a JOIN, complex filters, etc these classes lose their meaning.
+IMHO is better transform a ResultSet (TDataSet) in classes - or list
+of classes - with helper functions and parameters, ie, you ask to
+these functions what result (classes, lists, etc) do you want.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003964.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003973.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3966">[ date ]</a>
+              <a href="thread.html#3966">[ thread ]</a>
+              <a href="subject.html#3966">[ subject ]</a>
+              <a href="author.html#3966">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

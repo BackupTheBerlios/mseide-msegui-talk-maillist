@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823202237.af353997.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000761.html">
+   <LINK REL="Next"  HREF="000770.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823202237.af353997.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 23 20:22:37 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000761.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000770.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 23 Aug 2010 12:37:54 +0200:
+
+&gt;<i> &gt;  '/usr/bin/ld: warning: link.res contains output sections;
+</I>&gt;<i> &gt;   did you forget -T?'.
+</I>...
+&gt;<i> It is as designed by FPC. -k-T can not be used because FPC needs the
+</I>&gt;<i> default linker script of the OS AFAIK.
+</I>
+This, as I found, would even require a special linker script as a
+parameter, to be used by the linker to build the program. The default
+script seems to be a bit overly eager, then...
+At least somewhat distracting, though it seems to be inconsequential.
+
+&gt;<i> &gt; BTW, a couple remarks about the IDE window management:
+</I>...
+&gt;<i> It is not arbitrary but the layout of the MSEide *.mfm files at compile
+</I>&gt;<i> time of MSEide.
+</I>
+Certainly there must be a basic layout somewhere - it's just the arbitrary
+user doesn't know about it, so it seems arbitrary to him. So this cannot be
+customized then, it seems? Just a little inconvenient...
+
+&gt;<i> use a &quot;universal&quot; project if you don't want to setup different *.prj files
+</I>&gt;<i> for different projects.
+</I>
+I _did_ create separate project files, it's just that I'm used to cleanly
+close the work I'm at if switching to something else, which leaves me to
+navigate some directories until I get at the point I left off next time.
+
+&gt;<i> 'Project'-'Save as copy' stores the *.prj file only. MSEide does not know
+</I>&gt;<i> which files belong to a project, this is a major difference to other
+</I>&gt;<i> IDE's.
+</I>
+It sure is.
+
+&gt;<i> &gt; Saving the main file under a different 
+</I>&gt;<i> &gt; name did not save the form file under that name,
+</I>&gt;<i> 
+</I>&gt;<i> Works for me with form units. The main (program) file has no direct
+</I>&gt;<i> relationship to *.mfm files.
+</I>
+This happened even with the form unit file.
+
+&gt;<i> In order to manipulate settings in *.mfm files add the form unit
+</I>&gt;<i> to 'Project'-'Tree'-'Pascal Units', classtype, instance variable name and
+</I>&gt;<i> component name can be changed in the list.
+</I>
+Ok, I'll try to check this out - I didn't give much notice to the &quot;Project
+tree&quot; feature as yet, but if this can help, I might be tempted to use it.
+But I'm afraid, it will have to wait some yet...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000761.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000770.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

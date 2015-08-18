@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100826214402.88cc3ff0.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000821.html">
+   <LINK REL="Next"  HREF="000781.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100826214402.88cc3ff0.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Thu Aug 26 21:44:02 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000821.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000781.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#847">[ date ]</a>
+              <a href="thread.html#847">[ thread ]</a>
+              <a href="subject.html#847">[ subject ]</a>
+              <a href="author.html#847">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Thu, 26 Aug 2010 07:14:40 +0200:
+
+&gt;<i> &gt; process has to replace the current one _seamlessly_. That's why I
+</I>&gt;<i> &gt; deinitialize most everything except the window just before executing
+</I>&gt;<i> &gt; the new process, do a fork there and have the child process keep the
+</I>...
+&gt;<i> What I do not understand, why does &quot;application.terminated:= true;&quot; not
+</I>&gt;<i> work?
+</I>
+It does close and remove the form window(s) from the screen _before_ the
+program terminates and can be replaced by another one. That is _not_
+seamless, and there is a time when no application display is visible.
+Though this is not a security problem here because of very limited input
+devices, it gives the impression that the application has terminated and
+had to be restarted (which in fact has happened indeed), which should be
+avoided because it's somewhat distracting for the users.
+Terminating the application, thus removing the window(s) may only happen
+_after_ the new process has built and displayed its window(s).
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000821.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000781.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#847">[ date ]</a>
+              <a href="thread.html#847">[ thread ]</a>
+              <a href="subject.html#847">[ subject ]</a>
+              <a href="author.html#847">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

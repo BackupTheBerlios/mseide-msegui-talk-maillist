@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%2BPODPISKA&In-Reply-To=%3Cu5l696dvkbrf3d61256n294blvrr046dak%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001069.html">
+   <LINK REL="Next"  HREF="001082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%2BPODPISKA&In-Reply-To=%3Cu5l696dvkbrf3d61256n294blvrr046dak%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Fri Sep 17 13:51:19 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001069.html">[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="001082.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1070">[ date ]</a>
+              <a href="thread.html#1070">[ thread ]</a>
+              <a href="subject.html#1070">[ subject ]</a>
+              <a href="author.html#1070">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Happened at assigning TREFVIEWFORM.qryContents.controller.options +=
+dso_stringmemo. Just before that, me created a descendant of
+TREFVIEWFORM_STRINGCODE and assigned a non-epmty text to its
+qryContents.SQL. 
+
+The stack:
+
+#0  00000000 :0 ??()
+#1  0047F627 :0 CLASSES_TREADER_$__FIXUPREFERENCES()
+#2  064F5DE8 :0 ??()
+#3  04D97230 :0 ??()
+#4  0006E408 :0 ??()
+#5  00574973 msedesigner.pas:1185
+TDESCENDENTINSTANCELIST__RESTORECHANGES(AMODULE=0x4dfcc40,
+INFOPO=0x4deea90, ASTREAM=0x65f3de0, this=0xb4830)
+#6  00574D8F msedesigner.pas:1296
+TDESCENDENTINSTANCELIST__MODULEMODIFIED(AMODULE=0x4c57400,
+this=0xb4830)
+#7  00576CCC msedesigner.pas:2121
+TMODULELIST__COMPONENTMODIFIED(ACOMPONENT=0x4d5b990, this=0x6e408)
+#8  00578765 msedesigner.pas:2882
+TDESIGNER__COMPONENTMODIFIED(COMPONENT=0x4d5b990, this=0x127fa0)
+#9  0044656A objectinspector.pas:1045 COMPMODIFIED(parentfp=0x435fa90)
+#10  00446404 objectinspector.pas:1105
+TOBJECTINSPECTORFO__PROPERTYMODIFIED(SENDER=0x6502978, this=0xa73b8)
+#11  005847AD msepropertyeditors.pas:1993
+TPROPERTYEDITOR__MODIFIED(this=0x6502978)
+#12  0058378E msepropertyeditors.pas:1663
+TPROPERTYEDITOR__SETBITVALUE(VALUE=true, BITINDEX=1, this=0x6502978)
+#13  00585FEC msepropertyeditors.pas:2477
+TSETELEMENTEDITOR__SETVALUE(VALUE=0x7813d4, this=0x6502978)
+#14  004446DC objectinspector.pas:582
+TOBJECTINSPECTORFO__VALUESSETVALUE(SENDER=0xac538, AVALUE=0x7813d4,
+ACCEPT=true, this=0xa73b8)
+#15  005A0657 mselistbrowser.pas:2467
+TITEMEDIT__DOSETVALUE(AVALUE=0x7813d4, ACCEPT=true, this=0xac538)
+#16  005A06EE mselistbrowser.pas:2481
+TITEMEDIT__TEXTTOVALUE(ACCEPT=true, QUIET=false, this=0xac538)
+#17  0049658F msedataedits.pas:1334
+TCUSTOMDATAEDIT__CHECKVALUE(QUIET=false, this=0xac538)
+#18  004977C6 msedataedits.pas:1676
+TCUSTOMDATAEDIT__SETDROPDOWNTEXT(AVALUE=0x7813d4, DOCHECKVALUE=true,
+CANCELED=false, AKEY=KEY_NONE, this=0xac538)
+#19  00557C19 msedropdownlist.pas:969
+TCUSTOMDROPDOWNCONTROLLER__SETDROPDOWNTEXT(AVALUE=0x7813d4,
+DOCHECKVALUE=true, CANCELED=false, AKEY=KEY_NONE, this=0xf4cd0)
+#20  00558ED1 msedropdownlist.pas:1346
+TCUSTOMDROPDOWNLISTCONTROLLER__ITEMSELECTED(INDEX=1, AKEY=KEY_NONE,
+this=0xf4cd0)
+#21  0055897F msedropdownlist.pas:1239
+TCUSTOMDROPDOWNLISTCONTROLLER__RECEIVEEVENT(EVENT=0x651d878,
+this=0xf4cd0)
+#22  004F5B9A mseevent.pas:189 TOBJECTEVENT__DELIVER(this=0x651d878)
+#23  0042E623 msegui.pas:14793
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=0x771d8)
+#24  0042F44C msegui.pas:15220
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=0x771d8)
+#25  00517A98 mseapplication.pas:1348
+TCUSTOMAPPLICATION__RUN(this=0x771d8)
+#26  004025D7 mseide.pas:61 main()
+
+
+PS: The PODIPSKA is a good bugs provocator :)
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001069.html">[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="001082.html">[MSEide-MSEgui-talk] SigSegv in the IDE+PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1070">[ date ]</a>
+              <a href="thread.html#1070">[ thread ]</a>
+              <a href="subject.html#1070">[ subject ]</a>
+              <a href="author.html#1070">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

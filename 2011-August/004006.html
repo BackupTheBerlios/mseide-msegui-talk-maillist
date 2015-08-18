@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeaDnmZjL3xVpCRmTsUGTeYysC_LmzUwHMGmyQUUdqc5sA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004004.html">
+   <LINK REL="Next"  HREF="004007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeaDnmZjL3xVpCRmTsUGTeYysC_LmzUwHMGmyQUUdqc5sA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Mon Aug  1 14:01:30 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004004.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004007.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4006">[ date ]</a>
+              <a href="thread.html#4006">[ thread ]</a>
+              <a href="subject.html#4006">[ subject ]</a>
+              <a href="author.html#4006">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Aug 1, 2011 at 3:57 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> I never work or see a TDataset instance. My application code *only*
+</I>&gt;<i> works with Objects. eg: TCustomerList, TCustomer, TAddressList,
+</I>&gt;<i> TAddress, TCountry, TTransaction (an accounting transaction) etc.
+</I>
+Report libs needs TDataSet as like as some components eg Lookup***
+
+&gt;&gt;<i> If you don't use TDataSet then you do not uses DBGrid, right?
+</I>&gt;&gt;<i> So which component - community maintained - I should use, StringGrid?
+</I>&gt;<i>
+</I>&gt;<i> I find DB-aware versions of the same non-db component, just another
+</I>&gt;<i> place where bugs can creep in. Why have two of each component? Db and
+</I>&gt;<i> no-DB versions? Also, there are many more non-db components around (at
+</I>&gt;<i> least this is true in Delphi), so why can't we use those too in a DB
+</I>&gt;<i> component.
+</I>
+Very true and I agree completly.
+
+&gt;<i> This is the type of questions I asked my self. I then went ahead and
+</I>&gt;<i> designed MGM which allows me to make any component (GUI widget)
+</I>&gt;<i> &quot;object-aware&quot; without having to create custom descendants of those
+</I>&gt;<i> components.
+</I>&gt;<i> MGM uses two design patterns (Mediator and Observer) to make any
+</I>&gt;<i> component object-aware. The updating process in 2 directions as well.
+</I>&gt;<i> Update the GUI, and the related object is updated. Update the object and
+</I>&gt;<i> all GUI components that observe it are updated. All automatically.
+</I>
+But to do this you need to implement procedures for each event, eg to
+a TEdit you implements the OnChange event, etc)?
+I do something more simpler: I have 2 procedures (to simplify the
+idea) to read and to write properties in the widgets. Depends of the
+hierarchy of classes, these procedures get/set the property that make
+sense (eg Text for TEdit, Check for TRadioButton, etc).
+I create my business object; call the procedure that convert Object to
+Form (widgets); and the inverse is true for save the data of widgets.
+All this using RTTI.
+
+&gt;<i> So yes, I use a StringGrid to display grid related data. And as I have
+</I>&gt;<i> shown earlier, I can set that up with 4 lines of code. Inline editing is
+</I>&gt;<i> also possible, but again I prefer a dedicated &quot;edit form&quot; to edit my
+</I>&gt;<i> data. My users prefer this too. Otherwise I could just as well having
+</I>&gt;<i> given them an Excel spreadsheet instead of my application. They don't
+</I>&gt;<i> want to edit ugly grids directly.
+</I>
+I prefer a dedicated form to edit too.
+
+&gt;&gt;<i> It is a pain use it!
+</I>&gt;<i>
+</I>&gt;<i> Not at all. fpGUI's grids can have many customizations applied to them
+</I>&gt;<i> too, so that they don't look like a plain ugly grid. Also in the case of
+</I>&gt;<i> grids, if I wanted to find out what object is selected (again I only
+</I>&gt;<i> work with objects, not grid cell text or TDataset etc.), I simply ask
+</I>&gt;<i> the Mediator that manages that grid, to return the selected object.
+</I>&gt;<i>
+</I>&gt;<i> eg:
+</I>&gt;<i> procedure TMyListForm.EditDataObject(Sender: TObject);
+</I>&gt;<i> var
+</I>&gt;<i> &#160;lData: TMyDataObject;
+</I>&gt;<i> &#160;mediator: TtiMediatorView;
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;mediator := FMediator.FindByComponent(MyStringGrid).Mediator;
+</I>&gt;<i> &#160;lData := med.SelectedObject;
+</I>&gt;<i> &#160;EditData(lData); // launch an edit form to edit lData
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>&gt;<i> FMediator is a TFormMediator which manages the whole form. Each
+</I>&gt;<i> individual GUI component has a mediator too - the TFormMediator creates
+</I>&gt;<i> and manages those individual &quot;property&quot; mediators for me, so I don't
+</I>&gt;<i> have to worry about that. So in the code above I simply ask the Form
+</I>&gt;<i> Mediator to return the Mediator for the StringGrid in question. I then
+</I>&gt;<i> ask that StringGrid Mediator to return the selected object.
+</I>&gt;<i>
+</I>&gt;<i> The above code is pretty much how all my form units look like. They
+</I>&gt;<i> don't contain much code, because forms are really just a way to
+</I>&gt;<i> visualize your data. All the inner workings of my business rules are
+</I>&gt;<i> coded inside the business objects. So too all the loading and saving of
+</I>&gt;<i> data to a database is managed by tiOPF. That also means most of my code
+</I>&gt;<i> is non-gui code, thus I can easily unit test my code too - resulting in
+</I>&gt;<i> much less defects/bugs.
+</I>
+Yes, pretty much.
+But I have two questions:
+1. A DataSet with 1000 registers is not more lean that 1000 instances
+of objects?
+2. You need to write code to register a Mediator with a widget or you
+just put the widget on the form and the framework do this for you?
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004004.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004007.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4006">[ date ]</a>
+              <a href="thread.html#4006">[ thread ]</a>
+              <a href="subject.html#4006">[ subject ]</a>
+              <a href="author.html#4006">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

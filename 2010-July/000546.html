@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3C4C439E87.1030703%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000520.html">
+   <LINK REL="Next"  HREF="000497.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fwd: Re: how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fwd%3A%20Re%3A%20how%20to%20use%20odbc&In-Reply-To=%3C4C439E87.1030703%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fwd: Re: how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Mon Jul 19 02:38:31 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000520.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000497.html">[MSEide-MSEgui-talk] Disable creation of .bak files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#546">[ date ]</a>
+              <a href="thread.html#546">[ thread ]</a>
+              <a href="subject.html#546">[ subject ]</a>
+              <a href="author.html#546">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+  tmsesqlquery1.ParseSQL:=false;
+       tmsesqlquery1.StatementType:=stSelect;
+       tmsesqlquery1.controller.options:= 
+tmsesqlquery1.controller.options+[dso_noprepare];
+   tmsesqlquery1.SQL.text:=' select top 1 * into #yy from r_sale  select 
+top 1 *   from  #yy ';
+     tmsesqlquery1.Active:=true; 
+
+
+&#26080;&#25928;&#30340;=  Invalid
+Could not fetch new row from result set ODBC error details: Record 1: 
+SqlState: 24000; NativeError: 0; Message: [Microsoft][SQL Native Client] 
+&#26080;&#25928;&#30340;?
+An exception occurred at $0051A4E0 :
+EODBCException : Could not fetch new row from result set ODBC error 
+details: Record 1: SqlState: 24000; NativeError: 0; Message: 
+[Microsoft][SQL Native Client]&#26080;&#25928;&#30340;?
+   $0051A4E0  ODBCCHECKRESULT,  line 353 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $0051BB1F  TODBCCONNECTION__FETCH,  line 888 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $004DA3C8  TSQLQUERY__FETCH,  line 2656 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004C2FDB  TMSEBUFDATASET__LOADBUFFER,  line 2271 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004C2BA8  TMSEBUFDATASET__GETNEXTPACKET,  line 2154 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004C25D5  TMSEBUFDATASET__GETRECORD,  line 1994 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004B3979
+   $004C9BF1  TMSEBUFDATASET__GETNEXTRECORD,  line 5421 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004B3A4F
+   $004B4252
+   $004B4008
+   $004C78F2  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004D9D97  TSQLQUERY__SETACTIVE,  line 2540 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004D60BC  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004D5847  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $0042F4AC  TMAINFO__ODBCCONN,  line 110 of main.pas
+   $0048623D  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000520.html">[MSEide-MSEgui-talk] Fwd: Re: how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000497.html">[MSEide-MSEgui-talk] Disable creation of .bak files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#546">[ date ]</a>
+              <a href="thread.html#546">[ thread ]</a>
+              <a href="subject.html#546">[ subject ]</a>
+              <a href="author.html#546">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] The IDE : SigSegbv when closing a project
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20The%20IDE%20%3A%20SigSegbv%20when%20closing%20a%20project&In-Reply-To=%3Curvj965e2012oohkge12661onld3gcdtpe%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001163.html">
+   <LINK REL="Next"  HREF="001167.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] The IDE : SigSegbv when closing a project</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20The%20IDE%20%3A%20SigSegbv%20when%20closing%20a%20project&In-Reply-To=%3Curvj965e2012oohkge12661onld3gcdtpe%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] The IDE : SigSegbv when closing a project">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed Sep 22 15:22:29 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001163.html">[MSEide-MSEgui-talk] &quot;Revert to inherited&quot; doesn't work for	tdbenumeditlb.dropdown.lookupbuffer
+</A></li>
+        <LI>Next message: <A HREF="001167.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1165">[ date ]</a>
+              <a href="thread.html#1165">[ thread ]</a>
+              <a href="subject.html#1165">[ subject ]</a>
+              <a href="author.html#1165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Happened on closing the PODPISKA project the inner IDE.
+Can't reproduce after several tries. 
+Just before, the PODOPISKA wasn't successfully built (on F9) - &quot;No
+source file in the command line&quot;. Me checked the project setting where
+saw lost directories setup then exited then...
+
+//------------------------
+
+#0  00406DE7 :0 fpc_ansistr_concat_multi()
+#1  0057C9D5 msedesigner.pas:4363 TDESIGNER__GETCOMPONENTDISPNAME()
+#2  0044678F objectinspector.pas:1138
+TOBJECTINSPECTORFO__COMPONENTDISPNAME()
+#3  00446627 objectinspector.pas:1117
+TOBJECTINSPECTORFO__UPDATECOMPONENTNAME()
+#4  00446CEC objectinspector.pas:1209
+TOBJECTINSPECTORFO__SELECTIONCHANGED()
+#5  005801DE msedesignintf.pas:1226
+TDESIGNNOTIFICATIONS__SELECTIONCHANGED()
+#6  00579B0B msedesigner.pas:3439 TDESIGNER__MODULEDESTROYED()
+#7  00576CD9 msedesigner.pas:2197 TMODULELIST__DELETE()
+#8  00576D18 msedesigner.pas:2204 TMODULELIST__REMOVEMODULEINFO()
+#9  0057C174 msedesigner.pas:4207 TDESIGNER__CLOSEMODULE()
+#10  00458CD1 main.pas:1909 TMAINFO__CLOSEMODULE()
+#11  00458E75 main.pas:1949 TMAINFO__CLOSEALL()
+#12  004592E5 main.pas:2055 TMAINFO__OPENPROJECT()
+#13  0045A13B main.pas:2270 TMAINFO__CLOSEPROJECTACTONEXECUTE()
+#14  00522BD6 mseact.pas:347 DOACTIONEXECUTE()
+#15  004A1D14 msemenus.pas:521 TCUSTOMMENU__CHECKEXEC()
+#16  0054272D msemenuwidgets.pas:1347 TPOPUPMENUWIDGET__ACTIVATEMENU()
+#17  00541E2A msemenuwidgets.pas:1152 TPOPUPMENUWIDGET__MOUSEEVENT()
+#18  00543B0A msemenuwidgets.pas:1882
+TCUSTOMMAINMENUWIDGET__MOUSEEVENT()
+#19  00429CE6 msegui.pas:12630 TWINDOW__DISPATCHMOUSEEVENT()
+#20  0042CB77 msegui.pas:14048
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT()
+#21  0042E5D6 msegui.pas:14778 TINTERNALAPPLICATION__EVENTLOOP()
+#22  0042F44C msegui.pas:15220 TINTERNALAPPLICATION__DOEVENTLOOP()
+#23  00517868 mseapplication.pas:1348 TCUSTOMAPPLICATION__RUN()
+#24  004025D7 mseide.pas:61 main()
+
+
+//----------------------
+
+function tdesigner.getcomponentdispname(const comp: tcomponent):
+string;
+                   //returns qualified name
+var
+ comp1: tcomponent;
+ bo1: boolean;
+ ch1: char;
+begin
+ result:= comp.Name;
+ ch1:= subcomponentsplitchar;
+// if not (cssubcomponent in comp.componentstyle) then begin
+//  ch1:= '.';
+// end;
+ comp1:= comp.owner;
+ while not ismodule(comp1) do begin
+  result:= comp1.Name + ch1 + result; &lt;&lt;&lt;&lt;&lt; HERE &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+  comp1:= comp1.Owner;
+//  if not (cssubcomponent in comp1.componentstyle) then begin
+//   ch1:= '.';
+//  end;
+ end;
+ bo1:= ismodule(comp);
+ if bo1 or ismodule(comp.owner) then begin
+  if csancestor in comp.componentstate then begin
+   if bo1 then begin
+    comp1:= comp;
+   end
+   else begin
+    comp1:= comp.owner;
+   end;
+   comp1:= fdescendentinstancelist.findancestor(comp1);
+   if comp1 &lt;&gt; nil then begin
+    result:= result+'&lt;'+comp1.name+'&gt;';
+   end;
+  end;
+ end;
+end;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001163.html">[MSEide-MSEgui-talk] &quot;Revert to inherited&quot; doesn't work for	tdbenumeditlb.dropdown.lookupbuffer
+</A></li>
+	<LI>Next message: <A HREF="001167.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1165">[ date ]</a>
+              <a href="thread.html#1165">[ thread ]</a>
+              <a href="subject.html#1165">[ subject ]</a>
+              <a href="author.html#1165">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

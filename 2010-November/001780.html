@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] continue from gue_notlocked
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20continue%20from%20gue_notlocked&In-Reply-To=%3Cib2q1r%24h64%242%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001774.html">
+   <LINK REL="Next"  HREF="001785.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] continue from gue_notlocked</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20continue%20from%20gue_notlocked&In-Reply-To=%3Cib2q1r%24h64%242%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] continue from gue_notlocked">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Nov  6 06:48:28 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001774.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+        <LI>Next message: <A HREF="001785.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1780">[ date ]</a>
+              <a href="thread.html#1780">[ thread ]</a>
+              <a href="subject.html#1780">[ subject ]</a>
+              <a href="author.html#1780">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>MSEide MSEgui wrote:
+
+&gt;<i> If I unactivated &quot;Stop on exception&quot;, I got SIGSEGV at :
+</I>&gt;<i> 
+</I>&gt;<i> procedure tobjectevent.deliver;
+</I>&gt;<i> begin
+</I>&gt;<i>  if finterface &lt;&gt; nil then begin
+</I>&gt;<i>   ievent(finterface).receiveevent(self); --------------&gt;here
+</I>&gt;<i>  end;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> #0  080F1B57 mseevent.pas:211 TOBJECTEVENT__DELIVER(this=&lt;error
+</I>&gt;<i> reading variable&gt;)
+</I>&gt;<i> #1  0808912F msegui.pas:14959
+</I>&gt;<i> TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0xb6e8cc60, ONCE=false,
+</I>&gt;<i> this=&lt;error reading variable&gt;)
+</I>&gt;<i> #2  080894DB msegui.pas:15027
+</I>&gt;<i> TINTERNALAPPLICATION__BEGINMODAL(SENDER=0xb6e8cc60, this=&lt;error
+</I>&gt;<i> reading variable&gt;)
+</I>&gt;<i> #3  080836DA msegui.pas:12529 TWINDOW__BEGINMODAL(this=&lt;error reading
+</I>&gt;<i> #variable&gt;)
+</I>&gt;<i> #4  0807C8C4 msegui.pas:9602 TWIDGET__INTERNALSHOW(MODAL=true,
+</I>&gt;<i> TRANSIENTFOR=0xb6e8b460, WINDOWEVENT=false, this=&lt;error reading
+</I>&gt;<i> variable&gt;)
+</I>&gt;<i> #5  0807C9F2 msegui.pas:9639 TWIDGET__SHOW(MODAL=true,
+</I>&gt;<i> TRANSIENTFOR=0xb6e8b460, this=&lt;error reading variable&gt;)
+</I>&gt;<i> #6  08155DF2 msewidgets.pas:1621 INTERNALSHOWMESSAGE(ATEXT=0xb6d47528
+</I>&gt;<i> 'Akhiri Acosys?', CAPTION=0xb6d4ba48 'Confirmation',
+</I>&gt;<i> BUTTONS=0xbfffec34, DEFAULTBUTTON=MR_NO, NOSHORTCUT=[],
+</I>&gt;<i> PLACEMENTRECT=0x0, PLACEMENT=CP_CENTER, MINWIDTH=0,
+</I>&gt;<i> ACTIONS=0xbfffec34, EXTTEXT=0x0, highBUTTONS=1, highACTIONS=-1)
+</I>&gt;<i> #7  08155F50 msewidgets.pas:1662 SHOWMESSAGE(ATEXT=0xb6d47528 'Akhiri
+</I>&gt;<i> Acosys?', CAPTION=0xb6d4ba48 'Confirmation', BUTTONS=0xbfffedd8,
+</I>&gt;<i> DEFAULTBUTTON=MR_NO, NOSHORTCUT=[], MINWIDTH=0, EXTTEXT=0x0,
+</I>&gt;<i> POSITION=MEPO_DEFAULT, highBUTTONS=1)
+</I>&gt;<i> #8  08156159 msewidgets.pas:1738 ASKYESNO(ATEXT=0xb6d47528 'Akhiri
+</I>&gt;<i> Acosys?', CAPTION=0xb6d4ba48 'Confirmation', DEFAULTBUTTON=MR_NO,
+</I>&gt;<i> MINWIDTH=0)
+</I>&gt;<i> #9  080A6688 main.pas:429
+</I>&gt;<i> TMAINFO__MAINFO_ONCLOSEQUERY(SENDER=0xb749f9e0,
+</I>&gt;<i> AMODALRESULT=MR_WINDOWCLOSED, this=&lt;error reading variable&gt;)
+</I>&gt;<i> #10  0817AC99 mseforms.pas:926 TCUSTOMMSEFORM__CANCLOSE(NEWFOCUS=0x0,
+</I>&gt;<i> this=&lt;error reading variable&gt;)
+</I>&gt;<i> #11  0807FBD1 msegui.pas:10946 TWIDGET__CANPARENTCLOSE(NEWFOCUS=0x0,
+</I>&gt;<i> this=&lt;error reading variable&gt;)
+</I>&gt;<i> #12  08084A0A msegui.pas:12982 TWINDOW__CLOSE(this=&lt;error reading
+</I>&gt;<i> #variable&gt;)
+</I>&gt;<i> #13  08088CE0 msegui.pas:14796
+</I>&gt;<i> TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+</I>&gt;<i> this=&lt;error reading variable&gt;)
+</I>&gt;<i> #14  0808A0DC msegui.pas:15423
+</I>&gt;<i> TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=&lt;error reading
+</I>&gt;<i> variable&gt;)
+</I>&gt;<i> #15  080EFCA8 mseapplication.pas:1354
+</I>&gt;<i> TCUSTOMAPPLICATION__RUN(this=&lt;error reading variable&gt;)
+</I>&gt;<i> #16  0804CBAD Acosys.pas:45 main()
+</I>
+You possibly call a modal loop in an event handler of a released form. The
+release message will be handled and later the program crashes if the
+calling handler uses the already freed form instance. I'll check if it is
+possible to handle this condition internally.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001774.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+	<LI>Next message: <A HREF="001785.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1780">[ date ]</a>
+              <a href="thread.html#1780">[ thread ]</a>
+              <a href="subject.html#1780">[ subject ]</a>
+              <a href="author.html#1780">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

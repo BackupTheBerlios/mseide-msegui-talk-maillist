@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3CAANLkTinfT4rmCSZpfgAojsVZKkVouoYEOPhD8v4VD5_v%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002805.html">
+   <LINK REL="Next"  HREF="002807.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;</H1>
+    <B>Smile Girl</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3CAANLkTinfT4rmCSZpfgAojsVZKkVouoYEOPhD8v4VD5_v%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;">smilling.girl26 at gmail.com
+       </A><BR>
+    <I>Thu Feb 10 06:01:31 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002805.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+        <LI>Next message: <A HREF="002807.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2806">[ date ]</a>
+              <a href="thread.html#2806">[ thread ]</a>
+              <a href="subject.html#2806">[ subject ]</a>
+              <a href="author.html#2806">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>   Hi,
+        Thanks all of you for your support.
+Got things working for my requirement.
+
+
+Thanks
+Smile :-)
+
+
+
+On 2/10/11, Sieghard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">s_c_h_s at arcor.de</A>&gt; wrote:
+&gt;<i> Hallo Julio,
+</I>&gt;<i>
+</I>&gt;<i> Du schriebst am Wed, 9 Feb 2011 10:09:29 +0100:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hey.. respond to Smile Girl.. I know how it does work ;)
+</I>&gt;<i>
+</I>&gt;<i> I didn't respond to the primary question.
+</I>&gt;<i> I responded to a statement that oviously was quickly jotted down and not
+</I>&gt;<i> even reread.
+</I>&gt;<i>
+</I>&gt;&gt;<i> If you want an integer.. why do you use a tmsestringedit?
+</I>&gt;<i>
+</I>&gt;<i> Not _I_ did use that. It was in the statement I responded to.
+</I>&gt;<i>
+</I>&gt;&gt;<i> That's why I gave her an alternative... even with typo bug.. sry :)
+</I>&gt;<i>
+</I>&gt;<i> Unfortunately the alternative was just as erroneous.
+</I>&gt;<i>
+</I>&gt;&gt;<i> tmsesqlquery.params.parambyname('idvalue').asinteger :=
+</I>&gt;&gt;<i> tintegeredit.value;
+</I>&gt;<i>
+</I>&gt;<i> That's a lot better, but even this is flawed - do you always mix up type
+</I>&gt;<i> names and variabel identifiers?
+</I>&gt;<i>
+</I>&gt;&gt;<i> &gt; presumed that &quot;tstringedit.value&quot; has an integer type - but isn't the
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> probably you presumed too much ;) (about the value in the tstringedit)...
+</I>&gt;<i>
+</I>&gt;<i> The presumption was implicit in the previous statement. I just made it
+</I>&gt;<i> explicit.
+</I>&gt;<i>
+</I>&gt;&gt;<i> My point of view is.. if you want to get an integer, use tintegeredit..
+</I>&gt;<i>
+</I>&gt;<i> Fine, why didn't you do that in the first place?
+</I>&gt;<i>
+</I>&gt;&gt;<i> &gt; Sorry for the nit-picking - the original poster didn't exactly make the
+</I>&gt;&gt;<i> &gt; impression of a master of FPC and component programming, so I think it
+</I>&gt;&gt;<i> &gt; appropriate to analyse the syntactical requirements a little closer.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> Yes, now she may be really confused ;)
+</I>&gt;<i>
+</I>&gt;<i> She should say so, if that's the case.
+</I>&gt;<i>
+</I>&gt;<i> Anyway, I cannot imagine that it will be helpful to anyone (and this list
+</I>&gt;<i> is available publicly worldwide to anyone interested) if the answer to a
+</I>&gt;<i> question doesn't even satisfy the most basic requirements of the language,
+</I>&gt;<i> mixes up different categories (of identifiers in this case) and implicitly
+</I>&gt;<i> presumes erroneous things.
+</I>&gt;<i> I like to call such a programming &quot;style&quot; &quot;experimental&quot; or even &quot;heuristic&quot;
+</I>&gt;<i> - it's the style debuggers were invented for: just write down some
+</I>&gt;<i> statements, tweak them until the compiler takes them, then see whether they
+</I>&gt;<i> can be modified such as to do what's wanted under common conditions just
+</I>&gt;<i> thought of.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> (Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+</I>&gt;<i> nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+</I>&gt;<i> -----------------------------------------------------------
+</I>&gt;<i> Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+</I>&gt;<i> -----------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002805.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+	<LI>Next message: <A HREF="002807.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2806">[ date ]</a>
+              <a href="thread.html#2806">[ thread ]</a>
+              <a href="subject.html#2806">[ subject ]</a>
+              <a href="author.html#2806">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

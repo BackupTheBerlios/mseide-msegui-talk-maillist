@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image in a widgetgrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C201105161431.29253.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003618.html">
+   <LINK REL="Next"  HREF="003623.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image in a widgetgrid</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C201105161431.29253.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Image in a widgetgrid">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon May 16 14:31:29 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003618.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+        <LI>Next message: <A HREF="003623.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3620">[ date ]</a>
+              <a href="thread.html#3620">[ thread ]</a>
+              <a href="subject.html#3620">[ subject ]</a>
+              <a href="author.html#3620">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag 16 Mai 2011, 13:42:42 schrieb Christian Nobel:
+&gt;<i> On 16-05-2011 07:18, Martin Schreiber wrote:
+</I>&gt;<i> &gt; Please use a timage instead a tdataimage, tdataimage is foreseen for
+</I>&gt;<i> &gt; placement into twidgetgrid only.
+</I>&gt;<i> 
+</I>&gt;<i> However the tdataimage and timage behaves the same way when dropped on a
+</I>&gt;<i> form - but are there any drawbacks by using the tdataimage on a form?
+</I>&gt;<i> 
+</I>If you don't use the value property unnecessary overhead. If value property is 
+used the image format data (PNG,JPG...) will be stored in memory which 
+normally is not necessary.
+
+&gt;<i> &gt; Because there is a single image widget and bitmap instance for the grid
+</I>&gt;<i> &gt; colum.
+</I>&gt;<i> 
+</I>&gt;<i> Sorry, still don't get.
+</I>&gt;<i> 
+</I>You expect that you can access a cell image by 
+&quot;
+ tdataimage2.gridvalue[1].LoadFromfile(tfiledialog1.controller.filename);
+&quot;
+This implies that there is for every image cell a tmaskedbitmap instance which 
+is not true. There is a single tdataimage with a single tmaskedbitmap for the 
+whole column.
+tdataimage2.gridvalue[1] accesses the imagedata for the cell stored in a 
+tgridansistringdatalist, same as 
+ tstringedit2.gridvalue[1]:='xxx';
+acesses the string data for the cell stored in a tgridmsestringdatalist.
+
+&gt;<i> &gt; It must be converted to a supported image data format (JPG,PNG...)
+</I>&gt;<i> 
+</I>&gt;<i> So I have a timage, and that has to be converted into a ansistring, but
+</I>&gt;<i> I can not find anything about this in the FPC documentation?
+</I>&gt;<i> 
+</I>Please use tmaskedbitmap.writetostring(). The necessary image format units 
+(formatpngwrite, formatjpgwrite...) must be listed in uses.
+
+&gt;<i> &gt; Maybe it is better to use a tdbwidgetgrid, tdbdataimage and to store the
+</I>&gt;<i> &gt; image data in a tmsebufdataset descendant
+</I>&gt;<i> 
+</I>&gt;<i> Sort of using the tmesbufdataset as a virtual database?
+</I>&gt;<i> 
+</I>tlocaldataset can be used as an in memory database for example.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003618.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+	<LI>Next message: <A HREF="003623.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3620">[ date ]</a>
+              <a href="thread.html#3620">[ thread ]</a>
+              <a href="subject.html#3620">[ subject ]</a>
+              <a href="author.html#3620">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

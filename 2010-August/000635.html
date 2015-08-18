@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide editor feature request
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20editor%20feature%20request&In-Reply-To=%3C20100815203106.27c7b6cc.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000628.html">
+   <LINK REL="Next"  HREF="000637.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide editor feature request</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20editor%20feature%20request&In-Reply-To=%3C20100815203106.27c7b6cc.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide editor feature request">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Aug 15 20:31:06 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000628.html">[MSEide-MSEgui-talk] MSEide editor feature request
+</A></li>
+        <LI>Next message: <A HREF="000637.html">[MSEide-MSEgui-talk] MSEide editor feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#635">[ date ]</a>
+              <a href="thread.html#635">[ thread ]</a>
+              <a href="subject.html#635">[ subject ]</a>
+              <a href="author.html#635">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Graeme,
+
+Du schriebst am Sun, 15 Aug 2010 08:11:35 +0200:
+
+&gt;<i> The problem is obviously how I described the behaviour. Because what
+</I>&gt;<i> you described is exactly what I want. :-) The current MSEide editor
+</I>
+Upps? It sounded (well, read;) quite different to me...
+And - _which_ of the (two) variants I described is what you want?
+I described the (idosyncratic, to me) way my mail editor works, and the way
+&quot;most&quot; common Windows editors, including notepad, do it.
+
+&gt;<i> works different. This is why I felt confident in saying &quot;all editors&quot;.
+</I>
+Which was invalidated by your very intention then, because then you _knew_
+about one editor which works differently. :-&gt;
+
+&gt;<i> So Martin, if you are confused regarding my description. Simply try
+</I>&gt;<i> any of the above mentioned editors and use Ctrl+[Left|Right]Arrow to
+</I>&gt;<i> see the behaviour I am talking about.
+</I>
+The behaviour I described towards the end is even quite simply implemented.
+
+For jumping ahead:
+ 1.- See if you're at EOF. If so, exit.
+ 2.- Skip to the next character
+ 3.- See if you're at EOF. If so, exit.
+ 4.- Check the current character.
+     If it is a letter character, and the character immediately preceding
+     it is a separator character, you're done - exit.
+ 5.- Repeat at 2.
+
+For jumping backwards:
+ 1.- See if you're at BOF. If so, exit.
+ 2.- Skip to the previous character
+ 3.- See if you're at BOF. If so, exit.
+ 4.- Check the current character.
+     If it is a letter character, and the character immediately preceding
+     it is a separator character, you're done - exit.
+ 5.- Repeat at 2.
+
+Tremedous, isn't it? ;-&gt;
+
+(BTW, separator characters are of course whitespace, line endings and
+punctuation; maybe also special characters like '%' or '&#167;' and non-printing
+characters, if used. Digits and probabely '_' should be considered word
+characters, I think. [Yes, certainly, alphabetics too, of course ;) ])
+
+&gt;<i> IDE's are meant to make you as a programmer more productive. So if it
+</I>&gt;<i> doesn't and it can't be changed, then that IDE is not meant for you.
+</I>
+That's true - but an IDE consists of more than a source code editor.
+Thus, the advantages of the other components might be able to offset
+inconveniences caused by one or another. ANd. BTW, there are even IDEs
+(albeit regrettably few) that allow you to use your favourite editor.
+I always wonder why every IDE-designer seems to feel obliged to implement
+his own personal editor, featuring his own personal idiosyncrasies...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000628.html">[MSEide-MSEgui-talk] MSEide editor feature request
+</A></li>
+	<LI>Next message: <A HREF="000637.html">[MSEide-MSEgui-talk] MSEide editor feature request
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#635">[ date ]</a>
+              <a href="thread.html#635">[ thread ]</a>
+              <a href="subject.html#635">[ subject ]</a>
+              <a href="author.html#635">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

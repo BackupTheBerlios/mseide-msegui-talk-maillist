@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Could not catch error message
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3CCABS2nhebdTyqQEvd9ZEFRhbrUuv%2BrwgT-KVJNwgumhRU_4JV2A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004161.html">
+   <LINK REL="Next"  HREF="004163.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Could not catch error message</H1>
+    <B>wahono sri</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3CCABS2nhebdTyqQEvd9ZEFRhbrUuv%2BrwgT-KVJNwgumhRU_4JV2A%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Could not catch error message">wahono77 at gmail.com
+       </A><BR>
+    <I>Wed Sep  7 09:20:16 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004161.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+        <LI>Next message: <A HREF="004163.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4162">[ date ]</a>
+              <a href="thread.html#4162">[ thread ]</a>
+              <a href="subject.html#4162">[ subject ]</a>
+              <a href="author.html#4162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In debug mode only?
+&gt;<i>
+</I>
+Not only in debugger.
+
+
+&gt;<i> If &quot;yes&quot; then probably gdb crashes. Try to switch off
+</I>&gt;<i> 'Project'-'Options'-'Debugger'-'Stop on Exception'.
+</I>&gt;<i> If &quot;no&quot; can you provide a simple testcase?
+</I>&gt;<i>
+</I>&gt;<i> &gt; How to fix this?
+</I>&gt;<i> &gt;
+</I>&gt;<i> Did you try to use tmsesqlquery.onupdateerror?
+</I>&gt;<i>
+</I>&gt;<i> No
+</I>
+Here is the stack trace  :
+
+#0  0040B956 :0 fpc_raiseexception()
+#1  005F57C3 mmysqlconn.pas:555 TMYSQLCONNECTION__CHECKERROR(MSG=0xa77f68
+'Error executing query: %s', ACONN=0xf1e2e80, this=&lt;error reading variable&gt;)
+#2  005F67A6 mmysqlconn.pas:913
+TMYSQLCONNECTION__DOEXECUTEUNPREPARED(C=0xf643348, ATRANSACTION=0xc352908,
+ASQL=0xf6942c8 'insert into
+salesdetail(transid,transdate,salesid,salesidref,productid,snproduct,expireddate,salesqty,unit,price,grossamount,taxid,salestax,percentdisc,valuedisc,netamount,cogs,memo,departement,servic'...,
+this=&lt;error reading variable&gt;)
+#3  005F6F5D mmysqlconn.pas:1076
+TMYSQLCONNECTION__INTERNALEXECUTE(CURSOR=0xf643348, ATRANSACTION=0xc352908,
+APARAMS=0xf675520, AUTF8=true, this=&lt;error reading variable&gt;)
+#4  005BBEB1 msqldb.pas:1809 TCUSTOMSQLCONNECTION__EXECUTE(CURSOR=0xf643348,
+ATRANSACTION=0xc352908, APARAMS=0xf675520, AUTF8=true, this=&lt;error reading
+variable&gt;)
+#5  005BE98D msqldb.pas:3052 TSQLQUERY__EXECUTE(this=&lt;error reading
+variable&gt;)
+#6  005BFA6C msqldb.pas:3573 TSQLQUERY__EXECSQL(this=&lt;error reading
+variable&gt;)
+#7  005C0DD2 msqldb.pas:3963
+TSQLQUERY__INTERNALAPPLYRECUPDATE(UPDATEKIND=UKINSERT, this=&lt;error reading
+variable&gt;)
+#8  005B72EF msesqldb.pas:614
+TMSESQLQUERY__APPLYRECUPDATE(UPDATEKIND=UKINSERT, this=&lt;error reading
+variable&gt;)
+#9  005E40B9 msebufdataset.pas:3258
+TMSEBUFDATASET__INTERNALAPPLYUPDATE(MAXERRORS=0, REVERTONERROR=false,
+RESPONSE=[RR_APPLIED], this=&lt;error reading variable&gt;)
+#10  005E4847 msebufdataset.pas:3398
+TMSEBUFDATASET__APPLYUPDATES(MAXERRORS=0, REVERTONERROR=false, this=&lt;error
+reading variable&gt;)
+#11  005C1AAB msqldb.pas:4402 TSQLQUERY__APPLYUPDATES(MAXERRORS=0,
+CANCELONERROR=false, this=&lt;error reading variable&gt;)
+#12  005B771A msesqldb.pas:686 TMSESQLQUERY__APPLYUPDATES(MAXERRORS=0,
+CANCELONERROR=false, this=&lt;error reading variable&gt;)
+#13  005B79B0 msesqldb.pas:738 TMSESQLQUERY__APPLYUPDATES(MAXERRORS=0,
+this=&lt;error reading variable&gt;)
+#14  00768DE7 frmsalestrans.pas:3693
+TFRMSALESTRANSFO__RECORDSAVE(SENDER=0xd648208, this=&lt;error reading
+variable&gt;)
+#15  009415AF azdbbuttons.pas:1275 TAZDBBUTTON__EXECSAVE(this=&lt;error reading
+variable&gt;)
+#16  00941CE4 azdbbuttons.pas:1439
+TAZDBBUTTON__SAVEEXECUTE(SENDER=0xd64a4a8, this=&lt;error reading variable&gt;)
+#17  004BAC59 mseact.pas:371 DOACTIONEXECUTE1(SENDER=0xd64a4a8, INFO={ACTION
+= 0x1d78e8, CAPTIONTEXT = 0xd37f5f8 '&amp;Save', CAPTION1 = {TEXT = 0xf6d1438
+'Save (F3)', FORMAT = 0xd7e1ba0, FLAGS = []}, STATE = [AS_DISABLED,
+AS_LOCALDISABLED, AS_LOCALCOLOR, AS_LOCALONEXECUTE], OPTIONS =
+[MAO_SHORTCUTCAPTION], SHORTCUT = 0xd31d0c0, SHORTCUT1 = 0x0, GROUP = 0,
+IMAGENR = 18, IMAGENRDISABLED = -2, COLORGLYPH = 2415919117, COLOR =
+2147483651, IMAGECHECKEDOFFSET = 0, IMAGELIST = 0x259d80, HINT = 0xd3d6f40
+'Save record changes', TAG = 0, TAGPOINTER = 0x0, ONEXECUTE = 0x941cd0
+&lt;TAZDBBUTTON__SAVEEXECUTE&gt;, ONBEFOREEXECUTE = 0}, CHANGED=false,
+NOCHECKBOX=false, NOCANDEFOCUS=false)
+#18  004ED397 mseactions.pas:1079 DOACTIONSHORTCUT(SENDER=0xd64a4a8,
+INFO={ACTION = 0x1d78e8, CAPTIONTEXT = 0xd37f5f8 '&amp;Save', CAPTION1 = {TEXT =
+0xf6d1438 'Save (F3)', FORMAT = 0xd7e1ba0, FLAGS = []}, STATE =
+[AS_DISABLED, AS_LOCALDISABLED, AS_LOCALCOLOR, AS_LOCALONEXECUTE], OPTIONS =
+[MAO_SHORTCUTCAPTION], SHORTCUT = 0xd31d0c0, SHORTCUT1 = 0x0, GROUP = 0,
+IMAGENR = 18, IMAGENRDISABLED = -2, COLORGLYPH = 2415919117, COLOR =
+2147483651, IMAGECHECKEDOFFSET = 0, IMAGELIST = 0x259d80, HINT = 0xd3d6f40
+'Save record changes', TAG = 0, TAGPOINTER = 0x0, ONEXECUTE = 0x941cd0
+&lt;TAZDBBUTTON__SAVEEXECUTE&gt;, ONBEFOREEXECUTE = 0}, KEYINFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856})
+#19  004F38C3 msesimplewidgets.pas:766
+TCUSTOMBUTTON__DOSHORTCUT(INFO={EVENTKIND = EK_KEYPRESS, KEY = KEY_F3,
+KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [], EVENTSTATE =
+[ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0, this=&lt;error reading
+variable&gt;)
+#20  004266EC msegui.pas:10298 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#21  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#22  004266EC msegui.pas:10298 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#23  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#24  004266EC msegui.pas:10298 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#25  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0x0,
+this=&lt;error reading variable&gt;)
+#26  004266EC msegui.pas:10298 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#27  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#28  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#29  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#30  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#31  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#32  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#33  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#34  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#35  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#36  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#37  0042676A msegui.pas:10312 TWIDGET__DOSHORTCUT(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#38  004CF926 msewidgets.pas:4813 TACTIONWIDGET__DOSHORTCUT(INFO={EVENTKIND
+= EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE =
+[], EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, SENDER=0xd644698,
+this=&lt;error reading variable&gt;)
+#39  00425FB1 msegui.pas:10084 TWIDGET__INTERNALKEYDOWN(INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, this=&lt;error reading
+variable&gt;)
+#40  0042C8F2 msegui.pas:13000
+TWINDOW__DISPATCHKEYEVENT(EVENTKIND=EK_KEYPRESS, INFO={EVENTKIND =
+EK_KEYPRESS, KEY = KEY_F3, KEYNOMOD = KEY_F3, CHARS = 0x0, SHIFTSTATE = [],
+EVENTSTATE = [ES_PROCESSED], TIMESTAMP = 2036699856}, this=&lt;error reading
+variable&gt;)
+#41  0042FE9C msegui.pas:14650
+TINTERNALAPPLICATION__PROCESSKEYEVENT(EVENT=0xf6d0550, this=&lt;error reading
+variable&gt;)
+#42  0043156A msegui.pas:15340
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false, this=&lt;error
+reading variable&gt;)
+#43  0043264C msegui.pas:15848 TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false,
+this=&lt;error reading variable&gt;)
+#44  00485388 mseapplication.pas:1441 TCUSTOMAPPLICATION__RUN(this=&lt;error
+reading variable&gt;)
+#45  0040275C Acosys.pas:43 main()
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110907/f60432ca/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110907/f60432ca/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004161.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+	<LI>Next message: <A HREF="004163.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4162">[ date ]</a>
+              <a href="thread.html#4162">[ thread ]</a>
+              <a href="subject.html#4162">[ subject ]</a>
+              <a href="author.html#4162">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

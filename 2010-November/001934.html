@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] error last trunk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20error%20last%20trunk&In-Reply-To=%3CAANLkTim%2BT-YFWTycc35bwKvw-m_WzYdeEhhxxBz5WFSi%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001933.html">
+   <LINK REL="Next"  HREF="001935.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] error last trunk</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20error%20last%20trunk&In-Reply-To=%3CAANLkTim%2BT-YFWTycc35bwKvw-m_WzYdeEhhxxBz5WFSi%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] error last trunk">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Wed Nov 24 19:19:22 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001933.html">[MSEide-MSEgui-talk] [OT?] gtk3 rendering on browser!
+</A></li>
+        <LI>Next message: <A HREF="001935.html">[MSEide-MSEgui-talk] error last trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1934">[ date ]</a>
+              <a href="thread.html#1934">[ thread ]</a>
+              <a href="subject.html#1934">[ subject ]</a>
+              <a href="author.html#1934">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I use FPC 2.4.0 and last trunk (4152), and I got error when compile :
+
+Warning: Only one source file supported, changing source file to
+compile from &quot;i386-linux&quot; into &quot;mseide.pas&quot;
+Free Pascal Compiler version 2.4.0 [2009/12/31] for i386
+Copyright (c) 1993-2009 by Florian Klaempfl
+Target OS: Linux for i386
+....
+
+msedb.pas(1026,14) Note: Virtual method &quot;tfielddatalink.updatefields;&quot;
+has a lower visibility (private) than parent class tfieldsdatalink
+(protected)
+msedb.pas(1437,43) Error: Identifier not found &quot;TEditMask&quot;
+msedb.pas(1437,43) Error: Error in type definition
+msedb.pas(1583,1) Fatal: There were 2 errors compiling module, stopping
+Fatal: Compilation aborted
+
+{$ifdef mse_fpc_2_4_3}FEditMask: TEditMask;{$endif}
+
+Thanks
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001933.html">[MSEide-MSEgui-talk] [OT?] gtk3 rendering on browser!
+</A></li>
+	<LI>Next message: <A HREF="001935.html">[MSEide-MSEgui-talk] error last trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1934">[ date ]</a>
+              <a href="thread.html#1934">[ thread ]</a>
+              <a href="subject.html#1934">[ subject ]</a>
+              <a href="author.html#1934">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

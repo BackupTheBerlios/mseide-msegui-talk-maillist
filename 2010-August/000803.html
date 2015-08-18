@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci527s0%24j35%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000799.html">
+   <LINK REL="Next"  HREF="000818.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci527s0%24j35%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Aug 25 07:03:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000799.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000818.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;&gt;<i> How do you terminate the application?
+</I>&gt;<i> 
+</I>&gt;<i> Well... that's a bit involved. ;-]
+</I>&gt;<i> 
+</I>&gt;<i> There are a few things that have to be shut down correctly in the process,
+</I>&gt;<i> like timers and, of course, the &quot;keep alive&quot; &quot;thread&quot; (it's not a cthreads
+</I>&gt;<i> thread, though). And at some time, I had the problem that the application
+</I>&gt;<i> couldn't be terminated regularly, probabely because of some error in the
+</I>&gt;<i> code. Because of time issues then, I just used a &quot;Halt&quot; to &quot;tear it down&quot;
+</I>&gt;<i> forcedly, when it should simply stop.
+</I>
+Ouh, this is dangerous because the finalization sections in MSEgui library
+will be called in undefined state.
+
+[...]
+&gt;<i> 
+</I>&gt;<i> Thank you for your patience - though the real problems were quite minor,
+</I>&gt;<i> I used up quite some of tour valuable time.
+</I>&gt;<i> And thanks to your help, even the (automatic) layout switching works now.
+</I>&gt;<i> 
+</I>May I recommend the donation link:
+<A HREF="http://www.msegui.org/content/donation">http://www.msegui.org/content/donation</A>
+;-)
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000799.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000818.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

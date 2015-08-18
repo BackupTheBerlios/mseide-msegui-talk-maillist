@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] loadlangunit in Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20loadlangunit%20in%20Linux&In-Reply-To=%3C20101012200348.8ceeb1c1.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001432.html">
+   <LINK REL="Next"  HREF="001426.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] loadlangunit in Linux</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20loadlangunit%20in%20Linux&In-Reply-To=%3C20101012200348.8ceeb1c1.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] loadlangunit in Linux">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Oct 12 20:03:48 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001432.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+        <LI>Next message: <A HREF="001426.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1427">[ date ]</a>
+              <a href="thread.html#1427">[ thread ]</a>
+              <a href="subject.html#1427">[ subject ]</a>
+              <a href="author.html#1427">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Tue, 12 Oct 2010 19:12:50 +0200:
+
+&gt;<i> &gt; Currently loadlangunit procedure can be problem when we store
+</I>&gt;<i> &gt; langxxx.so different with application path.
+</I>...
+&gt;<i> Maybe better to adjust LD_LIBRARY_PATH or LD_PRELOAD?
+</I>
+Aren't those meant as last and absolute last resorts, all other methods
+failing?
+For one, this requires a very ugly construct to call the program.
+Also, this will make the loader search the language directory _first_ for
+all libraries, as the paths specified therein take precedence over _all_
+system paths.
+
+&gt;<i> Absolute library paths on Linux look strange to me.
+</I>
+And yet they're common for dynamically loaded libraries, albeit often not
+as uniquely determined ones, but with various common alternatives.
+Nonteless, for a specially built library used by exactly one program only,
+I'm inclined to see it fit to keep it at a place where this program expects
+similar files also. This place does _not_ need to be the system library
+directory, nor the program binary directory or a subdirectory thereof.
+
+BTW, I posted a patch toward this issue in the message &quot;beside&quot;. You're
+free to use it, if you like.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001432.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+	<LI>Next message: <A HREF="001426.html">[MSEide-MSEgui-talk] loadlangunit in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1427">[ date ]</a>
+              <a href="thread.html#1427">[ thread ]</a>
+              <a href="subject.html#1427">[ subject ]</a>
+              <a href="author.html#1427">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

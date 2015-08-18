@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] position of dialogs on dual monitor setup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20position%20of%20dialogs%20on%20dual%20monitor%20setup&In-Reply-To=%3C201103070920.05856.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003113.html">
+   <LINK REL="Next"  HREF="003115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] position of dialogs on dual monitor setup</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20position%20of%20dialogs%20on%20dual%20monitor%20setup&In-Reply-To=%3C201103070920.05856.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] position of dialogs on dual monitor setup">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Mar  7 09:20:05 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003113.html">[MSEide-MSEgui-talk] position of dialogs on dual monitor setup
+</A></li>
+        <LI>Next message: <A HREF="003115.html">[MSEide-MSEgui-talk] position of dialogs on dual monitor setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3114">[ date ]</a>
+              <a href="thread.html#3114">[ thread ]</a>
+              <a href="subject.html#3114">[ subject ]</a>
+              <a href="author.html#3114">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 07 March 2011 08:51:46 Graeme Geldenhuys wrote:
+&gt;<i> Op 2011-03-05 00:48, Sieghard het geskryf:
+</I>&gt;<i> &gt; Screen centered dialogues are commonly used and default for many
+</I>&gt;<i> &gt; graphical interfaces, on Linux and on Windows, where AFAIK they're even a
+</I>&gt;<i> &gt; system default. Many users will yell out loudly if that's changed, as
+</I>&gt;<i> &gt; they won't
+</I>&gt;<i>
+</I>&gt;<i> You are totally missing my point. By default a popup window (like &quot;Open
+</I>&gt;<i> File&quot; dialog) in MSEide must still appear in the center of the screen,
+</I>&gt;<i> but if I move that dialog to a different location, I would like MSEide
+</I>&gt;<i> to remember that new location, and us it next time, instead of centered.
+</I>&gt;<i>
+</I>In MSEgui it should be placed centered in the screen where the center of the 
+parent window of the dialog is located. Maybe we can debug why it does not 
+work for you? Can you check if the code in lib/common/kernel/i386-linux
+&quot;
+function gui_getworkarea(id: winidty): rectty;
+var
+ bo1: boolean;
+begin
+ gdi_lock;
+ bo1:= false;
+ if netsupported then begin
+  bo1:= 
+readcardinalproperty(mserootwindow(id),netatoms[net_workarea],4,result);
+ end;
+ if not bo1 then begin
+  result:= gui_getscreenrect(id);
+ end;
+ gdi_unlock;
+end;
+&quot;
+works? Does 
+&quot;
+readcardinalproperty(mserootwindow(id),netatoms[net_workarea],4,result);
+&quot;
+return TRUE and does it return the correct values?
+I'll try again to setup a working Linux multi screen environment in order I 
+can test my self.
+
+&gt;<i> Martin did this perfectly with &quot;File &gt; Open&quot;. But he forgot to apply
+</I>&gt;<i> that same code to &quot;Project &gt; Open&quot; dialog.
+</I>&gt;<i>
+</I>I did not forget it, it is not so simple because file and project history data 
+are not stored the same kind and I must find a good solution first.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003113.html">[MSEide-MSEgui-talk] position of dialogs on dual monitor setup
+</A></li>
+	<LI>Next message: <A HREF="003115.html">[MSEide-MSEgui-talk] position of dialogs on dual monitor setup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3114">[ date ]</a>
+              <a href="thread.html#3114">[ thread ]</a>
+              <a href="subject.html#3114">[ subject ]</a>
+              <a href="author.html#3114">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

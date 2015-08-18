@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] feature request: separated session	information from project file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%0A%20session%09information%20from%20project%20file&In-Reply-To=%3C4CD7D1AB.4080404%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001776.html">
+   <LINK REL="Next"  HREF="001827.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] feature request: separated session	information from project file</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%0A%20session%09information%20from%20project%20file&In-Reply-To=%3C4CD7D1AB.4080404%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] feature request: separated session	information from project file">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Mon Nov  8 11:32:11 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001776.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+        <LI>Next message: <A HREF="001827.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1826">[ date ]</a>
+              <a href="thread.html#1826">[ thread ]</a>
+              <a href="subject.html#1826">[ subject ]</a>
+              <a href="author.html#1826">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-05 09:14, Martin Schreiber het geskryf:
+&gt;<i> Trunk 4077 has 'Project'-'Options'-'Settings','Load' and 'Save'
+</I>&gt;<i> (experimental).
+</I>&gt;<i> 'Save' stores the values of 'Project'-'Options' in the 'Settings' *.prj
+</I>&gt;<i> file. 'Load' loads the values with exception of the 'Edit' values
+</I>&gt;<i> from 'Settings' *.prj file.
+</I>
+This sounds like a round-about way of doing it, but I'll give it a try this
+week and see how it goes.
+
+
+With these new changes, what exactly is considered &quot;session information&quot;.
+
+Considering multiple developers in a team, working on the same project, my
+list would include:
+
+ - IDE layout (panels, docking, position of windows, size of windows,
+     position of splitter between docked windows etc)
+ - Debug info: breakpoints, watches etc whatever a developer would have
+     setup while they did there last debugging session.
+ - Opened files, plus cursor locations etc.
+ - Last used units (in Open dialog)
+
+These are all things each developer would use and change, but doesn't
+relate directly to a specific project, but rather to the developers working
+style and preference.
+
+
+How exactly are we supposed to use this new project setting?
+
+ - When must we populate that new edit field
+ - When does the IDE save session info
+ - When does the IDE load session info
+ - Why multiple .prj files for the same project
+ - Which project (*.prj) are we supposed to open or save when
+   go &quot;Project &gt; Open&quot; or &quot;Project &gt; Save&quot;
+
+As you can guess, I'm still a bit confused about some things. :) Why can't
+the IDE simply save and load session information automatically in the
+~/.mseide/ directory when you open/save the official project .prj file? Why
+pollute the project's source directory with files that must not be checked
+into a code repository. Why have multiple .prj files at all?
+
+
+By the way, keeping the session information out of the .prj file also has
+the benefit that your Project Templates have &quot;clean&quot; templates, not with
+some developer's specific file locations or what files they last had open
+or their IDE window layout etc.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001776.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+	<LI>Next message: <A HREF="001827.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1826">[ date ]</a>
+              <a href="thread.html#1826">[ thread ]</a>
+              <a href="subject.html#1826">[ subject ]</a>
+              <a href="author.html#1826">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

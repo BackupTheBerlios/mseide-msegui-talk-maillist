@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110827213041.3f3d5dcf.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004118.html">
+   <LINK REL="Next"  HREF="004125.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110827213041.3f3d5dcf.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sat Aug 27 21:30:41 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004118.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004125.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4124">[ date ]</a>
+              <a href="thread.html#4124">[ thread ]</a>
+              <a href="subject.html#4124">[ subject ]</a>
+              <a href="author.html#4124">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Sat, 27 Aug 2011 16:58:54 +0200:
+
+&gt;<i> &#1052;&#1080;&#1085;&#1086;&#1096;&#1080; &#1040;&#1083;&#1077;&#1082;&#1089;&#1072;&#1085;&#1076;&#1088; wrote:
+</I>...
+&gt;<i> &gt; There is some problem with tterminal.
+</I>...
+&gt;<i> Difficult or even impossible to fix without a reproducible testcase.
+</I>&gt;<i> Please try to get more information.
+</I>
+That's probabely caused by interleaved output on stdout/stderr.
+The lines that get swapped are output rather fast one after another,
+somewhat like so:
+
+ stdout: checking dependencies...
+ stdout:
+ stdout: Remove (1): zip-3.0-2
+ stdout:
+ stdout: Total Removed Size:   0,49 MB
+ stdout:
+!stderr: Do you want to remove these packages? [Y/n] ^C
+
+The line via stderr seems to be inserted erratically, or rather
+_immedately_ after being issued, irrespecting the output state of the
+stdout derived lines. The linux terminal queues them correctly.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004118.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004125.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4124">[ date ]</a>
+              <a href="thread.html#4124">[ thread ]</a>
+              <a href="subject.html#4124">[ subject ]</a>
+              <a href="author.html#4124">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

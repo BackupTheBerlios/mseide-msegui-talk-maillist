@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%0A%09fixes%20%3F&In-Reply-To=%3CBANLkTi%3D0P5d5b96RmhkCRSbW9pFgg29JNQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003642.html">
+   <LINK REL="Next"  HREF="003644.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%0A%09fixes%20%3F&In-Reply-To=%3CBANLkTi%3D0P5d5b96RmhkCRSbW9pFgg29JNQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed May 18 20:24:38 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003642.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+        <LI>Next message: <A HREF="003644.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3643">[ date ]</a>
+              <a href="thread.html#3643">[ thread ]</a>
+              <a href="subject.html#3643">[ subject ]</a>
+              <a href="author.html#3643">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>What means &quot;sets to active&quot;? you set it to active in code or it will be set to
+</I>&gt;<i>active by tfieldparamlink auto refresh?
+</I>
+Active local query in its AfterOpen sets inactive parameterized SQL
+query to active.
+
+
+2011/5/18, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> On Wednesday 18 May 2011 14:39:25 IvankoB wrote:
+</I>&gt;&gt;<i> Me still have nasty troubles with proper assigning params to a
+</I>&gt;&gt;<i> parameterized query when it should be activated next a local mode query.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A local_query.design_mode_active:=true =&gt; AfterOpen: a parametrized query
+</I>&gt;&gt;<i> with design_mode_inactive sets to active.
+</I>&gt;<i> What means &quot;sets to active&quot;? you set it to active in code or it will be set
+</I>&gt;<i> to
+</I>&gt;<i> active by tfieldparamlink auto refresh?
+</I>&gt;<i>
+</I>&gt;&gt;<i> The parameterized_query.AfterOpen is called (scrolles &amp; aggregates oneself
+</I>&gt;&gt;<i> &amp; goes bookmarks/edits/posts some data to the local_query) twice. Possibly
+</I>&gt;&gt;<i> because of some param are established after opening the query ?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Possible if there are more than one tfieldparamlink with fplo_autorefresh
+</I>&gt;<i> are
+</I>&gt;<i> connected to a destdataset. Please use a single tfieldparamlink and
+</I>&gt;<i> tfieldparamlink.slaveparams (Warning: will be renamed to &quot;destparams&quot; soon)
+</I>&gt;<i> in order to setup additional parameters if there is a single source dataset.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Is it 100% sure that all params are established for all design inactive
+</I>&gt;&gt;<i> queries on datamodule before any design active (local) query opens via
+</I>&gt;&gt;<i> RTTI so that the parameterized query opens and refreshes only once so that
+</I>&gt;&gt;<i> its AfteroOpen were safe to use ?
+</I>&gt;&gt;<i>
+</I>&gt;<i> No, you are responsible for the correct opening order of datasets.
+</I>&gt;<i>
+</I>&gt;&gt;<i> PS:
+</I>&gt;&gt;<i> Also, tactivator on a datamodule seems not to open design active queries
+</I>&gt;&gt;<i> on the datamodule.
+</I>&gt;&gt;<i> Even the queries and the activator are active in design
+</I>&gt;&gt;<i> time. Removing  the actiavtor from controller.activator allows the queries
+</I>&gt;&gt;<i> to open.
+</I>&gt;<i>
+</I>&gt;<i> This is as designed. tactivator can be used to switch on/switch off the
+</I>&gt;<i> linked
+</I>&gt;<i> components by switching tactivator.active in object inspector. On runtime
+</I>&gt;<i> the
+</I>&gt;<i> linked components will be activated by the tactivator and not by the
+</I>&gt;<i> streamed
+</I>&gt;<i> t*dataset.active property.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003642.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+	<LI>Next message: <A HREF="003644.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3643">[ date ]</a>
+              <a href="thread.html#3643">[ thread ]</a>
+              <a href="subject.html#3643">[ subject ]</a>
+              <a href="author.html#3643">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

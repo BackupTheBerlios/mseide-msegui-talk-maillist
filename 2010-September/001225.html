@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100927013854.88ba3cb5.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001166.html">
+   <LINK REL="Next"  HREF="001230.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100927013854.88ba3cb5.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Sep 27 01:38:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001166.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001230.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1225">[ date ]</a>
+              <a href="thread.html#1225">[ thread ]</a>
+              <a href="subject.html#1225">[ subject ]</a>
+              <a href="author.html#1225">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Wed, 22 Sep 2010 07:44:30 +0200:
+
+&gt;<i> No, it is not very difficult nor time consuming. Start your current
+</I>&gt;<i> MSEide, 'Project'-'Open', select apps/ide/mseide.prj from the trunk SVN
+</I>&gt;<i> checkout, press F9. Should be done in less than 5 minutes. ;-)
+</I>
+Wellll - it _should_ be.
+
+&gt;<i> Compiling MSEide from commandline isn't difficult either.
+</I>&gt;<i> For Linux:
+</I>&gt;<i> &quot;
+</I>&gt;<i> ppc386
+</I>&gt;<i> apps/ide/mseide.pas -Fulib/common/kernel/i386-linux -Fi/lib/common/kernel
+</I>&gt;<i> -Fulib/common/* &quot;
+</I>
+Gives me the following response:
+
+Free Pascal Compiler version 2.4.0 [2010/01/01] for i386
+Copyright (c) 1993-2009 by Florian Klaempfl
+Target OS: Linux for i386
+Compiling apps/ide/mseide.pas
+...
+cwstring.pp(402,42) Error: Identifier not found &quot;TWideStringManager&quot;
+cwstring.pp(402,42) Error: Error in type definition
+cwstring.pp(405,27) Error: Expression type must be class or record type
+cwstring.pp(407,24) Error: Identifier not found &quot;Wide2AnsiMoveProc&quot;
+cwstring.pp(408,24) Error: Identifier not found &quot;Ansi2WideMoveProc&quot;
+cwstring.pp(410,26) Error: Identifier not found &quot;UpperWideStringProc&quot;
+cwstring.pp(411,26) Error: Identifier not found &quot;LowerWideStringProc&quot;
+cwstring.pp(413,28) Error: Identifier not found &quot;CompareWideStringProc&quot;
+cwstring.pp(414,32) Error: Identifier not found &quot;CompareTextWideStringProc&quot;
+cwstring.pp(423,28) Error: Identifier not found &quot;StrCompAnsiStringProc&quot;
+cwstring.pp(432,42) Error: Incompatible type for arg no. 1: Got &quot;&lt;erroneous
+type&gt;&quot;, expected &quot;TUnicodeStringManager&quot; cwstring.pp(447) Fatal: There were
+type&gt;11 errors compiling module, stopping
+Fatal: Compilation aborted
+
+I _assume_ that's caused by the &quot;2.4.0&quot; in the fpc message - they seem to
+have done away with a number of the &quot;widestring&quot; types and procedures.
+There still are some of them available, but the interface seems to have
+been completely reworked.
+
+Oh well, stuck again...
+
+Maybe I can reactivate the previous version again (2.2.4[.5]).
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001166.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001230.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1225">[ date ]</a>
+              <a href="thread.html#1225">[ thread ]</a>
+              <a href="subject.html#1225">[ subject ]</a>
+              <a href="author.html#1225">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

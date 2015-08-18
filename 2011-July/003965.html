@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3Cj0vds1%245gk%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003963.html">
+   <LINK REL="Next"  HREF="003967.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3Cj0vds1%245gk%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">chr.nobel at gmail.com
+       </A><BR>
+    <I>Sat Jul 30 00:57:05 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003963.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003967.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3965">[ date ]</a>
+              <a href="thread.html#3965">[ thread ]</a>
+              <a href="subject.html#3965">[ subject ]</a>
+              <a href="author.html#3965">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30-07-2011 00:03, Graeme Geldenhuys wrote:
+
+&gt;<i>   <A HREF="http://http://opensoft.homeip.net:8080/~graemeg/datamodule.png">http://http://opensoft.homeip.net:8080/~graemeg/datamodule.png</A>
+</I>
+OMG!
+
+&gt;<i> Where was *nothing* simple about it. :)
+</I>
+Hehe, it does certainly not like :-)
+
+However my goal is more (also because I am not necessarily focusing on
+RAD development only, but more &quot;classic&quot; applications, maybe even
+without any gui, like web applications) to have only a few SQL
+connections, and then simply prepare the SQL statement inside the program.
+
+So essentially it is like this:
+
+procedure connectbase;
+begin
+  ZConnection1:=TZConnection.Create(nil);
+  Datasource1:=TDatasource.Create(nil);
+  ZQuery1:=TZQuery.Create(nil);
+  ZConnection1.Protocol:='mysql-5';
+  ZConnection1.HostName:=DBHostName;
+  ZConnection1.Port:=3306;
+  ZConnection1.Database:=DBBaseName;
+  ZConnection1.User:=dbuser;
+  ZConnection1.Password:=dbpass;
+  ZConnection1.Connected:=true;
+  ZQuery1.Connection:=ZConnection1;
+  DataSource1.DataSet:=ZQuery1;
+  sqlsentence:=TstringList.Create;
+end
+
+procedure makesession;
+begin
+  sqlsentence.Clear;
+  sqlsentence.Add('insert into session ');
+  sqlsentence.Add('values ('''+cvalue+''', '''+currenttime+''',
+'''+sessuser+''')');
+  ZQuery1.ReadOnly:=false;
+  ZQuery1.SQL:=sqlsentence;
+  ZQuery1.ExecSQL;
+end
+
+etc, etc, very straight forward procedural programming.
+
+You may call me old fashioned, but I like programming this way, and for
+making web applications I consider it a great way not to lose the overview.
+
+And when I am making GUI applications it can either be stand alone
+versions (normally using DB-IV, which actually works quite good without
+any additional libraries, but where I consider SQLite) or for a limited
+number of clients, where I currently use MySQL, as I find it very fast
+and robust.
+
+&gt;<i> Anyway, I'm not saying OPF style database applications are for
+</I>&gt;<i> everybody. But I like to at least inform people that there are very
+</I>&gt;<i> viable alternatives to TDataset &amp; DB-aware components.
+</I>
+Don't get me wrong, I so definitely appreciate new inputs, but for the
+kind of programming I currently am doing, I do not have the big need for
+using a 3-tier setup.
+
+&gt;<i> Yes such RAD style development looks great for the Borland/Embarcadero marketing
+</I>&gt;<i> team and all their fish database demos - but they are not the ones
+</I>&gt;<i> that need to develop and maintaing huge database applications for many
+</I>&gt;<i> many years.
+</I>
+Exactly, and thats why I like interfacing directly with the SQL server,
+avoiding to much bling-bling.
+
+Earlier when using Delphi I used microOLAPs DAC for MySQL, and it did a
+great job, doing exactly what I wanted - but unfortunately I have not
+come across something similar for Linux/FPC.
+
+/Christian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003963.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003967.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3965">[ date ]</a>
+              <a href="thread.html#3965">[ thread ]</a>
+              <a href="subject.html#3965">[ subject ]</a>
+              <a href="author.html#3965">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

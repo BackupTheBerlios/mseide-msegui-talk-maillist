@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] FPC RTC based Event Queue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20FPC%20RTC%20based%20Event%20Queue&In-Reply-To=%3C4CBA18FD.3040300%40bschnell.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001482.html">
+   <LINK REL="Next"  HREF="001496.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] FPC RTC based Event Queue</H1>
+    <B>Michael Schnell</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20FPC%20RTC%20based%20Event%20Queue&In-Reply-To=%3C4CBA18FD.3040300%40bschnell.de%3E"
+       TITLE="[MSEide-MSEgui-talk] FPC RTC based Event Queue">mschnell at bschnell.de
+       </A><BR>
+    <I>Sat Oct 16 23:28:29 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001482.html">[MSEide-MSEgui-talk] FPC RTC based Event Queue
+</A></li>
+        <LI>Next message: <A HREF="001496.html">[MSEide-MSEgui-talk] FPC RTC based Event Queue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1494">[ date ]</a>
+              <a href="thread.html#1494">[ thread ]</a>
+              <a href="subject.html#1494">[ subject ]</a>
+              <a href="author.html#1494">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>  On 16.10.2010 11:50, Martin Schreiber wrote:
+&gt;<i>   Agreed about your statement about event driven applications.
+</I>Thanks :)
+&gt;&gt;<i> _FPC _itself does not provide any Event Queue implementation by itself,
+</I>&gt;&gt;<i> so Event Driven programming needs add-ons such as Lazarus or MSE.
+</I>&gt;<i> So why not use Lazarus
+</I>As said. Lazarus does a bad job with the Event Queue implementation. 
+Firstly I feel that the way it is done (duplicating large code chunks 
+for each Widget Type) is not good programming style and results in a 
+manageability chaos, and secondly I do agree with the comments I got on 
+a similar request some days ago in the German Lazarus Forum by Vincent 
+that the Windowish Message is not a decent form event type for this 
+issue, but a dedicated event providing for a flexible passing of queued 
+parameters to the target event would be by far more sensible and  
+&quot;Object Pascal Style&quot;. (Here I feel the MSE Event Queue could be used or 
+enhanced for that purpose.)
+&gt;<i> or MSEgui?
+</I>This of course is a more personal cause. We have a couple of well 
+trained Delphi programmer and need to port a set of large Delphi 
+applications. It will be hard enough to re-train them on Lazarus and to 
+do the ported programs in a way that they can be compiled as well with 
+Delphi as with Lazarus. I fear that doing this with MSE will be not viable.
+&gt;<i> I think FPC should concentrate on the
+</I>&gt;<i> compiler.
+</I>FPC already provides the RTL (compilable for lots of OSes and archs). As 
+we agree that Event Driven programming is a core of Object Pascal, IMHO 
+the Compiler / RTL  should provide this.
+
+The syntax already provide the (Windowish - this not really nice) 
+&quot;procedure ... Message&quot; construct for Event handling, but no means in 
+the RTL that uses it.
+
+If in future the syntax would be enhanced for a (Prism compatible) 
+&quot;parallel loop&quot; / &quot;future variable&quot; construct (which I definitely vote 
+for) the RTL would need to provide a thread pool to make this workable. 
+Here I feel that en Event Queue might be a very sensible way to do the 
+necessary synchronization.
+
+&gt;<i> I forked most of the RTL (TThread for example which is a subject
+</I>&gt;<i> on fpc-pascal mailinglist at the moment) because the mainstream
+</I>&gt;<i> implementation did not fit the needs of MSEgui exactly. On the other hand
+</I>&gt;<i> functionality optimized for MSEgui will not please everybody.
+</I>This is very bad news indeed. A common code base for all FPC based 
+systems would be very appropriate for an open source project. Is there 
+no chance to re-unit the branches ?
+
+I do know that TThread (WaitFor just seems to have been improved, 
+Synchronize is known to not working perfectly ) is a weak spot with 
+Lazarus. Maybe this is the result of a not perfect implementation in the 
+RTL. So maybe Lazarus could benefit from your work on the RTL....
+
+-Michael
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001482.html">[MSEide-MSEgui-talk] FPC RTC based Event Queue
+</A></li>
+	<LI>Next message: <A HREF="001496.html">[MSEide-MSEgui-talk] FPC RTC based Event Queue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1494">[ date ]</a>
+              <a href="thread.html#1494">[ thread ]</a>
+              <a href="subject.html#1494">[ subject ]</a>
+              <a href="author.html#1494">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

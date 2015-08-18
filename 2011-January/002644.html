@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] ffmpeg component
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ffmpeg%20component&In-Reply-To=%3CAANLkTimh3odqpvGJsbfbRW17-jQJgvSrOFLFZTd7VVob%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002643.html">
+   <LINK REL="Next"  HREF="002645.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] ffmpeg component</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ffmpeg%20component&In-Reply-To=%3CAANLkTimh3odqpvGJsbfbRW17-jQJgvSrOFLFZTd7VVob%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] ffmpeg component">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Tue Jan 25 18:13:35 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002643.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+        <LI>Next message: <A HREF="002645.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2644">[ date ]</a>
+              <a href="thread.html#2644">[ thread ]</a>
+              <a href="subject.html#2644">[ subject ]</a>
+              <a href="author.html#2644">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I change to this and Ok for Windows and Linux,
+
+procedure tazvideoplayer.createbitmap;
+var
+ i: integer;
+ po1: plongword;
+ po2: pointer;
+begin
+ fbmp.size:= makesize(pcodecctx^.width,pcodecctx^.height);
+ for i:= 0 to fbmp.size.cy - 1 do begin
+  {$ifdef windows}
+  copymemory(fbmp.scanline[i],pointer(integer(pframeRGB^.data[0])+fbmp.size.cx*4*i),fbmp.size.cx*4);
+  {$endif}
+  {$ifdef linux}
+  po1:= pointer(integer(pframeRGB^.data[0])+fbmp.size.cx*4*i);
+  po2:= fbmp.scanline[i];
+  move(po1^,po2^,fbmp.size.cx*4);
+  {$endif}
+ end;
+end;
+
+BTW, draw sequence image in MSEGUI is very good. Even I set FPS (frame
+per second) to 100 (draw 100 images in second), it's still look good.
+
+I attached unit and sample project. The header conversion from ffmpeg
+is taken from &quot;UltraStar Deluxe - Karaoke Game&quot;.
+
+Please include it as internal GUI in MSE package. I think multimedia
+is standard unit for IDE. FFmpeg can decoder much video and audio
+format ie: MP4, MPEG, AVI, FLV, MP3, ect.
+
+To make project in Windows, you need shared binary from
+<A HREF="http://ffmpeg.arrozcru.org/">http://ffmpeg.arrozcru.org/</A>
+And for Linux requires ffmped shared library and devel, I compile from
+source from <A HREF="http://ffmpeg.org.">http://ffmpeg.org.</A>
+
+For others, please you add regvideoplayer to regcomponent.inc in
+MSEIDE project folder. Then compile IDE.
+
+If msedocumenting project will be renamed, ie: mse-addon or other
+name, probably I'll move all my project to it. I've created and port
+some add-on project, Repaz (modified from msereport), OSPrinter, MSE
+Installer, VideoPlayer, and TextAnimation. And all of these is serious
+project and haven been use to production (develope Acosys V4). Next
+time if I had time I'll create Add-on Installer.
+
+Other topic, I think tstatfile for MSEIDE should separated from
+Project File (prj). It can be bad layout if we open project that
+created from other computer.
+
+Thanks
+Wahono
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: videoplayer.zip
+Type: application/zip
+Size: 105116 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110126/4edbaa5d/attachment.zip">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110126/4edbaa5d/attachment.zip</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002643.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+	<LI>Next message: <A HREF="002645.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2644">[ date ]</a>
+              <a href="thread.html#2644">[ thread ]</a>
+              <a href="subject.html#2644">[ subject ]</a>
+              <a href="author.html#2644">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

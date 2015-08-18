@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msei18n problem!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3Cop.vtslbep9yl4sxz%40vano-home.home%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003395.html">
+   <LINK REL="Next"  HREF="003412.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msei18n problem!</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3Cop.vtslbep9yl4sxz%40vano-home.home%3E"
+       TITLE="[MSEide-MSEgui-talk] msei18n problem!">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Apr 11 23:15:04 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003395.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+        <LI>Next message: <A HREF="003412.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3411">[ date ]</a>
+              <a href="thread.html#3411">[ thread ]</a>
+              <a href="subject.html#3411">[ subject ]</a>
+              <a href="author.html#3411">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Please don't use thashedstrings, it uses a bucketlist and is obsolete,  
+</I>&gt;<i> use a class which inherits from thashdatalist instead.
+</I>&gt;<i>
+</I>
+
+Still very slow:
+
+//-----------------
+
+program hashdatalist_test;
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+{$ifdef mswindows}{$apptype console}{$endif}
+
+uses
+  {$ifdef FPC}{$ifdef  
+linux}cthreads,cwstring,{$endif}{$endif}msehash,msestrings,sysutils,dateutils;
+
+var
+   HashT: tmsestringhashdatalist;
+   I, J, t: Integer;
+   Val: msestring;
+   SAVE_INTS: msestringarty;
+
+begin
+   HashT := tmsestringhashdatalist.Create(1000);
+   SetLength(SAVE_INTS, 1000);
+   for i := 0 to 1000 do SAVE_INTS[ i ] := IntToStr(i)+'_string_data';
+   t := millisecondofthehour(time);
+   for j := 0 to 1000 do begin
+     HashT.Clear;
+     for i := 0 to 1000 do begin
+       msestring(HashT.Add(SAVE_INTS[i]+'_long_key_hash')^):= SAVE_INTS[i];
+     end;
+     for i := 0 to 1000 do begin
+       val := msestring(HashT.find(SAVE_INTS[i]+'_long_key_hash')^);
+     end;
+   end;
+   WriteLn(millisecondofthehour(time) - t);
+end.
+//-----------------
+performs 11 secs
+
+whereas the bucketed version
+//----------------------
+program hash_test;
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+{$ifdef mswindows}{$apptype console}{$endif}
+uses
+  {$ifdef FPC}{$ifdef  
+linux}cthreads,cwstring,{$endif}{$endif}msehash,msestrings,sysutils,dateutils;
+
+var
+   HashT: thashedmsestrings;
+   I, J, t: Integer;
+   Val: msestring;
+   SAVE_INTS: msestringarty;
+
+begin
+   HashT := thashedmsestrings.Create;
+   SetLength(SAVE_INTS, 1000);
+   for i := 0 to 1000 do SAVE_INTS[ i ] := IntToStr(i)+'_string_data';
+   t := millisecondofthehour(time);
+   for j := 0 to 1000 do begin
+     HashT.Clear;
+     for i := 0 to 1000 do HashT.Add(SAVE_INTS[i]+'_long_key_hash',  
+@SAVE_INTS[i]);
+     for i := 0 to 1000 do begin
+       val := msestring(HashT.find(SAVE_INTS[i]+'_long_key_hash')^);
+     end;
+   end;
+   WriteLn(millisecondofthehour(time) - t);
+end.
+//----------------------
+performs 16 secs
+
+whereas pure FPC
+//----------------------
+program fpc_hash;
+
+{$mode objfpc}{$H+}
+
+uses
+   {$IFDEF UNIX}{$IFDEF UseCThreads}
+   cthreads,
+   {$ENDIF}{$ENDIF}
+   Classes,
+   SysUtils,
+   contnrs,dateutils
+   { you can add units after this };
+
+var
+      HashT: TFPStringHashTable;
+      I, J, t: Integer;
+      Val: AnsiString;
+      SAVE_INTS: Array of String[4];
+
+begin
+     HashT := TFPStringHashTable.Create;
+     SetLength(SAVE_INTS, 1000);
+     for i := 0 to 1000 do SAVE_INTS[ i ] := IntToStr(i)+'_string_data';
+     t := millisecondofthehour(time);
+     for j := 0 to 1000 do begin
+        HashT.Clear;
+        for i := 0 to 1000 do HashT.Add(SAVE_INTS[i]+'_long_key_hash',  
+SAVE_INTS[i]);
+        for i := 0 to 1000 do val :=  
+HashT.Items[SAVE_INTS[i]+'_long_key_hash'];
+     end;
+     WriteLn(millisecondofthehour(time) - t);
+end.
+//----------------------
+performs 2..3 secs
+
+
+whereas even PHP code:
+//----------------------
+
+#!/usr/bin/php
+&lt;?php
+$t = microtime(1);
+$j = 0;
+$arr = array(1000);
+$i = 0;
+while ($i++ &lt; 1000) {$arr[$i] = $i.&quot;_string_data&quot;; }
+
+while ($j++ &lt; 1000){
+   $i = 0;
+   $arr = array();
+   while ($i++ &lt; 1000) { $arr[$i.&quot;_long_key_hash&quot;] = $arr[$i]; }
+   $i = 0;
+   while ($i++ &lt; 1000) { $val = $arr[$i.&quot;_long_key_hash&quot;]; }
+}
+
+echo (microtime(1)-$t)*1000;
+?&gt;
+//----------------------
+performs 2..3 secs too.
+
+
+The testcase: C2D 3.0GHz with 6M unified cache
+
+PS:
+The comprision has been inspired by HASHed polemics at &quot;FreePascal.Ru&quot;
+Still very short no time, me can't command myself &quot;stop visiting this  
+provocating site!&quot; :)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003395.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+	<LI>Next message: <A HREF="003412.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3411">[ date ]</a>
+              <a href="thread.html#3411">[ thread ]</a>
+              <a href="subject.html#3411">[ subject ]</a>
+              <a href="author.html#3411">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

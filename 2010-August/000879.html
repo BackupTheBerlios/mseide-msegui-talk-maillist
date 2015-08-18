@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100829141554.a778a0fb.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000781.html">
+   <LINK REL="Next"  HREF="000880.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100829141554.a778a0fb.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Aug 29 14:15:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000781.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000880.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Sorry, me again...
+
+But first, a response to your message from Tue, 24 Aug 2010 16:05:41 +0200:
+
+&gt;<i> There is a property &quot;text&quot; in &quot;Eingabe&quot; which hides the parameter &quot;text&quot;,
+</I>&gt;<i> please use &quot;atext&quot; or the like as parameter name.
+</I>
+Or qualify everything fully; this will do as well.
+Oh well, that's the downside of object oriented programming (well, one of
+many facets of it, at least) - after several levels of inheritance, it
+becomes quite opaque what an object comprises. Which makes it very easy to
+duplicate or even override something that's used elsewhere, making you
+wonder why your new feature just doesn't do what it should, or worse,
+making something &quot;that always worked&quot; suddenly to misbehave.
+
+But I have a new gripe also, which leads me to a question:
+
+Is it possible that with loading a &quot;language unit&quot; containing references to
+graphical objects, as I'm still in the attempt to implement for my
+application, _cancels_ _every_ (or at least most) of the normal event
+processing? (Strangely, the debugger _still_ shows all of them to be set as
+expected!)
+
+I got the effect that _none_ of the form events were processed when I used
+such a program - I did quite some digging around what might be wrong with
+my event methods, until I decided to counter check with that very same
+program, just disabling the &quot;loadlangunit&quot; call.
+Well, what do you think? _Everything_ I had problems with suddenly worked
+correctly!
+It even honoured the form options again (I used &quot;fo_screencentered&quot;, but had
+to do the positioning explicitly with the &quot;loadlangunit&quot; call)!
+
+Is that a known restriction, an unknown problem, an easyly resolvable
+issue, something requiring digging deeply into the innards, or what?
+If it could be resolved by some simple means, I would like to be able to
+still use this method; if it gets complicated (for me or for you), I'd
+rather try some alternative. (Skins, perhaps - but I've yet to figure out
+how they're supposed to be used, I've not done anything with them as yet.)
+
+BTW, just to avoid false assumptions as to how I used the mechanism, I
+think I should mention that I stripped down the *.trd files to _only_
+contain the relaocations and size modifications, i.e. the things that are
+_different_ between the versions. I did not retain anything common, as it
+was difficult enough to set up a script that would derive the final .trd
+file from the two form template files; it still requires the intermediate
+generation of a basic .trd file for every form version, renamed
+correspondingly for input to the script. Your use of multiple levels of
+comma separated field names made it somewhat less that trivial...
+(I used awk as a text processor - but this cannot really cope with such a
+setup.)
+(Perhaps meanwhile I'll just try to simply keep everything else in the
+original .trd file, just &quot;flag&quot; it as unchanged. Might be neccessary, if
+the modified objects are &quot;stripped down&quot; on loading the alternative
+settings. I'll see...)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000781.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000880.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmebKJL9J4te%3Dbj-fgvPAreaAMo4bHjkZJkksPSkPn8ojtQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003968.html">
+   <LINK REL="Next"  HREF="003971.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmebKJL9J4te%3Dbj-fgvPAreaAMo4bHjkZJkksPSkPn8ojtQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Sat Jul 30 19:35:39 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003968.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003971.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3977">[ date ]</a>
+              <a href="thread.html#3977">[ thread ]</a>
+              <a href="subject.html#3977">[ subject ]</a>
+              <a href="author.html#3977">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, Jul 29, 2011 at 8:33 PM, Christian Nobel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">chr.nobel at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;&gt;<i> procedure makesession;
+</I>&gt;&gt;<i> var
+</I>&gt;&gt;<i> &#160; session: TEntity;
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i> &#160; session := TEntity.Create('session');
+</I>&gt;&gt;<i> &#160; try
+</I>&gt;&gt;<i> &#160; &#160; session.New;
+</I>&gt;&gt;<i> &#160; &#160; // attributes are instantiated dynamically
+</I>&gt;&gt;<i> &#160; &#160; session.Att['value'] := cvalue;
+</I>&gt;&gt;<i> &#160; &#160; session.Att['currenttime'] := currenttime;
+</I>&gt;&gt;<i> &#160; &#160; session.Att['sessuser'] := sessuser;
+</I>&gt;&gt;<i> &#160; &#160; session.Save;
+</I>&gt;&gt;<i> &#160; finally
+</I>&gt;&gt;<i> &#160; &#160; session.Free;
+</I>&gt;&gt;<i> &#160; end;
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Just my 2 cents...
+</I>&gt;<i>
+</I>&gt;<i> Ehh, maybe a stupid question, but how does this end up as a SQL sentence?
+</I>
+It does not end with SQL but make it dinamically (a loop in Atts.Count
+and you have the columns). Your code stays more readable and clean.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003968.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003971.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3977">[ date ]</a>
+              <a href="thread.html#3977">[ thread ]</a>
+              <a href="subject.html#3977">[ subject ]</a>
+              <a href="author.html#3977">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

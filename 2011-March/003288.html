@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pascal%20written%20poligon%20antialiased%20drawing%0A%09etc&In-Reply-To=%3Cop.vs3725l5yl4sxz%40vano-home%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003287.html">
+   <LINK REL="Next"  HREF="003289.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pascal%20written%20poligon%20antialiased%20drawing%0A%09etc&In-Reply-To=%3Cop.vs3725l5yl4sxz%40vano-home%3E"
+       TITLE="[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Mar 29 19:26:55 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003287.html">[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc
+</A></li>
+        <LI>Next message: <A HREF="003289.html">[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3288">[ date ]</a>
+              <a href="thread.html#3288">[ thread ]</a>
+              <a href="subject.html#3288">[ subject ]</a>
+              <a href="author.html#3288">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> near 100%
+</I>&gt;<i>
+</I>&gt;<i> of CPU load, sure.
+</I>&gt;<i>
+</I>
+Some tests &amp; discussion at  
+<A HREF="http://www.gamehourz.com/Aerosoft-Cheyenne-impressions-ftopict162187.html">http://www.gamehourz.com/Aerosoft-Cheyenne-impressions-ftopict162187.html</A>
+
+
+Actually, Jean-Luc is simply using Open Source Anti-Grain Geometry for his
+vector drawing... as is, curiously enough the nice folks at ACES (MS's Game
+Studio) for much of their terrain drawing.* J-L simply wrapped up the
+individual &quot;tools&quot; into a neat API and created some elegant functions with
+them.
+
+During my own extensive testing of the A-G 'toolset,' I've found that
+well-optimized GDI+ drawing much faster overall than the same drawing being
+performed by A-G. This isn't horribly surprising since at the end of all
+the fiddly-bits being done, the entire screen you see in FSx (meaning any
+version up till now) is being done by - get this! - plain vanilla GDI...
+
+Where many programmers &quot;fall down&quot; using GDI+ is that they simply &quot;redraw&quot;
+the entire gauge every cycle, instead of investing the time to optimize
+individual elements of the drawing.
+
+For example, does the &quot;bezel&quot; or other &quot;static elements&quot; ever change? Of
+course not, that's why they're called &quot;static elements!&quot;  So, the
+solution is to draw them ONCE, and save the image off screen...
+
+Update ONLY those elements that change, and then only when they DO
+change!!!
+
+That said though, I must agree that on my system at least, the gauge set
+for the Cheyenne are very, very slow, and kill my frame rate. Worse, the
+variance is in the order of 30-50 fps, while a well-optimized set of
+similar complexity should have less than 6 fps variance...
+
+*Note: see Adam Szofran's article for details
+<A HREF="http://www.fsinsider.com/articles/Global_Terrain_Technology.htm">http://www.fsinsider.com/articles/Global_Terrain_Technology.htm</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003287.html">[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc
+</A></li>
+	<LI>Next message: <A HREF="003289.html">[MSEide-MSEgui-talk] Pascal written poligon antialiased drawing	etc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3288">[ date ]</a>
+              <a href="thread.html#3288">[ thread ]</a>
+              <a href="subject.html#3288">[ subject ]</a>
+              <a href="author.html#3288">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

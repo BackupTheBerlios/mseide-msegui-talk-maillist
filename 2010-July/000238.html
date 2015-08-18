@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3CAANLkTilzmNjWxtMyB0SD3XdUQpTvhYW5pa5nVuqRfkRN%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000250.html">
+   <LINK REL="Next"  HREF="000243.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto</H1>
+    <B>Zsolt Szokolai</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3CAANLkTilzmNjWxtMyB0SD3XdUQpTvhYW5pa5nVuqRfkRN%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto">soky64 at gmail.com
+       </A><BR>
+    <I>Thu Jul  1 22:44:32 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000250.html">[MSEide-MSEgui-talk] Once more..
+</A></li>
+        <LI>Next message: <A HREF="000243.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>How can I use the SQLInsert in tmsesqlquery?
+I have a table with an autoincrement integer primary key:
+
+CREATE TABLE utemmegrend
+(
+   id integer PRIMARY KEY DEFAULT nextval('sequence'),
+   blah boolean,
+   ...
+)
+
+The problem is the error message at new record post:
+An error occured while applying the UPDATES in a record:
+tmsepqconnection1: Execution of query failed
+(PostgreSQL: ERROR: null value in column &quot;id&quot; violates not-null constraint)
+
+I suspect it's resolvable by own insert SQL but how?
+How can I retrieve the values from the actual row which are entered by
+user for build my own insert statement?
+Via parameters?
+params[0].asinteger:= editwidget.value?
+
+Zsolt
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000250.html">[MSEide-MSEgui-talk] Once more..
+</A></li>
+	<LI>Next message: <A HREF="000243.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

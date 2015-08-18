@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20keyboard%20shortcuts%20issues&In-Reply-To=%3Ciaejka%24c6q%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001573.html">
+   <LINK REL="Next"  HREF="001575.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20keyboard%20shortcuts%20issues&In-Reply-To=%3Ciaejka%24c6q%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Oct 29 15:55:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001573.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+        <LI>Next message: <A HREF="001575.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1574">[ date ]</a>
+              <a href="thread.html#1574">[ thread ]</a>
+              <a href="subject.html#1574">[ subject ]</a>
+              <a href="author.html#1574">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> 
+</I>&gt;<i> The problem #1:
+</I>&gt;<i>   * Setting up the shortcuts in MSEide seem to work fine, and no
+</I>&gt;<i>     conflicts are shown. Again, see attached screenshot.
+</I>&gt;<i>   * No while I am in the MSEide editor, I want to set the number 7
+</I>&gt;<i>     bookmark, so I press Ctrl+Shift+&lt;numpad 7&gt;
+</I>&gt;<i>     In the editor, all text is now highlighted, and the editor jumps
+</I>&gt;<i>     to the first line of the unit.
+</I>&gt;<i> 
+</I>&gt;<i> So it seems like there is a &quot;source editor widget&quot; key conflict, that is
+</I>&gt;<i> not shown in the MSEide shortcuts dialog.
+</I>&gt;<i> 
+</I>Shift flips the NumLock state AFAIK. so Shift+Ctrl+Pad+7 actually sends
+Shift+Ctrl+Home which is handled by the edit widget before the shortcut
+logic sees it.
+Suggestion: use Ctrl+Pad+0..9 for bookmark selection and
+Ctrl+Pad+0..9 Pad+0..9 for bookmark setting, see attachment.
+Trunk 4049 additionally can handle Ctrl+Alt+Pad+0..9.
+
+Martin
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: shortcuts.png
+Type: image/png
+Size: 54741 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101029/626d02c2/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101029/626d02c2/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001573.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+	<LI>Next message: <A HREF="001575.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1574">[ date ]</a>
+              <a href="thread.html#1574">[ thread ]</a>
+              <a href="subject.html#1574">[ subject ]</a>
+              <a href="author.html#1574">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

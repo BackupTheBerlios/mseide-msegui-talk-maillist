@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTimDWF%2BxHCUkq0Ch7w%2BmUKf8Xjyfs8ZEQOix6VJB%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001825.html">
+   <LINK REL="Next"  HREF="001939.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTimDWF%2BxHCUkq0Ch7w%2BmUKf8Xjyfs8ZEQOix6VJB%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Wed Nov 24 21:03:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001825.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001939.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1936">[ date ]</a>
+              <a href="thread.html#1936">[ thread ]</a>
+              <a href="subject.html#1936">[ subject ]</a>
+              <a href="author.html#1936">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> Where should I see this syntax in source code, I'll try to learn it. :)
+</I>&gt;<i>
+</I>&gt;<i> &quot;
+</I>&gt;<i> procedure tactionsimplebutton.pressbutton;
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;include(finfo.state,shs_clicked);
+</I>&gt;<i> &#160;invalidateframestaterect(finfo.ca.dim,fframe);
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>
+With stupid modification, this problem can be fixed clearly. I think
+you need to try this. This small bug is potential to make others
+problem.
+
+procedure tactionsimplebutton.dokeydown(var info: keyeventinfoty);
+begin
+ inherited;
+ with info do begin
+  if (shiftstate = []) and (bo_executeonkey in foptions) then begin
+   if (key = key_space) then begin
+    include(info.eventstate,es_processed);
+    pressbutton;
+   end
+   else begin
+    if isenterkey(self,key) or (key = key_period) then begin
+     include(eventstate,es_processed);
+     pressbutton;
+    end;
+   end;
+  end;
+ end;
+end;
+
+procedure tactionsimplebutton.dokeyup(var info: keyeventinfoty);
+begin
+ inherited;
+ if ((info.key = key_space) or (isenterkey(self,info.key) or (info.key
+= key_period))) and
+                     releasebutton((info.shiftstate = []) and
+                     (bo_executeonkey in foptions)) then begin
+  include(info.eventstate,es_processed);
+ end;
+end;
+
+Thanks
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001825.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001939.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1936">[ date ]</a>
+              <a href="thread.html#1936">[ thread ]</a>
+              <a href="subject.html#1936">[ subject ]</a>
+              <a href="author.html#1936">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

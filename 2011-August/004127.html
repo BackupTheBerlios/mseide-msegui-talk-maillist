@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110829213833.b0e6f433.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004125.html">
+   <LINK REL="Next"  HREF="004128.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C20110829213833.b0e6f433.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 29 21:38:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004125.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004128.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4127">[ date ]</a>
+              <a href="thread.html#4127">[ thread ]</a>
+              <a href="subject.html#4127">[ subject ]</a>
+              <a href="author.html#4127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 29 Aug 2011 07:46:35 +0200:
+
+&gt;<i> &gt; The line via stderr seems to be inserted erratically, or rather
+</I>&gt;<i> &gt; _immedately_ after being issued, irrespecting the output state of the
+</I>&gt;<i> &gt; stdout derived lines. The linux terminal queues them correctly.
+</I>&gt;<i> 
+</I>&gt;<i> True. How to fix? stdout and stderr pipereader both run in an own thread.
+</I>
+Synchronize them via a semaphore or something similar?
+The stdout lines seem to be issued sequentially, possibly even through a
+single write on the part of the called program. This should be carried
+through to the output procedure for display - as long as something was
+received from stdout and not displayed fully, the semaphore should stay
+locked. Afterwards, the line received via stderr can be displayed, and the
+reader process should lock the semaphore for itself, so stdout text cannot
+be displayed until stderr is finished with its current activity.
+
+_Does_ your display procedure allow for asynchrounously mixing text from
+different writers? If so, the above method should help.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004125.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004128.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4127">[ date ]</a>
+              <a href="thread.html#4127">[ thread ]</a>
+              <a href="subject.html#4127">[ subject ]</a>
+              <a href="author.html#4127">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

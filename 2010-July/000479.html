@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Exception: Access violation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Exception%3A%20Access%20violation&In-Reply-To=%3CAANLkTilqjHSoDd17LkGGWibQTD9HUQ5imYtWpC2luGyZ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000478.html">
+   <LINK REL="Next"  HREF="000483.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Exception: Access violation</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Exception%3A%20Access%20violation&In-Reply-To=%3CAANLkTilqjHSoDd17LkGGWibQTD9HUQ5imYtWpC2luGyZ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Exception: Access violation">jujibo at gmail.com
+       </A><BR>
+    <I>Mon Jul 12 21:52:35 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000478.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+        <LI>Next message: <A HREF="000483.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#479">[ date ]</a>
+              <a href="thread.html#479">[ thread ]</a>
+              <a href="subject.html#479">[ subject ]</a>
+              <a href="author.html#479">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I got it.. I have discovered only get the exception after running the
+program (and closing it)
+
+The stack trace:
+
+#0  00000000 :0 ??()
+#1  0829161A msepropertyeditors.pas:4542
+TTEXTSTRINGSPROPERTYEDITOR__CLOSEQUERY(SENDER=0xb7fd6d80,
+AMODALRESULT=MR_CANCLOSE, this=&lt;error al leer la variable&gt;)
+#2  082969A0 msetexteditor.pas:130
+TMSETEXTEDITORFO__TESTEXE(SENDER=0xb76b6040, this=&lt;error al leer la
+variable&gt;)
+#3  081553A6 mseact.pas:347 DOACTIONEXECUTE(SENDER=0xb76b6040,
+INFO={ACTION = 0x0, CAPTIONTEXT = 0xb702e868 '&amp;Test', CAPTION1 = {TEXT
+= 0xb702dda8 'Test', FORMAT = 0xb62b2d88, FLAGS = []}, STATE =
+[AS_LOCALDISABLED..AS_LOCALINVISIBLE, AS_LOCALCAPTION, AS_LOCALCOLOR,
+AS_LOCALONEXECUTE], OPTIONS = [], SHORTCUT = 0x0, SHORTCUT1 = 0x0,
+GROUP = 0, IMAGENR = -1, IMAGENRDISABLED = -2, COLORGLYPH =
+2415919117, COLOR = 2147483651, IMAGECHECKEDOFFSET = 0, IMAGELIST =
+0x0, HINT = 0x0, TAG = 0, TAGPOINTER = 0x0, ONEXECUTE = 0x8296970
+&lt;TMSETEXTEDITORFO__TESTEXE&gt;}, NOCHECKBOX=false, NOCANDEFOCUS=false)
+#4  081B7AB6 msesimplewidgets.pas:684
+TCUSTOMBUTTON__DOEXECUTE(this=&lt;error al leer la variable&gt;)
+#5  08166C87 msewidgets.pas:1799
+TACTIONSIMPLEBUTTON__INTERNALEXECUTE(this=&lt;error al leer la variable&gt;)
+#6  08166CA7 msewidgets.pas:1806
+TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE(ATAG=0, INFO={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 34, Y = 7}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1153123000, BUTTON = MB_LEFT}, this=&lt;error al
+leer la variable&gt;)
+#7  081791F6 mseshapes.pas:405 UPDATEMOUSESHAPESTATE(INFO={CA = {DIM =
+{X = 0, Y = 0, CX = 50, CY = 22, POS = {X = 0, Y = 0}, SIZE = {CX =
+50, CY = 22}}, CAPTION = {TEXT = 0xb702dda8 'Test', FORMAT =
+0xb62b2d88, FLAGS = []}, FONT = 0xb7d886a0, TEXTFLAGS = [TF_XCENTERED,
+TF_YCENTERED], IMAGEPOS = IP_CENTER, CAPTIONDIST = 2, IMAGENR = -1,
+COLORGLYPH = 2415919117, IMAGELIST = 0x0, IMAGEDIST = 0, IMAGEDISTTOP
+= 0, IMAGEDISTBOTTOM = 0}, FOCUSRECTDIST = 1, STATE = [SHS_MOUSE,
+SHS_SHOWFOCUSRECT..SHS_SHOWDEFAULTRECT], TABPOS = 0, GROUP = 0, COLOR
+= 2147483651, COLORACTIVE = 0, IMAGENRDISABLED = -2,
+IMAGECHECKEDOFFSET = 0, FACE = 0x0, FRAME = 0x0, TAG = 0, DOEXECUTE =
+0x8166c90 &lt;TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE&gt;},
+MOUSEEVENT={EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X =
+34, Y = 7}, EVENTSTATE = [ES_CLIENT], TIMESTAMP = 1153123000, BUTTON =
+MB_LEFT}, WIDGET=0xb76b6040, AFRAME=0x0, INFOARPO=0x0, CANCLICK=true)
+#8  08166D43 msewidgets.pas:1820
+TACTIONSIMPLEBUTTON__CLIENTMOUSEEVENT(INFO={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 34, Y = 7}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1153123000, BUTTON = MB_LEFT}, this=&lt;error al
+leer la variable&gt;)
+#9  08077647 msegui.pas:8547 DOCLIENTMOUSEEVENT(parentfp=0xbffff200)
+#10  08077516 msegui.pas:8664 TWIDGET__MOUSEEVENT(INFO={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 34, Y = 7}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1153123000, BUTTON = MB_LEFT}, this=&lt;error al
+leer la variable&gt;)
+#11  0816C6DB msewidgets.pas:4260
+TACTIONWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_BUTTONRELEASE,
+SHIFTSTATE = [], POS = {X = 34, Y = 7}, EVENTSTATE = [ES_CLIENT],
+TIMESTAMP = 1153123000, BUTTON = MB_LEFT}, this=&lt;error al leer la
+variable&gt;)
+#12  08080616 msegui.pas:12467 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE
+= {EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 34, Y =
+7}, EVENTSTATE = [ES_CLIENT], TIMESTAMP = 1153123000, BUTTON =
+MB_LEFT}, WHEEL = {EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS
+= {X = 34, Y = 7}, EVENTSTATE = [ES_CLIENT], TIMESTAMP = 1153123000,
+WHEEL = MW_UP, DELTA = 0}}, CAPTURE=0xb76b6040, this=&lt;error al leer la
+variable&gt;)
+#13  08083931 msegui.pas:13816
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0xb70d5e00, this=&lt;error
+al leer la variable&gt;)
+#14  080854A9 msegui.pas:14545
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0xb62bbe30, ONCE=false,
+this=&lt;error al leer la variable&gt;)
+#15  080858D1 msegui.pas:14623
+TINTERNALAPPLICATION__BEGINMODAL(SENDER=0xb62bbe30, this=&lt;error al
+leer la variable&gt;)
+#16  0807FCAA msegui.pas:12265 TWINDOW__BEGINMODAL(this=&lt;error al leer
+la variable&gt;)
+#17  080790A4 msegui.pas:9434 TWIDGET__INTERNALSHOW(MODAL=true,
+TRANSIENTFOR=0x0, WINDOWEVENT=false, this=&lt;error al leer la variable&gt;)
+#18  080791D2 msegui.pas:9471 TWIDGET__SHOW(MODAL=true,
+TRANSIENTFOR=0x0, this=&lt;error al leer la variable&gt;)
+#19  08291C9F msepropertyeditors.pas:4621
+TTEXTSTRINGSPROPERTYEDITOR__EDIT(this=&lt;error al leer la variable&gt;)
+#20  082F70A7 regdb.pas:958 TMSESQLPROPERTYEDITOR__EDIT(this=&lt;error al
+leer la variable&gt;)
+#21  0809F742 objectinspector.pas:1308
+TOBJECTINSPECTORFO__VALUESBUTTONACTION(SENDER=0xb7c2ee80,
+ACTION=BA_CLICK, BUTTONINDEX=1, this=&lt;error al leer la variable&gt;)
+#22  08236E06 mselistbrowser.pas:2735
+TITEMEDIT__BUTTONACTION(ACTION=BA_CLICK, BUTTONINDEX=1, this=&lt;error al
+leer la variable&gt;)
+#23  0822D671 msedropdownlist.pas:827
+TCUSTOMDROPDOWNCONTROLLER__BUTTONACTION(ACTION=BA_CLICK,
+BUTTONINDEX=1, this=&lt;error al leer la variable&gt;)
+#24  082224AA mseedit.pas:628 TFRAMEBUTTON__MOUSEEVENT(INFO={EVENTKIND
+= EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 172, Y = 8},
+EVENTSTATE = [], TIMESTAMP = 1146347000, BUTTON = MB_LEFT},
+INTF={&lt;INULLINTERFACE&gt; = {}, }, BUTTONINTF={&lt;INULLINTERFACE&gt; = {}, },
+INDEX=1, this=&lt;error al leer la variable&gt;)
+#25  08223454 mseedit.pas:994
+TCUSTOMBUTTONFRAME__MOUSEEVENT(INFO={EVENTKIND = EK_BUTTONRELEASE,
+SHIFTSTATE = [], POS = {X = 172, Y = 8}, EVENTSTATE = [], TIMESTAMP =
+1146347000, BUTTON = MB_LEFT}, this=&lt;error al leer la variable&gt;)
+#26  08236E41 mselistbrowser.pas:2742
+TITEMEDIT__MOUSEEVENT(INFO={EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE =
+[], POS = {X = 172, Y = 8}, EVENTSTATE = [], TIMESTAMP = 1146347000,
+BUTTON = MB_LEFT}, this=&lt;error al leer la variable&gt;)
+#27  08080616 msegui.pas:12467 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE
+= {EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 172, Y =
+8}, EVENTSTATE = [], TIMESTAMP = 1146347000, BUTTON = MB_LEFT}, WHEEL
+= {EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 172, Y =
+8}, EVENTSTATE = [], TIMESTAMP = 1146347000, WHEEL = MW_UP, DELTA =
+0}}, CAPTURE=0xb7c2ee80, this=&lt;error al leer la variable&gt;)
+#28  08083931 msegui.pas:13816
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0xb70d6790, this=&lt;error
+al leer la variable&gt;)
+#29  080854A9 msegui.pas:14545
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=&lt;error al leer la variable&gt;)
+#30  0808630C msegui.pas:14952
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=&lt;error al leer la
+variable&gt;)
+#31  08101028 mseapplication.pas:1299
+TCUSTOMAPPLICATION__RUN(this=&lt;error al leer la variable&gt;)
+#32  0804C17F mseide.pas:59 main()
+
+
+
+
+2010/7/12 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;:
+&gt;<i> I'm not talking about application run time ;) &#160;(but yes, the
+</I>&gt;<i> application is stable)
+</I>&gt;<i>
+</I>&gt;<i> The exception is fired by MSEide.
+</I>&gt;<i>
+</I>&gt;<i> Usually click in datamodule, click in tmsemsqlquery.. click in Object
+</I>&gt;<i> Inspector.. edit SQL property... change the sql string &#160;for example
+</I>&gt;<i> replacing 'order by id as' by 'order by name asc' &#160;then I press Test
+</I>&gt;<i> button and the exception is fired (in MSEide).
+</I>&gt;<i>
+</I>&gt;<i> As I said it only happens sometimes but very often so it's difficult
+</I>&gt;<i> to isolate. I'll try to run MSEide inside MSEide with debug info. I
+</I>&gt;<i> hope to caught the exception.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Julio
+</I>&gt;<i>
+</I>&gt;<i> 2010/7/12 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+</I>&gt;&gt;<i> Julio Jim&#233;nez wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I'm getting Access violation sometimes when pressing Test button in
+</I>&gt;&gt;&gt;<i> SQL editor (editing SQL in tmsesqlquery).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I'm using FirebirdSQL 2.1.3 in linux (ubuntu 10.04). FPC 2.4.0 and MSE
+</I>&gt;&gt;&gt;<i> trunk
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I use local indexes in tmsesqlquery and the SQL sentence is something
+</I>&gt;&gt;&gt;<i> like SELECT * FROM SOMETABLE ORDER BY ID ASC &#160;(dunno if local indexes
+</I>&gt;&gt;&gt;<i> have something to do but I noticed when used.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I can't reproduce every time. Usually closing and opening MSEide fixes
+</I>&gt;&gt;&gt;<i> it.. for a while
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Testcase please. ;-)
+</I>&gt;&gt;<i> The compiled application is stable?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Martin
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000478.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+	<LI>Next message: <A HREF="000483.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#479">[ date ]</a>
+              <a href="thread.html#479">[ thread ]</a>
+              <a href="subject.html#479">[ subject ]</a>
+              <a href="author.html#479">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

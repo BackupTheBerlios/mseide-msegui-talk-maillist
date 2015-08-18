@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Sample MSEgui help in INF format
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Sample%20MSEgui%20help%20in%20INF%20format&In-Reply-To=%3CAANLkTi%3Drc0jXcpx3Uv8O5a9hjME2NaBzRm810Hard_GU%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001100.html">
+   <LINK REL="Next"  HREF="001076.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Sample MSEgui help in INF format</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Sample%20MSEgui%20help%20in%20INF%20format&In-Reply-To=%3CAANLkTi%3Drc0jXcpx3Uv8O5a9hjME2NaBzRm810Hard_GU%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Sample MSEgui help in INF format">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Sep 17 19:02:23 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001100.html">[MSEide-MSEgui-talk] Sample MSEgui help in INF format
+</A></li>
+        <LI>Next message: <A HREF="001076.html">[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1089">[ date ]</a>
+              <a href="thread.html#1089">[ thread ]</a>
+              <a href="subject.html#1089">[ subject ]</a>
+              <a href="author.html#1089">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 17 September 2010 17:38, Ivanko B &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ivankob4mse2 at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Me think that Martin was a bit wrong when decided to keep MSE-sources
+</I>&gt;<i> clean of any comments. Since it would be &#160;a little deal to put some
+</I>
+I must agree with Martin. Documentation should not exist in the source
+code. Minor technical comments are a different story, but that is not
+documentation.
+
+To make documentation easy, no matter the format, there needs to be
+some integration with the editor or IDE. Lazarus IDE does this - you
+can document classes while you code, and as the cursor moves through
+the code, so the documentation window is updated. This is very handy.
+
+For fpGUI, I simply edit the fpdoc description XML files inside the
+IDE. I have some code templates setup to create the most used XML
+notes (unfortunately not available when I use MSEide). fpdoc
+description XML files actually have a very simple syntax - that means
+a lot coming from me, because I hate working with XML. Anyway, simply
+editing the XML files every now and again, while coding is not really
+that bad - slowly but surely the docs for fpGUI are growing. :-)
+
+Anyway, to give a good example of documentation inside the source code
+not working - obfuscating the source code, is with the tiOPF project.
+We initially used pasdoc, and later the code was so hard to read,
+because there was so much docs. Since then we started moving those
+docs into fpdoc XML files and things are slowly getting better. Plus,
+fpdoc supports many output formats, can include images and source code
+examples etc... a much better deal in the end.
+
+
+&gt;<i> Me guess that the only way to break &#160;the catch-22 &amp; to recover QUICKLY
+</I>&gt;<i> is highly motivated (money,...) job on documenting.
+</I>
+Nobody likes writing documentation. I simply do it little bits at a
+time, and eventually there is enough to actually help end-users too.
+
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001100.html">[MSEide-MSEgui-talk] Sample MSEgui help in INF format
+</A></li>
+	<LI>Next message: <A HREF="001076.html">[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1089">[ date ]</a>
+              <a href="thread.html#1089">[ thread ]</a>
+              <a href="subject.html#1089">[ subject ]</a>
+              <a href="author.html#1089">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

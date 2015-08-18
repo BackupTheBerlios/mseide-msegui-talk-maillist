@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3CAANLkTintIgZ6XVVK9XmGkYeR-nQ7kFichB041-EZfnha%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000024.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3CAANLkTintIgZ6XVVK9XmGkYeR-nQ7kFichB041-EZfnha%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue May 18 16:17:55 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+        <LI>Next message: <A HREF="000024.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 18 May 2010 15:48, Martin Schreiber wrote:
+&gt;<i> action system. Basing own functionality on FPC technology is problematic
+</I>&gt;<i> because it is normally not possible to change FPC code in reasonable time and
+</I>&gt;<i> with reasonable energy except if FPC is not Delphi compatible. ;-)
+</I>
+:<i>-)  I just raised this exact issue with Michael van Canneyt in a
+</I>private email (10 minutes ago) where I was considering using
+TBasicAction as a base class, but then quoting the argument with Marco
+about THelpEvent not having a cross-platform signature. Macro decided
+not to change it because he believes it will break Delphi
+compatibility (so he basicially says: f**k cross-platform support).
+:<i>-/
+</I>
+So yes, I think you have a point. Implement it all yourself, and let
+FPC take implementation ideas from you, but not the other way round.
+
+
+&gt;<i> MSEgui taction concept is very different from Delphi.
+</I>
+OK, I'll investigate this further.
+
+
+&gt;<i> A good example are datasets where MSEgui still inherits from TDataset and
+</I>&gt;<i> TField for easy integration of foreign components. Because of that MSEgui
+</I>&gt;<i> needs cracker classes in order to access private class elements for
+</I>&gt;<i> workarounds and extensions and the design flexibility is limited.
+</I>
+Yet another developer (and including myself) that would benefit from a
+&quot;friend class concept&quot; support in FPC. Where a Friend Class can access
+protected and maybe even private information from another class,
+without being declared in the same unit.
+
+
+-- 
+Regards,
+  - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+	<LI>Next message: <A HREF="000024.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

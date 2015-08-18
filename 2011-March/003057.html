@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTikRQYxZATsc8kOZhDNDLO2c0tcnSqhaczg-%2BYPy%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003056.html">
+   <LINK REL="Next"  HREF="003059.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTikRQYxZATsc8kOZhDNDLO2c0tcnSqhaczg-%2BYPy%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">jujibo at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 15:24:16 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003056.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003059.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3057">[ date ]</a>
+              <a href="thread.html#3057">[ thread ]</a>
+              <a href="subject.html#3057">[ subject ]</a>
+              <a href="author.html#3057">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I did check almost every option:
+ANTIALIASED_QUALITY
+
+Font is antialiased, or smoothed, if the font supports it and the size of
+the font is not too small or too large.
+ CLEARTYPE_QUALITY
+
+If set, text is rendered (when possible) using ClearType antialiasing
+method. See Remarks for more information.
+ DEFAULT_QUALITY
+
+Appearance of the font does not matter.
+ DRAFT_QUALITY
+
+Appearance of the font is less important than when the PROOF_QUALITY value
+is used. For GDI raster fonts, scaling is enabled, which means that more
+font sizes are available, but the quality may be lower. Bold, italic,
+underline, and strikeout fonts are synthesized, if necessary.
+ NONANTIALIASED_QUALITY
+
+Font is never antialiased, that is, font smoothing is not done.
+ PROOF_QUALITY
+
+Character quality of the font is more important than exact matching of the
+logical-font attributes. For GDI raster fonts, scaling is disabled and the
+font closest in size is chosen. Although the chosen font size may not be
+mapped exactly when PROOF_QUALITY is used, the quality of the font is high
+and there is no distortion of appearance. Bold, italic, underline, and
+strikeout fonts are synthesized, if necessary.
+And seems all is working as expected.
+
+Probably CLEARTYPE_QUALITY does nothing in win9X because not
+defined....or... it was a MS hidden feature.. hehe.... tests welcome.
+
+
+Julio
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/a595d9b6/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/a595d9b6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003056.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003059.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3057">[ date ]</a>
+              <a href="thread.html#3057">[ thread ]</a>
+              <a href="subject.html#3057">[ subject ]</a>
+              <a href="author.html#3057">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] interfaces corba vs IInterface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeYqnMJAGwxG1Rg_DKmrRSjPoahXg3xJKm8JvF3sgdvoQQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004175.html">
+   <LINK REL="Next"  HREF="004188.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] interfaces corba vs IInterface</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeYqnMJAGwxG1Rg_DKmrRSjPoahXg3xJKm8JvF3sgdvoQQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] interfaces corba vs IInterface">md at delfire.net
+       </A><BR>
+    <I>Mon Sep 19 03:43:22 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004175.html">[MSEide-MSEgui-talk] Project Options - Macros tab: grid forgets	size
+</A></li>
+        <LI>Next message: <A HREF="004188.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4187">[ date ]</a>
+              <a href="thread.html#4187">[ thread ]</a>
+              <a href="subject.html#4187">[ subject ]</a>
+              <a href="author.html#4187">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Many files of MSE source has {$interfaces corba}.
+I would know why this approach was chose and how this works if compile
+in Delphi 7.
+
+I'm writing a lib that has many interfaces... but I'm using IInterface
+(i.e. IUnknow) and TInterfacedObject.
+
+The variables are interface type and I'm using ref-counted.
+Using CORBA I think this is inverse: variable are classes and have not
+ref-counted... so, I can only use variables that are classes not
+interface type, right?
+
+Thanks,
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004175.html">[MSEide-MSEgui-talk] Project Options - Macros tab: grid forgets	size
+</A></li>
+	<LI>Next message: <A HREF="004188.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4187">[ date ]</a>
+              <a href="thread.html#4187">[ thread ]</a>
+              <a href="subject.html#4187">[ subject ]</a>
+              <a href="author.html#4187">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

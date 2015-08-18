@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] interfaces corba vs IInterface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeZGihDS-PRBNm6qrbn9SpB1oaOkfwxfK_UZYeJRxZfYpQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004190.html">
+   <LINK REL="Next"  HREF="004192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] interfaces corba vs IInterface</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20interfaces%20corba%20vs%20IInterface&In-Reply-To=%3CCA%2BixmeZGihDS-PRBNm6qrbn9SpB1oaOkfwxfK_UZYeJRxZfYpQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] interfaces corba vs IInterface">md at delfire.net
+       </A><BR>
+    <I>Mon Sep 19 15:55:57 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004190.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+        <LI>Next message: <A HREF="004192.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4191">[ date ]</a>
+              <a href="thread.html#4191">[ thread ]</a>
+              <a href="subject.html#4191">[ subject ]</a>
+              <a href="author.html#4191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Sep 19, 2011 at 10:49 AM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> &gt; Here is my doubt: I can use variables additionally to the instance
+</I>&gt;<i> &gt; variable -- that is one of advantages, the parameters of some methods
+</I>&gt;<i> &gt; will be interfaces -- but I can not instantiate an interface variable,
+</I>&gt;<i> &gt; because I can't release it. Is that right?
+</I>&gt;<i> &gt;
+</I>&gt;<i> You can add addref()/release() methods to your CORBA interface and do
+</I>&gt;<i> refcounting in the implementing class if necessary.
+</I>
+I understood, but that case is the same that TInterfacedObject, isn't?
+
+&gt;<i> &gt; Resume:
+</I>&gt;<i> &gt; 1- In CORBA, I only can instantiate variables of concret class, but I
+</I>&gt;<i> &gt; can use interfaces variables additionally to the instance variable, of
+</I>&gt;<i> &gt; course;
+</I>&gt;<i>
+</I>&gt;<i> Correct.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 2- In IUnknow, I only can instantiate variables of interfaces.
+</I>&gt;<i> &gt;
+</I>&gt;<i> In FPC correct. In Delphi it is usually possible to use COM interfaces with
+</I>&gt;<i> not ref counted object instances for example with TComponent.
+</I>
+You're right.
+So, if my code will have compatibility with Delphi, is better to use
+CORBA interfaces and no reference counted if I compile it on Delhi. Is
+this the best way?
+
+Thanks,
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004190.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+	<LI>Next message: <A HREF="004192.html">[MSEide-MSEgui-talk] interfaces corba vs IInterface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4191">[ date ]</a>
+              <a href="thread.html#4191">[ thread ]</a>
+              <a href="subject.html#4191">[ subject ]</a>
+              <a href="author.html#4191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

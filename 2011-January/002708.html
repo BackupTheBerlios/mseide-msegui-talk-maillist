@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEuniverse is open!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3C201101301926.43693.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002713.html">
+   <LINK REL="Next"  HREF="002711.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEuniverse is open!</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3C201101301926.43693.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEuniverse is open!">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Jan 30 19:26:43 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002713.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+        <LI>Next message: <A HREF="002711.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2708">[ date ]</a>
+              <a href="thread.html#2708">[ thread ]</a>
+              <a href="subject.html#2708">[ subject ]</a>
+              <a href="author.html#2708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday, 30. January 2011 16.53:27 Sri Wahono wrote:
+&gt;<i> &gt; Does not compile with FPC fixes_2_4:
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> &gt; msecairo.pas(302,45) Error: Identifier not
+</I>&gt;<i> &gt; found &quot;cairo_format_stride_for_width&quot;
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i>
+</I>&gt;<i> Upps, I forgot that I add new header convertion to cairo.pp (FPC).
+</I>&gt;<i> I added to SVN mse-universe. please try again from trunk.
+</I>&gt;<i>
+</I>&quot;
+Free Pascal Compiler version 2.4.3 [2010/11/29] for i386
+Copyright (c) 1993-2010 by Florian Klaempfl
+Target OS: Linux for i386
+Compiling /home/mse/packs/standard/svn/mse/trunk/apps/ide/mseide.pas
+Linking /home/mse/packs/standard/svn/mse/trunk/apps/ide/mseideaddon
+/usr/bin/ld: warning: link.res contains output sections; did you forget -T?
+/usr/bin/ld: cannot find -lavformat
+mseide.pas(65,1) Error: Error while linking
+mseide.pas(65,1) Fatal: There were 1 errors compiling module, stopping
+Fatal: Compilation aborted
+&quot;
+It seems you must use libavformat with getpocaddress() because it is no 
+standard library, it is not available in OpenSuse 11.3 for example. Packman 
+has libavformat.so.52.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002713.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+	<LI>Next message: <A HREF="002711.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2708">[ date ]</a>
+              <a href="thread.html#2708">[ thread ]</a>
+              <a href="subject.html#2708">[ subject ]</a>
+              <a href="author.html#2708">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

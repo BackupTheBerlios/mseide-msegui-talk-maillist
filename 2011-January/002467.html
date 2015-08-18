@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] About Berlios.de
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20About%20Berlios.de&In-Reply-To=%3C4D301283.50500%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002464.html">
+   <LINK REL="Next"  HREF="002468.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] About Berlios.de</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20About%20Berlios.de&In-Reply-To=%3C4D301283.50500%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] About Berlios.de">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jan 14 10:08:19 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002464.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+        <LI>Next message: <A HREF="002468.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2467">[ date ]</a>
+              <a href="thread.html#2467">[ thread ]</a>
+              <a href="subject.html#2467">[ subject ]</a>
+              <a href="author.html#2467">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2011-01-14 10:22, Martin Schreiber het geskryf:
+&gt;<i> My experience is that the possibilities to make most efficient user interfaces 
+</I>&gt;<i> were limited by tools which strictly use standard GUI widgets and no 
+</I>&gt;<i> specialized components, code and settings in GUI part.
+</I>
+The MGM implementation I created for tiOPF is able to support VCL, LCL
+and fpGUI without hassle. Other toolkits can be applied easily. I can
+say with certainty that we have not experienced any limitations because
+we only use standard gui components, in fact it is rather the other way
+round. We now have more flexibility in what components we can use in our
+UI, because normally there are a lot more standard components in various
+gui toolkits than there are db-aware ones. This is even true in the case
+of MSEgui (Widget + Edit + Dialog component palette vs DBe component
+palette).
+
+What is also really nice is that most of the MGM code is actually
+non-gui code, so it is all unit tested as well. Again something you
+can't do with the workings of db-aware components. Even switching your
+application from one gui toolkit to another will be a trivial task.
+Because the way you bind BO properties to gui controls are uniform in
+every toolkit our MGM implementation supports.
+
+Our MGM implementation also has design time support, for those die-hard
+RAD-style developers. But I would recommend developers not use than, and
+instead creating the binding in code - after all, it's one line per
+component.
+
+
+&gt;<i> Disagreed. It is absolutely possible to make a clean and easy maintainable 
+</I>&gt;<i> application structure with the RAD possibilities of MSEide+MSEgui.
+</I>
+In all my time of programming, I have yet to see such an application in
+Delphi or Lazarus. :)
+
+The other problem with RAD-style development is that in promotes the
+idea of adding business rules into the GUI (forms) via the many event
+handlers. This also reduces the chances of being able to reuse such
+event handlers (which often contain business rules). With our MGM
+implementation you can create a customized descendant of any standard
+mediator. Such a mediator never lives in a Form unit, and thus easily
+allows it to be reused. We have many such cases especially for
+customizing grid painting or setting our preferred preferences on a
+grid. All the developer needs to do is simply drop a grid on a form -
+they have no need to customize any of the grid's properties, because the
+custom mediator for a grid component does all that for you. So if we
+want to change the behaviour or look of all our grids in our
+application, we only need to modify one grid mediator.
+
+Anyway, judging from your ideas and designs in MSEgui, I am sure you did
+a better job than Delphi or Lazarus - though I would still refrain from
+using db-aware RAD-style development for any of our apps.
+
+So I think it is safe to say we agree to disagree. ;-)
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002464.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+	<LI>Next message: <A HREF="002468.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2467">[ date ]</a>
+              <a href="thread.html#2467">[ thread ]</a>
+              <a href="subject.html#2467">[ subject ]</a>
+              <a href="author.html#2467">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Reporter in LINUX+KDE: wrong thousand	separatorfor recordband.tabs[i] in PS files
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Reporter%20in%20LINUX%2BKDE%3A%20wrong%20thousand%0A%09separatorfor%20recordband.tabs%5Bi%5D%20in%20PS%20files&In-Reply-To=%3Cmghm161f83ra9f9na7l54cbkd6ofh94cm1%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000103.html">
+   <LINK REL="Next"  HREF="000105.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Reporter in LINUX+KDE: wrong thousand	separatorfor recordband.tabs[i] in PS files</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Reporter%20in%20LINUX%2BKDE%3A%20wrong%20thousand%0A%09separatorfor%20recordband.tabs%5Bi%5D%20in%20PS%20files&In-Reply-To=%3Cmghm161f83ra9f9na7l54cbkd6ofh94cm1%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Reporter in LINUX+KDE: wrong thousand	separatorfor recordband.tabs[i] in PS files">ivankob4mse at yandex.ru
+       </A><BR>
+    <I>Fri Jun 18 12:14:12 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000103.html">[MSEide-MSEgui-talk] Accessing mseide-msegui-talk mailinglist	by NNTP
+</A></li>
+        <LI>Next message: <A HREF="000105.html">[MSEide-MSEgui-talk] Reporter in LINUX+KDE: wrong thousand	separatorfor recordband.tabs[i] in PS files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>FPC can not handle multibyte thousands separator. Russian thousands
+</I>&gt;<i>separator is U+00A0 (non-breaking space) which needs two bytes in utf-8.
+</I>&gt;<i>Please use formatfloatmse() instead of floattostrf().
+</I>&gt;<i>
+</I>
+But this separator may be replaced by regional settings of WM -
+KDE,... Currenly, such replacement doesn't work for teh reporter. 
+Reassigning ThousandSeparator within initialization section of
+reporter module is ignored too.
+
+?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000103.html">[MSEide-MSEgui-talk] Accessing mseide-msegui-talk mailinglist	by NNTP
+</A></li>
+	<LI>Next message: <A HREF="000105.html">[MSEide-MSEgui-talk] Reporter in LINUX+KDE: wrong thousand	separatorfor recordband.tabs[i] in PS files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

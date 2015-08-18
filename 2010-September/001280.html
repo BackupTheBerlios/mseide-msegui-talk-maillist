@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci81eud%24769%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001271.html">
+   <LINK REL="Next"  HREF="001308.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci81eud%24769%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Sep 30 09:42:41 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001271.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001308.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1280">[ date ]</a>
+              <a href="thread.html#1280">[ thread ]</a>
+              <a href="subject.html#1280">[ subject ]</a>
+              <a href="author.html#1280">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> 
+</I>&gt;<i> Could it be the case that there are a couple of inconsistencies left?
+</I>&gt;<i> There were several occasions now when some value I had changed appeared
+</I>&gt;<i> with the _old_ value again after compilation, and the compiled program did
+</I>&gt;<i> not show like the new value had been used at all.
+</I>&gt;<i> 
+</I>&gt;<i> And just right now, after having changed the tab height field, I got an
+</I>&gt;<i> error message &quot;Can not read form file &quot;...&quot;. Error reading
+</I>&gt;<i> Seitenwahl.tab_fontactivetab.shadow_color: Access violation&quot;!
+</I>&gt;<i> I didn't even _look up_ this value!
+</I>&gt;<i> 
+</I>Access violations should never happen. :-)
+Steps to reproduce? An assumption is that something went wrong while reading
+the old *.mfm where the tab properties are stored differently. Not well
+tested probably...
+
+&gt;<i> And upon trying to move the error message dialog to the workspace where
+</I>&gt;<i> I'm typing this, the message window got lost ....
+</I>
+After an AV you should close MSEide immediately because there is a big risk
+that it has become unstable.
+
+&gt;<i> BTW, the focus behaviour of the IDE is somewhat, err, unusual, as to say.
+</I>&gt;<i> It does not really yield to another window made active by means of the
+</I>&gt;<i> window manager. if the mouse cursor still sits within its reach, even if
+</I>&gt;<i> the other window would normally get into possession of the mouse after
+</I>&gt;<i> activation. I have to shift the mouse cursor into the window of interest
+</I>&gt;<i> to heave that on top, although this should normally not be neccessary.
+</I>&gt;<i> 
+</I>If the pointer moves from outside in the area of the main menu and MSEide
+has the focus the main menu window will be brought to front in order all
+items are visible. Another Openbox effect maybe?
+It is possible to switch off Z-order handling with the comand line
+parameter --NOZORDERHANDLING.
+
+&gt;<i> Most of these effects, BTW, did _not_ occur with the previous version(s),
+</I>&gt;<i> where the editor also had the old behaviour of &quot;jumping&quot; to the nearest
+</I>&gt;<i> word begin whether forward or backward. The new behaviour is really
+</I>&gt;<i> awkward, always jumping to the _farthest_ end of the nearest word.
+</I>&gt;<i> I _heartily_ _dislike_ it so. And it is _not_ configurable!
+</I>
+Ctrl+Left/Ctrl+Right? It has been changed on repeatedly user request and I
+find it logical. If the cursor is in the middle of a word Ctrl+Left jumps
+to left word border, Ctrl+Right to the right.
+
+&gt;<i> I consider switching to Lazarus because of this...  ;-&gt;
+</I>
+Feel free to do so. :-)
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001271.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001308.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1280">[ date ]</a>
+              <a href="thread.html#1280">[ thread ]</a>
+              <a href="subject.html#1280">[ subject ]</a>
+              <a href="author.html#1280">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

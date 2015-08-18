@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown window bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20window%20bug&In-Reply-To=%3Ci1rh6l%249rl%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000544.html">
+   <LINK REL="Next"  HREF="000551.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown window bug</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20window%20bug&In-Reply-To=%3Ci1rh6l%249rl%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown window bug">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Jul 17 08:06:45 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000544.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+        <LI>Next message: <A HREF="000551.html">[MSEide-MSEgui-talk] where is  the  martin schreiber ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#545">[ date ]</a>
+              <a href="thread.html#545">[ thread ]</a>
+              <a href="subject.html#545">[ subject ]</a>
+              <a href="author.html#545">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>MSEide MSEgui wrote:
+
+&gt;<i> 2010/7/16 Martin Schreiber
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+</I>&gt;&gt;<i> MSEide MSEgui wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It is with your application only, it is not possible to reproduce with a
+</I>&gt;&gt;<i> simplified testcase?
+</I>&gt;<i> 
+</I>&gt;<i> Yes, I can't create it with simple test.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> The probelm is possibly in application.workarea which has been changed
+</I>&gt;&gt;<i> recently for better multi-monitor support. Please place a breakpoint into
+</I>&gt;&gt;<i> getdropdownpos() (lib/common/kernel/msewidgets.pas:1379) and check what
+</I>&gt;&gt;<i> happens.
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> I don't know why after procedure  TWINDOW.BEGINMODAL, dropdown receive
+</I>&gt;<i> event and open dropdown?
+</I>
+The trigger event is sent by
+
+procedure tcustomdropdowncontroller.dropdown;
+begin
+ if not (deo_disabled in foptions) and candropdown and 
+                   (fdropdowncount = 0) then begin
+  dobeforedropdown;
+  internaldropdown;
+  application.postevent(tobjectevent.create(ek_dropdown,ievent(self)));&lt;&lt;&lt;&lt;-
+  inc(fdropdowncount);
+  fintf.getwidget.window.registermovenotification(ievent(self));
+ end;
+end;
+
+
+&gt;<i> I see in this procedure :
+</I>&gt;<i> 
+</I>&gt;<i> function tinternalapplication.beginmodal(const sender: twindow): boolean;
+</I>&gt;<i>                  //true if modalwindow destroyed
+</I>&gt;<i> var
+</I>&gt;<i>  bo1: boolean;
+</I>&gt;<i>  window1: twindow;
+</I>&gt;<i> begin
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i>  try
+</I>&gt;<i>   sender.activate;
+</I>&gt;<i>   inc(fmodallevel);
+</I>&gt;<i>   result:= eventloop(sender);
+</I>&gt;<i> 
+</I>&gt;<i> In stack trace I got :
+</I>&gt;<i> 
+</I>&gt;<i> #0  004B815C msewidgets.pas:1396 GETDROPDOWNPOS(PARENT=0x2859a0,
+</I>&gt;<i> RIGHT=false, RECT={X = 98, Y = 292, CX = 164, CY = 41, POS = {X = 98,
+</I>&gt;<i> Y = 292}, SIZE = {CX = 164, CY = 41}})
+</I>
+Please step through the code with F7/F8 and check if and why the rect
+becomes wrong, check for example if  the result of workarea is correct.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000544.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+	<LI>Next message: <A HREF="000551.html">[MSEide-MSEgui-talk] where is  the  martin schreiber ???
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#545">[ date ]</a>
+              <a href="thread.html#545">[ thread ]</a>
+              <a href="subject.html#545">[ subject ]</a>
+              <a href="author.html#545">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Loadlangunit for second time
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Loadlangunit%20for%20second%20time&In-Reply-To=%3C201101110837.17689.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002379.html">
+   <LINK REL="Next"  HREF="002380.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Loadlangunit for second time</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Loadlangunit%20for%20second%20time&In-Reply-To=%3C201101110837.17689.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Loadlangunit for second time">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Jan 11 08:37:17 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002379.html">[MSEide-MSEgui-talk] Loadlangunit for second time
+</A></li>
+        <LI>Next message: <A HREF="002380.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui is	released!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2381">[ date ]</a>
+              <a href="thread.html#2381">[ thread ]</a>
+              <a href="subject.html#2381">[ subject ]</a>
+              <a href="author.html#2381">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 10. January 2011 19.36:01 Sri Wahono wrote:
+&gt;<i> Hmm! what is the possibilty reason?
+</I>
+Please try to step into the code in order to find the exact error position. No 
+messages in the terminal window? Which FPC version?
+
+&gt;<i> I see it call dlsym procedure, what's library used?
+</I>For &quot;reglang&quot; the currently loaded language module.
+If the given path has no directory loadlangunit() first searches the given 
+library name in the locations defined by ldconfig. If not found it searches 
+in the directory of the executable. Maybe the order should be reversed?
+If the path has a library part it searches the given path only.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002379.html">[MSEide-MSEgui-talk] Loadlangunit for second time
+</A></li>
+	<LI>Next message: <A HREF="002380.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui is	released!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2381">[ date ]</a>
+              <a href="thread.html#2381">[ thread ]</a>
+              <a href="subject.html#2381">[ subject ]</a>
+              <a href="author.html#2381">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

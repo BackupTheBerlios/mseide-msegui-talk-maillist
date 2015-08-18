@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] locate record in two primary keys
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3CAANLkTik6vvwUffkY-uLA0n6EznYdLUUSbEMyPgYGFNzk%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000701.html">
+   <LINK REL="Next"  HREF="000706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] locate record in two primary keys</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3CAANLkTik6vvwUffkY-uLA0n6EznYdLUUSbEMyPgYGFNzk%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] locate record in two primary keys">jujibo at gmail.com
+       </A><BR>
+    <I>Thu Aug 19 09:44:55 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000701.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+        <LI>Next message: <A HREF="000706.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems I'm wrong in some concepts. I guess find does binary search using
+local indexes but how does work locate? sequential search (not using
+database engine)?
+
+About isnull vs nil for null search value, using nil in 'avalues' looks
+better from my point of view.
+
+Julio
+
+2010/8/19 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> Julio Jim&#233;nez wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Is this experimental locate slow using only one key? or it's slow using
+</I>&gt;<i> &gt; more than one key? Why not keeping for compatibility the old locate
+</I>&gt;<i> sintax
+</I>&gt;<i> &gt; too (calling this new locate with the proper parameters)?
+</I>&gt;<i> &gt;
+</I>&gt;<i> Locate() is slow compared to tlocalindex.find(), there is no significant
+</I>&gt;<i> difference for single key and multi key versions of locate().
+</I>&gt;<i> Single key versions of locate have been removed because they had separate
+</I>&gt;<i> search implementations for the same task and I like to have a single
+</I>&gt;<i> implementation for a task because of less possibility of errors.
+</I>&gt;<i> BTW, should I add an &quot;isnull&quot; parameter to locate() or should &quot;isnull&quot; be
+</I>&gt;<i> removed in find()? Currently NIL in &quot;avalues&quot; denotes searching a NULL
+</I>&gt;<i> field value, this could be done for find() also.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100819/963e7379/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100819/963e7379/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000701.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+	<LI>Next message: <A HREF="000706.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Q: a way of supplying multiple integer	values in a single parameter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Q%3A%20a%20way%20of%20supplying%20multiple%20integer%0A%09values%20in%20a%20single%20parameter&In-Reply-To=%3Cpjj8b6h30366qe2uod934k7vasne9qi2ll%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001408.html">
+   <LINK REL="Next"  HREF="001409.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Q: a way of supplying multiple integer	values in a single parameter</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Q%3A%20a%20way%20of%20supplying%20multiple%20integer%0A%09values%20in%20a%20single%20parameter&In-Reply-To=%3Cpjj8b6h30366qe2uod934k7vasne9qi2ll%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Q: a way of supplying multiple integer	values in a single parameter">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Oct 12 14:10:35 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001408.html">[MSEide-MSEgui-talk] Q: a way of supplying multiple integer values	in a single parameter
+</A></li>
+        <LI>Next message: <A HREF="001409.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to make	single-click toggle ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1414">[ date ]</a>
+              <a href="thread.html#1414">[ thread ]</a>
+              <a href="subject.html#1414">[ subject ]</a>
+              <a href="author.html#1414">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 11 Oct 2010 16:19:13 +0500, Ivanko B
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ivankob4mse2-Re5JQEeQqe8AvxtiuMwx3w at public.gmane.org</A>&gt; wrote:
+
+&gt;<i>Needed for the PODPISKA, already working parameterized query.
+</I>&gt;<i>
+</I>&gt;<i>(PostgreSQL).
+</I>&gt;<i>
+</I>&gt;<i>From &quot;WHERE month_begin = &lt;single_val&gt;&quot; to 
+</I>&gt;<i>&quot;WHERE month_begin IN (val_1,..val_N)&quot;.
+</I>&gt;<i>
+</I>&gt;<i>Framing &quot;val1,..valN&quot; with single quotes (to put in a single string
+</I>&gt;<i>parameter) is discarded by the backend.
+</I>
+Unforunately, me'm adhered to old 7.2 POstgreSQL on many machines so
+the array functionality has to be avoided. 
+The below is a &quot;solution&quot; of passing comma separated list of intgers
+to a parameter to convert it to subquery internally : 
+
+//---------------------
+
+CREATE OR REPLACE FUNCTION intstring2intval(TEXT,TEXT) RETURNS SETOF
+INTEGER AS $_$
+DECLARE
+    curr	INTEGER;
+    offset	INTEGER;
+    dl  	INTEGER;
+    s1		TEXT;
+    s2		TEXT;
+BEGIN
+    dl:= length($2);    
+    offset:= 1;
+    LOOP    
+	s1:= substr($1,offset);	
+	curr:= strpos(s1,$2);
+	IF curr &gt; 0 THEN
+	    curr:= curr + offset - 1;
+	    s2:= substr($1,offset,curr-offset);
+	    IF trim(both from s2) = '' THEN
+		RETURN NEXT cast(NULL AS INTEGER);
+	    ELSE
+		RETURN NEXT cast(s2 AS INTEGER);
+	    END IF;
+	ELSE
+	    s2:= substr($1,offset,length($1) - offset + 1);
+	    IF trim(both from s2) = '' THEN
+		RETURN NEXT cast(NULL AS INTEGER);
+	    ELSE
+		RETURN NEXT cast(s2 AS INTEGER);
+	    END IF;
+	    EXIT;
+	END IF;
+	offset:= curr + dl;
+    END LOOP;
+    RETURN;
+END;$_$ LANGUAGE plpgsql;
+
+------------------------------------------------
+
+SELECT * FROM intstring2intval(' 1 ,2,, ,,  3, 5,,6', ',');
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001408.html">[MSEide-MSEgui-talk] Q: a way of supplying multiple integer values	in a single parameter
+</A></li>
+	<LI>Next message: <A HREF="001409.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to make	single-click toggle ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1414">[ date ]</a>
+              <a href="thread.html#1414">[ thread ]</a>
+              <a href="subject.html#1414">[ subject ]</a>
+              <a href="author.html#1414">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

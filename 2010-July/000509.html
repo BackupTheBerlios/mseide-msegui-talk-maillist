@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Possible issues in latest MSE* code
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Possible%20issues%20in%20latest%20MSE%2A%20code&In-Reply-To=%3CAANLkTil-VQSkq4dHSUMYj-MHSfFNiS4PSjt9MvmN3i28%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000507.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Possible issues in latest MSE* code</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Possible%20issues%20in%20latest%20MSE%2A%20code&In-Reply-To=%3CAANLkTil-VQSkq4dHSUMYj-MHSfFNiS4PSjt9MvmN3i28%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Possible issues in latest MSE* code">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Wed Jul 14 14:54:35 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000507.html">[MSEide-MSEgui-talk] 'Project Tree' open file dialog's file	filters are missing
+</A></li>
+        <LI>Next message: <A HREF="000511.html">[MSEide-MSEgui-talk] Possible issues in latest MSE* code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#509">[ date ]</a>
+              <a href="thread.html#509">[ thread ]</a>
+              <a href="subject.html#509">[ subject ]</a>
+              <a href="author.html#509">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+After I compiled the latest code, I saw some rather serious compiler
+warnings. I know some warnings are not always serious, but I thought
+it worth mentioning to you - in case you missed them.
+
+ * some classes are not related  (this could be dangerous)
+ * hiding of methods in descendant classes (probably not too serious)
+
+
+--------------------------------------
+Compiling apps/ide/settaborderform_mfm.pas
+Compiling apps/ide/objectinspector.pas
+objectinspector.pas(51,16) Warning: An inherited method is hidden by
+&quot;constructor tproppathinfo.create(const tpropertyitem);&quot;
+Compiling apps/ide/objectinspector_mfm.pas
+objectinspector.pas(541,23) Warning: Class types &quot;titemeditlist&quot; and
+&quot;titemlist1&quot; are not related
+Compiling apps/ide/setcreateorderform.pas
+Compiling apps/ide/setcreateorderform_mfm.pas
+Compiling apps/ide/componentstore.pas
+componentstore.pas(86,14) Warning: An inherited method is hidden by
+&quot;tcomponentstorefo.docreate(const TObject);&quot;
+componentstore.pas(88,14) Warning: An inherited method is hidden by
+&quot;tcomponentstorefo.dostatread(const TObject,const tstatreader);&quot;
+componentstore.pas(89,14) Warning: An inherited method is hidden by
+&quot;tcomponentstorefo.dostatwrite(const TObject,const tstatwriter);&quot;
+Compiling apps/ide/componentstore_mfm.pas
+Compiling apps/ide/storedcomponentinfodialog.pas
+Compiling apps/ide/storedcomponentinfodialog_mfm.pas
+formdesigner.pas(2764,8) Warning: Class types &quot;tformscrollbox&quot; and
+&quot;tscrollingwidget1&quot; are not related
+formdesigner.pas(2789,8) Warning: Class types &quot;tformscrollbox&quot; and
+&quot;twidget1&quot; are not related
+Compiling ./lib/common/widgets/msedial.pas
+msedial.pas(276,16) Warning: An inherited method is hidden by
+&quot;constructor tcustomdialcontroller.create(const idialcontroller);&quot;
+msedial.pas(509,12) Warning: Class types &quot;tdialfont&quot; and
+&quot;tdialpropfont&quot; are not related
+--------------------------------------
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000507.html">[MSEide-MSEgui-talk] 'Project Tree' open file dialog's file	filters are missing
+</A></li>
+	<LI>Next message: <A HREF="000511.html">[MSEide-MSEgui-talk] Possible issues in latest MSE* code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#509">[ date ]</a>
+              <a href="thread.html#509">[ thread ]</a>
+              <a href="subject.html#509">[ subject ]</a>
+              <a href="author.html#509">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

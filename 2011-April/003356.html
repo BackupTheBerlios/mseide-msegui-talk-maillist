@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Savepoint message in MySQL script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Savepoint%20message%20in%20MySQL%20script&In-Reply-To=%3CBANLkTi%3DPr_dYbw3kPV8X-_j18irV7qvZQQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003480.html">
+   <LINK REL="Next"  HREF="003357.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Savepoint message in MySQL script</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Savepoint%20message%20in%20MySQL%20script&In-Reply-To=%3CBANLkTi%3DPr_dYbw3kPV8X-_j18irV7qvZQQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Savepoint message in MySQL script">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Mon Apr  4 08:58:31 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003480.html">[MSEide-MSEgui-talk] About tmsestringfield
+</A></li>
+        <LI>Next message: <A HREF="003357.html">[MSEide-MSEgui-talk] Savepoint message in MySQL script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3356">[ date ]</a>
+              <a href="thread.html#3356">[ thread ]</a>
+              <a href="subject.html#3356">[ subject ]</a>
+              <a href="author.html#3356">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I create restore db procedure. In previous trunk it doesn't error. But
+with last trunk, I got error. My db is MySQL.
+
+wmysql: Error executing query: SAVEPOINT sp7256523 does not exist
+An exception occurred at $00820767 :
+emysqlerror : wmysql: Error executing query: SAVEPOINT sp7256523 does not exist
+ $00820767  TMYSQLCONNECTION__CHECKERROR,  line 555 of
+C:/msegui/lib/common/db/mmysqlconn.pas
+ $00821746  TMYSQLCONNECTION__DOEXECUTEUNPREPARED,  line 913 of
+C:/msegui/lib/common/db/mmysqlconn.pas
+ $00821FF2  TMYSQLCONNECTION__INTERNALEXECUTEUNPREPARED,  line 1097
+of C:/msegui/lib/common/db/mmysqlconn.pas
+ $007F030A  TCUSTOMSQLCONNECTION__EXECUTEUNPREPARED,  line 1800 of
+C:/msegui/lib/common/db/msqldb.pas
+ $007EFC36  TCUSTOMSQLCONNECTION__INTERNALEXECUTEDIRECT,  line 1655
+of C:/msegui/lib/common/db/msqldb.pas
+ $007EFD5B  TCUSTOMSQLCONNECTION__EXECUTEDIRECT,  line 1681 of
+C:/msegui/lib/common/db/msqldb.pas
+ $007F1756  TSQLTRANSACTION__SAVEPOINTROLLBACK,  line 2576 of
+C:/msegui/lib/common/db/msqldb.pas
+ $007F6BAD  TMSESQLSCRIPT__EXECUTE,  line 4676 of
+C:/msegui/lib/common/db/msqldb.pas
+ $00611FC8  TFRMMAINTENANCEFO__BTNRESTORE_ONEXECUTE,  line 539 of
+frmmaintenance.pas
+ $006FBD4B
+ $006FBD99
+ $00730317  TCUSTOMBUTTON__DOEXECUTE,  line 690 of
+C:/msegui/lib/common/widgets/msesimplewidgets.pas
+ $0070955E
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003480.html">[MSEide-MSEgui-talk] About tmsestringfield
+</A></li>
+	<LI>Next message: <A HREF="003357.html">[MSEide-MSEgui-talk] Savepoint message in MySQL script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3356">[ date ]</a>
+              <a href="thread.html#3356">[ thread ]</a>
+              <a href="subject.html#3356">[ subject ]</a>
+              <a href="author.html#3356">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

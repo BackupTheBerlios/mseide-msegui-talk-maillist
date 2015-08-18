@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Exception: Access violation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Exception%3A%20Access%20violation&In-Reply-To=%3CAANLkTikWTmrbPpRunxde4RLc0ypm41kgY1EvauaCgPlE%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000477.html">
+   <LINK REL="Next"  HREF="000479.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Exception: Access violation</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Exception%3A%20Access%20violation&In-Reply-To=%3CAANLkTikWTmrbPpRunxde4RLc0ypm41kgY1EvauaCgPlE%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Exception: Access violation">jujibo at gmail.com
+       </A><BR>
+    <I>Mon Jul 12 21:43:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000477.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+        <LI>Next message: <A HREF="000479.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm not talking about application run time ;)  (but yes, the
+application is stable)
+
+The exception is fired by MSEide.
+
+Usually click in datamodule, click in tmsemsqlquery.. click in Object
+Inspector.. edit SQL property... change the sql string  for example
+replacing 'order by id as' by 'order by name asc'  then I press Test
+button and the exception is fired (in MSEide).
+
+As I said it only happens sometimes but very often so it's difficult
+to isolate. I'll try to run MSEide inside MSEide with debug info. I
+hope to caught the exception.
+
+
+Julio
+
+2010/7/12 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> Julio Jim&#233;nez wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I'm getting Access violation sometimes when pressing Test button in
+</I>&gt;&gt;<i> SQL editor (editing SQL in tmsesqlquery).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm using FirebirdSQL 2.1.3 in linux (ubuntu 10.04). FPC 2.4.0 and MSE
+</I>&gt;&gt;<i> trunk
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I use local indexes in tmsesqlquery and the SQL sentence is something
+</I>&gt;&gt;<i> like SELECT * FROM SOMETABLE ORDER BY ID ASC &#160;(dunno if local indexes
+</I>&gt;&gt;<i> have something to do but I noticed when used.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I can't reproduce every time. Usually closing and opening MSEide fixes
+</I>&gt;&gt;<i> it.. for a while
+</I>&gt;&gt;<i>
+</I>&gt;<i> Testcase please. ;-)
+</I>&gt;<i> The compiled application is stable?
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000477.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+	<LI>Next message: <A HREF="000479.html">[MSEide-MSEgui-talk] Exception: Access violation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

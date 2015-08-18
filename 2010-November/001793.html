@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] LCL in MSEide - is possible?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTin27yYXWoKdDx_KUtJcnLdbJYQwBQ%2BtNapKGCFs%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001794.html">
+   <LINK REL="Next"  HREF="001838.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] LCL in MSEide - is possible?</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTin27yYXWoKdDx_KUtJcnLdbJYQwBQ%2BtNapKGCFs%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] LCL in MSEide - is possible?">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Sun Nov  7 00:39:47 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001794.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+        <LI>Next message: <A HREF="001838.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1793">[ date ]</a>
+              <a href="thread.html#1793">[ thread ]</a>
+              <a href="subject.html#1793">[ subject ]</a>
+              <a href="author.html#1793">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 6 November 2010 15:15, Marcos Douglas wrote:
+&gt;<i> I see this inconsistent too. But all others developers do not see it?
+</I>&gt;<i> Not exists people working with LCL in production with sucess?
+</I>
+I think most of those users only use LCL apps on a single platform, or
+only use it as a &quot;toy&quot; (and doesn't get much real world use).
+
+
+&gt;<i> I don't understand why LCL use IFDEF. Maybe to be compatible with Delphi?
+</I>
+Simply because they are trying to do the impossible. They are chasing
+a moving target: Microsoft stops for nobody, Apple stops for nobody,
+Qt keeps changing and improving etc. Yet they want a single API across
+all those frameworks and platform targets.... wishful thinking, and
+explains why they have so many bugs.
+
+
+&gt;<i> I don't understand why you created other option to widgets... why did
+</I>&gt;<i> you not use the MSEgui?
+</I>&gt;<i> And, finally, I don't understand why all you (Graeme, Martin, Lazarus
+</I>&gt;<i> team, etc) do not join to create a better product!
+</I>
+I initially started with a discontinued fpGUI (development stopped
+back in 2000, and I started in 2004/5... the original fpGUI was
+actually started before Lazarus even existed). Then later I found some
+design problems and I started with a total rewrite of fpGUI. Only then
+did I hear about MSEgui. Yes I looked at MSEgui, and was very
+impressed with its feature list, but I found it very hard to learn,
+very hard to read, we had different design ideas, and Martin has very
+strong idea of what he does and doesn't want MSEgui to be (single
+developer with total control - which he has all the right to have).
+Too many uphill battles for me and I already made a bad choice in our
+company in letting us go with LCL at first, so didn't want to make
+another &quot;potential&quot; bad mistake (which could cost me my job). So it
+was simply easier for me to continue working on fpGUI, and design it
+for our company needs. fpGUI fits somewhere between VCL and MSEgui.
+More flexible that VCL and not as different as MSEgui, so I think
+easier to learn [Martin will disagree here :-)]. So fpGUI is more in
+line with what I and our other in-house developers was used to. fpGUI
+has a slight VCL class style and structure (after all, I used Delphi
+for many years), but without the VCL binding to native controls and
+being very Windows centric.
+
+Martin on the other hand took a total different approach with MSEgui,
+but he can explain that, and his reasonings, better than I.
+
+The big difference between MSEgui and fpGUI, compared to LCL, is that
+we are NOT trying to be VCL clones. We come up with our own ideas and
+solutions, or borrow ideas from various other frameworks, to build an
+even better framework.
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001794.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+	<LI>Next message: <A HREF="001838.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1793">[ date ]</a>
+              <a href="thread.html#1793">[ thread ]</a>
+              <a href="subject.html#1793">[ subject ]</a>
+              <a href="author.html#1793">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

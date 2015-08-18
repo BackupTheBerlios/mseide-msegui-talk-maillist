@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] To PostgreSQL users
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20To%20PostgreSQL%20users&In-Reply-To=%3C07a9565q63uam6ji08dk549jo89q06rhc5%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000561.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] To PostgreSQL users</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20To%20PostgreSQL%20users&In-Reply-To=%3C07a9565q63uam6ji08dk549jo89q06rhc5%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] To PostgreSQL users">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Sun Aug  1 01:24:07 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000561.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#560">[ date ]</a>
+              <a href="thread.html#560">[ thread ]</a>
+              <a href="subject.html#560">[ subject ]</a>
+              <a href="author.html#560">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I find PostgreSQL quite hard to tweak to get good performance. A fresh
+</I>&gt;<i>install is *very* slow, and database server optimization is rather
+</I>&gt;<i>hard. 
+</I>
+Me'm disagree. 8.x versions are clever by default &amp; their optimizer is
+very well, server parameter optimization is mainly needed for
+migrating from 7.x versions for huge databases. 
+For example, 8.x optimizer automatcally apply hash &amp; merge jonn w/o
+any special indexing.
+
+&gt;<i> Compare that to a fresh install of Firebird 2.x which is fast
+</I>&gt;<i>without any tweaks.  I ran the same test suite (from tiOPF project),
+</I>&gt;<i>using SqlDB database components (included with FPC). PostgreSQL was
+</I>&gt;<i>very slow compared to Firebird - doing the exact same tests. I really
+</I>&gt;<i>like the features of PostgreSQL, and the admin tools are very good, I
+</I>&gt;<i>just don't know how to get good performance out of it. :-(  Any tips
+</I>&gt;<i>or good websites I can look at?
+</I>&gt;<i>
+</I>
+With a pleasue :) Assume that the main goal of optimization is to
+exclude any &quot;bottle necks&quot;. The main of them is disk i/o which is
+thousands times as slower than CPU &amp; memory. 
+To minimize disk i/o, we can:
+
+1) use minimal set of nececssary indexes - they allow to locate then
+to load much smaller parts  of huge DB files, but be aware not to
+index data spread evenly through index files (these file may grow very
+rapidly ) - low enthropy data like operator codes, office codes,
+payment types - since such inedexes may envolve full loading index
+files ( the worst case is to retrieve index value from very begginning
+&amp; very ending of the index file) thus MAXIMIZING disk i/o - so name
+harmful indexes. 
+The best candidates for indexing are high enthropies - operation days,
+table IDs, sequential numerators, references to ID of master
+tables,...
+ BTW, low enthropies etc can also be indexed but in a complex index
+togehther &amp; after high enthropies - here the higher entropy squeeses
+the loadable part of data&amp;index file and the low enthropy will be
+applied to this smaller part.
+
+BTW,harmful index may be bypased by spoiling &quot;where/join&quot; SQL-clause
+by adding zero of multiplying by 1.0
+
+2) not to use triggers w/o need ( for referential integrity of all DB
+entities etc ) - exessive triggers kick database files on any smallest
+change to DB thus MAXIMIZING disk i/o once again.   
+
+3) to index complex functional culcalations (regardless of their
+entropy if a single calculation is slow because of many work) - it may
+take many minites of initial indexing but milliseconds on calls after
+indexing 
+
+&gt;<i>To get back to your statement. Have you run any profile on you queries
+</I>&gt;<i>to see where it is slow?  
+</I>&gt;<i>
+</I>
+EXPLAIN ANALYSE SELECT... 
+
+Do you use sufficient indexes on your
+&gt;<i>tables?  Do you pull only the required data, or everything and then
+</I>&gt;<i>sort through the mess in the client-side?
+</I>&gt;<i>
+</I>&gt;<i>I found that many queries can be improved by simply optimizing how you
+</I>&gt;<i>write a query, and adding sufficient Indexes to those tables. When I
+</I>&gt;<i>started working at our company, one of our reports took 5-8 minutes to
+</I>&gt;<i>complete. 
+</I>
+&gt;<i>It took me 15 minutes to rewrite the query, and now that
+</I>&gt;<i>same report is generated in 20 seconds. :)
+</I>&gt;<i>
+</I>
+Me also got similar (40 times) success just from removing harmful
+indedex - PG 8.1 planner just applied merged join instead of those
+indexes.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000561.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#560">[ date ]</a>
+              <a href="thread.html#560">[ thread ]</a>
+              <a href="subject.html#560">[ subject ]</a>
+              <a href="author.html#560">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

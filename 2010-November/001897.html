@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] x.org vs wayland
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20x.org%20vs%20wayland&In-Reply-To=%3C20101116200814.634edcee.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001894.html">
+   <LINK REL="Next"  HREF="001899.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] x.org vs wayland</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20x.org%20vs%20wayland&In-Reply-To=%3C20101116200814.634edcee.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] x.org vs wayland">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Nov 16 20:08:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001894.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+        <LI>Next message: <A HREF="001899.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1897">[ date ]</a>
+              <a href="thread.html#1897">[ thread ]</a>
+              <a href="subject.html#1897">[ subject ]</a>
+              <a href="author.html#1897">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Graeme,
+
+Du schriebst am Tue, 16 Nov 2010 09:44:21 +0200:
+
+&gt;<i> &gt; VNC or RDP is _no_ &quot;add-on&quot; to an X, and a far way from being a
+</I>...
+&gt;<i> Yes I understand that. What the Wayland developers was trying to say is
+</I>&gt;<i> that such functionality doesn't need to be inside the display API itself.
+</I>
+Not neccessarily, right. But _if_ it is there, there are a lot of things
+that cannot be done otherwise.
+
+&gt;<i> actually needed. OS-X, Windows, BeOS, etc etc. doesn't have such &quot;network
+</I>&gt;<i> transparancy&quot; built into the display API, yet they all found solutions to
+</I>&gt;<i> work remotely over a network.
+</I>
+Yes, crutches that allow one user - usually an adimistrative one - to gain
+access to another one's desktop, provided his screen is large enough to
+accommodate the other's screen. If not, well, he's in trouble if he needs
+to access something out of his reach...
+
+&gt;<i> VirtualBox manages to do something like what you want. Normally it's a
+</I>&gt;<i> single &quot;desktop window&quot;, but you can enable &quot;integration mode&quot; where the
+</I>
+Well, I didn't say I'd _want_ this. Actually, I usually use Virtualbox in
+desktop mode, mainly because the integration mode windows are so slow.
+And above that, they're even then restricted to the dimensions of the host
+virtual screen size, even if it's invisible. Not to mention the artefacts
+occurring on moving or resizing such a window - at least on a machine like
+mine, which &quot;only&quot; has a 2.6GHz CPU (single core) and 1.5GBytes of main
+memory (running openbox, of course). I would _not_ dare to use this over a
+network with less than 1Gbit/s and call it &quot;usable&quot;.
+
+&gt;<i> desktop. So there must be a way this same idea can be applied in Wayland.
+</I>
+This is _not_ a feature of the window manager, but one of the network
+&quot;hijacker&quot; program - it needs to run as a system service with high
+privilege, so it can get access to all of the information about the active
+windows to be able to copy their contents and frames and, very important,
+to know of changes to them to report.
+
+&gt;<i> Again without needing the client/server approach X11 currently has. I
+</I>
+Nope. The &quot;hijacker&quot; programs put a client-server layer _above_ the already
+running display server. You think this is a more efficient approach?
+
+&gt;<i> think this is the point the Wayland developers was trying to make. X11 was
+</I>&gt;<i> designed decades ago with much less technology and slower networks,
+</I>&gt;<i> compared to today.
+</I>
+Yes, and it achieved even then a performance that VNC e.g. needs a machine
+of around tenfold the hardware power available then to do comparably. Did
+you try to run your window manager through a network connection directly
+(ssh X-forwarding, or even plain Xhost (I think it is) protocol over tcp
+and compare that with a VNC connection to the same machine?
+
+&gt;<i> &gt; No icons, no taskbar, no context menues, no &quot;applets&quot;, nothing that may
+</I>...
+&gt;<i> JWM does the same, but comes default with a taskbar enabled. Menu setup is
+</I>
+I _don't_ _like_ a taskbar. I don't want to have to have one.
+
+&gt;<i> also a simplified xml file so it's quick to add new menu items, and simply
+</I>
+Ooopps - XML, clear text encryption? XML is so bloated and unreadable that
+it is best treated as an encrypted binary format. Which means that you need
+special programs to create and maintain the pertinent files.
+(Unfortunately, openbox _also_ uses an XML format file for configuration
+and menus, albeit a very simple form of it for the menu file. And they do
+_not_ carry a checksum to &quot;protect&quot; against direct manual changes.)
+
+&gt;<i> right-click and select reload, to reload JWM without restarting X11.
+</I>&gt;<i> Awesome! :)
+</I>
+Not at all - this used to be the common way for reconfiguration, even
+changing the window manager, formerly. Why'd you want to restart the
+drawing engine (X server), if all you changed are some settings for an
+application (window manager)?
+They're going to far extremes abusing their tools nowadays, it seems...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001894.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+	<LI>Next message: <A HREF="001899.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1897">[ date ]</a>
+              <a href="thread.html#1897">[ thread ]</a>
+              <a href="subject.html#1897">[ subject ]</a>
+              <a href="author.html#1897">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

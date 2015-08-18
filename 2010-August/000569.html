@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Wishes%20for%20PostgreSQL%208%2B%3A%0A%09%28TMSESQLTransaction%3A%20isolation%20level%29%20%26%20%28TMSESQLQuery%3A%20named%0A%09savepoint%20to%20return%20data%20if%20the%20query%20fails%20thus%20rollback-ed%29&In-Reply-To=%3C1l8d56pb76a086rhqkj4dsf5gp1475g3rm%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000570.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Wishes%20for%20PostgreSQL%208%2B%3A%0A%09%28TMSESQLTransaction%3A%20isolation%20level%29%20%26%20%28TMSESQLQuery%3A%20named%0A%09savepoint%20to%20return%20data%20if%20the%20query%20fails%20thus%20rollback-ed%29&In-Reply-To=%3C1l8d56pb76a086rhqkj4dsf5gp1475g3rm%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Aug  2 12:54:13 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000568.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+        <LI>Next message: <A HREF="000570.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Please use tmsetransaction.Params property. Example:
+</I>&gt;<i>&quot;
+</I>&gt;<i>ISOLATION LEVEL READ COMMITTED
+</I>&gt;<i>READ ONLY
+</I>
+Wow, it's cool.  To the README ?
+
+&gt;<i>I don't understand your request. MSEgui uses PostgreSQL savepoints if
+</I>&gt;<i>tmsepqconnection.options pqco_usesavepoint is set (default on) in order to
+</I>&gt;<i>avoid the nasty PostgreSQL message &quot;Transaction has been aborted...&quot; in
+</I>&gt;<i>case of an SQL error.
+</I>&gt;<i>If you want to use savepoints in your SQL statements use executedirect() or
+</I>&gt;<i>a tsqlscript.
+</I>
+Me mean a parameter of TMSESQLquery with name of savepoint to return
+to if (Insert/Update/Delete)SQL or OnApplyRecUpdate or autobuilt
+update SQL of the query fails. 
+Not usable ?
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000568.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+	<LI>Next message: <A HREF="000570.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

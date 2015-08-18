@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201109021201.36303.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004137.html">
+   <LINK REL="Next"  HREF="004139.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201109021201.36303.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Sep  2 12:01:36 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004137.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004139.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4138">[ date ]</a>
+              <a href="thread.html#4138">[ thread ]</a>
+              <a href="subject.html#4138">[ subject ]</a>
+              <a href="author.html#4138">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 02 September 2011 11:26:02 minoshi wrote:
+&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> user]# LANG=en_US.utf8 /mnt/data/projects/mse/pacman/test/test
+</I>&gt;<i> checking dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Remove (1): feh-1.15.1-1
+</I>&gt;<i> 
+</I>&gt;<i> Total Removed Size:   0.39 MB
+</I>&gt;<i> 
+</I>&gt;<i> Do you want to remove these packages? [Y/n]  ==&gt; end &lt;==
+</I>&gt;<i> checking dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Remove (1): feh-1.15.1-1
+</I>&gt;<i> 
+</I>&gt;<i> Total Removed Size:   0.39 MB
+</I>&gt;<i> Do you want to remove these packages? [Y/n]
+</I>&gt;<i>   ==&gt; end &lt;==
+</I>&gt;<i> checking dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Remove (1): feh-1.15.1-1
+</I>&gt;<i> 
+</I>&gt;<i> Do you want to remove these packages? [Y/n] Total Removed Size:   0.39 MB
+</I>&gt;<i> 
+</I>&gt;<i>   ==&gt; end &lt;==
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> user]#
+</I>
+Please change the testprogram:
+&quot;
+//tterminal events
+procedure tmainfo.on_progfinish(const sender: TObject);
+begin
+//  terminal.addline(' ==&gt; end &lt;==');
+ // writeln(' ==&gt; end &lt;==');
+end;
+&quot;
+in order to get a clean output stream.
+Please check if &quot;errorinput&quot; in
+&quot;
+procedure tmainfo.on_recievetext(const sender: TObject; var atext: 
+AnsiString; const errorinput: Boolean);
+&quot;
+is never true.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004137.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004139.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4138">[ date ]</a>
+              <a href="thread.html#4138">[ thread ]</a>
+              <a href="subject.html#4138">[ subject ]</a>
+              <a href="author.html#4138">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

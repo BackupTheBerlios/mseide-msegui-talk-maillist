@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3Ci8n86l%242ji%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001405.html">
+   <LINK REL="Next"  HREF="001478.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3Ci8n86l%242ji%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Oct  8 16:07:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001405.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+        <LI>Next message: <A HREF="001478.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> On 8 October 2010 15:36, Martin Schreiber wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> FPC TThread mainly with synchronize(). Instead of synchronize() MSEgui
+</I>&gt;&gt;<i> uses application.lock/application.unlock.
+</I>&gt;<i> 
+</I>&gt;<i> Umm... that might work, but the code I'm looking at is not GUI code,
+</I>&gt;<i> so their is never a Application instance. The code in question is
+</I>&gt;<i> tiOPF (core or non-gui code, like threaded/cached logging etc).
+</I>&gt;<i> 
+</I>&quot;
+procedure tthreadcomp.waitfor;
+begin
+ application.waitforthread(fthread);
+end;
+&quot;
+and
+&quot;
+procedure tcustomapplication.waitforthread(athread: tmsethread);
+         //does unlock-relock before waiting
+var
+ int1: integer;
+begin
+ int1:= unlockall;
+ try
+  athread.waitfor;
+ finally
+  relockall(int1);
+ end;
+end;
+&quot;
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001405.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+	<LI>Next message: <A HREF="001478.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1406">[ date ]</a>
+              <a href="thread.html#1406">[ thread ]</a>
+              <a href="subject.html#1406">[ subject ]</a>
+              <a href="author.html#1406">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SF in the IDE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SF%20in%20the%20IDE&In-Reply-To=%3Cmid396tqr4d69tp6m8docgtlfki06dmtbn%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001034.html">
+   <LINK REL="Next"  HREF="001037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SF in the IDE</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SF%20in%20the%20IDE&In-Reply-To=%3Cmid396tqr4d69tp6m8docgtlfki06dmtbn%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SF in the IDE">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Sep 16 08:22:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001034.html">[MSEide-MSEgui-talk] PODPISKA has been unusable
+</A></li>
+        <LI>Next message: <A HREF="001037.html">[MSEide-MSEgui-talk] SF in the IDE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1036">[ date ]</a>
+              <a href="thread.html#1036">[ thread ]</a>
+              <a href="subject.html#1036">[ subject ]</a>
+              <a href="author.html#1036">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Happened in the PODPISKA when managing inherited forms - exactly when
+trying to call text view for TRFVIEWFORM to check for run-time error
+&quot;container.frame.sbhorz.faceutton.dummy&quot;. Surely, not reproducible (
+maybe because of async events ? ):
+
+//-----------------------------------------------
+
+#0  0041EE1F :0 MSEGUI_TWIDGET_$__UPDATEROOT()
+#1  0041F1A1 :0 MSEGUI_TWIDGET_$__WINDOW$$TWINDOW()
+#2  00453DBF :0
+MAIN_TMAINFO_$__SELECTIONCHANGED$IDESIGNER$IDESIGNERSELECTIONS()
+#3  0057FC9E :0
+MSEDESIGNINTF_TDESIGNNOTIFICATIONS_$__SELECTIONCHANGED$IDESIGNER$IDESIGNERSELECTIONS()
+#4  005795AA :0
+MSEDESIGNER_TDESIGNER_$__MODULEDESTROYED$PMODULEINFOTY()
+#5  00576AD9 :0 MSEDESIGNER_TMODULELIST_$__DELETE$LONGINT$$POINTER()
+#6  00576B18 :0
+MSEDESIGNER_TMODULELIST_$__REMOVEMODULEINFO$PMODULEINFOTY$$LONGINT()
+#7  0057BC34 :0
+MSEDESIGNER_TDESIGNER_$__CLOSEMODULE$PMODULEINFOTY$BOOLEAN$$BOOLEAN()
+#8  005796B6 :0 MSEDESIGNER_TDESIGNER_$__SHOWASTEXT$PMODULEINFOTY()
+#9  00602ECA :0 FORMDESIGNER_TFORMDESIGNERFO_$__DOASYNCEVENT$LONGINT()
+#10  0047093D :0
+MSECLASSES_TMSECOMPONENT_$__RECEIVEEVENT$TOBJECTEVENT()
+#11  00515F97 :0
+MSEAPPLICATION_TACTCOMPONENT_$__RECEIVEEVENT$TOBJECTEVENT()
+#12  00425BEA :0 MSEGUI_TWIDGET_$__RECEIVEEVENT$TOBJECTEVENT()
+#13  004DCC8B :0
+MSEWIDGETS_TACTIONWIDGET_$__RECEIVEEVENT$TOBJECTEVENT()
+#14  0055BADA :0
+MSEFORMS_TCUSTOMMSEFORM_$__RECEIVEEVENT$TOBJECTEVENT()
+#15  004F5B8A :0 MSEEVENT_TOBJECTEVENT_$__DELIVER()
+#16  0042E623 :0
+MSEGUI_TINTERNALAPPLICATION_$__EVENTLOOP$TWINDOW$BOOLEAN$$BOOLEAN()
+#17  0042F44C :0 MSEGUI_TINTERNALAPPLICATION_$__DOEVENTLOOP$BOOLEAN()
+#18  00517A88 :0 MSEAPPLICATION_TCUSTOMAPPLICATION_$__RUN()
+#19  004025D7 mseide.pas:61 main()
+
+//-----------------------------------------------
+
+
+PS:
+How to avoid SIGTRAP on each F12 in the IDE when running IDE-in-IDE ?
+Very annoying...
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001034.html">[MSEide-MSEgui-talk] PODPISKA has been unusable
+</A></li>
+	<LI>Next message: <A HREF="001037.html">[MSEide-MSEgui-talk] SF in the IDE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1036">[ date ]</a>
+              <a href="thread.html#1036">[ thread ]</a>
+              <a href="subject.html#1036">[ subject ]</a>
+              <a href="author.html#1036">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] feature request: separated session	information from project file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%0A%09information%20from%20project%20file&In-Reply-To=%3C201011031232.43500.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001691.html">
+   <LINK REL="Next"  HREF="001693.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] feature request: separated session	information from project file</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%0A%09information%20from%20project%20file&In-Reply-To=%3C201011031232.43500.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] feature request: separated session	information from project file">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Nov  3 12:32:43 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001691.html">[MSEide-MSEgui-talk] feature request: separated session information from project file
+</A></li>
+        <LI>Next message: <A HREF="001693.html">[MSEide-MSEgui-talk] feature request: separated session information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1692">[ date ]</a>
+              <a href="thread.html#1692">[ thread ]</a>
+              <a href="subject.html#1692">[ subject ]</a>
+              <a href="author.html#1692">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday, 3. November 2010 12.20:04 Marcos Douglas wrote:
+&gt;<i> On Wed, Nov 3, 2010 at 6:20 AM, Graeme Geldenhuys
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> BTW, where is stored the MSEide configuration (FPCDIR, FPCLIBDIR,
+</I>&gt;<i> MSELIBDIR, etc)?
+</I>
+In &lt;HOME&gt;/.mseide/mseideli.sta (Linux) or &lt;APPDATA&gt;/.mseide/mseidewi.sta 
+(Windows).
+
+&gt;<i> Is possible to use a parameter to mseide.exe to define which paths to
+</I>&gt;<i> use (like &quot;lazarus --pcp=&lt;path&gt;&quot;)?
+</I>&gt;<i>
+</I>Probably better to use macro groups. From README.TXT:
+&quot;
+MSEide command line parameters
+******************************
+-np
+ Do not load a project.
+-ns
+ Do not use a skin, no fades.
+--macrogroup=&lt;n&gt;
+ Use 'Project'-'Options'-'Macros'-'Active group' number &lt;n&gt;, &lt;n&gt; = 1..6.
+--macrodef=&lt;name&gt;,&lt;value&gt;{,&lt;name&gt;,&lt;value&gt;}
+ Macro definition, will be overridden by 'Project'-'Options'-'Macros'. 
+Example:
+ --macrodef=MAC1,abc,MAC2,def
+ defines ${MAC1} with value 'abc' and ${MAC2} with value 'def'.
+--fontalias=&lt;alias&gt;,&lt;fontname&gt;[,&lt;fontheight&gt;[,&lt;fontwidth&gt;[,&lt;options&gt;[,&lt;xscale&gt;]
+                              [,&lt;ancestor&gt;]]]]
+ Change the used fonts. &lt;alias&gt; can be stf_default, stf_menu or mseide_source.
+--NOZORDERHANDLING
+ Do not touch Z-order of the windows, necessary for some window managers.
+ 
+MSEide environment variables
+****************************
+Macros in 'Settings'-'Configure MSEide' can be overridden by environment
+variables. They will be overriden by --macrodef 
+and 'Project'-'Options'-'Macros'.
+Possible names: 
+FPCDIR, FPCLIBDIR, MSEDIR, MSELIBDIR, SYNTAXDEFDIR, TEMPLATEDIR,
+COMPSTOREDIR, COMPILER, DEBUGGER, EXEEXT, TARGET.
+&quot;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001691.html">[MSEide-MSEgui-talk] feature request: separated session information from project file
+</A></li>
+	<LI>Next message: <A HREF="001693.html">[MSEide-MSEgui-talk] feature request: separated session information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1692">[ date ]</a>
+              <a href="thread.html#1692">[ thread ]</a>
+              <a href="subject.html#1692">[ subject ]</a>
+              <a href="author.html#1692">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

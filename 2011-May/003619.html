@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msei18n problem!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3C201105161408.52874.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003616.html">
+   <LINK REL="Next"  HREF="003621.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msei18n problem!</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3C201105161408.52874.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] msei18n problem!">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon May 16 14:08:52 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003616.html">[MSEide-MSEgui-talk] stringgrid set scroll position
+</A></li>
+        <LI>Next message: <A HREF="003621.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3619">[ date ]</a>
+              <a href="thread.html#3619">[ thread ]</a>
+              <a href="subject.html#3619">[ subject ]</a>
+              <a href="author.html#3619">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag 11 April 2011, 23:15:04 schrieb IvankoB:
+&gt;<i> &gt; Please don't use thashedstrings, it uses a bucketlist and is obsolete,
+</I>&gt;<i> &gt; use a class which inherits from thashdatalist instead.
+</I>&gt;<i> 
+</I>&gt;<i> Still very slow:
+</I>&gt;<i> 
+</I>I get completely different results without string concatenation and no 
+conversion ansistring &lt;-&gt; unicodestring:
+
+MSE add  (s):      0.361
+MSE find (s):      0.433
+FPC add  (s):      1.910
+FPC find (s):      0.657
+
+&quot;
+procedure tmainfo.exe(const sender: TObject);
+var
+ msehash: tpointeransistringhashdatalist;
+ fphash: tfpdatahashtable;
+ ar1: stringarty;
+ ar2: pointerarty;
+ int1,int2: integer;
+ ti1: longword;
+ po0: pointer;
+ po1: pstring;
+ po2: ppointer;
+ mseadd,msefind: integer;
+ fpadd,fpfind: integer;
+begin
+ setlength(ar1,1000);
+ setlength(ar2,1000);
+ for int1:= 0 to high(ar1) do begin
+  ar1[int1]:= inttostr(int1)+'_long_key_hash';
+  ar2[int1]:= pointer(ptruint(int1));
+ end;
+ try
+  msehash:= tpointeransistringhashdatalist.create;
+  fphash:= tfpdatahashtable.create;
+  ti1:= timestamp;
+  for int2:= 0 to 999 do begin
+   po1:= pointer(ar1);
+   po2:= pointer(ar2);
+   msehash.clear;
+   msehash.capacity:= length(ar1);
+   for int1:= 0 to high(ar1) do begin
+    msehash.add(po1^,po2^);
+    inc(po1);
+    inc(po2);
+   end;
+  end;
+  mseadd:= timestamp-ti1;
+  ti1:= timestamp;
+  for int2:= 0 to 999 do begin
+   po1:= pointer(ar1);
+   for int1:= 0 to high(ar1) do begin
+    msehash.find(po1^,po0);
+    inc(po1);
+   end;
+  end;
+  msefind:= timestamp-ti1;
+  ti1:= timestamp;
+  for int2:= 0 to 999 do begin
+   po1:= pointer(ar1);
+   po2:= pointer(ar2);
+   fphash.clear;
+   fphash.hashtablesize:= length(ar1);
+   for int1:= 0 to high(ar1) do begin
+    fphash.add(po1^,po2^);
+    inc(po1);
+    inc(po2);
+   end;
+  end;
+  fpadd:= timestamp-ti1;
+  ti1:= timestamp;
+  for int2:= 0 to 999 do begin
+   po1:= pointer(ar1);
+   for int1:= 0 to high(ar1) do begin
+    po0:= fphash.items[po1^];
+    inc(po1);
+   end;
+  end;
+  fpfind:= timestamp-ti1;
+  writeln('MSE add  (s): ',mseadd/1000000:10:3);
+  writeln('MSE find (s): ',msefind/1000000:10:3);
+  writeln('FPC add  (s): ',fpadd/1000000:10:3);
+  writeln('FPC find (s): ',fpfind/1000000:10:3);
+  writeln;
+ finally
+  msehash.free;
+  fphash.free;
+ end;
+end;
+&quot;
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003616.html">[MSEide-MSEgui-talk] stringgrid set scroll position
+</A></li>
+	<LI>Next message: <A HREF="003621.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3619">[ date ]</a>
+              <a href="thread.html#3619">[ thread ]</a>
+              <a href="subject.html#3619">[ subject ]</a>
+              <a href="author.html#3619">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

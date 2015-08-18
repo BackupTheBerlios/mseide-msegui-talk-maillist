@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Weird effect using anchors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Weird%20effect%20using%20anchors&In-Reply-To=%3CBANLkTi%3D%3DhZzQNpnfKAYhLrYjfr41CQEnyA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003803.html">
+   <LINK REL="Next"  HREF="003806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Weird effect using anchors</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Weird%20effect%20using%20anchors&In-Reply-To=%3CBANLkTi%3D%3DhZzQNpnfKAYhLrYjfr41CQEnyA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Weird effect using anchors">jujibo at gmail.com
+       </A><BR>
+    <I>Wed Jun 15 10:19:59 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003803.html">[MSEide-MSEgui-talk] twidgetgrid and default button problem.
+</A></li>
+        <LI>Next message: <A HREF="003806.html">[MSEide-MSEgui-talk] Weird effect using anchors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3804">[ date ]</a>
+              <a href="thread.html#3804">[ thread ]</a>
+              <a href="subject.html#3804">[ subject ]</a>
+              <a href="author.html#3804">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Probably is as designed, but I think there is something wrong setting
+anchors.
+
+i.e.  I place a tlabel in a form. If I want the component to anchor right...
+I have to set an_left to false and an_right to true
+but there is a wrong behavior.
+
+When I set an_left to false, the widget is moved to the left side of the
+form. To make it working ok you have first to set
+an_right to true and then an_left to false. I think this is wrong. I have
+used other RAD and none of them have this behavior.
+
+&gt;<i>From my point of view, setting an_left to true mustn't move the widget in
+</I>the form.
+
+The same behavior you get setting an_top to false (widget is set in the top
+side of the form).
+
+Isn't this a bug?
+
+
+Thanks.
+
+
+
+Julio
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110615/bde89fff/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110615/bde89fff/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003803.html">[MSEide-MSEgui-talk] twidgetgrid and default button problem.
+</A></li>
+	<LI>Next message: <A HREF="003806.html">[MSEide-MSEgui-talk] Weird effect using anchors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3804">[ date ]</a>
+              <a href="thread.html#3804">[ thread ]</a>
+              <a href="subject.html#3804">[ subject ]</a>
+              <a href="author.html#3804">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

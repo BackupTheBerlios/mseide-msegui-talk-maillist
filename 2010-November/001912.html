@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Unclean%20memory%20in%20savetoimagebuffer&In-Reply-To=%3C201011222226.44336.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001911.html">
+   <LINK REL="Next"  HREF="001938.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Unclean%20memory%20in%20savetoimagebuffer&In-Reply-To=%3C201011222226.44336.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Nov 22 22:26:44 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001911.html">[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer
+</A></li>
+        <LI>Next message: <A HREF="001938.html">[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1912">[ date ]</a>
+              <a href="thread.html#1912">[ thread ]</a>
+              <a href="subject.html#1912">[ subject ]</a>
+              <a href="author.html#1912">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 22. November 2010 18.40:16 MSEide MSEgui wrote:
+&gt;<i> I create to save imagebuffer from timage and load it to another
+</I>&gt;<i> timage. But with -gh I got not cleann memory.
+</I>&gt;<i> This is just simple thest case.
+</I>&gt;<i>
+</I>&gt;<i> var
+</I>&gt;<i> aa: imagebufferinfoty;
+</I>&gt;<i> begin
+</I>&gt;<i>  timage1.bitmap.savetoimagebuffer(aa);
+</I>&gt;<i>  timage2.bitmap.loadfromimagebuffer(aa);
+</I>&gt;<i>
+</I>Please don't forget to call gui_freeimagemem() with the image memory pointer. 
+Trunk 4145 has freeimage() procedure for convenience. Conversion from/to 
+imagety from a pixmap is expensive and should be avoided if possible.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001911.html">[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer
+</A></li>
+	<LI>Next message: <A HREF="001938.html">[MSEide-MSEgui-talk] Unclean memory in savetoimagebuffer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1912">[ date ]</a>
+              <a href="thread.html#1912">[ thread ]</a>
+              <a href="subject.html#1912">[ subject ]</a>
+              <a href="author.html#1912">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

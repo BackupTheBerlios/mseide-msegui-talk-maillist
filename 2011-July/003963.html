@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALVqcdjH4tkR_nB1VYzWsPn3_Hnsov401%3D7LtzyBCwKySOpn3A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003978.html">
+   <LINK REL="Next"  HREF="003965.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALVqcdjH4tkR_nB1VYzWsPn3_Hnsov401%3D7LtzyBCwKySOpn3A%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Sat Jul 30 00:03:46 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003978.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003965.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3963">[ date ]</a>
+              <a href="thread.html#3963">[ thread ]</a>
+              <a href="subject.html#3963">[ subject ]</a>
+              <a href="author.html#3963">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29 July 2011 23:02, Christian Nobel  wrote:
+&gt;<i>
+</I>&gt;<i> As such i like the simplicity of using SQL sentences from Free Pascal,
+</I>&gt;<i> and with Zeos it actually is very simple to handle.
+</I>&gt;<i>
+</I>&gt;<i> As I see it, just from reading briefly, tiOFP is a totally other paradigm.
+</I>
+Different isn't necessarily a bad thing. :-)  DB-aware components
+comes form the beginnings of Visual Basic, which Delphi simply copied
+at the time. With every TDataset or linked field component you drop on
+a form, that is one more more lock-in to a specific DB components
+vendor and database schema.
+
+Object Persistence Frameworks (any of them) are designed to clearly
+separate your three layers: UI, Business Objects/Rules, and your
+Storage layer. There is normall no business rules or SQL inside Form
+units, business rules can easily be unit tested, and backend storage
+(database or text file or something else) can easily be swapped out.
+There is no binding to a specific db components vendor either. There
+really are a lot of benefits to using a OPF instead of the old school
+db-aware components.
+
+tiOPF also has many true handy features too. A very nice logging
+framework, many utility functions, built-in Visitor and Observer
+(design patterns) support etc.
+
+Fancy OPF's even support Object Query Language where you can write
+something like &quot;select * from TCustomer where TCustomer.ID = xxx&quot;.
+Note this is not SQL because you are referencing classes and
+properties of those classes - not tables and fields. The OPF framework
+will then translate that into the correct SQL for your specific
+database backend. tiOPF supports some of this, but it still needs some
+work.
+
+
+&gt;<i> Is that to be understood that one can make one binary, in which all the
+</I>&gt;<i> tiOFP stuff is included, connecting directly to the database?
+</I>
+A 3-tier setup is as follows. You have a Client application,
+Application Server Application, and the Database Server. The client
+application only speaks to the Application Server via HTTP, MIDAS,
+WebServices, TCP Sockets etc. No database client libraries are
+required because the Client application never talks to the Database
+Server directly. The Application Server can sit on the same system as
+the Client app, but normally it is not. The App Server is normally on
+another system. The App Server system is the only one that requires
+the database client libraries, because it talks to the database
+server.
+
+So when you deploy your client apps, it is normally just a small
+executable with a setting telling it how to find the App Server. eg:
+an IP address.
+
+
+&gt;<i> I looked at MIDAS a long time ago, but in my opinion solutions like that
+</I>
+MIDAS worked very well, until you hit a problem. We used Delphi 5-7,
+and with those versions of Delphi, there was no source code available
+for MIDAS. So if you found a bug, there was no way to fix it, other
+than hounding Borland to do it, and make a new MIDAS release. This was
+rather hard to accomplish. That's one example of those &quot;vendor
+lock-ins&quot; you must try and avoid.
+
+
+&gt;<i> It seems like the KISS principle is totally forgotten when it comes to
+</I>&gt;<i> databases - imho the database should deliver what ever I ask it to
+</I>
+Well don't think for a second that DB-aware style programming is the
+KISS principle. Such applications can very easily become a maintenance
+nightmare. Here is a classic example of how a database module looked
+like in a 12 year old Delphi application that I had to help maintain.
+
+  <A HREF="http://http://opensoft.homeip.net:8080/~graemeg/datamodule.png">http://http://opensoft.homeip.net:8080/~graemeg/datamodule.png</A>
+
+Where was *nothing* simple about it. :)
+
+Anyway, I'm not saying OPF style database applications are for
+everybody. But I like to at least inform people that there are very
+viable alternatives to TDataset &amp; DB-aware components. Yes such RAD
+style development looks great for the Borland/Embarcadero marketing
+team and all their fish database demos - but they are not the ones
+that need to develop and maintaing huge database applications for many
+many years.
+
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://fpgui.sourceforge.net">http://fpgui.sourceforge.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003978.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003965.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3963">[ date ]</a>
+              <a href="thread.html#3963">[ thread ]</a>
+              <a href="subject.html#3963">[ subject ]</a>
+              <a href="author.html#3963">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

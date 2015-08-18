@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] About Berlios.de
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20About%20Berlios.de&In-Reply-To=%3C4D2FF880.4000604%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002460.html">
+   <LINK REL="Next"  HREF="002464.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] About Berlios.de</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20About%20Berlios.de&In-Reply-To=%3C4D2FF880.4000604%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] About Berlios.de">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jan 14 08:17:20 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002460.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+        <LI>Next message: <A HREF="002464.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2461">[ date ]</a>
+              <a href="thread.html#2461">[ thread ]</a>
+              <a href="subject.html#2461">[ subject ]</a>
+              <a href="author.html#2461">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2011-01-14 08:54, Martin Schreiber het geskryf:
+&gt;<i> 
+</I>&gt;<i> You probably never used MSEgui. ;-)
+</I>
+&gt;<i>From what I could see, MSEgui is just like Lazarus or Delphi in this
+</I>regard - please correct me if I am wrong. MSEgui (just like Delphi and
+Lazarus) use TDataset descendants, TXXXDatabase &amp; TXXXQuery components
+and DB-aware components (duplicates of all non-db components).
+
+That is a ridiculous way of designing maintainable database aware apps.
+Yes it fits great with Delphi's &quot;RAD development&quot; sales pitch. But as
+far as I'm concerned, that is just ok for small apps or prototypes.
+
+I'm a big fan of true OOP design and the use of design patterns. There
+must also be a clear separation between the persistence layer (long term
+storage of data like in a database or file), the BOM (business objects
+and rules) and lastly the GUI (desktop app, web interface etc). Using
+DB-aware components and the whole TDataset things mixes all of that
+together. Each gui component on a form is binded to a field in the
+database - there you mix GUI and database structures. This also means
+you can change your persistence of data from a RDBMS to a Tab or Comma
+separated file - without a major overhaul of the application. As for the
+db-aware components, that's a duplicate of non-db components and just
+another place where bugs could creep in. Using something like MGM (which
+is basically the Observer and Mediator design patterns working in sync),
+I do not need to duplicate standard component and introduce new ones.
+The MGM allows _any_ standard component to become &quot;object-aware&quot; and
+data synchronization works in both directions.
+
+Here is a screenshot of a DataModule under Delphi 7. This is an
+&quot;RAD-style&quot; application I had to help develop and maintain. This was
+also the reason I moved away from Delphi's db-aware style programming.
+This app was anything but easy to maintain and very closely binded to a
+specific type of database and database components.
+
+  <A HREF="http://opensoft.homeip.net:8080/~graemeg/datamodule.png">http://opensoft.homeip.net:8080/~graemeg/datamodule.png</A>
+
+Good OPF frameworks fixes all of the above and then some... Yes it's an
+age old debate which I'll not get into here - there is enough
+information available on the net already.
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002460.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+	<LI>Next message: <A HREF="002464.html">[MSEide-MSEgui-talk] About Berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2461">[ date ]</a>
+              <a href="thread.html#2461">[ thread ]</a>
+              <a href="subject.html#2461">[ subject ]</a>
+              <a href="author.html#2461">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

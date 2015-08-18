@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about datalist  getastext
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20datalist%20%20getastext&In-Reply-To=%3C4C9DAB86.90100%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001203.html">
+   <LINK REL="Next"  HREF="001209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about datalist  getastext</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20datalist%20%20getastext&In-Reply-To=%3C4C9DAB86.90100%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about datalist  getastext">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Sat Sep 25 09:57:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001203.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+        <LI>Next message: <A HREF="001209.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1208">[ date ]</a>
+              <a href="thread.html#1208">[ thread ]</a>
+              <a href="subject.html#1208">[ subject ]</a>
+              <a href="author.html#1208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> MSEgui uses the following code:
+</I>&gt;<i> &quot;
+</I>&gt;<i> procedure tcustomdataedit.docellevent(const ownedcol: boolean; var info:
+</I>&gt;<i> celleventinfoty);
+</I>&gt;<i>
+</I>&gt;<i> var
+</I>&gt;<i> hintinfo: hintinfoty;
+</I>&gt;<i> begin
+</I>&gt;<i> if ownedcol then begin
+</I>&gt;<i> if (info.eventkind = cek_enter) then begin
+</I>&gt;<i> setupeditor; //setrowfont
+</I>&gt;<i> feditor.initfocus;
+</I>&gt;<i> end;
+</I>&gt;<i> if (oe_hintclippedtext in foptionsedit) and
+</I>&gt;<i> (info.eventkind = cek_firstmousepark) and application.active and
+</I>&gt;<i> textclipped(info.cell.row) and
+</I>&gt;<i> ((info.grid.row &lt;&gt; info.cell.row) or (info.grid.col &lt;&gt; info.cell.col)) and
+</I>&gt;<i> twidget1(info.grid).getshowhint then begin
+</I>&gt;<i> application.inithintinfo(hintinfo,info.grid);
+</I>&gt;<i> hintinfo.caption:=
+</I>&gt;<i> datatotext(fgridintf.getcol.datalist.getitempo(info.cell.row)^);
+</I>&gt;<i> application.showhint(info.grid,hintinfo);
+</I>&gt;<i> end;
+</I>&gt;<i> end;
+</I>&gt;<i> end;
+</I>&gt;<i> &quot;
+</I>&gt;<i> -&gt; activate oe_hintclippedtext in t*editwidget.optionsedit.
+</I>&gt;<i>
+</I>could you public  the function datatotext???
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001203.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+	<LI>Next message: <A HREF="001209.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1208">[ date ]</a>
+              <a href="thread.html#1208">[ thread ]</a>
+              <a href="subject.html#1208">[ subject ]</a>
+              <a href="author.html#1208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

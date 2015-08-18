@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3CAANLkTimOutAo3c6VSRqLVK24fEFtJ5o8y%3DDiFoa-b1gt%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001629.html">
+   <LINK REL="Next"  HREF="001640.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3CAANLkTimOutAo3c6VSRqLVK24fEFtJ5o8y%3DDiFoa-b1gt%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32">md at delfire.net
+       </A><BR>
+    <I>Tue Nov  2 14:55:21 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001629.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+        <LI>Next message: <A HREF="001640.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1638">[ date ]</a>
+              <a href="thread.html#1638">[ thread ]</a>
+              <a href="subject.html#1638">[ subject ]</a>
+              <a href="author.html#1638">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Nov 2, 2010 at 5:36 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> Op 2010-11-01 19:07, Marcos Douglas het geskryf:
+</I>&gt;&gt;<i> How I can compile the MSEide and put the .ppu and .o files organized
+</I>&gt;&gt;<i> like \units\i386-win32 ?
+</I>&gt;<i>
+</I>&gt;<i> +1
+</I>&gt;<i>
+</I>&gt;<i> I hate Martin's idea of polluting the source directory with .ppu and .o
+</I>&gt;<i> files. For my own projects I created various marco groups. It creates the
+</I>&gt;<i> output directories for me, and I can simply switch between marco groups (in
+</I>&gt;<i> project option or via ide command line parameter) and it works a treat.
+</I>&gt;<i> Such a sample template project is attached. You should be able to work from
+</I>&gt;<i> that and customize it to your needs.
+</I>&gt;<i>
+</I>&gt;<i> For the IDE itself, I use the script shown below. Here you need to create
+</I>&gt;<i> the unit output directory manually, though with a bit of tweaking it could
+</I>&gt;<i> be done in the script too. For the IDE, the secret is the -FE or -FU
+</I>&gt;<i> compiler parameter.
+</I>&gt;<i>
+</I>&gt;<i> When I compile the IDE (from root msegui directory), all compiled units go
+</I>&gt;<i> to 'units/x86_64-linux' and the IDE executable ends up in the root
+</I>&gt;<i> directory (not the output directory). If you want the latter, the use the
+</I>&gt;<i> -FE compiler parameter instead of -FU
+</I>&gt;<i>
+</I>&gt;<i> ------------[ go.sh ]---------------------
+</I>&gt;<i> #!/bin/sh
+</I>&gt;<i>
+</I>&gt;<i> # Default compiler settings
+</I>&gt;<i> # -vi -O2 -CX -XX -B
+</I>&gt;<i>
+</I>&gt;<i> # Compiler parameter explanation:
+</I>&gt;<i> # &#160;-O1 &#160;minor optimization and debugger friendly (a good/safe choice)
+</I>&gt;<i> # &#160;-O2 &#160;optimization (slow &amp; unstable on 64-bit systems)
+</I>&gt;<i> # &#160;-XX &#160;try to smartlink
+</I>&gt;<i> # &#160;-Xs &#160;strip all debug symbols from executable
+</I>&gt;<i> # &#160;-B &#160; build all modules
+</I>&gt;<i> # &#160;-OpATHLON64 &#160;optimize for AMD64
+</I>&gt;<i> # &#160;-OpPENTIUMM &#160;optimize for Core-2-xxx processors
+</I>&gt;<i> # &#160;-ve &#160;only report compiler errors
+</I>&gt;<i>
+</I>&gt;<i> #rm ./mseide.elf
+</I>&gt;<i> rm units/x86_64-linux/*
+</I>&gt;<i>
+</I>&gt;<i> #/opt/fpc_2.4.1/x86_64-linux/bin/ppcx64 \
+</I>&gt;<i> fpc \
+</I>&gt;<i> &#160;-XX -Xs -ve -O1 -B \
+</I>&gt;<i> &#160;-FUunits/x86_64-linux \
+</I>&gt;<i> &#160;-Fi${PWD}/lib/common/kernel \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/kernel -Fu${PWD}/lib/common/db \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/designutils -Fu${PWD}/lib/common/dialogs \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/editwidgets -Fu${PWD}/lib/common/i18n \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/ifi -Fu${PWD}/lib/common/image \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/opengl -Fu${PWD}/lib/common/pascalscript \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/printer -Fu${PWD}/lib/common/regcomponents \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/report -Fu${PWD}/lib/common/serialcomm \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/sysutils -Fu${PWD}/lib/common/unicode \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/widgets -Fu${PWD}/lib/common/kernel/i386-linux \
+</I>&gt;<i> &#160;-Fu${PWD}/lib/common/math \
+</I>&gt;<i> &#160;-dmse_withoutdb \
+</I>&gt;<i> &#160;-o./mseide.elf apps/ide/mseide.pas
+</I>&gt;<i> ---------------------------------
+</I>&gt;<i>
+</I>
+I will try to convert this script to Windows BAT files.
+(I'm sorry... Delphi has always been my world: click to compile!)
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001629.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+	<LI>Next message: <A HREF="001640.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1638">[ date ]</a>
+              <a href="thread.html#1638">[ thread ]</a>
+              <a href="subject.html#1638">[ subject ]</a>
+              <a href="author.html#1638">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

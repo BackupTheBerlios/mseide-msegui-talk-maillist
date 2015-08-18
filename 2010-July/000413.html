@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C33D64B.5090609%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000411.html">
+   <LINK REL="Next"  HREF="000415.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C33D64B.5090609%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Wed Jul  7 03:20:11 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000411.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000415.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Martin Schreiber wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> liuzg2 schrieb:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> declare @aa
+</I>&gt;&gt;&gt;<i>   select @aa=11
+</I>&gt;&gt;&gt;<i> select * into #x from r_sale
+</I>&gt;&gt;&gt;<i> select * from r_bbbb a ,#x b where a.a=b.a and cc=@aa
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> in delphi  ado can do this well
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://support.microsoft.com/kb/198428">http://support.microsoft.com/kb/198428</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'll check if it works without prepared statement.
+</I>&gt;<i>
+</I>&gt;<i> Trunk 3795 has tmsesqlscript.options sso_noprepare, creating a temporary
+</I>&gt;<i> table works with this setting for me. There is a new property
+</I>&gt;<i> tsqlquery.aftercursorclose which can be used to drop the table.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>  tmsesqlscript1.options:= [sso_noprepare];
+    tmsesqlquery1.beforeexecute:=tmsesqlscript1;
+    tmsesqlscript1.sql.text:=' select top 1 * into #x from r_sale ;';
+    tmsesqlquery1.ParseSQL:=false;
+    tmsesqlquery1.SQL.text:='    select top 1 *   from #x  ';
+    tmsesqlquery1.Active:=true;
+
+tmsesqlquery1.FieldCount  is 20
+yes  the temp table works;
+
+
+
+but  i set  like this
+  tmsesqlscript1.options:= [sso_noprepare];
+  tmsesqlquery1.beforeexecute:=tmsesqlscript1;
+   tmsesqlscript1.sql.text:='declare @aa nvarchar(10)   select 
+@aa=1513;select top 1 * into #x from r_sale ;';
+    tmsesqlquery1.ParseSQL:=false;
+
+   tmsesqlquery1.SQL.text:='   select top 1 *   from #x where  wareid=@aa ';
+  tmsesqlquery1.Active:=true;
+
+Could not execute statement. ODBC error details: Record 1: SqlState: 
+42000; NativeError: 137; Message: [Microsoft][ODBC SQL Server Driver] 
+[SQL Server]&#24517;&#39035;&#22768;&#26126;&#26631;&#37327;&#21464;? Record 2: SqlState: 42000; NativeError: 
+8180; Message: [Microsoft][ODBC SQL Server Driver][SQL Server]&#26080;&#27861;&#39044;&#23450;;
+An exception occurred at $00521170 :
+EODBCException : Could not execute statement. ODBC error details: Record 
+1: SqlState: 42000; NativeError: 137; Message: [Microsoft][ODBC SQL 
+Server Driver][SQL Server]&#24517;&#39035;&#22768;&#26126;&#26631;&#37327;&#21464;? Record 2: SqlState: 42000; 
+NativeError: 8180; Message: [Microsoft][ODBC SQL Server Driver][SQL 
+Server]&#26080;&#27861;&#39044;&#23450;;
+   $00521170  ODBCCHECKRESULT,  line 353 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $005226FF  TODBCCONNECTION__INTERNALEXECUTE,  line 856 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $004DCF70  TCUSTOMSQLCONNECTION__EXECUTE,  line 1636 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DB424  DOEXECUTE,  line 835 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DF0E9  TSQLQUERY__EXECUTE,  line 2660 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DFBF8  TSQLQUERY__CONNECT,  line 3029 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DFF13  TSQLQUERY__INTERNALOPEN,  line 3074 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DA531  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 392 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004D870F  TDSCONTROLLER__INTERNALOPEN,  line 5679 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msedb.pas
+   $004DA62D  TMSESQLQUERY__INTERNALOPEN,  line 417 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004B7CA2
+   $004B8C88
+   $004CC572  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004DEA27  TSQLQUERY__SETACTIVE,  line 2532 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DAD3C  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DA4C7  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004305C3  TMAINFO__ODBCCONN,  line 91 of main.pas
+
+
+if i set
+  tmsesqlquery1.SQL.text:=' declare @aa nvarchar(10)   select 
+@aa=1513;select top 1 * into #x from r_sale ;  select top 1 *   from #x 
+where  wareid=@aa ';
+tmsesqlquery1.FieldCount  is 0
+so  perhapers
+tmessqlqery need  sso_noprepare??
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000411.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000415.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

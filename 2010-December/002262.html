@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTim5rTiORbDwdSn2mozdFPuJiBY-CQgOnB46OtU9%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002261.html">
+   <LINK REL="Next"  HREF="002263.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTim5rTiORbDwdSn2mozdFPuJiBY-CQgOnB46OtU9%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 12:04:08 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002261.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002263.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2262">[ date ]</a>
+              <a href="thread.html#2262">[ thread ]</a>
+              <a href="subject.html#2262">[ subject ]</a>
+              <a href="author.html#2262">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>synccommand('-break-insert -t main'); &lt;&lt;&lt;&lt;----
+ end;
+
+at this point, str1 is empty and 'synccommand('-break-insert -t main');' is
+executed.
+
+2010/12/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Tuesday, 28. December 2010 11.30:08 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; Look at the pic  :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> Please check tgdbmi.dorun:
+</I>&gt;<i> &quot;
+</I>&gt;<i> procedure tgdbmi.dorun;
+</I>&gt;<i> var
+</I>&gt;<i>  int1: integer;
+</I>&gt;<i>  ar1,ar2: stringarty;
+</I>&gt;<i>  ca1: qword;
+</I>&gt;<i>  str1: string;
+</I>&gt;<i>  frames1: frameinfoarty;
+</I>&gt;<i>  ev: tgdbstartupevent;
+</I>&gt;<i> begin
+</I>&gt;<i>  fstartupbreakpoint:= -1;
+</I>&gt;<i>  fstartupbreakpoint1:= -1;
+</I>&gt;<i>  exclude(fstate,gs_startup);
+</I>&gt;<i>  if fbeforerun &lt;&gt; '' then begin
+</I>&gt;<i>  if source(fbeforerun) &lt;&gt; gdb_ok then begin
+</I>&gt;<i>   postsyncerror;
+</I>&gt;<i>   exit;
+</I>&gt;<i>  end;
+</I>&gt;<i>  end;
+</I>&gt;<i>  checkpointersize;
+</I>&gt;<i>  str1:= '';
+</I>&gt;<i>  if fstartupbkpton then begin
+</I>&gt;<i>  fstartupbreakpoint:= breakinsert(fstartupbkpt);
+</I>&gt;<i>  end
+</I>&gt;<i>  else begin
+</I>&gt;<i>  if (gs_remote in fstate) and (stacklistframes(frames1,0,1) = gdb_ok) then
+</I>&gt;<i> begin
+</I>&gt;<i>   ev:= tgdbstartupevent.create(ievent(self));
+</I>&gt;<i>   with ev do begin
+</I>&gt;<i>    stopinfo.reason:= sr_startup;
+</I>&gt;<i>    with frames1[0] do begin
+</I>&gt;<i>     stopinfo.addr:= addr;
+</I>&gt;<i>     stopinfo.filename:= filename;
+</I>&gt;<i>     stopinfo.line:= line;
+</I>&gt;<i>     stopinfo.messagetext:= 'Startup. File: '+
+</I>&gt;<i>                         filename+':'+inttostr(line)+' Function: '+func;
+</I>&gt;<i>    end;
+</I>&gt;<i>   end;
+</I>&gt;<i>   include(fstate,gs_started);
+</I>&gt;<i>   application.postevent(ev);
+</I>&gt;<i>   exit;
+</I>&gt;<i>  end;
+</I>&gt;<i>  if getcliresult('info file',ar1) = gdb_ok then begin
+</I>&gt;<i>   for int1:= 0 to high(ar1) do begin
+</I>&gt;<i>    if startsstr('Entry point',ar1[int1]) then begin
+</I>&gt;<i>     ar2:= nil;
+</I>&gt;<i>     splitstring(ar1[int1],ar2,' ');
+</I>&gt;<i>     if high(ar2) &gt;= 2 then begin
+</I>&gt;<i>      str1:= ar2[2];
+</I>&gt;<i>     end;
+</I>&gt;<i>     break;
+</I>&gt;<i>    end;
+</I>&gt;<i>   end;
+</I>&gt;<i>  end;
+</I>&gt;<i>  if str1 &lt;&gt; '' then begin
+</I>&gt;<i>   if trystrtointvalue64(str1,ca1) then begin
+</I>&gt;<i>    fstartupbreakpoint:= breakinsert(ca1); //does not always work
+</I>&gt;<i>    fstartupbreakpoint1:= breakinsert(ca1+1);
+</I>&gt;<i>    if (fstartupbreakpoint &lt; 0) and (fstartupbreakpoint1 &lt; 0) then begin
+</I>&gt;<i>     str1:= '';
+</I>&gt;<i>    end;
+</I>&gt;<i>   end
+</I>&gt;<i>   else begin
+</I>&gt;<i>    str1:= '';
+</I>&gt;<i>   end;
+</I>&gt;<i>  end;
+</I>&gt;<i>  if str1 = '' then begin
+</I>&gt;<i>   synccommand('-break-insert -t main'); &lt;&lt;&lt;&lt;----
+</I>&gt;<i>  end;
+</I>&gt;<i>  end;
+</I>&gt;<i> &quot;
+</I>&gt;<i> It seems the entry point will not be found. Maybe 'Entry point' is now
+</I>&gt;<i> localized in 'info file' command?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/ff9a17a4/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/ff9a17a4/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002261.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002263.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2262">[ date ]</a>
+              <a href="thread.html#2262">[ thread ]</a>
+              <a href="subject.html#2262">[ subject ]</a>
+              <a href="author.html#2262">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

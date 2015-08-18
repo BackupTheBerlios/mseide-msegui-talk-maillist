@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3C201102090725.16495.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002802.html">
+   <LINK REL="Next"  HREF="002800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3C201102090725.16495.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Feb  9 07:25:16 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002802.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+        <LI>Next message: <A HREF="002800.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2797">[ date ]</a>
+              <a href="thread.html#2797">[ thread ]</a>
+              <a href="subject.html#2797">[ subject ]</a>
+              <a href="author.html#2797">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday, 8. February 2011 18.42:14 Brian Winfrey wrote:
+&gt;<i> &gt; Is there a way where i can &#160;do
+</I>&gt;<i> &gt; &lt;tmsesqlquery &gt;. sql. add('select * from
+</I>&gt;<i> &gt; table1 where table1.id= tstringedit.value ');
+</I>&gt;<i>
+</I>&gt;<i> looks like you are trying to pass a component's property name rather than
+</I>&gt;<i> value. &lt;tmsesqlquery &gt;. sql. add('select * from table1 where table1.id='
+</I>&gt;<i> +tstringedit.value);
+</I>&gt;<i>
+</I>&gt;<i> but you may need to quote the strings, so ...
+</I>&gt;<i>
+</I>&gt;<i> const
+</I>&gt;<i> qry_fmt = 'select * from &quot;%s&quot;=&quot;%s&quot;'
+</I>&gt;<i> var
+</I>&gt;<i> qry: str;
+</I>&gt;<i> ...
+</I>&gt;<i> qry :=Format(qry_fmt, ['table1.id',  tstringedit.value];
+</I>&gt;<i>
+</I>&gt;<i>  &lt;tmsesqlquery &gt;. sql. add(qry);
+</I>&gt;<i>
+</I>&gt;<i> is an option if you dont want to use parameters.
+</I>
+There is a bunch of conversion functions in msedb.pas:
+&quot;
+function encodesqlstring(const avalue: msestring): msestring;
+function encodesqlcstring(const avalue: msestring): msestring;
+function encodesqlblob(const avalue: string): msestring;
+function encodesqlinteger(const avalue: integer): msestring;
+function encodesqllongword(const avalue: longword): msestring;
+function encodesqllargeint(const avalue: int64): msestring;
+function encodesqlqword(const avalue: qword): msestring;
+function encodesqldatetime(const avalue: tdatetime): msestring;
+function encodesqldate(const avalue: tdatetime): msestring;
+function encodesqltime(const avalue: tdatetime): msestring;
+function encodesqlfloat(const avalue: real): msestring;
+function encodesqlcurrency(const avalue: currency): msestring;
+function encodesqlboolean(const avalue: boolean): msestring;
+function encodesqlvariant(const avalue: variant; cstyle: boolean): msestring;
+&quot;
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002802.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+	<LI>Next message: <A HREF="002800.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2797">[ date ]</a>
+              <a href="thread.html#2797">[ thread ]</a>
+              <a href="subject.html#2797">[ subject ]</a>
+              <a href="author.html#2797">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Create button runtime.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Create%20button%20runtime.&In-Reply-To=%3C4DF1D2D9.7030409%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003775.html">
+   <LINK REL="Next"  HREF="003791.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Create button runtime.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Create%20button%20runtime.&In-Reply-To=%3C4DF1D2D9.7030409%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Create button runtime.">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jun 10 10:16:25 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003775.html">[MSEide-MSEgui-talk] Create button runtime.
+</A></li>
+        <LI>Next message: <A HREF="003791.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and	tdbwidgetgrid issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3778">[ date ]</a>
+              <a href="thread.html#3778">[ thread ]</a>
+              <a href="subject.html#3778">[ subject ]</a>
+              <a href="author.html#3778">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 10.06.2011 09:36, schrieb Christian Nobel:
+&gt;<i> I want to create a button at runtime, but if I do like this, the button
+</I>&gt;<i> is created on a new form, not within my mainform:
+</I>&gt;<i>
+</I>&gt;<i> procedure tmainfo.createnewbutton(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i> 	tbutton5:=tbutton.create(self);
+</I>
+	tbutton5:= tbutton.create(self,self);
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003775.html">[MSEide-MSEgui-talk] Create button runtime.
+</A></li>
+	<LI>Next message: <A HREF="003791.html">[MSEide-MSEgui-talk] ttabwidget + tdbstringgrid + tdbstringgrid and	tdbwidgetgrid issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3778">[ date ]</a>
+              <a href="thread.html#3778">[ thread ]</a>
+              <a href="subject.html#3778">[ subject ]</a>
+              <a href="author.html#3778">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

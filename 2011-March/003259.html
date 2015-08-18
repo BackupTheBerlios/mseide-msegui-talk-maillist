@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msei18n problem!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3CAANLkTinYB%2BtLOB3CsTPyrXQq5W8J-sFucjD2qQGfi3f7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003257.html">
+   <LINK REL="Next"  HREF="003260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msei18n problem!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msei18n%20problem%21&In-Reply-To=%3CAANLkTinYB%2BtLOB3CsTPyrXQq5W8J-sFucjD2qQGfi3f7%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] msei18n problem!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Wed Mar 23 17:05:29 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003257.html">[MSEide-MSEgui-talk] Test
+</A></li>
+        <LI>Next message: <A HREF="003260.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3259">[ date ]</a>
+              <a href="thread.html#3259">[ thread ]</a>
+              <a href="subject.html#3259">[ subject ]</a>
+              <a href="author.html#3259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I think the error when compiling resource string for Chineese string
+is from mseparser.pas.
+I add translation in i18demo project to chineese. And I got main.rst
+file like this :
+
+# hash value = 53944863
+main.rs1=#36825#26159#31532#19968#36164#28304#30340#25991#26412#12290
+
+# hash value = 57811487
+main.rs2=#36825#26159#31532#20108#20010#36164#28304#30340#25991#26412#12290
+
+But in main_rst.pas is like this :
+
+unit main_rst;
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+
+interface
+
+implementation
+uses
+ msei18nglob,mselanglink;
+const
+ resourcedata: record size: integer; data: array[0..-1] of byte end =
+      (size: 0; data: ( =====================================&gt; I think
+this is wrog converting from resource string to unit
+)
+ );
+...
+...
+
+And after I debugging, AFAIK the error is in this code.
+ # sign for Chineese string is a string value, but you use # to detect new line.
+
+procedure tfpcresstringparser.getconsts(var ar: constinfoarty);
+var
+ count: integer;
+ str1,str2: string;
+ apos: pchar;
+
+begin
+ ar:= nil;
+ count:= 0;
+ while (fsyntaxerrorcount = 0) and not eof do begin
+  if testoperator('#') then begin =============================&gt; Here
+   nextline; ===========================================&gt; Here
+  end
+  else begin
+
+I attached modified i18demo.
+
+Thanks
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: i18ndemo.rar
+Type: application/rar
+Size: 9581 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110323/edfda4f7/attachment.rar">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110323/edfda4f7/attachment.rar</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003257.html">[MSEide-MSEgui-talk] Test
+</A></li>
+	<LI>Next message: <A HREF="003260.html">[MSEide-MSEgui-talk] msei18n problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3259">[ date ]</a>
+              <a href="thread.html#3259">[ thread ]</a>
+              <a href="subject.html#3259">[ subject ]</a>
+              <a href="author.html#3259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

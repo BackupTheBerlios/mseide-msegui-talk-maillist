@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTimMe%3DrO99jrHbrJ%3Dc1R8JVCv8ak%3DmFjzpnRPrX0%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002176.html">
+   <LINK REL="Next"  HREF="002178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTimMe%3DrO99jrHbrJ%3Dc1R8JVCv8ak%3DmFjzpnRPrX0%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Fri Dec 17 16:43:25 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002176.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="002178.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2177">[ date ]</a>
+              <a href="thread.html#2177">[ thread ]</a>
+              <a href="subject.html#2177">[ subject ]</a>
+              <a href="author.html#2177">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Forgot to mention - me use GDB from win-32 FPC 2.4.2 setup bundle.
+
+
+2010/12/17, IvankoB for-mse &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ivankob4mse2 at gmail.com</A>&gt;:
+&gt;<i> The TP program but with {$mode objfpc} succeeds on both SHELL32 &amp;
+</I>&gt;<i> SHFOLDER - checked calling not directly (via GetProcAddress). To be
+</I>&gt;<i> sure me created copies of these DLL files &amp; checked against them - all
+</I>&gt;<i> ok.
+</I>&gt;<i> In MSEide, the debugger hints wrong StrStrIW over po1 on
+</I>&gt;<i> GetProcAddress to SHELL32 &amp; correct SHGetFolderParhW to SHFOLDER ( me
+</I>&gt;<i> swapped these calls to change their order). But in both case, the
+</I>&gt;<i> final fails.
+</I>&gt;<i>
+</I>&gt;<i> The problem is known for GDB but nobody knows how to fix.
+</I>&gt;<i> Once again, the stack:
+</I>&gt;<i>
+</I>&gt;<i> #0  7C90E4FF :0 ntdll!LdrAlternateResourcesEnabled()
+</I>&gt;<i> #1  7C90E514 :0 ntdll!LdrAccessOutOfProcessResource()
+</I>&gt;<i> #2  7C90D0FA :0 ntdll!ZwCreateKey()
+</I>&gt;<i> #3  77DC76AC :0 GetSecurityDescriptorOwner()
+</I>&gt;<i> #4  77DC7830 :0 RegCreateKeyExW()
+</I>&gt;<i> #5  7C9EEEB2 :0 StrStrIW()
+</I>&gt;<i> #6  7C9EED59 :0 StrStrIW()
+</I>&gt;<i> #7  7C9EECD9 :0 StrStrIW()
+</I>&gt;<i> #8  7C9EEBF4 :0 SHELL32!IsLFNDriveA()
+</I>&gt;<i> #9  7C9EEC94 :0 StrStrIW()
+</I>&gt;<i> #10  76761426 :0 SHGetFolderPathW()
+</I>&gt;<i> #11  767613C9 :0 SHGetFolderPathW()
+</I>&gt;<i> #12  0050AA82 :0 MSESYSINTF_DOINIT()
+</I>&gt;<i> #13  0050AC48 :0 MSESYSINTF_init()
+</I>&gt;<i> #14  0040CED4 :0 fpc_initializeunits()
+</I>&gt;<i> #15  7FFDD000 :0 ??()
+</I>&gt;<i> #16  00953A74 :0 U_SYSINITPAS_ENTRYINFORMATION()
+</I>&gt;<i> #17  00947DE4 :0 U_SYSTEM_ENTRYINFORMATION()
+</I>&gt;<i> #18  0040237E mseide.pas:36 main()
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2010/12/17, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+</I>&gt;&gt;<i> Ivanko B wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> &gt;Probably SHGetFolderPathW() with CSIDL_APPDATA does not work. Same
+</I>&gt;&gt;&gt;&gt;&gt;<i> &gt;problem as before with the crash maybe. Virus protection?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Same with the Avira's filesystem guard disabled.
+</I>&gt;&gt;&gt;&gt;&gt;<i> Can the root of problem be in that  mseide &amp; mseide1 share same
+</I>&gt;&gt;&gt;&gt;&gt;<i> ini-files ?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>There was no change with inifiles recently. Please debug the
+</I>&gt;&gt;&gt;&gt;<i>SHGetFolderPathW() with CSIDL_APPDATA problem.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> (1:..16:) below are the stages
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> procedure doinit;
+</I>&gt;&gt;&gt;<i> var
+</I>&gt;&gt;&gt;<i>  info: osversioninfo;
+</I>&gt;&gt;&gt;<i>  libhandle: thandle;
+</I>&gt;&gt;&gt;<i>  po1: SHGetFolderPathW;
+</I>&gt;&gt;&gt;<i>  buffer: array[0..max_path] of widechar;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> begin
+</I>&gt;&gt;&gt;<i> {$ifdef FPC}
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> widestringmanager.CompareUnicodeStringProc:=@win32CompareUnicodeString;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> widestringmanager.CompareTextUnicodeStringProc:=@win32CompareTextUnicodeString;
+</I>&gt;&gt;&gt;<i> {$endif}
+</I>&gt;&gt;&gt;<i> 1:  po1:= nil; //compiler warning
+</I>&gt;&gt;&gt;<i> 2:  info.dwOSVersionInfoSize:= sizeof(info);
+</I>&gt;&gt;&gt;<i> 3:  if getversionex(info) then begin
+</I>&gt;&gt;&gt;<i> 4:  iswin95:= info.dwPlatformId = ver_platform_win32_windows;
+</I>&gt;&gt;&gt;<i> 5:  if iswin95 then begin
+</I>&gt;&gt;&gt;<i>    iswin98:= (info.dwMajorVersion &gt;= 4) or
+</I>&gt;&gt;&gt;<i>                (info.dwMajorVersion = 4) and (info.dwminorVersion &gt;
+</I>&gt;&gt;&gt;<i> 0);
+</I>&gt;&gt;&gt;<i>   end;
+</I>&gt;&gt;&gt;<i>  end;
+</I>&gt;&gt;&gt;<i> 6:  libhandle:= loadlibrary('shell32.dll');
+</I>&gt;&gt;&gt;<i> 7:  if libhandle &lt;&gt; 0 then begin
+</I>&gt;&gt;&gt;<i>   {$ifdef FPC}pointer(po1){$else}po1{$endif}:=
+</I>&gt;&gt;&gt;<i> 8:               getprocaddress(libhandle,'SHGetFolderPathW');
+</I>&gt;&gt;&gt;<i> 9:  if not assigned(po1) then begin
+</I>&gt;&gt;&gt;<i>    freelibrary(libhandle);
+</I>&gt;&gt;&gt;<i>    libhandle:= loadlibrary('shfolder.dll');
+</I>&gt;&gt;&gt;<i>    if libhandle &lt;&gt; 0 then begin
+</I>&gt;&gt;&gt;<i>       {$ifdef FPC}pointer(po1){$else}po1{$endif}:=
+</I>&gt;&gt;&gt;<i>  getprocaddress(libhandle,'SHGetFolderPathW');
+</I>&gt;&gt;&gt;<i>    end;
+</I>&gt;&gt;&gt;<i>   end;
+</I>&gt;&gt;&gt;<i>  end;
+</I>&gt;&gt;&gt;<i> 10:  if libhandle &lt;&gt; 0 then begin
+</I>&gt;&gt;&gt;<i> 11:  if assigned(po1) then begin
+</I>&gt;&gt;&gt;<i> // &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; po1 = StrStrIW here
+</I>&gt;&gt;&gt;<i> 12:  if po1(0,CSIDL_APPDATA or <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">CSIDL_FLAG_CREATE,0,0, at buffer</A>) = 0 then
+</I>&gt;&gt;&gt;<i> begin
+</I>&gt;&gt;&gt;<i>     apphomedir:= filepath(buffer,fk_file); //&gt;&gt; DOESN'T ENTER HERE
+</I>&gt;&gt;&gt;<i>    end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The result of &quot;po1(0,CSIDL_APPDATA or <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">CSIDL_FLAG_CREATE,0,0, at buffer</A>)&quot; is
+</I>&gt;&gt;<i> E_INVALIDARG, correct? Or was that result with the TP console
+</I>&gt;&gt;<i> testprogram?
+</I>&gt;&gt;<i> If so please check the returned value of the inner MSEide.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002176.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="002178.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2177">[ date ]</a>
+              <a href="thread.html#2177">[ thread ]</a>
+              <a href="subject.html#2177">[ subject ]</a>
+              <a href="author.html#2177">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

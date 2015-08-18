@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] x.org vs wayland
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20x.org%20vs%20wayland&In-Reply-To=%3C20101118005721.35f2f298.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001899.html">
+   <LINK REL="Next"  HREF="001903.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] x.org vs wayland</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20x.org%20vs%20wayland&In-Reply-To=%3C20101118005721.35f2f298.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] x.org vs wayland">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Thu Nov 18 00:57:21 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001899.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+        <LI>Next message: <A HREF="001903.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1901">[ date ]</a>
+              <a href="thread.html#1901">[ thread ]</a>
+              <a href="subject.html#1901">[ subject ]</a>
+              <a href="author.html#1901">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Graeme,
+
+Du schriebst am Wed, 17 Nov 2010 09:44:32 +0200:
+
+&gt;<i> I often developer remotely via Linux RDP client to a Windows Server. Oh
+</I>&gt;<i> desktop resolutions are tottaly different, but the RDP client allows me to
+</I>&gt;<i> resize the remote desktop as if it was a normal linux gui app. The remote
+</I>
+And what happens to the display on the other side then? Does _your_ RDP
+client have the remote server override the local settings? I'd expect that.
+
+&gt;<i> desktop simply adjusts its resolution accordingly. This is pretty neat,
+</I>
+Ah, I see - the remote server _does_ override its local settings. So the
+remote user - if there is one, which doesn't seem to be the case in your
+case - would be in trouble then to watch what's been done to his machine...
+
+[VirtualBox]
+&gt;<i> I have never seen this, and I use VirtualBox via a remote server as well -
+</I>
+You probabely run it in full screen mode then, with resolution matching
+your local screen. I just used the windowed display, and this didn't even
+allow to switch to &quot;seamless mode&quot; before everything was up and running and
+I had loggend in...
+
+&gt;<i> to maintain the server. We only have a 100Mbs network.
+</I>
+Maybe with the preconditions assumed above, it can work somewhat more
+efficiently (doesn't have to care about clipping), but when I tested that
+yesterday (using the latest Virtualbox version downloaded only a couple
+days ago), I saw gross lagging effects on the trailing side of windows
+moved about, and clipping on the leading edges. But you might have already
+adjusted your setup so these artefacts don't occur (so drastically).
+I would surmise that the &quot;traditional&quot; Windows display for moving windows,
+an empty hatched frame, will not show these effects; I have mine set to
+show the full window contents even when moving - wouldn't any user want to
+do that on a current machine? BTW, what machine are you using? Perhaps my
+suspicion was wrong that network speed would be the limiting factor, and it
+is drawing performance or even access to screen memory in fact.
+
+&gt;<i> &gt; Not at all - this used to be the common way for reconfiguration, even
+</I>&gt;<i> 
+</I>&gt;<i> I know this too, but haven't seen it in modern window manager or desktop
+</I>&gt;<i> environments (Gnome, KDE, XFCE etc). Last time I saw this was years ago
+</I>&gt;<i> when I still used FVWM2.
+</I>
+Openbox can do it, AFAIK the whole series of &lt;anything&gt;box window managers
+does it, and some others can do it, too.
+But you're right that none of the &quot;desktop environments&quot; is able to do
+this, more specifically, none of their window managers. They're probabely
+more prone to provide bothering functions, like needless information
+windows (&quot;you just inserted a memory stick&quot;... _I know that!_), &quot;eye candy&quot;
+or yet another implementation of an automounter (which cannot be used
+without and external to them) instead of utilizing the available
+convenience functions.
+That's evidently what some people regard as progress these days...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001899.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+	<LI>Next message: <A HREF="001903.html">[MSEide-MSEgui-talk] x.org vs wayland
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1901">[ date ]</a>
+              <a href="thread.html#1901">[ thread ]</a>
+              <a href="subject.html#1901">[ subject ]</a>
+              <a href="author.html#1901">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

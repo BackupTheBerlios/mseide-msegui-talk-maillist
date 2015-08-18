@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] more Code Templates feedback and	suggestions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20more%20Code%20Templates%20feedback%20and%0A%09suggestions&In-Reply-To=%3Ci81l6d%241t4%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001294.html">
+   <LINK REL="Next"  HREF="001301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] more Code Templates feedback and	suggestions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20more%20Code%20Templates%20feedback%20and%0A%09suggestions&In-Reply-To=%3Ci81l6d%241t4%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] more Code Templates feedback and	suggestions">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Sep 30 11:29:22 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001294.html">[MSEide-MSEgui-talk] more Code Templates feedback and suggestions
+</A></li>
+        <LI>Next message: <A HREF="001301.html">[MSEide-MSEgui-talk] Code Template insert adds an extra newline at	the end
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1298">[ date ]</a>
+              <a href="thread.html#1298">[ thread ]</a>
+              <a href="subject.html#1298">[ subject ]</a>
+              <a href="author.html#1298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> 
+</I>&gt;<i> A few issues I found:
+</I>&gt;<i> 
+</I>&gt;<i> 1) cursorrow seems zero based, but the MSEide and all other editors,
+</I>&gt;<i> the first line in a text file as show to the user is line 1, not line
+</I>&gt;<i> 0.
+</I>&gt;<i> 
+</I>corsorrow (same as cursorcol) is the offset from current cursor. MSEgui
+ttextedit and tcustomgrid are nullbased too.
+
+&gt;<i> 2) placing the cursor is quite problematic, especially if parameters
+</I>&gt;<i> are used. Depending on the length of the parameter value, I can't
+</I>&gt;<i> foresee the cursorcol position.
+</I>
+Correct. It is planned to adjust the cursor position by the macro expansion
+but it is a little bit complicated...
+
+&gt;<i> So whatever I set it at, it will 
+</I>&gt;<i> always be wrong because the parameter value can be different every
+</I>&gt;<i> time.
+</I>&gt;<i> I would maybe suggest using the same cursor position method used by
+</I>&gt;<i> Delphi and Lazarus. The | symbol added in the code template text
+</I>&gt;<i> denotes where the cursor will be placed (replacing the | symbol). This
+</I>&gt;<i> should elimenate cursor placement issues with parameters. For example,
+</I>&gt;<i> fpdoc_sa.mct could be reduced to the following:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> No need for cursorcol and cursorrow anymore. This seems more intuitive
+</I>&gt;<i> and less error prone. This also reduces the effort of having to count
+</I>&gt;<i> line numbers in large templates so I know what line number to use.
+</I>&gt;<i> 
+</I>I didn't want to do character escapement in case one wants to use '|' in
+text. Later there probably will be a tool for editing templates.
+
+&gt;<i> 3) noselect=1 should probably be the default, instead of noselect=0.
+</I>&gt;<i> This would reduce the effort of having to insert that line in every
+</I>&gt;<i> template file.
+</I>&gt;<i> 
+</I>The intention is that indention can be set easy with Ctrl+I.
+
+&gt;<i> 4) While MSEide is open, I edit one of my *.mct files. The newly
+</I>&gt;<i> modified code template does not take effect until I restart MSEide.
+</I>&gt;<i> MSEide seems to cache the template content or something. Maybe it
+</I>&gt;<i> should only load a template once Ctrl+T is pressed, and not at IDE
+</I>&gt;<i> startup.
+</I>&gt;<i> 
+</I>It scans at project loading or after 'Project'-'Edit' finished with 'OK'.
+
+&gt;<i> 5) A nice to have.... Could you supply a syntax highlighter for *.mct
+</I>&gt;<i> files by default. Only the [header] block must to by highlighted. This
+</I>&gt;<i> would round off Code Templates nicely. ;-)
+</I>&gt;<i> 
+</I>Planned. :-)
+
+Martin
+&gt;<i> 
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001294.html">[MSEide-MSEgui-talk] more Code Templates feedback and suggestions
+</A></li>
+	<LI>Next message: <A HREF="001301.html">[MSEide-MSEgui-talk] Code Template insert adds an extra newline at	the end
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1298">[ date ]</a>
+              <a href="thread.html#1298">[ thread ]</a>
+              <a href="subject.html#1298">[ subject ]</a>
+              <a href="author.html#1298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

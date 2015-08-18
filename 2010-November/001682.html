@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] feature request: separated session information	from project file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%20information%0A%09from%20project%20file&In-Reply-To=%3C4CD1296F.1070604%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001689.html">
+   <LINK REL="Next"  HREF="001683.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] feature request: separated session information	from project file</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%20information%0A%09from%20project%20file&In-Reply-To=%3C4CD1296F.1070604%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] feature request: separated session information	from project file">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Wed Nov  3 10:20:47 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001689.html">[MSEide-MSEgui-talk] About the various &quot;patch_xxx&quot; directories
+</A></li>
+        <LI>Next message: <A HREF="001683.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1682">[ date ]</a>
+              <a href="thread.html#1682">[ thread ]</a>
+              <a href="subject.html#1682">[ subject ]</a>
+              <a href="author.html#1682">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+Currently project and session information are stored in the *.prj file.
+This means even if I just close one unit in the editor or change the cursor
+position, the *.prj file is modified and my SCM (git in this case) detects
+the change.
+
+This also is a problem if multiple developers work on the same project.
+Every time anybody opens or closes a unit, the *.prj is modified. Having
+those modifications committed to the source repository is unnecessary. But
+we do want the project file committed if new compiler options are update.
+So how to we differentiate between what is session info (specific to one
+developer) and what is project info (applicable to all developers in the team).
+
+Is there a chance that such session information could be stored in a
+separate file in ~/.mseide/&lt;project-name&gt;.session or even in the same
+directory as the .prj file?
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001689.html">[MSEide-MSEgui-talk] About the various &quot;patch_xxx&quot; directories
+</A></li>
+	<LI>Next message: <A HREF="001683.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1682">[ date ]</a>
+              <a href="thread.html#1682">[ thread ]</a>
+              <a href="subject.html#1682">[ subject ]</a>
+              <a href="author.html#1682">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

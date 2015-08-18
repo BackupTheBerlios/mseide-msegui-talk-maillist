@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E38064F.9040508%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004012.html">
+   <LINK REL="Next"  HREF="004014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E38064F.9040508%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue Aug  2 16:14:39 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004012.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004014.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4013">[ date ]</a>
+              <a href="thread.html#4013">[ thread ]</a>
+              <a href="subject.html#4013">[ subject ]</a>
+              <a href="author.html#4013">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 08/02/2011 03:00 PM, Marcos Douglas wrote:
+&gt;<i> 
+</I>&gt;<i> You already talked about your report engine before... but is private, right?
+</I>
+No, the reporting engine I use in also in tiOPF. Search for tiRTFParser
+(original VCL version), or tiRTFReport (fpGUI version). It uses RTF
+(Rich Text File) files as a report template. You can use OpenOffice for
+example as your report designer. I even use OpenOffice (in read-only
+mode) as our report viewer. OOo is nice in read-only mode because it
+hides all edit toolbars and menus and looks like a &quot;viewer&quot;.
+
+tiRTFReport supports TDataset, tiOPF Objects or custom input. Images are
+support too. It has many built-in functions, and you can extend/add new
+functions very easily using Object Pascal.
+
+
+&gt;<i> At work, with Delphi, I use ReportBuilder but just with TDataSet.
+</I>
+tiOPF has a unit for ReportBuilder support as well - reporting from
+TDataset or tiOPF's objects directly.
+
+
+&gt;<i> If the MGM implements an OnChange event, I can not implement my own
+</I>&gt;<i> OnChange event in the same component?
+</I>
+MGM would use the OnChange event yes, so if you wanted to do more
+processing, then simply override the one in the MGM mediator.
+
+
+&gt;<i> Sorry, I did mean &quot;1 thousand of lines&quot;.
+</I>&gt;<i> Well, I don't believe (yet) but I will do some tests.
+</I>
+I have no idea, but I would imagine they will be similar in memory usage.
+
+
+&gt;<i> I liked your approach using Hint property, thanks!
+</I>
+Screen space is limited, so Hint's looked like the most logical thing to
+use because it doesn't take up extra space. We also don't like to
+interrupt the end-user with popup windows - that is just bad practice.
+
+
+&gt;<i> You need to codify all TtiObject's descendants and their attributes,
+</I>&gt;<i> right? I don't like it.
+</I>
+I auto-generate the initial units (classes and CRUD visitors), then
+simply maintain the by hand from then onwards. There are two tools that
+could be used for this tiSQLEditor (available in tiOPF) and
+LazDataDesktop (included with Lazarus - but is a stand alone product).
+
+
+&gt;<i> In my classes I try use the DRY principle, like Ruby ActiveRecord, and
+</I>&gt;<i> get all columns (attributes) dynamically.
+</I>
+There is some sample code in the Quarantine directory what &quot;Value Types&quot;
+are used. I believe there is also an example on property attributes eg:
+ MyObject.Attribute('Address').Value
+I personally don't use either of these.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004012.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004014.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4013">[ date ]</a>
+              <a href="thread.html#4013">[ thread ]</a>
+              <a href="subject.html#4013">[ subject ]</a>
+              <a href="author.html#4013">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

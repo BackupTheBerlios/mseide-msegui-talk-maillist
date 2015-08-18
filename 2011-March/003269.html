@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Barcode feature in new Repaz!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Barcode%20feature%20in%20new%20Repaz%21&In-Reply-To=%3CAANLkTimwMOnPJTiWjbMRtn6yxcrW8umpbPKARS_Ef74y%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003276.html">
+   <LINK REL="Next"  HREF="003277.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Barcode feature in new Repaz!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Barcode%20feature%20in%20new%20Repaz%21&In-Reply-To=%3CAANLkTimwMOnPJTiWjbMRtn6yxcrW8umpbPKARS_Ef74y%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Barcode feature in new Repaz!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Thu Mar 24 19:11:36 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003276.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+        <LI>Next message: <A HREF="003277.html">[MSEide-MSEgui-talk] Barcode feature in new Repaz!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3269">[ date ]</a>
+              <a href="thread.html#3269">[ thread ]</a>
+              <a href="subject.html#3269">[ subject ]</a>
+              <a href="author.html#3269">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Please update from SVN.
+
++ syntax painter to Repaz expression dialog
++ barcode feature for all report element (non only in TraLabelReport)
++ TraLabelReport for label product printing
+* fix report design
+* fix bug on evaluator exception
+* fix convert MSEGUI image to cairo image (wrong translate from
+blue-green-red to red-green-blue). Inverted blue and red for image
+drawing in previous version.
++ open cash drawer with RS232 connection
++ seting lines per page for RAW printing method.
++ Printing in custom paper (not standard printer paper) don't need add
+new form (from Server Properties in Windows Printer setting).
+
+I don't know why Martin use BGR and not RGB in imagety.pixels. :)
+
+Currently known error :
+- Print barcode in small label (3,1mmX1,5mm), because drawing in
+MSEGUI is in integer value (pixel), and to draw small barcode need
+less than 1 pixel (0,xx unit).
+- To fix this problem, I scaled barcode with bitmap scaling, but got
+error when printing with libcairo.
+- Close opening Repaz Designer got error.
+- Printing Chineese, Arabic, Hebrew to printer. Maybe it need pango cairo.
+
+Urgently required :
+- New developer to improve Repaz. :)
+
+But, Repaz is ready for production as I do in Acosys development.
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003276.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+	<LI>Next message: <A HREF="003277.html">[MSEide-MSEgui-talk] Barcode feature in new Repaz!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3269">[ date ]</a>
+              <a href="thread.html#3269">[ thread ]</a>
+              <a href="subject.html#3269">[ subject ]</a>
+              <a href="author.html#3269">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

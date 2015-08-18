@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100816213311.f712f46c.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000641.html">
+   <LINK REL="Next"  HREF="000674.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100816213311.f712f46c.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 16 21:33:11 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000641.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000674.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 16 Aug 2010 07:51:01 +0200:
+
+&gt;<i> &gt; Trying to find the error location lead me to nowhere - some deeply
+</I>&gt;<i> &gt; entrenched routine which didn't have anything to do with loading or
+</I>
+I got some news about this now. First of all, I upgraded FPC to version 2.4
+and your MSEIDE-MSEGUI to version 2.2 (not neccessarily all the latest
+ones available;). After recompiling all components affecting the project,
+the generated programs _did_ work completely, even after loading the layout
+modification library modules!
+(But, man, this latest FPC compiler has become picky! It even prescribes
+in what order field variables and methods have to appear! The parser seems
+to have been downgraded quite a lot.)
+
+And I did even find the cause for the &quot;invalid integer&quot; message box -
+there was indeed a wrong value in one line among the host of numbers...
+But this demonstrated quite painfully how waek the debugging abilities are
+- the pertinent routines all deal with variants, collected in arrays, being
+fields of objects, and there is no way to even get at the indices, lest the
+variant data themselves. It might be possible for someone with an intimate
+knowlegde of the variant data layout and the data structures involved to
+get at them to find out what is stored there - without this you're
+virtually (;-) blind.
+I found the culprit only by reanalyzing the data - searching for a regular
+expression covering the correctly formed lines, and having output all the
+rest, which included the erroneous line as well. Oh well.
+
+&gt;<i> There is an example in apps/i18ndemo.
+</I>
+I know - that's where I started from, and that's what I used as a template.
+Still, it took me some time to realize that the .trd files are generated
+when the project is saved the first time - the program complains about them
+missing if one attempts to load a previously created project which was not
+yet saved...
+And there is no &quot;close&quot; button / function / key - you _rely_ on the window
+manager providing a close control. This was a pain with the previous window
+manager I used (wmx), as this did _not_ provide one, you had to hold a
+mouse button for some time to activate such a function. The fact that ever
+more programs (most notably and most annoyingly OpenOffice) relied on such
+a window control (generating the need for a window control bar (aka &quot;title
+bar&quot;), which I don't really want _at_ _all_) forced me to change; thus I now
+use the minimal window manager providing such, openbox.
+And, BTW, there's no hint how to close the &quot;make&quot; output window after
+processing is done, either. Only by experimenting I found that you can
+close it with the escape key. This was a bit annoying, too.
+Another annoyance encountered concerns the naming of the generated library
+files - it is somewhat of a problem that your loader automatically adds the
+&quot;lib&quot; prefix to the name passed in - if this name should contain a path
+part, can you imagine what happens? And I think you usually _want_ to
+specify a path with the name. If you insist in using the same code for
+Windows and Linux, I'm afraid there might be some additional logic for path
+manipulation required; instead of the current &quot;aname:= 'lib'+aname+'.so';&quot;
+you might write
+  aname:= ExtractFilePath (aname)+ 'lib'+ ExtractFileName (aname)+ '.so';
+
+BTW, an idea to enhance the usability of the editor's search function:
+If the cursor is within a word, or just if it is within a marked word, it
+might be considered convenient if this word is inserted into the search
+text entry field automatically. There are even some editors doing this...
+
+&gt;<i> &gt;&gt; Suggestion: use automatically adjusting layouts. Some possible
+</I>&gt;<i> &gt;&gt; elements:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; This probabely won't work out - there are some elements that must keep
+</I>&gt;<i> &gt; their size to accomodate for bitmap pictures being displayed,
+</I>&gt;<i> 
+</I>&gt;<i> twidget.bounds_c*min,bounds_c*max.
+</I>
+I know, this can do it for these. What about having a variable area at the
+left, which must be sized according to text to be displayed in two equally
+sized columns there, a couple of fixed sized elements, and another variable
+region, even containing a couple of different controls (buttons), which are
+sized according to, but not neccessarily defined by, the font size of some
+characters shown within? Would this work out automatically?
+
+&gt;<i> For variable layouts I often use a combination of widget features and
+</I>&gt;<i> code.
+</I>
+Yes, this would very well be neccessary, I think. Can be done, of course -
+but as the two separate layouts do exist already, at least for now I prefer
+the i18n method - it looks rather viable now.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000641.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000674.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

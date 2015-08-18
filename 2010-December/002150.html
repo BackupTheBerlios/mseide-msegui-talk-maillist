@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%09exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3Camhjg6liobue2g3qoc86ubng9igu94hs3j%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002149.html">
+   <LINK REL="Next"  HREF="002151.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%09exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3Camhjg6liobue2g3qoc86ubng9igu94hs3j%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Dec 16 09:03:05 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002149.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="002151.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2150">[ date ]</a>
+              <a href="thread.html#2150">[ thread ]</a>
+              <a href="subject.html#2150">[ subject ]</a>
+              <a href="author.html#2150">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>And full mimicrizing &quot;doinit&quot;:
+
+// -----------------------
+program getapppath;
+
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+
+uses windows;
+
+const
+
+  CSIDL_APPDATA                = $001A;
+  CSIDL_PROFILE                 = $0028; 
+  CSIDL_FLAG_CREATE       = $8000;
+
+type
+
+ SHGetFolderPathW1 = function (
+	hwndowner: HWND; nFolder: integer; hToken: thandle;
+             dwFlags: DWORD; pszPath: LPTSTR): HRESULT; stdcall;
+
+var
+  buffer: array[0..255] of widechar;
+  apphomedir: widestring;  
+  userhomedir: widestring;  
+  i: integer;
+  rc: integer;
+
+  libhandle: thandle;
+  po1: SHGetFolderPathW1;
+
+
+begin
+       
+ libhandle:= loadlibrary('shfolder.dll');
+ if libhandle &lt;&gt; 0 then begin
+    {$ifdef FPC}pointer(po1){$else}po1{$endif}:= 
+     getprocaddress(libhandle,'SHGetFolderPathW');
+   if assigned(po1) then begin
+      fillchar(buffer,0,255);
+     if po1(0,CSIDL_APPDATA or <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">CSIDL_FLAG_CREATE,0,0, at buffer</A>) = 0 then
+begin
+       setlength(apphomedir,0);
+       for i:=0 to 255 do begin
+         if buffer[i] = widechar(0) then break;
+         setlength(apphomedir,i+1);
+         apphomedir[i+1]:= buffer[i];
+       end;
+       writeln('The app dir is: ',apphomedir);
+     end;
+     fillchar(buffer,0,255);      
+     if po1(0,CSIDL_PROFILE or <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">CSIDL_FLAG_CREATE,0,0, at buffer</A>) = 0 then
+begin
+       setlength(userhomedir,0);
+       for i:=0 to 255 do begin
+         if buffer[i] = widechar(0) then break;
+         setlength(userhomedir,i+1);
+         userhomedir[i+1]:= buffer[i];
+       end;
+       writeln('The user home dir is: ',userhomedir);
+     end;
+   end;
+   freelibrary(libhandle);
+ end;
+
+end.
+
+//------------------
+
+built with :
+
+# fpc -l -Mobjfpc -Sh -gl -O- getapppath.pas 
+
+works well.
+
+Where to dig ?
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002149.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="002151.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2150">[ date ]</a>
+              <a href="thread.html#2150">[ thread ]</a>
+              <a href="subject.html#2150">[ subject ]</a>
+              <a href="author.html#2150">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

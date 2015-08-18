@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Why ifi called?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Why%20ifi%20called%3F&In-Reply-To=%3Cibtg27%24r38%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001893.html">
+   <LINK REL="Next"  HREF="001902.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Why ifi called?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Why%20ifi%20called%3F&In-Reply-To=%3Cibtg27%24r38%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Why ifi called?">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Nov 16 09:44:00 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001893.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+        <LI>Next message: <A HREF="001902.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1896">[ date ]</a>
+              <a href="thread.html#1896">[ thread ]</a>
+              <a href="subject.html#1896">[ subject ]</a>
+              <a href="author.html#1896">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>MSEide MSEgui wrote:
+
+&gt;&gt;<i> That is not the watchpoint. Please setup the watchpoint as I wrote
+</I>&gt;&gt;<i> earlier in the message with the screenshots.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;<i> I repeat these steps for many times. But only these information that I
+</I>&gt;<i> got. I place breakpoint in main form, or I set breakpoint at tmseform
+</I>&gt;<i> unit. But with same result.
+</I>&gt;<i> 
+</I>fname and fifiserverintf show $f0f0f0f0 at the crash -&gt; the form has been
+destroyed (debug1.png).
+The mainfo still exists (debug2.png).
+The crash is here:
+  result:= widgets[int1].canclose(newfocus); (debug3.png)
+Question: which widget crashes? Place a breakpoint to msegui.pas:10937,
+DblClick at that line, enter a big number into 'Ignore' (debug4.png).
+Kill the program, repeat the test.
+At the crash set 'Ignore' one less than 'Count' (debug5.png).
+Repeat the test, program stops at breakpoint, check the value of fname, it
+is &quot;repazdesignfo&quot;. Step through the code with F7,F8. When the program is
+here:
+&quot;
+function tactionwidget.canclose(const newfocus: twidget): boolean;
+begin
+ result:= inherited canclose(newfocus); &lt;&lt;&lt;&lt;&lt;&lt;&lt;
+&quot;
+fname shows '' -&gt; a nameless widget. This is bad because we don't know which
+widget it is. But we know that fifiserverintf is not nil later, so we set a
+watchpoint to fifserverintf (debug6.png).
+Step through the code with F7,F8, the watchpoint triggers (debug7.png).
+Aha! Never destroy a component in an eventhandler of the component.
+
+Martin
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug1.png
+Type: image/png
+Size: 57154 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug2.png
+Type: image/png
+Size: 32687 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0001.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug3.png
+Type: image/png
+Size: 33318 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0002.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0002.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug4.png
+Type: image/png
+Size: 10039 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0003.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0003.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug5.png
+Type: image/png
+Size: 10254 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0004.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0004.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug6.png
+Type: image/png
+Size: 34700 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0005.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0005.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug7.png
+Type: image/png
+Size: 73821 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0006.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101116/6e396a47/attachment-0006.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001893.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+	<LI>Next message: <A HREF="001902.html">[MSEide-MSEgui-talk] Why ifi called?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1896">[ date ]</a>
+              <a href="thread.html#1896">[ thread ]</a>
+              <a href="subject.html#1896">[ subject ]</a>
+              <a href="author.html#1896">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

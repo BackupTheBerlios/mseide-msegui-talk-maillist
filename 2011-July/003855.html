@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Target Console keeps showing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Target%20Console%20keeps%20showing&In-Reply-To=%3C4E16AED7.5040503%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003854.html">
+   <LINK REL="Next"  HREF="003857.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Target Console keeps showing</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Target%20Console%20keeps%20showing&In-Reply-To=%3C4E16AED7.5040503%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Target Console keeps showing">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jul  8 09:16:39 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003854.html">[MSEide-MSEgui-talk] Target Console keeps showing
+</A></li>
+        <LI>Next message: <A HREF="003857.html">[MSEide-MSEgui-talk] Target Console keeps showing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3855">[ date ]</a>
+              <a href="thread.html#3855">[ thread ]</a>
+              <a href="subject.html#3855">[ subject ]</a>
+              <a href="author.html#3855">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/08/2011 09:03 AM, Martin Schreiber wrote:
+&gt;<i>
+</I>&gt;<i> The console window was invisible before closing that project?
+</I>
+Yes. And when the IDE is restarted, the console window is visible again.
+
+
+&gt;<i> Please try to close all windows except the main window before closing MSEide 
+</I>&gt;<i> and check if the console window still opens on next MSEide start.
+</I>
+Attached is my IDE window layout. I use docked windows.
+
+  1:  Main Window
+      Toolbar Window
+      Editor Window
+      Project Tree
+
+  2:  Watches
+      Stacks
+      Threads
+      Memory
+
+  3:  Console Window
+
+
+It took me very long to get the docking correct. But I'll make a backup,
+then undock all windows and only leave the Main Window, Toolbar and
+Editor windows open. Then save and close. Then restart the IDE and see
+what happens..
+
+  [..... 2 minutes later .....]
+
+
+AH! OK, having undocked all the windows and closing them, just leaving
+the main form, editor and toolbar. Save and restart the IDE, the console
+window did NOT reappear. Yeah :-)
+
+Then adding the windows back one by one, while restarting the IDE after
+each change again, kept the console window hidden.
+
+Everything seems back to normal again. I can even run the project, which
+makes the console appear. Quit my app, manually close the console
+window, and the IDE correctly remembers my state on restart.
+
+So I guess somewhere a setting when screwy in the .prj file, but closing
+all the windows reset it back to normal.  Thanks for your help Martin!
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Screenshot.jpg
+Type: image/jpeg
+Size: 45076 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110708/07fea654/attachment.jpg">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110708/07fea654/attachment.jpg</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003854.html">[MSEide-MSEgui-talk] Target Console keeps showing
+</A></li>
+	<LI>Next message: <A HREF="003857.html">[MSEide-MSEgui-talk] Target Console keeps showing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3855">[ date ]</a>
+              <a href="thread.html#3855">[ thread ]</a>
+              <a href="subject.html#3855">[ subject ]</a>
+              <a href="author.html#3855">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

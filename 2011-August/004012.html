@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeYztivbdFN74sArd82rbwLyFoVXrPQ0JZVfCb_0MzSJXg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004011.html">
+   <LINK REL="Next"  HREF="004013.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeYztivbdFN74sArd82rbwLyFoVXrPQ0JZVfCb_0MzSJXg%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Tue Aug  2 15:00:23 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004011.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004013.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4012">[ date ]</a>
+              <a href="thread.html#4012">[ thread ]</a>
+              <a href="subject.html#4012">[ subject ]</a>
+              <a href="author.html#4012">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Aug 1, 2011 at 10:23 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> On 08/01/2011 02:01 PM, Marcos Douglas wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Report libs needs TDataSet as like as some components eg Lookup***
+</I>&gt;<i>
+</I>&gt;<i> I use a reporting engine (also in tiOPF) that doesn't require TDataset,
+</I>&gt;<i> but does support it. We use it to generates reports directly from
+</I>&gt;<i> Objects. There are other reporting engines like ReportBuilder for Delphi
+</I>&gt;<i> that can also report directly from Objects or TDataset.
+</I>
+You already talked about your report engine before... but is private, right?
+At work, with Delphi, I use ReportBuilder but just with TDataSet.
+
+&gt;<i> Correct, but the MGM implementation already does this all for you. It
+</I>&gt;<i> also allows you to decide what events you would like to act upon, but
+</I>&gt;<i> supplies logical defaults eg: TEdit will use OnChange, some other widget
+</I>&gt;<i> might use OnFocusLost, OnTabChanged etc.
+</I>
+If the MGM implements an OnChange event, I can not implement my own
+OnChange event in the same component?
+
+&gt;<i> Then you also get more tricky cases like TComboBox. There could be many
+</I>&gt;<i> ways you want to use that component. eg:
+</I>&gt;<i>
+</I>&gt;<i> &#160;- TCombobox must edit a property and simply supply static enum options
+</I>&gt;<i> &#160; eg: &#160;Gender: &#160;Male or Female
+</I>&gt;<i>
+</I>&gt;<i> &#160;- TCombobox must edit a object property and supply a dynamic list
+</I>&gt;<i> &#160; of options: eg: &#160;Country: &#160;a list of TCountry objects
+</I>&gt;<i>
+</I>&gt;<i> &#160;- TCombobox must be edit a text property, but the user can
+</I>&gt;<i> &#160; enter new values or select from a list. An editable ComboBox.
+</I>&gt;<i>
+</I>&gt;<i> &#160;etc.
+</I>&gt;<i>
+</I>&gt;<i> Again, tiOPF's MGM supplies all these already, with very easy to use
+</I>&gt;<i> interfaces to hook up the data.
+</I>
+Very nice and interesting!
+
+&gt;&gt;<i> I create my business object; call the procedure that convert Object to
+</I>&gt;&gt;<i> Form (widgets); and the inverse is true for save the data of widgets.
+</I>&gt;&gt;<i> All this using RTTI.
+</I>&gt;<i>
+</I>&gt;<i> I quickly found that you can't always use RTTI for everything. By
+</I>&gt;<i> default MGM uses RTTI though. eg: Sometimes a property must be forced as
+</I>&gt;<i> Public instead of Published for whatever reason. So RTTI can't access
+</I>&gt;<i> that public property, but this is not a problem for tiOPF's MGM. Simply
+</I>&gt;<i> create a custom mediator descendant, override the property name use use
+</I>&gt;<i> (thus not RTTI, but references directyl). Register that mediator, and
+</I>&gt;<i> away you go.
+</I>
+You're right, the RTTI is not for all.
+The RTTI is just for generic cases. If I use a new widget, the RTTI
+can try to use it but if not can, we use an especific implementation.
+
+&gt;<i> I have also extended the functionality of RTTI functions in tiOPF. So
+</I>&gt;<i> you can extract a property value use &quot;property paths&quot;, which standard
+</I>&gt;<i> Delphi and FPC's RTTI functions can't do.
+</I>&gt;<i> eg:
+</I>&gt;<i> var
+</I>&gt;<i> &#160;lValue: string
+</I>&gt;<i> begin
+</I>&gt;<i> &#160;lValue := tiGetProperty(SomeObject, 'Customer.Address.Country');
+</I>&gt;<i>
+</I>&gt;<i> This will use the 'Customer' property of SomeObject, then query the
+</I>&gt;<i> 'Address' property of the Customer object, then query the 'Country'
+</I>&gt;<i> property of the Address object for its value. nil values anywhere in the
+</I>&gt;<i> property path is checked for and handled.
+</I>
+Very nice too.
+
+&gt;&gt;<i> But I have two questions:
+</I>&gt;&gt;<i> 1. A DataSet with 1000 registers is not more lean that 1000 instances
+</I>&gt;&gt;<i> of objects?
+</I>&gt;<i>
+</I>&gt;<i> I don't understand &quot;1000 registers&quot;. I can say that tiOPF's MGM adds
+</I>&gt;<i> very little overhead to you code. I think it's actually much less than
+</I>&gt;<i> DB-aware components (which contain a lot more code than MGM does). The
+</I>&gt;<i> benefits of MGM, for use at least, far outweighs the usage of DB-aware
+</I>&gt;<i> components.
+</I>
+Sorry, I did mean &quot;1 thousand of lines&quot;.
+Well, I don't believe (yet) but I will do some tests.
+
+&gt;&gt;<i> 2. You need to write code to register a Mediator with a widget or you
+</I>&gt;&gt;<i> just put the widget on the form and the framework do this for you?
+</I>&gt;<i>
+</I>&gt;<i> You would follow these steps:
+</I>&gt;<i>
+</I>&gt;<i> &#160;1. &#160;Drop a widget on the form
+</I>&gt;<i> &#160;2. &#160;Hook up the widget to the property of the data object in question.
+</I>&gt;<i> &#160; &#160; This is usually done in the OnCreate event handle, but you can do
+</I>&gt;<i> &#160; &#160; it elsewhere too, like in the OnShow etc. Or if you use Tabs style
+</I>&gt;<i> &#160; &#160; interface, you can use OnTabPageChange, reducing the mediator usage
+</I>&gt;<i> &#160; &#160; only to the tabs the user is viewing.
+</I>&gt;<i>
+</I>&gt;<i> Before I showed how to setup a StringGrid to observe a list of objects.
+</I>&gt;<i> Here is how you would setup edit widgets for editing properties of a
+</I>&gt;<i> single Object.
+</I>&gt;<i>
+</I>&gt;<i> &#160;if not Assigned(FMediator) then
+</I>&gt;<i> &#160;begin
+</I>&gt;<i> &#160; &#160;FMediator := TtiModelMediator.Create(self);
+</I>&gt;<i> &#160; &#160;FMediator.AddProperty('TaxCode', edtTaxCode);
+</I>&gt;<i> &#160; &#160;FMediator.AddProperty('Description', edtName1);
+</I>&gt;<i> &#160; &#160;FMediator.AddProperty('Rate', edtTaxRate);
+</I>&gt;<i> &#160; &#160;FMediator.AddProperty('IsActive', cbIsActive);
+</I>&gt;<i> &#160;end;
+</I>&gt;<i> &#160;FMediator.Subject := Data; &#160;// Data is the object we want to edit
+</I>&gt;<i> &#160;FMediator.Active := True;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Here we have setup 4 edit widgets. 2 TextEdit widgets, 1 FloatEdit
+</I>&gt;<i> widget, and 1 CheckBox widget.
+</I>&gt;<i>
+</I>&gt;<i> Now say you drop a TEdit on a form, and normally change a few properties
+</I>&gt;<i> so it behaves or looks correctly to what you want. You can create a
+</I>&gt;<i> custom mediator that sets those properties. The simply register that
+</I>&gt;<i> mediator for a specific type. So now you don't have no set those
+</I>&gt;<i> properties every time you use a TEdit widget, the custom mediator will
+</I>&gt;<i> do all that for you.
+</I>
+Ok, I understood. Some particularities I will see in tiOPF code.
+
+&gt;<i> But wait, there's more! :-) What about Input Validation! Any TtiObject
+</I>&gt;<i> descendant (eg: TCustomer) has a IsValid(...) method, by default
+</I>&gt;<i> returning True. MGM's mediators call that method automatically as data
+</I>&gt;<i> gets changed. As soon as the user entered invalid data, the widget's
+</I>&gt;<i> background color changes, and the Hint property is replaced with a error
+</I>&gt;<i> message. Clearly indicating to the user that more action is required
+</I>&gt;<i> before they can save there changes. As soon as valid data is entered,
+</I>&gt;<i> the background color and hint value will reset to what they originally were.
+</I>
+I have the same method.
+I liked your approach using Hint property, thanks!
+
+&gt;<i> So as you can see, there is actually a lot of things tiOPF's MGM does
+</I>&gt;<i> for you. And of course, all default options and behaviours are
+</I>&gt;<i> configurable by the developer. All this application code is portable
+</I>&gt;<i> between VCL, LCL and fpGUI too. As I mentioned before, MSEgui support is
+</I>&gt;<i> on my todo list already.
+</I>
+You need to codify all TtiObject's descendants and their attributes,
+right? I don't like it.
+In my classes I try use the DRY principle, like Ruby ActiveRecord, and
+get all columns (attributes) dynamically.
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004011.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004013.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4012">[ date ]</a>
+              <a href="thread.html#4012">[ thread ]</a>
+              <a href="subject.html#4012">[ subject ]</a>
+              <a href="author.html#4012">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

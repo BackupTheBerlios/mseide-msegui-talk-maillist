@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci7pkoe%24ojj%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001225.html">
+   <LINK REL="Next"  HREF="001252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3Ci7pkoe%24ojj%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Sep 27 10:32:35 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001225.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001252.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1230">[ date ]</a>
+              <a href="thread.html#1230">[ thread ]</a>
+              <a href="subject.html#1230">[ subject ]</a>
+              <a href="author.html#1230">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;&gt;<i> &quot;
+</I>&gt;&gt;<i> ppc386
+</I>&gt;&gt;<i> apps/ide/mseide.pas -Fulib/common/kernel/i386-linux -Fi/lib/common/kernel
+</I>&gt;&gt;<i> -Fulib/common/* &quot;
+</I>&gt;<i> 
+</I>&gt;<i> Gives me the following response:
+</I>&gt;<i> 
+</I>&gt;<i> Free Pascal Compiler version 2.4.0 [2010/01/01] for i386
+</I>&gt;<i> Copyright (c) 1993-2009 by Florian Klaempfl
+</I>&gt;<i> Target OS: Linux for i386
+</I>&gt;<i> Compiling apps/ide/mseide.pas
+</I>&gt;<i> ...
+</I>&gt;<i> cwstring.pp(402,42) Error: Identifier not found &quot;TWideStringManager&quot;
+</I>&gt;<i> cwstring.pp(402,42) Error: Error in type definition
+</I>&gt;<i> cwstring.pp(405,27) Error: Expression type must be class or record type
+</I>&gt;<i> cwstring.pp(407,24) Error: Identifier not found &quot;Wide2AnsiMoveProc&quot;
+</I>&gt;<i> cwstring.pp(408,24) Error: Identifier not found &quot;Ansi2WideMoveProc&quot;
+</I>&gt;<i> cwstring.pp(410,26) Error: Identifier not found &quot;UpperWideStringProc&quot;
+</I>&gt;<i> cwstring.pp(411,26) Error: Identifier not found &quot;LowerWideStringProc&quot;
+</I>&gt;<i> cwstring.pp(413,28) Error: Identifier not found &quot;CompareWideStringProc&quot;
+</I>&gt;<i> cwstring.pp(414,32) Error: Identifier not found
+</I>&gt;<i> &quot;CompareTextWideStringProc&quot; cwstring.pp(423,28) Error: Identifier not
+</I>&gt;<i> found &quot;StrCompAnsiStringProc&quot; cwstring.pp(432,42) Error: Incompatible type
+</I>&gt;<i> for arg no. 1: Got &quot;&lt;erroneous type&gt;&quot;, expected &quot;TUnicodeStringManager&quot;
+</I>&gt;<i> cwstring.pp(447) Fatal: There were type&gt;11 errors compiling module,
+</I>&gt;<i> stopping Fatal: Compilation aborted
+</I>&gt;<i> 
+</I>Works for me:
+&quot;
+<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse at linuxca</A>:~/packs/standard/svn/mse/trunk&gt; ppc386
+apps/ide/mseide.pas -Fulib/common/kernel/i386-linux -Fi/lib/common/kernel -Fulib/common/*
+Free Pascal Compiler version 2.4.0 [2009/12/31] for i386
+Copyright (c) 1993-2009 by Florian Klaempfl
+Target OS: Linux for i386
+Compiling apps/ide/mseide.pas
+Linking apps/ide/mseide
+/usr/bin/ld: warning: link.res contains output sections; did you forget -T?
+62 lines compiled, 4.9 sec 
+&quot;
+Compile with -vu in order to check which files FPC loads, MSEgui has an own
+patched cwstrig.pp in lib/common/i386-linux. TWideStringManager has been
+renamed to TUnicodeStringManager in FPC 2.4. Are you sure you compile a
+MSEgui version which has been designed for FPC 2.4.0 ?
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001225.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001252.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1230">[ date ]</a>
+              <a href="thread.html#1230">[ thread ]</a>
+              <a href="subject.html#1230">[ subject ]</a>
+              <a href="author.html#1230">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

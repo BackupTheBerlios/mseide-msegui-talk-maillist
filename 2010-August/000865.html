@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image processing - resize, thumbnails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci58cb7%24mvd%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000864.html">
+   <LINK REL="Next"  HREF="000866.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image processing - resize, thumbnails</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci58cb7%24mvd%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Image processing - resize, thumbnails">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 27 14:52:20 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000864.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+        <LI>Next message: <A HREF="000866.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#865">[ date ]</a>
+              <a href="thread.html#865">[ thread ]</a>
+              <a href="subject.html#865">[ subject ]</a>
+              <a href="author.html#865">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+
+&gt;<i> And FYI, this is what I ended up with:
+</I>&gt;<i> 
+</I>&gt;<i> procedure tmainfo.makethumb(const sender: TObject);
+</I>&gt;<i> var
+</I>&gt;<i>    picture: tmaskedbitmap;
+</I>&gt;<i>    smallpicture: tmaskedbitmap;
+</I>&gt;<i>    picstream: TMemoryStream;
+</I>&gt;<i>    smallpicstream: TMemoryStream;
+</I>&gt;<i>    x,y:integer;
+</I>&gt;<i> begin
+</I>&gt;<i>    picstream := TMemoryStream.Create;
+</I>&gt;<i>    smallpicstream := TMemoryStream.Create;
+</I>&gt;<i>    picture := tmaskedbitmap.create(false);
+</I>&gt;<i>    smallpicture := tmaskedbitmap.create(false);
+</I>
+     try  //DB and image conversion exceptions are possible
+
+&gt;<i>     TBlobField(tmsedatasource1.dataset.FieldByName('img')).
+</I>&gt;<i>           SaveToStream(picstream);
+</I>&gt;<i>     picstream.Position :=0;
+</I> 
+     picture.LoadFromStream(picstream);
+          //tmaskebitmap.bitmap returns self if source = NIL
+
+&gt;<i>     x:=picture.size.cx;
+</I>&gt;<i>     y:=picture.size.cy;
+</I>&gt;<i>     smallpicture.size:=makesize(100,(y*100)div x);
+</I>&gt;<i>     picture.stretch(smallpicture);
+</I>
+      smallpicture.writetostream(smallpicstream,'jpg',[]);
+          //tmaskebitmap.bitmap returns self if source = NIL
+
+&gt;<i>     tmsezquery1.edit;
+</I>&gt;<i>     smallpicstream.Position:=0;
+</I>&gt;<i>     TBlobField(tmsedatasource1.dataset.FieldByName('thumb')).
+</I>&gt;<i>           LoadFromStream(smallpicstream);
+</I>&gt;<i>     tmsezquery1.post;
+</I>
+     finally
+
+&gt;<i>     picture.Free;
+</I>&gt;<i>     picstream.Free;
+</I>&gt;<i>     smallpicture.Free;
+</I>&gt;<i>     smallpicstream.Free;
+</I>
+     end;
+
+&gt;<i> end;
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000864.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+	<LI>Next message: <A HREF="000866.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#865">[ date ]</a>
+              <a href="thread.html#865">[ thread ]</a>
+              <a href="subject.html#865">[ subject ]</a>
+              <a href="author.html#865">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

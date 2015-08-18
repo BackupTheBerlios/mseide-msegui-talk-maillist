@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201109021355.05387.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004145.html">
+   <LINK REL="Next"  HREF="004140.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201109021355.05387.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Sep  2 13:55:05 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004145.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004140.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4147">[ date ]</a>
+              <a href="thread.html#4147">[ thread ]</a>
+              <a href="subject.html#4147">[ subject ]</a>
+              <a href="author.html#4147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 02 September 2011 13:25:49 minoshi wrote:
+&gt;<i> 02.09.2011 11:16, minoshi &#1087;&#1080;&#1096;&#1077;&#1090;:
+</I>&gt;<i> &gt; Do you want to remove these packages?==true== [Y/n] ==true==checking
+</I>&gt;<i> &gt; dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Second ==true== is when i send 'No' in tterminal
+</I>
+Please test
+&quot;
+procedure tterminal.doinputavailable(const sender: tpipereader);
+var
+ str1: string;
+ int1: integer;
+begin
+ try
+  if teo_bufferchunks in foptions then begin
+   str1:= sender.readbuffer;
+  end
+  else begin
+   str1:= sender.readdatastring;
+  end;
+  if not (csdestroying in componentstate) then begin
+   if canevent(tmethod(fonreceivetext)) then begin
+    fonreceivetext(self,str1,sender = fprocess.erroroutput.pipereader);
+                    &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;------
+   end;
+   addchars(str1);
+   if teo_bufferchunks in foptions then begin
+    int1:= application.unlockall;
+    sleepus(0); //sched_yield
+    application.relockall(int1);
+   end;
+  end;
+ except
+ end;
+end;
+
+&quot;
+why &quot;sender = fprocess.erroroutput.pipereader&quot; although fprocess.erroroutput 
+should be inactive if pro_errorouttoout is set.
+What returns the test program
+&quot;
+program testprog;
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+{$ifdef mswindows}{$apptype console}{$endif}
+uses
+ {$ifdef FPC}{$ifdef linux}cthreads,cwstring,{$endif}{$endif}
+ sysutils,msesysutils;
+begin
+ writeln(stderr,'stderr1');
+ writeln(output,'stdout1');
+ writeln(stderr,'stderr2');
+ writeln(output,'stdout2');
+end.
+&quot;?
+I get
+&quot;
+stdout1
+stdout2
+stderr1
+stderr2
+&quot; 
+if pro_errorouttoout is false and
+&quot;
+stderr1
+stdout1
+stderr2
+stdout2
+&quot;
+if pro_errorouttoout is true.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004145.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004140.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4147">[ date ]</a>
+              <a href="thread.html#4147">[ thread ]</a>
+              <a href="subject.html#4147">[ subject ]</a>
+              <a href="author.html#4147">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

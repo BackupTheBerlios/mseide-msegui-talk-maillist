@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] More grid artifacts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20More%20grid%20artifacts&In-Reply-To=%3Cop.vuudegkmyl4sxz%40vano.post01.silk.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003525.html">
+   <LINK REL="Next"  HREF="003527.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] More grid artifacts</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20More%20grid%20artifacts&In-Reply-To=%3Cop.vuudegkmyl4sxz%40vano.post01.silk.org%3E"
+       TITLE="[MSEide-MSEgui-talk] More grid artifacts">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon May  2 08:52:54 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003525.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+        <LI>Next message: <A HREF="003527.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3526">[ date ]</a>
+              <a href="thread.html#3526">[ thread ]</a>
+              <a href="subject.html#3526">[ subject ]</a>
+              <a href="author.html#3526">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+It seems that because the font name is descended as parent then any change  
+to the font is really a change to this .
+So, the Q turns int :
+
+how to change font size &amp; style for fixrows created programically in  
+run-time so that it won't affect its parent font ?
+
+At a glance, &quot;font:= tcolheaderfont.create;&quot; for each  
+fixrows[i],captrion*[j].font looks appropriate (and it really works see  
+the below code), but won't it result  in non-freed heap memory ?
+
+
+
+with grdForm18 do begin
+    fixrows.count:= recordcount+1;
+    fixrows.oppositecount:= recordcount;
+
+    fixcols.count:= 1;
+    for i:= 0 to fixrows.oppositecount-1 do begin
+      with fixrows[-2-i] do begin
+        color:= $F0FFF0; height:= 15;
+
+        captionsfix.count:= 1;
+        with captionsfix[-1] do begin
+          font:= tcolheaderfont.create;
+          font.height:= 12;
+          font.style:= font.style + [fs_bold];
+          captionsfix[-1].caption:= '&#8721;';
+        end;
+
+        captions.count:= 18;
+        with captions[0] do begin
+          mergecols:= 1;
+          textflags:= textflags + [tf_right];
+          font:= tcolheaderfont.create;
+          font.style:= font.style + [fs_bold];
+        end;
+
+        for j:= 1 to captions.count-1 do begin
+          with captions[j] do begin
+            font:= tcolheaderfont.create;
+            font.height:= 11;
+            font.xscale:= 0.7;
+          end;
+        end;
+
+      end;
+    end;
+  end;
+
+  grdForm18.appendrow(['82','28','13','99','13','21']);
+
+end;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003525.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+	<LI>Next message: <A HREF="003527.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3526">[ date ]</a>
+              <a href="thread.html#3526">[ thread ]</a>
+              <a href="subject.html#3526">[ subject ]</a>
+              <a href="author.html#3526">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Not specific MSE - findfirst
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Not%20specific%20MSE%20-%20findfirst&In-Reply-To=%3Cisksm2%24slt%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003768.html">
+   <LINK REL="Next"  HREF="003770.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Not specific MSE - findfirst</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Not%20specific%20MSE%20-%20findfirst&In-Reply-To=%3Cisksm2%24slt%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Not specific MSE - findfirst">chr.nobel at gmail.com
+       </A><BR>
+    <I>Tue Jun  7 11:57:20 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003768.html">[MSEide-MSEgui-talk] encodesqlfloat problem!
+</A></li>
+        <LI>Next message: <A HREF="003770.html">[MSEide-MSEgui-talk] Not specific MSE - findfirst
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3769">[ date ]</a>
+              <a href="thread.html#3769">[ thread ]</a>
+              <a href="subject.html#3769">[ subject ]</a>
+              <a href="author.html#3769">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 17-05-2011 16:21, Martin Schreiber wrote:
+&gt;<i> MSEgui sys_opendirstream(), sys_readdirstream(), sys_closedirstrean() can 
+</I>&gt;<i> handle multiple file masks.
+</I>&gt;<i> Please use
+</I>&gt;<i> &quot;
+</I>&gt;<i>  tcustomfiledatalist = class(tdynamicdatalist)
+</I>&gt;<i> [...]
+</I>&gt;<i>    procedure adddirectory(const directoryname: filenamety;
+</I>&gt;<i>         ainfolevel: fileinfolevelty = fil_name; const amask: filenamearty = 
+</I>&gt;<i> nil;
+</I>&gt;<i>         const aincludeattrib: fileattributesty = [fa_all];
+</I>&gt;<i>         const aexcludeattrib: fileattributesty = [];
+</I>&gt;<i>         const aoptions: dirstreamoptionsty = [];
+</I>&gt;<i>         const acheckproc: checkfileeventty = nil); overload;
+</I>&gt;<i>         //amask = nil -&gt; all,
+</I>&gt;<i> &quot;
+</I>&gt;<i> for convenience (unit msefileutils).
+</I>&gt;<i> 
+</I>&gt;<i> Martin
+</I>
+Hmm, that was to complicated for me to decipher :-)), so I did like this
+instead:
+
+procedure tmainfo.showdir(const sender: TObject);
+var
+  n:integer;
+  SR: TSearchRec;
+  extstrings:array of string;
+begin
+  tmemoedit1.text:='';
+  setlength(extstrings,2);
+  extstrings[0]:='.pas';
+  extstrings[1]:='.mfm';
+// just to fill some extensions for testing
+  if FindFirst(tdirdropdownedit1.value+'*.*', faAnyFile - faDirectory,
+SR) = 0 then
+  repeat
+    begin
+      for n:=0 to 1 do
+      if lowercase(ExtractFileExt(SR.name))=extstrings[n] then
+	tmemoedit1.text:=tmemoedit1.text+SR.Name+chr(13)+chr(10);
+    end;
+  until FindNext(SR) &lt;&gt; 0;
+  FindClose(SR);
+end;
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003768.html">[MSEide-MSEgui-talk] encodesqlfloat problem!
+</A></li>
+	<LI>Next message: <A HREF="003770.html">[MSEide-MSEgui-talk] Not specific MSE - findfirst
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3769">[ date ]</a>
+              <a href="thread.html#3769">[ thread ]</a>
+              <a href="subject.html#3769">[ subject ]</a>
+              <a href="author.html#3769">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

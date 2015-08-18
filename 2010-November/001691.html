@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] feature request: separated session information from project file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%0A%20information%20from%20project%20file&In-Reply-To=%3CAANLkTi%3Dt2BJRVNp2WTJz-Y_Xv93FoEQdpm3o%2B%3Dae4O8Z%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001684.html">
+   <LINK REL="Next"  HREF="001692.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] feature request: separated session information from project file</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20feature%20request%3A%20separated%20session%0A%20information%20from%20project%20file&In-Reply-To=%3CAANLkTi%3Dt2BJRVNp2WTJz-Y_Xv93FoEQdpm3o%2B%3Dae4O8Z%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] feature request: separated session information from project file">md at delfire.net
+       </A><BR>
+    <I>Wed Nov  3 12:20:04 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001684.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+        <LI>Next message: <A HREF="001692.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1691">[ date ]</a>
+              <a href="thread.html#1691">[ thread ]</a>
+              <a href="subject.html#1691">[ subject ]</a>
+              <a href="author.html#1691">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Nov 3, 2010 at 6:20 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> Hi Martin,
+</I>&gt;<i>
+</I>&gt;<i> Currently project and session information are stored in the *.prj file.
+</I>&gt;<i> This means even if I just close one unit in the editor or change the cursor
+</I>&gt;<i> position, the *.prj file is modified and my SCM (git in this case) detects
+</I>&gt;<i> the change.
+</I>&gt;<i>
+</I>&gt;<i> This also is a problem if multiple developers work on the same project.
+</I>&gt;<i> Every time anybody opens or closes a unit, the *.prj is modified. Having
+</I>&gt;<i> those modifications committed to the source repository is unnecessary. But
+</I>&gt;<i> we do want the project file committed if new compiler options are update.
+</I>&gt;<i> So how to we differentiate between what is session info (specific to one
+</I>&gt;<i> developer) and what is project info (applicable to all developers in the team).
+</I>&gt;<i>
+</I>&gt;<i> Is there a chance that such session information could be stored in a
+</I>&gt;<i> separate file in ~/.mseide/&lt;project-name&gt;.session or even in the same
+</I>&gt;<i> directory as the .prj file?
+</I>
+Good idea!
+
+BTW, where is stored the MSEide configuration (FPCDIR, FPCLIBDIR,
+MSELIBDIR, etc)?
+Is possible to use a parameter to mseide.exe to define which paths to
+use (like &quot;lazarus --pcp=&lt;path&gt;&quot;)?
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001684.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+	<LI>Next message: <A HREF="001692.html">[MSEide-MSEgui-talk] feature request: separated session	information from project file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1691">[ date ]</a>
+              <a href="thread.html#1691">[ thread ]</a>
+              <a href="subject.html#1691">[ subject ]</a>
+              <a href="author.html#1691">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

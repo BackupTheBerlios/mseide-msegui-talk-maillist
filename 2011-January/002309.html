@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] AV reading values of non existan fields.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3CAANLkTinUy6zUWbqQDrb6pxVdNhqFV1kFj1SiZgSjBBy2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002308.html">
+   <LINK REL="Next"  HREF="002310.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] AV reading values of non existan fields.</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3CAANLkTinUy6zUWbqQDrb6pxVdNhqFV1kFj1SiZgSjBBy2%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] AV reading values of non existan fields.">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Jan  4 12:11:37 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002308.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+        <LI>Next message: <A HREF="002310.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2309">[ date ]</a>
+              <a href="thread.html#2309">[ thread ]</a>
+              <a href="subject.html#2309">[ subject ]</a>
+              <a href="author.html#2309">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Can't reproduce in a simple testcase, may be due the special tmseform use I
+do.
+
+new stack trace in another linux distro:
+
+#0  08086670 msegui.pas:15139
+TINTERNALAPPLICATION__ENDMODAL(SENDER=0xb7ffb4e0, this=&lt;error reading
+variable&gt;)
+#1  08080756 msegui.pas:12618 TWINDOW__ENDMODAL(this=&lt;error reading
+variable&gt;)
+#2  0807FDA7 msegui.pas:12351 TWINDOW__HIDE(WINDOWEVENT=false, this=&lt;error
+reading variable&gt;)
+#3  08079371 msegui.pas:9550 TWIDGET__INTERNALHIDE(WINDOWEVENT=false,
+this=&lt;error reading variable&gt;)
+#4  08079413 msegui.pas:9564 TWIDGET__HIDE(this=&lt;error reading variable&gt;)
+#5  08071285 msegui.pas:6225 TWIDGET__DESTROY(vmt=0x0, this=&lt;error reading
+variable&gt;)
+#6  0808AF01 mseforms.pas:810 TCUSTOMMSEFORM__DESTROY(vmt=0x1, this=&lt;error
+reading variable&gt;)
+#7  08059BB2 mseforms.pas:0 SYSTEM_TOBJECT_$__FREE()
+#8  082B9802 clientes.pas:785
+TCLIENTESFO__DOENVARFACTURAEMAIL(SENDER=0xb7d16f70, this=&lt;error reading
+variable&gt;)
+#9  08143556 mseact.pas:347 DOACTIONEXECUTE(SENDER=0xb7d16f70, INFO={ACTION
+= 0x0, CAPTIONTEXT = 0xb79026c8 'Enviar email', CAPTION1 = {TEXT =
+0xb79026f8 'Enviar email', FORMAT = 0x0, FLAGS = []}, STATE =
+[AS_LOCALCAPTION..AS_LOCALIMAGENR, AS_LOCALCOLOR, AS_LOCALONEXECUTE],
+OPTIONS = [], SHORTCUT = 0x0, SHORTCUT1 = 0x0, GROUP = 0, IMAGENR = 24,
+IMAGENRDISABLED = -2, COLORGLYPH = 2415919117, COLOR = 2147483651,
+IMAGECHECKEDOFFSET = 0, IMAGELIST = 0xb7df41e0, HINT = 0x0, TAG = 0,
+TAGPOINTER = 0x0, ONEXECUTE = 0x82b95f0 &lt;TCLIENTESFO__DOENVARFACTURAEMAIL&gt;},
+NOCHECKBOX=false, NOCANDEFOCUS=false)
+#10  08186B27 msesimplewidgets.pas:690 TCUSTOMBUTTON__DOEXECUTE(this=&lt;error
+reading variable&gt;)
+#11  08155C09 msewidgets.pas:1847
+TACTIONSIMPLEBUTTON__INTERNALEXECUTE(this=&lt;error reading variable&gt;)
+#12  08155C27 msewidgets.pas:1854
+TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE(ATAG=0, INFO={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1338836000, BUTTON = MB_LEFT}, this=&lt;error reading
+variable&gt;)
+#13  08168DF2 mseshapes.pas:426 UPDATEMOUSESHAPESTATE(INFO={CA = {DIM = {X =
+0, Y = 0, CX = 114, CY = 21, POS = {X = 0, Y = 0}, SIZE = {CX = 114, CY =
+21}}, CAPTION = {TEXT = 0xb79026f8 'Enviar email', FORMAT = 0x0, FLAGS =
+[]}, FONT = 0xb7de2720, TEXTFLAGS = [TF_XCENTERED, TF_YCENTERED], IMAGEPOS =
+IP_LEFT, CAPTIONDIST = 2, IMAGENR = 24, COLORGLYPH = 2415919117, IMAGELIST =
+0xb7df41e0, IMAGEDIST = 4, IMAGEDISTTOP = 0, IMAGEDISTBOTTOM = 0},
+FOCUSRECTDIST = 1, STATE = [SHS_SHOWFOCUSRECT..SHS_SHOWDEFAULTRECT], TABPOS
+= 0, GROUP = 0, COLOR = 2147483651, COLORACTIVE = 0, IMAGENRDISABLED = -2,
+IMAGECHECKEDOFFSET = 0, FACE = 0x0, FRAME = 0x0, MOUSEFRAME = {LEFT = 0, TOP
+= 0, RIGHT = 0, BOTTOM = 0, TOPLEFT = {CX = 0, CY = 0}, BOTTOMRIGHT = {CX =
+0, CY = 0}}, TAG = 0, DOEXECUTE = 0x8155c10
+&lt;TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE&gt;}, MOUSEEVENT={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1338836000, BUTTON = MB_LEFT}, WIDGET=0xb7d16f70,
+AFRAME=0x0, INFOARPO=0x0, CANCLICK=true)
+#14  08155CC3 msewidgets.pas:1868
+TACTIONSIMPLEBUTTON__CLIENTMOUSEEVENT(INFO={EVENTKIND = EK_BUTTONRELEASE,
+SHIFTSTATE = [], POS = {X = 38, Y = 8}, EVENTSTATE = [ES_CLIENT], TIMESTAMP
+= 1338836000, BUTTON = MB_LEFT}, this=&lt;error reading variable&gt;)
+#15  08077B27 msegui.pas:8696 DOCLIENTMOUSEEVENT(parentfp=0xbfffee90)
+#16  080779C5 msegui.pas:8828 TWIDGET__MOUSEEVENT(INFO={EVENTKIND =
+EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1338836000, BUTTON = MB_LEFT}, this=&lt;error reading
+variable&gt;)
+#17  0815BC7B msewidgets.pas:4454 TACTIONWIDGET__MOUSEEVENT(INFO={EVENTKIND
+= EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8}, EVENTSTATE =
+[ES_CLIENT], TIMESTAMP = 1338836000, BUTTON = MB_LEFT}, this=&lt;error reading
+variable&gt;)
+#18  08080EA6 msegui.pas:12784 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE =
+{EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8},
+EVENTSTATE = [ES_CLIENT], TIMESTAMP = 1338836000, BUTTON = MB_LEFT}, WHEEL =
+{EVENTKIND = EK_BUTTONRELEASE, SHIFTSTATE = [], POS = {X = 38, Y = 8},
+EVENTSTATE = [ES_CLIENT], TIMESTAMP = 1338836000, WHEEL = MW_UP, DELTA =
+0}}, CAPTURE=0xb7d16f70, this=&lt;error reading variable&gt;)
+#19  08084397 msegui.pas:14208
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0xb79321b0, this=&lt;error
+reading variable&gt;)
+#20  080860A0 msegui.pas:15010
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0xb7ff7ff0, ONCE=false,
+this=&lt;error reading variable&gt;)
+#21  080865D2 msegui.pas:15119
+TINTERNALAPPLICATION__BEGINMODAL(SENDER=0xb7ff7ff0, this=&lt;error reading
+variable&gt;)
+#22  08080519 msegui.pas:12580 TWINDOW__BEGINMODAL(this=&lt;error reading
+variable&gt;)
+#23  08079694 msegui.pas:9634 TWIDGET__INTERNALSHOW(MODAL=true,
+TRANSIENTFOR=0xb7ff74f0, WINDOWEVENT=false, this=&lt;error reading variable&gt;)
+#24  080797C2 msegui.pas:9671 TWIDGET__SHOW(MODAL=true, TRANSIENTFOR=0x0,
+this=&lt;error reading variable&gt;)
+#25  0809C73F main.pas:131 TMAINFO__DOMENUGESTIONCLIENTES(SENDER=0xb7d64b60,
+this=&lt;error reading variable&gt;)
+#26  08143556 mseact.pas:347 DOACTIONEXECUTE(SENDER=0xb7d64b60, INFO={ACTION
+= 0x0, CAPTIONTEXT = 0xb7f8ade8 'Gesti'#243'n de clientes', CAPTION1 = {TEXT
+= 0xb7f8ae28 'Gesti'#243'n de clientes', FORMAT = 0x0, FLAGS = []}, STATE =
+[AS_LOCALCAPTION..AS_LOCALIMAGENR, AS_LOCALONEXECUTE], OPTIONS =
+[MAO_SHORTCUTCAPTION], SHORTCUT = 0x0, SHORTCUT1 = 0x0, GROUP = 0, IMAGENR =
+17, IMAGENRDISABLED = -2, COLORGLYPH = 2147483649, COLOR = 2147483649,
+IMAGECHECKEDOFFSET = 0, IMAGELIST = 0xb7df41e0, HINT = 0x0, TAG = 0,
+TAGPOINTER = 0x0, ONEXECUTE = 0x809c6d0 &lt;TMAINFO__DOMENUGESTIONCLIENTES&gt;},
+NOCHECKBOX=true, NOCANDEFOCUS=false)
+#27  0816DDE4 msemenus.pas:532 TCUSTOMMENU__CHECKEXEC(this=&lt;error reading
+variable&gt;)
+#28  081783FD msemenuwidgets.pas:1347
+TPOPUPMENUWIDGET__ACTIVATEMENU(KEYMODE=false, ACLICKED=false, this=&lt;error
+reading variable&gt;)
+#29  08177AF9 msemenuwidgets.pas:1152
+TPOPUPMENUWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE =
+[], POS = {X = 158, Y = 18}, EVENTSTATE = [], TIMESTAMP = 1323323000, BUTTON
+= MB_NONE}, this=&lt;error reading variable&gt;)
+#30  081797EA msemenuwidgets.pas:1882
+TCUSTOMMAINMENUWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE
+= [], POS = {X = 158, Y = 18}, EVENTSTATE = [], TIMESTAMP = 1323323000,
+BUTTON = MB_NONE}, this=&lt;error reading variable&gt;)
+#31  08080EA6 msegui.pas:12784 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE =
+{EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 158, Y = 18},
+EVENTSTATE = [], TIMESTAMP = 1323323000, BUTTON = MB_NONE}, WHEEL =
+{EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 158, Y = 18},
+EVENTSTATE = [], TIMESTAMP = 1323323000, WHEEL = MW_NONE, DELTA = 0}},
+CAPTURE=0xb7fb8340, this=&lt;error reading variable&gt;)
+#32  08084397 msegui.pas:14208
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0xb7f99290, this=&lt;error
+reading variable&gt;)
+#33  08085F45 msegui.pas:14970
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false, this=&lt;error
+reading variable&gt;)
+#34  080871CC msegui.pas:15515 TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false,
+this=&lt;error reading variable&gt;)
+#35  080DE488 mseapplication.pas:1386 TCUSTOMAPPLICATION__RUN(this=&lt;error
+reading variable&gt;)
+#36  0804BC69 GestionTVT.pas:60 main()
+
+
+2011/1/3 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Monday, 3. January 2011 19.30:39 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; Yes, it's freeing resources.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Stack dump:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; #0  08081B32 :0 MSEGUI_TINTERNALAPPLICATION_$__ENDMODAL$TWINDOW()
+</I>&gt;<i> &gt; #1  B6D97C01 :0 ??()
+</I>&gt;<i> &gt; #2  080762B9 :0 MSEGUI_TWIDGET_$__INTERNALHIDE$BOOLEAN()
+</I>&gt;<i> &gt; #3  084F18F4 :0 U_SYSTEM_FREELISTS()
+</I>&gt;<i> &gt; #4  0805F5A2 :0 SYSTEM_SYSFREEMEM$POINTER$$LONGWORD()
+</I>&gt;<i> &gt; #5  00000000 :0 ??()
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; code snippet:
+</I>&gt;<i> &gt;
+</I>&gt;<i> Can you reproduce with a simple testcase?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110104/08157f5b/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110104/08157f5b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002308.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+	<LI>Next message: <A HREF="002310.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2309">[ date ]</a>
+              <a href="thread.html#2309">[ thread ]</a>
+              <a href="subject.html#2309">[ subject ]</a>
+              <a href="author.html#2309">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

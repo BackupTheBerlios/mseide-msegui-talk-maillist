@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] So many heavy changes :)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20So%20many%20heavy%20changes%20%3A%29&In-Reply-To=%3Cop.vrp3z0qzyl4sxz%40vano-home.home%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002984.html">
+   <LINK REL="Next"  HREF="003002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] So many heavy changes :)</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20So%20many%20heavy%20changes%20%3A%29&In-Reply-To=%3Cop.vrp3z0qzyl4sxz%40vano-home.home%3E"
+       TITLE="[MSEide-MSEgui-talk] So many heavy changes :)">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed Mar  2 16:58:38 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002984.html">[MSEide-MSEgui-talk] So many heavy changes :)
+</A></li>
+        <LI>Next message: <A HREF="003002.html">[MSEide-MSEgui-talk] So many heavy changes :)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2986">[ date ]</a>
+              <a href="thread.html#2986">[ thread ]</a>
+              <a href="subject.html#2986">[ subject ]</a>
+              <a href="author.html#2986">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> That is part of the plan, but as always, I want to keep library
+</I>&gt;&gt;<i> dependencies as low as possible. I believe DirectFB is a library for
+</I>&gt;&gt;<i> easier access to the Linux Framebuffer (please correct me if I am
+</I>&gt;&gt;<i> wrong).
+</I>&gt;<i>
+</I>&gt;<i> Not only: + hardware acceleration + mouse + keyboard  input handling +  
+</I>&gt;<i> OpenGL...
+</I>&gt;<i>
+</I>
+
+More details:
+
+<A HREF="http://doc.trolltech.com/4.6/qt-embeddedlinux-directfb.html">http://doc.trolltech.com/4.6/qt-embeddedlinux-directfb.html</A>
+
+
+DirectFBSurface supports blitting, filling, drawing lines rects etc, but  
+it does not support everything Qt allows you to do. E.g. painter paths,  
+polygons, complex transformations, antialiasing, gradients. Some of these  
+things are handled in newer versions of DirectFB and could be supported by  
+Qt. They are seemingly optional at the driver level, so you need to have  
+fall back code paths for older drivers and drivers on which this is not  
+implemented.
+
+The QDirectFBPaintEngine is a subclass of the QRasterPaintEngine, thus  
+essentially supporting everything QRasterPaintEngine supports. This means  
+that it supports all graphical operations that Qt supports, but certain  
+operations will have to fall back to software rendering and that should be  
+avoided due to performance issues. Instead, these operations should be  
+rendered into a QPixmap once, and then reuse the pixmap.
+
+Note: Fallbacks to software rendering should be avoided. If unsupported  
+operations are used, the paint engine must fallback to the  
+QRasterPaintEngine engine. A good debugging tip is to make Qt warn you  
+when such fall backs occur, and to disable the fall back and only return.  
+Debugging options are listed below.
+DirectFB driver
+
+DirectFB also provides an abstraction for keyboard and mouse drivers. This  
+simplifies the process of getting the target hardware up and running. It  
+also brings us to a feature fragmentation issue between different versions  
+of DirectFB.
+
+The Qt DirectFB driver currently supports DirectFB versions &gt;= 0.9. Still,  
+there are large differences in what each actual implementation handles  
+correctly. It is relatively common not to properly support DirectFB  
+windows, so Qt needs to handle this case with a different code path. In  
+addition, certain drivers do not properly support DirectFB's cursor  
+handling. This means Qt has to have a code path for rendering the cursor  
+itself when this is the case. Some drivers do not let us create  
+preallocated surfaces which means we have to have a conditional code path  
+for that case.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002984.html">[MSEide-MSEgui-talk] So many heavy changes :)
+</A></li>
+	<LI>Next message: <A HREF="003002.html">[MSEide-MSEgui-talk] So many heavy changes :)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2986">[ date ]</a>
+              <a href="thread.html#2986">[ thread ]</a>
+              <a href="subject.html#2986">[ subject ]</a>
+              <a href="author.html#2986">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

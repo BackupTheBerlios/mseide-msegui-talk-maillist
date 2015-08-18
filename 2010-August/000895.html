@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5ggf5%24kqh%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000894.html">
+   <LINK REL="Next"  HREF="000897.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5ggf5%24kqh%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Aug 30 16:50:15 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000894.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000897.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> 
+</I>&gt;<i> Ok - how should one know?
+</I>&gt;<i> (BTW, did &quot;oneventloopstart&quot; exist in version before 2.0 already? I never
+</I>&gt;<i> noticed it yet...)
+</I>&gt;<i> 
+</I>IIRC since 1.2, earlier onloaded was fired in eventloop instead.
+
+&gt;<i> I changed the logic accordingly, and was greeted by a nice, rouge SIGSEGV
+</I>&gt;<i> message in the state line of the main menu window. ;-I
+</I>&gt;<i> 
+</I>&gt;<i> Well, I didn't stop there.
+</I>&gt;<i> I tried to find out what happened, and saw that the &quot;oneventloopstart&quot;
+</I>&gt;<i> handler was called recursively, probabely caused by &quot;loadlangunit&quot;
+</I>&gt;<i> reinitializing event processing.
+</I>
+Correct, loadlangunit() tries to simulate the same behaviour as exists while
+loading the initial module.
+
+&gt;<i> So I made the method calling it a &quot;one-shot&quot; action, removing its own
+</I>&gt;<i> entry from the event field, and then it (seemed to) worked correctly, even
+</I>&gt;<i> onkey* and onclose handlers executing correctly.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> &gt;&gt; task. Please use inherited forms.
+</I>&gt;<i> ...
+</I>&gt;&gt;<i> It probably makes exactly what what you make with your scripts, it stores
+</I>&gt;&gt;<i> the differences from ancestor in a *.mfm. But maybe you know it
+</I>&gt;&gt;<i> better. ;-)
+</I>&gt;<i> 
+</I>&gt;<i> (BTW, does your above mention of .mfm files mean that these will be loaded
+</I>&gt;<i> dynamically, or are all variants compiled in any way as well? Just
+</I>&gt;<i> asking.)
+</I>&gt;<i> 
+</I>MSEide converts the *.mfm to *_mfm.pas as usual.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000894.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000897.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

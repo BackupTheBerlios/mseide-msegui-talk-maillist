@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] LCL in MSEide - is possible?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTinUyWO9rQk7ySFUvVBa4OgBWYn81FpNCRoQuish%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001738.html">
+   <LINK REL="Next"  HREF="001789.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] LCL in MSEide - is possible?</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20LCL%20in%20MSEide%20-%20is%20possible%3F&In-Reply-To=%3CAANLkTinUyWO9rQk7ySFUvVBa4OgBWYn81FpNCRoQuish%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] LCL in MSEide - is possible?">md at delfire.net
+       </A><BR>
+    <I>Sat Nov  6 14:15:29 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001738.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+        <LI>Next message: <A HREF="001789.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Nov 4, 2010 at 5:25 AM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> Op 2010-11-03 21:03, Marcos Douglas het geskryf:
+</I>&gt;&gt;<i> Multiplataform is in my plans for the future. But if you did
+</I>&gt;&gt;<i> crossplatform applications with the Lazarus &quot;native widgetset&quot;
+</I>&gt;&gt;<i> approach is impossible... I have to think more about.
+</I>&gt;<i>
+</I>&gt;<i> The problem with LCL's approach is that on the surface it looks all great.
+</I>&gt;<i> But when you put it in a commercial/production environment, it falls over
+</I>&gt;<i> pretty fast. We initially tried to use LCL in our commercial software for a
+</I>&gt;<i> year and a bit. Most of the things we wanted to do worked different on each
+</I>&gt;<i> platform or wasn't possible on certain platforms but was on others, so our
+</I>&gt;<i> code started containing IFDEF Linux.... IFDEF Windows.... &#160;This defeats the
+</I>&gt;<i> whole purpose of a &quot;cross-platform framework&quot;. OK, this was 5 years ago,
+</I>&gt;<i> and the Lazarus team has probably fixed some of those issues, but many
+</I>&gt;<i> still remain, and the LCL is just plain unstable. What works today is
+</I>&gt;<i> broken tomorrow. Even inside the IDE itself, some windows work different on
+</I>&gt;<i> various platforms, or even on the same platform but with different gui
+</I>&gt;<i> toolkit backends. &quot;Procedure List&quot; window is just one such example of many.
+</I>&gt;<i> One just can't code applications with such issues - it is too inconsistent.
+</I>
+I see this inconsistent too. But all others developers do not see it?
+Not exists people working with LCL in production with sucess?
+Strange...
+
+&gt;<i> Yes initially LCL's &quot;it's so close to Delphi&quot; wins over a few developers,
+</I>&gt;<i> but it's definitely not production ready. In the long run, LCL gives more
+</I>&gt;<i> grief that solutions.
+</I>&gt;<i>
+</I>&gt;<i> For this reason our company opted to go fully custom written/drawn, and we
+</I>&gt;<i> started working on fpGUI. We now use fpGUI for all our commercial products
+</I>&gt;<i> and internal software. We don't have a single IFDEF Linux...IFDEF Windows
+</I>&gt;<i> in any of our applications code. This is true &quot;single source, compile
+</I>&gt;<i> everywhere&quot;! And the end-user experiences consistent behaviour across all
+</I>&gt;<i> platforms.
+</I>
+I agree. Without IFDEF is the true &quot;single source, compile
+everywhere&quot;. But I don't understand why we have some options for
+widgets. Should be just one! The community would be more united (the
+community Pascal is &quot;weak&quot; compared to others languages).
+
+I don't understand why LCL use IFDEF. Maybe to be compatible with Delphi?
+I don't understand why you created other option to widgets... why did
+you not use the MSEgui?
+And, finally, I don't understand why all you (Graeme, Martin, Lazarus
+team, etc) do not join to create a better product!
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001738.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+	<LI>Next message: <A HREF="001789.html">[MSEide-MSEgui-talk] LCL in MSEide - is possible?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

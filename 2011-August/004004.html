@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E364E74.40500%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003999.html">
+   <LINK REL="Next"  HREF="004006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E364E74.40500%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Mon Aug  1 08:57:56 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003999.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="004006.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4004">[ date ]</a>
+              <a href="thread.html#4004">[ thread ]</a>
+              <a href="subject.html#4004">[ subject ]</a>
+              <a href="author.html#4004">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 08/01/2011 01:49 AM, Marcos Douglas wrote:
+&gt;<i> 
+</I>&gt;<i> In your list of objects you have a TDataSet and can transform each
+</I>&gt;<i> register in an object or you have a real list of objects without a
+</I>&gt;<i> TDataSet?
+</I>
+I never work or see a TDataset instance. My application code *only*
+works with Objects. eg: TCustomerList, TCustomer, TAddressList,
+TAddress, TCountry, TTransaction (an accounting transaction) etc.
+
+
+&gt;<i> If you don't use TDataSet then you do not uses DBGrid, right?
+</I>&gt;<i> So which component - community maintained - I should use, StringGrid?
+</I>
+I find DB-aware versions of the same non-db component, just another
+place where bugs can creep in. Why have two of each component? Db and
+no-DB versions? Also, there are many more non-db components around (at
+least this is true in Delphi), so why can't we use those too in a DB
+component.
+
+This is the type of questions I asked my self. I then went ahead and
+designed MGM which allows me to make any component (GUI widget)
+&quot;object-aware&quot; without having to create custom descendants of those
+components.
+MGM uses two design patterns (Mediator and Observer) to make any
+component object-aware. The updating process in 2 directions as well.
+Update the GUI, and the related object is updated. Update the object and
+all GUI components that observe it are updated. All automatically.
+
+So yes, I use a StringGrid to display grid related data. And as I have
+shown earlier, I can set that up with 4 lines of code. Inline editing is
+also possible, but again I prefer a dedicated &quot;edit form&quot; to edit my
+data. My users prefer this too. Otherwise I could just as well having
+given them an Excel spreadsheet instead of my application. They don't
+want to edit ugly grids directly.
+
+
+&gt;<i> It is a pain use it!
+</I>
+Not at all. fpGUI's grids can have many customizations applied to them
+too, so that they don't look like a plain ugly grid. Also in the case of
+grids, if I wanted to find out what object is selected (again I only
+work with objects, not grid cell text or TDataset etc.), I simply ask
+the Mediator that manages that grid, to return the selected object.
+
+eg:
+procedure TMyListForm.EditDataObject(Sender: TObject);
+var
+  lData: TMyDataObject;
+  mediator: TtiMediatorView;
+begin
+  mediator := FMediator.FindByComponent(MyStringGrid).Mediator;
+  lData := med.SelectedObject;
+  EditData(lData); // launch an edit form to edit lData
+end;
+
+FMediator is a TFormMediator which manages the whole form. Each
+individual GUI component has a mediator too - the TFormMediator creates
+and manages those individual &quot;property&quot; mediators for me, so I don't
+have to worry about that. So in the code above I simply ask the Form
+Mediator to return the Mediator for the StringGrid in question. I then
+ask that StringGrid Mediator to return the selected object.
+
+The above code is pretty much how all my form units look like. They
+don't contain much code, because forms are really just a way to
+visualize your data. All the inner workings of my business rules are
+coded inside the business objects. So too all the loading and saving of
+data to a database is managed by tiOPF. That also means most of my code
+is non-gui code, thus I can easily unit test my code too - resulting in
+much less defects/bugs.
+
+
+&gt;<i> Many classes is more complex than less. Many classes with long names
+</I>&gt;<i> is more complex even more.
+</I>
+Sorry, I don't see it like that at all. Objects are there to structure
+your programming, just like Records were there to structure your code in
+Turbo Pascal days. Use the features or the language your are programming in.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003999.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="004006.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4004">[ date ]</a>
+              <a href="thread.html#4004">[ thread ]</a>
+              <a href="subject.html#4004">[ subject ]</a>
+              <a href="author.html#4004">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

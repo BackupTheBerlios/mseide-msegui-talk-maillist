@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3C201012281141.18489.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002260.html">
+   <LINK REL="Next"  HREF="002262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3C201012281141.18489.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 11:41:18 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002260.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002262.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2261">[ date ]</a>
+              <a href="thread.html#2261">[ thread ]</a>
+              <a href="subject.html#2261">[ subject ]</a>
+              <a href="author.html#2261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday, 28. December 2010 11.30:08 Julio Jim&#233;nez wrote:
+&gt;<i> Look at the pic  :)
+</I>&gt;<i>
+</I>Please check tgdbmi.dorun:
+&quot;
+procedure tgdbmi.dorun;
+var
+ int1: integer;
+ ar1,ar2: stringarty;
+ ca1: qword;
+ str1: string;
+ frames1: frameinfoarty;
+ ev: tgdbstartupevent;
+begin
+ fstartupbreakpoint:= -1;
+ fstartupbreakpoint1:= -1;
+ exclude(fstate,gs_startup);
+ if fbeforerun &lt;&gt; '' then begin
+  if source(fbeforerun) &lt;&gt; gdb_ok then begin
+   postsyncerror;
+   exit;
+  end;
+ end;
+ checkpointersize;
+ str1:= '';
+ if fstartupbkpton then begin
+  fstartupbreakpoint:= breakinsert(fstartupbkpt);  
+ end
+ else begin
+  if (gs_remote in fstate) and (stacklistframes(frames1,0,1) = gdb_ok) then 
+begin
+   ev:= tgdbstartupevent.create(ievent(self));
+   with ev do begin
+    stopinfo.reason:= sr_startup;
+    with frames1[0] do begin
+     stopinfo.addr:= addr;
+     stopinfo.filename:= filename;
+     stopinfo.line:= line;
+     stopinfo.messagetext:= 'Startup. File: '+
+                         filename+':'+inttostr(line)+' Function: '+func;
+    end;
+   end;
+   include(fstate,gs_started);
+   application.postevent(ev);
+   exit;
+  end; 
+  if getcliresult('info file',ar1) = gdb_ok then begin
+   for int1:= 0 to high(ar1) do begin
+    if startsstr('Entry point',ar1[int1]) then begin
+     ar2:= nil;
+     splitstring(ar1[int1],ar2,' ');
+     if high(ar2) &gt;= 2 then begin
+      str1:= ar2[2];
+     end;
+     break;
+    end;
+   end;
+  end;
+  if str1 &lt;&gt; '' then begin
+   if trystrtointvalue64(str1,ca1) then begin
+    fstartupbreakpoint:= breakinsert(ca1); //does not always work
+    fstartupbreakpoint1:= breakinsert(ca1+1);
+    if (fstartupbreakpoint &lt; 0) and (fstartupbreakpoint1 &lt; 0) then begin
+     str1:= '';
+    end;
+   end
+   else begin
+    str1:= '';
+   end;
+  end;
+  if str1 = '' then begin
+   synccommand('-break-insert -t main'); &lt;&lt;&lt;&lt;----
+  end;
+ end;
+&quot;
+It seems the entry point will not be found. Maybe 'Entry point' is now 
+localized in 'info file' command?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002260.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002262.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2261">[ date ]</a>
+              <a href="thread.html#2261">[ thread ]</a>
+              <a href="subject.html#2261">[ subject ]</a>
+              <a href="author.html#2261">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

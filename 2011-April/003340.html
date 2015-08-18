@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Hang on last trunk!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Hang%20on%20last%20trunk%21&In-Reply-To=%3CBANLkTikcDgatYMds8iqbpWfGnCn80Fe%2Bfg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003339.html">
+   <LINK REL="Next"  HREF="003341.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Hang on last trunk!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Hang%20on%20last%20trunk%21&In-Reply-To=%3CBANLkTikcDgatYMds8iqbpWfGnCn80Fe%2Bfg%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Hang on last trunk!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Sun Apr  3 15:30:06 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003339.html">[MSEide-MSEgui-talk] Hang on last trunk!
+</A></li>
+        <LI>Next message: <A HREF="003341.html">[MSEide-MSEgui-talk] Hang on last trunk!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3340">[ date ]</a>
+              <a href="thread.html#3340">[ thread ]</a>
+              <a href="subject.html#3340">[ subject ]</a>
+              <a href="author.html#3340">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2011/4/3 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> Am Sonntag 03 April 2011, 15:10:47 schrieb Sri Wahono:
+</I>&gt;&gt;<i> I updated from last trunk, and after compiled, in object inspector,
+</I>&gt;&gt;<i> when I click dropdown to see list of methods, MSEIDE is do looping
+</I>&gt;&gt;<i> continuesly. And it hang!
+</I>&gt;&gt;<i>
+</I>&gt;<i> Should already be fixed (trunk 4466), please report if not.
+</I>Yes, fixed now. Thanks
+
+But for tmsesqlquery (MySQL), I got new error. In previous trunk it got OK.
+I got message :
+
+wmysql: Error executing query: You have an error in your SQL syntax;
+check the manual that corresponds to your MySQL server version for the
+right syntax to use near '' at line 1
+An exception occurred at $0082A787 :
+emysqlerror : wmysql: Error executing query: You have an error in your
+SQL syntax; check the manual that corresponds to your MySQL server
+version for the right syntax to use near '' at line 1
+  $0082A787  TMYSQLCONNECTION__CHECKERROR,  line 555 of
+C:/msegui/lib/common/db/mmysqlconn.pas
+  $0082B766  TMYSQLCONNECTION__DOEXECUTEUNPREPARED,  line 913 of
+C:/msegui/lib/common/db/mmysqlconn.pas
+  $0082BF1D  TMYSQLCONNECTION__INTERNALEXECUTE,  line 1076 of
+C:/msegui/lib/common/db/mmysqlconn.pas
+  $007FA091  TCUSTOMSQLCONNECTION__EXECUTE,  line 1756 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007FC95D  TSQLQUERY__EXECUTE,  line 2921 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007FD525  TSQLQUERY__CONNECT,  line 3305 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007FD823  TSQLQUERY__INTERNALOPEN,  line 3358 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007808E2
+  $007818C8
+  $00825D22  TMSEBUFDATASET__SETACTIVE,  line 4356 of
+C:/msegui/lib/common/db/msebufdataset.pas
+  $007FC137  TSQLQUERY__SETACTIVE,  line 2769 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007833AE
+  $007FDC74  TSQLQUERY__UPDATEINDEXDEFS,  line 3488 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007F5755  TMSESQLQUERY__UPDATEINDEXDEFS,  line 424 of
+C:/msegui/lib/common/db/msesqldb.pas
+  $007FD442  TSQLQUERY__CONNECT,  line 3289 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007FD823  TSQLQUERY__INTERNALOPEN,  line 3358 of
+C:/msegui/lib/common/db/msqldb.pas
+  $007F58D1  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 469 of
+C:/msegui/lib/common/db/msesqldb.pas
+
+I think, table name got empty. I debug it, and this trouble when set
+active tmsesqlquery, and my query is &quot;select * from users&quot;.
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003339.html">[MSEide-MSEgui-talk] Hang on last trunk!
+</A></li>
+	<LI>Next message: <A HREF="003341.html">[MSEide-MSEgui-talk] Hang on last trunk!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3340">[ date ]</a>
+              <a href="thread.html#3340">[ thread ]</a>
+              <a href="subject.html#3340">[ subject ]</a>
+              <a href="author.html#3340">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

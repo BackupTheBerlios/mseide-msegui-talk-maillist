@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEuniverse is open!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3C4D492A8E.6040803%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002743.html">
+   <LINK REL="Next"  HREF="002742.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEuniverse is open!</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3C4D492A8E.6040803%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEuniverse is open!">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Wed Feb  2 10:57:34 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002743.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+        <LI>Next message: <A HREF="002742.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2744">[ date ]</a>
+              <a href="thread.html#2744">[ thread ]</a>
+              <a href="subject.html#2744">[ subject ]</a>
+              <a href="author.html#2744">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2011-02-02 11:27, Martin Schreiber het geskryf:
+&gt;<i>
+</I>&gt;<i> lib/common/kernel/i386-linux supports both x86 and x86_64, I suggest to make a 
+</I>&gt;<i> link x86_64-linux -&gt; i386-linux.
+</I>
+I created my own macro groups that generate a correct &quot;platform-os&quot;
+string, so I can just ignore {$TARGET} for now. But your suggestion does
+seem like a rather hacking solution, than a real solution.
+
+And what about under 64-bit Windows? Symlinks are not supported on all
+Windows versions or all NTFS versions? Or does MSEide+MSEgui simply not
+support 64-bit Windows at this point?
+
+On a side note:
+Personally, I think you got the back-end directory structure in MSEgui
+all wrong. Your &quot;back-end code&quot; relates more to the &quot;graphical API
+backend&quot;, and not really to platform+OS code. That's why I choose 'x11'
+and 'gdi' as my backend directories in fpGUI, instead of 'platform-os'.
+Thus, this allows fpGUI to work on ARM Linux and WinCE devices too,
+because 'gdi' and 'x11' still apply to those systems too.
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002743.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+	<LI>Next message: <A HREF="002742.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2744">[ date ]</a>
+              <a href="thread.html#2744">[ thread ]</a>
+              <a href="subject.html#2744">[ subject ]</a>
+              <a href="author.html#2744">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

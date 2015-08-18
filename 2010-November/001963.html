@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] dbdropdown with lookup.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20dbdropdown%20with%20lookup.&In-Reply-To=%3C201011261556.45295.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001962.html">
+   <LINK REL="Next"  HREF="001983.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] dbdropdown with lookup.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20dbdropdown%20with%20lookup.&In-Reply-To=%3C201011261556.45295.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] dbdropdown with lookup.">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Nov 26 15:56:45 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001962.html">[MSEide-MSEgui-talk] dbdropdown with lookup.
+</A></li>
+        <LI>Next message: <A HREF="001983.html">[MSEide-MSEgui-talk] dbdropdown with lookup.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1963">[ date ]</a>
+              <a href="thread.html#1963">[ thread ]</a>
+              <a href="subject.html#1963">[ subject ]</a>
+              <a href="author.html#1963">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday, 26. November 2010 15.26:42 Christian Nobel wrote:
+&gt;<i> This can be done in numerous ways, but as I understand the
+</I>&gt;<i> tdbdropdownlisteditdb could be a way.
+</I>&gt;<i>
+</I>&gt;<i> However I miss some light to understand the zillion of parameters for
+</I>&gt;<i> the tdbdropdownlisteditdb.
+</I>&gt;<i>
+</I>If the key field is 32bit numeric use tdbenumeditdb, if it is 64bit 
+tdbenum64editdb, if the keyfield is a string use tdbkeystringeditdb.
+For big lookup datasets where the performace does not suffice use a 
+tdblookupbuffer and tdb*editlb.
+
+&gt;<i> As I understand it is possible to have two (or more) columns in a
+</I>&gt;<i> dropdown(edit), but can I chose to decide which column is going to be
+</I>&gt;<i> stored in the table, and another displayed (so that it is the
+</I>&gt;<i> customername that is displayed, but custid selected)?
+</I>&gt;<i>
+</I>dropdown.valuecol defines which column will be displayed in editwidget.
+
+&gt;<i> Is it also possible to extend the dropdown to more columns, so the value
+</I>&gt;<i> from the fist column is stored in one field, and the value form the
+</I>&gt;<i> second in another field, and so fort?
+</I>
+Extending is possible by seeting dropdown.cols.col &gt; 1. Data storing in 
+additional fields must be done in code. It is probably better to use a 
+master-detail relationship because of data duplication.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001962.html">[MSEide-MSEgui-talk] dbdropdown with lookup.
+</A></li>
+	<LI>Next message: <A HREF="001983.html">[MSEide-MSEgui-talk] dbdropdown with lookup.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1963">[ date ]</a>
+              <a href="thread.html#1963">[ thread ]</a>
+              <a href="subject.html#1963">[ subject ]</a>
+              <a href="author.html#1963">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

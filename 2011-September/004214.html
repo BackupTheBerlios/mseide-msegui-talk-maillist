@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] + MSEunitdep
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%2B%20MSEunitdep&In-Reply-To=%3CCABS2nhe3K_pg5u7uiMHiwa-uGxrZsXr%2BNHw_7pNrstvOwH5PFA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004213.html">
+   <LINK REL="Next"  HREF="004215.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] + MSEunitdep</H1>
+    <B>wahono sri</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%2B%20MSEunitdep&In-Reply-To=%3CCABS2nhe3K_pg5u7uiMHiwa-uGxrZsXr%2BNHw_7pNrstvOwH5PFA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] + MSEunitdep">wahono77 at gmail.com
+       </A><BR>
+    <I>Wed Sep 28 13:48:12 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004213.html">[MSEide-MSEgui-talk] + MSEunitdep
+</A></li>
+        <LI>Next message: <A HREF="004215.html">[MSEide-MSEgui-talk] + MSEunitdep
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4214">[ date ]</a>
+              <a href="thread.html#4214">[ thread ]</a>
+              <a href="subject.html#4214">[ subject ]</a>
+              <a href="author.html#4214">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I can do it now. But I got other problem, I build my project with this :
+
+/usr/local/lib/fpc/2.4.4/ppc386 -oAcosys -Fu/media/Acer/msegui/lib/common/*/
+-Fi/media/Acer/msegui/lib/common/*/ -Fu/media/Acer/msegui/lib/common/kernel/
+-Fi/media/Acer/msegui/lib/common/kernel/
+-Fu/media/Acer/msegui/lib/common/kernel/i386-linux/
+-Fi/media/Acer/msegui/lib/common/kernel/i386-linux/
+-Fu/media/Acer/msegui/lib/addon/*/ -Fi/media/Acer/msegui/lib/addon/*/
+-Fu/media/Acer/msegui/lib/addon/osprinter/i386-linux/
+-Fu/media/Acer/msegui/lib/addon/dcpcrypt/
+-Fi/media/Acer/msegui/lib/addon/dcpcrypt/
+-Fu/media/Acer/msegui/lib/addon/dcpcrypt/*/ -l -Mobjfpc -Sh -Fcutf8 -TLinux
+ -gl -O- -B -g -CX -ddebugsqlquery -vu Acosys.pas
+
+And I get text file as below :
+
+Free Pascal Compiler version 2.4.4 [2011/04/22] for i386
+Copyright (c) 1993-2010 by Florian Klaempfl
+Target OS: Linux for i386
+Compiling Acosys.pas
+(ACOSYS)   Registering new unit SYSTEM
+(ACOSYS)   Load from ACOSYS (implementation) unit SYSTEM
+(SYSTEM)   Loading unit SYSTEM
+(SYSTEM)   PPU Name:
+/usr/local/lib/fpc/2.4.4/units/i386-linux/rtl/system.ppu
+(SYSTEM)   PPU Time: 2011/04/22 20:06:58
+(SYSTEM)   PPU Flags: 159937
+(SYSTEM)   PPU Crc: 84B816B1
+(SYSTEM)   PPU Crc: A14C0197 (intfc)
+(SYSTEM)   Number of definitions: 3772
+(SYSTEM)   Number of symbols: 10132
+(SYSTEM)   Finished loading unit SYSTEM
+(ACOSYS)   Registering new unit LINEINFO
+(ACOSYS)   Load from ACOSYS (implementation) unit LINEINFO
+(LINEINFO) Loading unit LINEINFO
+(LINEINFO) PPU Name:
+/usr/local/lib/fpc/2.4.4/units/i386-linux/rtl/lineinfo.ppu
+(LINEINFO) PPU Time: 2011/04/22 20:06:59
+(LINEINFO) PPU Flags: 159939
+(LINEINFO) PPU Crc: 26A41A9C
+(LINEINFO) PPU Crc: 2BCEFDDC (intfc)
+(LINEINFO) Number of definitions: 52
+(LINEINFO) Number of symbols: 73
+(LINEINFO) Load from LINEINFO (interface) unit SYSTEM
+(LINEINFO) Add dependency of LINEINFO to SYSTEM ==============&gt;not 'depends
+on'
+(LINEINFO) Registering new unit EXEINFO
+(LINEINFO) Registering new unit STRINGS
+(LINEINFO) Load from LINEINFO (implementation) unit EXEINFO
+(EXEINFO)  Loading unit EXEINFO
+(EXEINFO)  PPU Name:
+/usr/local/lib/fpc/2.4.4/units/i386-linux/rtl/exeinfo.ppu
+
+In mseunitdep, you use filter 'depends on' and I have 'Add dependency of',
+so I got empty result from mseunitdep.
+
+What's my wrong?
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110928/9265cc63/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110928/9265cc63/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004213.html">[MSEide-MSEgui-talk] + MSEunitdep
+</A></li>
+	<LI>Next message: <A HREF="004215.html">[MSEide-MSEgui-talk] + MSEunitdep
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4214">[ date ]</a>
+              <a href="thread.html#4214">[ thread ]</a>
+              <a href="subject.html#4214">[ subject ]</a>
+              <a href="author.html#4214">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

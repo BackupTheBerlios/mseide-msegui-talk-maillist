@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101108203836.6b3d9a11.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001811.html">
+   <LINK REL="Next"  HREF="001806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101108203836.6b3d9a11.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Nov  8 20:38:36 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001811.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001806.html">[MSEide-MSEgui-talk] What for the new tdockformwidget?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1834">[ date ]</a>
+              <a href="thread.html#1834">[ thread ]</a>
+              <a href="subject.html#1834">[ subject ]</a>
+              <a href="author.html#1834">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 08 Nov 2010 07:54:45 +0100:
+
+&gt;<i> &gt; BTW, why, in the first place, _does_ the edit widget act on the
+</I>&gt;<i> &gt; key_return keyup event at all?
+</I>&gt;<i> 
+</I>&gt;<i> It does not. It is Wahono's onkeyup handler. I long time was reluctant to
+</I>&gt;<i> add onkey* handlers to edit widgets but at the end i gave up because of
+</I>&gt;<i> the repeated user requests.
+</I>
+Well, I won't argue about the responsibility here.
+It should be clear, though, that key processing in such an environment,
+where both key press and release are handled separately with anything
+possible to happen in between, is a rather complicated matter.
+In any case, partial events that cannot be safely mapped to their
+counterpart should be considered stray events that should not be handled at
+all, possibly not even presented for processing.
+Like the stray key release that may hit a window after focus has changed -
+this might even happen if the window manager presented a focus change menu
+to select a window by keyboard.
+
+Just to call attention to one of the many pitfalls of a GUI...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001811.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001806.html">[MSEide-MSEgui-talk] What for the new tdockformwidget?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1834">[ date ]</a>
+              <a href="thread.html#1834">[ thread ]</a>
+              <a href="subject.html#1834">[ subject ]</a>
+              <a href="author.html#1834">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

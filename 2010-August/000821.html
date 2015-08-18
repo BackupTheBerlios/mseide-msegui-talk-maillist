@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci54t5b%24jh8%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000818.html">
+   <LINK REL="Next"  HREF="000847.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci54t5b%24jh8%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 07:14:40 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000818.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000847.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> Du schriebst am Wed, 25 Aug 2010 07:03:54 +0200:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> &gt; because of some error in the code. Because of time issues then, I just
+</I>&gt;&gt;<i> &gt; used a &quot;Halt&quot; to &quot;tear it down&quot; forcedly, when it should simply stop.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Ouh, this is dangerous because the finalization sections in MSEgui
+</I>&gt;&gt;<i> library will be called in undefined state.
+</I>&gt;<i> 
+</I>&gt;<i> As said above, I did that &quot;because of time issues then&quot; - it's been
+</I>&gt;<i> changed now that I'm working at it again. But there's still one place
+</I>&gt;<i> where I can hardly avoid a similar approach - that is when another process
+</I>&gt;<i> has to replace the current one _seamlessly_. That's why I deinitialize
+</I>&gt;<i> most everything except the window just before executing the new process,
+</I>&gt;<i> do a fork there and have the child process keep the display for a couple
+</I>&gt;<i> seconds so the newly started process can build its windows above it. This
+</I>&gt;<i> does work quite well, and since the old process is torn down completely,
+</I>&gt;<i> it didn't show any bad effects yet, even running this way for several
+</I>&gt;<i> weeks, even months. The Linux system cleans up quite thourughly after a
+</I>&gt;<i> process is gone. ;-)
+</I>
+What I do not understand, why does &quot;application.terminated:= true;&quot; not
+work?
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000818.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000847.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTi%3Drdk0PM1h6EZv1cdTKFf%2Bt%2BjABwVe38yAaHyDH%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001800.html">
+   <LINK REL="Next"  HREF="001807.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTi%3Drdk0PM1h6EZv1cdTKFf%2Bt%2BjABwVe38yAaHyDH%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Sun Nov  7 19:12:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001800.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001807.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1801">[ date ]</a>
+              <a href="thread.html#1801">[ thread ]</a>
+              <a href="subject.html#1801">[ subject ]</a>
+              <a href="author.html#1801">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/11/7 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;&gt;<i> After you run program, please press enter from tstringedit1, you will
+</I>&gt;&gt;<i> got message 'Enter is pressed!' twice.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Seems as designed to me. The edit has the focus, in onkeyup you call
+</I>&gt;<i> showmessage, in modal dialog with default button 'OK', you press Enter again,
+</I>&gt;<i> key_return keydown clicks the button and closes the message window, the edit
+</I>&gt;<i> widget has the focus again and receives the key_return keyup event. Press the
+</I>&gt;<i> OK button with mouse or Space key and there will be no second message window.
+</I>
+Commonly, end users like use keyboard to execute simple dialog, like
+askyesno or showmessage.
+&gt;<i>
+</I>&gt;<i> Do you remember, I did not want to add all this published event properties to
+</I>&gt;<i> the edit widgets because using them is not so easy as it seems? ;-)
+</I>&gt;<i> What do you want to achieve?
+</I>&gt;<i>
+</I>In my app (Acosys), especially in POS (poin of sales), I should create
+interface that should be operated by cashier very simple and quickly.
+They prefer to use keyboard instead mouse (sometimes without mouse).
+
+ I create tstringedit to enter product serial number, if user type or
+select one serial number, the dialog form is displayed, they should
+choose &quot;yes&quot; or &quot;no&quot; (with keyboard), and for POS users always use
+numpad from keyboard, enter is quickly to press than space bar.
+
+I can't use ondataentered event, because sometimes they can select
+only from dropdown or just press enter with default serial number from
+default.
+
+IMO, if enter key is pressed from askyesno, showmessage, etc, the
+enter key shouldn't sent to next widget. the enter key is only for
+replace mouse click functionality.
+
+Thanks
+
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001800.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001807.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1801">[ date ]</a>
+              <a href="thread.html#1801">[ thread ]</a>
+              <a href="subject.html#1801">[ subject ]</a>
+              <a href="author.html#1801">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

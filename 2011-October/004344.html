@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tterminal again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C20111018013906.d8d59470.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004335.html">
+   <LINK REL="Next"  HREF="004345.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tterminal again</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C20111018013906.d8d59470.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] tterminal again">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Oct 18 01:39:06 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004335.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+        <LI>Next message: <A HREF="004345.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4344">[ date ]</a>
+              <a href="thread.html#4344">[ thread ]</a>
+              <a href="subject.html#4344">[ subject ]</a>
+              <a href="author.html#4344">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 17 Oct 2011 10:52:41 +0200:
+
+&gt;<i> It is possible that pacman works different if output is not connected to
+</I>&gt;<i> a pseudotermial. If so I fear you must debug yourself.
+</I>
+That's it - pacman &quot;senses&quot; whether it's &quot;talking&quot; to a real
+(&quot;controlling&quot;) terminal or to a pipe, and adjusts its output accordingly.
+To a real terminal, e.g. it sends progress indicators, while it doesn't do
+that if it's connected to a pipe. (Any Unix program can do that, it just
+takes a couple of ioctl calls, AFAIR.)
+But pacman's sense logic even has a flaw: it doesn't discern whether it's
+its _output_ or its _input_ which is connected to a pipe. So even if you
+only feed it input (which might be useful in a script if it's overly
+interrogative during some operations), it will _not_ output any progress
+information, which uses terminal control data (aka &quot;escape sequences&quot;).
+
+&gt;<i> To the Unix specialists: Is there a possibility to get a copy of the data
+</I>&gt;<i> the terminal receives?
+</I>
+Well, I'm not a &quot;Unix specialist&quot;, whatever that might mean. It's just that
+I found out a couple of facts about these things by tinkering about...
+
+If it's a &quot;real&quot; terminal, like the /dev/tty pseudo consoles, yes, there
+is. Their output is reflected on the /dev/vcs(a) devices, which are
+character devices containing either the text only or text-attribute pairs
+of the console display.
+The following (FPC) program can read them and display the content (text
+only):
+
+PROGRAM catvcc;
+
+USES SysUtils, Crt;
+
+VAR
+  i: integer;
+  C: char;
+  Z: string;
+  v: text;
+  d: FILE OF byte ABSOLUTE v;
+
+CONST
+  l: byte {integer} = 80;
+
+BEGIN
+  IF ParamCount &lt; 1 THEN Halt (1);
+
+  CheckBreak:= true;
+  Assign (d, '/dev/vcsa'+ ParamStr (1)); Reset (d);
+  Read (d, l); Read (d, l);  // get line length
+  Assign (v, '/dev/vcs'+ ParamStr (1)); Reset (v); Z:= ''; i:= 0;
+
+  WHILE NOT EoF (v) DO BEGIN
+    Read (v, C); Inc (i); Z:= Z+ C;
+    IF i &gt;= l THEN BEGIN
+      Write (TrimRight (Z)); ClrEoL; WriteLn; Z:= ''; i:= 0;
+    END (* IF i &gt;= l *);
+  END (* WHILE NOT EoF (v) *);
+
+  IF i &lt;&gt; 0 THEN WriteLn (TrimRight (Z));
+  Close (v);
+END.
+
+Sorry, no comments - please refer to the man pages and kernel documentation.
+(I don't recall any detail any more myself now;)
+
+For other terminal devices, like e.g. xterm, rxvt or such I don't know of
+any method to access their text buffers, altough there may exist some -
+I'm afraid, very specific for the pertinent terminal implementation,
+respectively.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004335.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+	<LI>Next message: <A HREF="004345.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4344">[ date ]</a>
+              <a href="thread.html#4344">[ thread ]</a>
+              <a href="subject.html#4344">[ subject ]</a>
+              <a href="author.html#4344">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

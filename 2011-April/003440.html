@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3Cio90qi%24q5q%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003439.html">
+   <LINK REL="Next"  HREF="003441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3Cio90qi%24q5q%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.">chr.nobel at gmail.com
+       </A><BR>
+    <I>Fri Apr 15 10:49:18 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003439.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+        <LI>Next message: <A HREF="003441.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3440">[ date ]</a>
+              <a href="thread.html#3440">[ thread ]</a>
+              <a href="subject.html#3440">[ subject ]</a>
+              <a href="author.html#3440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Correct, the searched column is always the first column. Can be used for
+</I>&gt;<i> example to select items by numbers, valuecol = 1:
+</I>&gt;<i> |COL0              |COL1
+</I>&gt;<i> ----------------------------------
+</I>&gt;<i> |1 the first row   |the first row
+</I>&gt;<i> |2 the second row  |the second row
+</I>&gt;<i> |3 the third row   |the third row
+</I>
+Is also ok when one knows it, but confuses a little bit, because one
+would think that the valuecol was determining.
+
+Eg. I have a dropdown where I have a customer index and a name:
+
+Index     Name
+------------------
+1         Smith
+2         Anderson
+3         Wayne
+4         Dallas
+5         McClane
+
+Here it has to be done like this for the incremental search to work:
+
+Name      Index
+------------------
+Smith     1
+Anderson  2
+Wayne     3
+Dallas    4
+McClane   5
+
+Instead of just saying that the valuecol also per default was used for
+the incremental search - could also be expanded if the dropdown included
+both first name and surname.
+
+Or maybe even smarter, defining which column to use for search.
+
+/Christian
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003439.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+	<LI>Next message: <A HREF="003441.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3440">[ date ]</a>
+              <a href="thread.html#3440">[ thread ]</a>
+              <a href="subject.html#3440">[ subject ]</a>
+              <a href="author.html#3440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

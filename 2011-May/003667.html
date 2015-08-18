@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%0A%09fixes%20%3F&In-Reply-To=%3Cop.vvqdxzluyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003666.html">
+   <LINK REL="Next"  HREF="003670.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TNSESQLQuery%3A%20is%20smth%20broken%20in%20recent%0A%09fixes%20%3F&In-Reply-To=%3Cop.vvqdxzluyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu May 19 15:47:49 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003666.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+        <LI>Next message: <A HREF="003670.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3667">[ date ]</a>
+              <a href="thread.html#3667">[ thread ]</a>
+              <a href="subject.html#3667">[ subject ]</a>
+              <a href="author.html#3667">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Where is tactivator.active set to true? In which form/module is it  
+</I>&gt;<i> located?
+</I>
+Both activator (design-time = initially active) &amp; its client queriers are  
+placed on a datamodule whose instance is created in overriden constructor  
+of a form/report:
+
+//--------------------
+constructor tform18viewfo.Create(aowner: tcomponent);
+begin
+	dmf18moacquire;
+	inherited;
+end;
+
+destructor tform18viewfo.Destroy;
+begin
+	inherited;
+	dmf18morelease;
+end;
+//--------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003666.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+	<LI>Next message: <A HREF="003670.html">[MSEide-MSEgui-talk] TNSESQLQuery: is smth broken in recent	fixes ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3667">[ date ]</a>
+              <a href="thread.html#3667">[ thread ]</a>
+              <a href="subject.html#3667">[ subject ]</a>
+              <a href="author.html#3667">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

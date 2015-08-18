@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTi%3D6VDMR2eBOEdVSGMtxPyvoLfBUTTNeQqR1yK%2Bd%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002273.html">
+   <LINK REL="Next"  HREF="002275.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTi%3D6VDMR2eBOEdVSGMtxPyvoLfBUTTNeQqR1yK%2Bd%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 16:18:32 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002273.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002275.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2274">[ date ]</a>
+              <a href="thread.html#2274">[ thread ]</a>
+              <a href="subject.html#2274">[ subject ]</a>
+              <a href="author.html#2274">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Changing locale fixes gdb localized messages issue, but then there are other
+side effects... the executed program use gdb locales, this can be fixed from
+gdb with set enviroment varname, but this make things complex.
+
+I wonder what other IDE do to manage this. I think using string messages is
+not the desired. No message codes, internal vars...?
+
+The easier solution for now is to move to another place
+/usr/share/locale-langpack/es/LC_MESSAGES/gdb.mo  (in my case) so no longer
+spanish messages for gdb (at last untill another update).
+
+Are you looking for a solution?
+
+Thanks.
+
+
+
+Julio
+
+2010/12/28 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+
+&gt;<i> executing:   'LANG=C gdb'  does the trick
+</I>&gt;<i>
+</I>&gt;<i> 2010/12/28 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> export LOCALE=C   does work for me too and I think for everyone
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2010/12/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On Tuesday, 28. December 2010 13.10:36 Julio Jim&#233;nez wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> &gt; a dirty fix is probably looking for ending in ':' :D
+</I>&gt;&gt;&gt;<i> &gt;
+</I>&gt;&gt;&gt;<i> There are much more places where English gdb keywords are used. Do you
+</I>&gt;&gt;&gt;<i> know if
+</I>&gt;&gt;&gt;<i> it is possible to force English in gdb commandline? To export en_US.utf8
+</I>&gt;&gt;&gt;<i> is
+</I>&gt;&gt;&gt;<i> not safe because there are distributions where it is named en_US.UTF8 or
+</I>&gt;&gt;&gt;<i> the
+</I>&gt;&gt;&gt;<i> like or where the locale does not exist or where utf8 locales are not
+</I>&gt;&gt;&gt;<i> setup
+</I>&gt;&gt;&gt;<i> correctly (some Russian distributions IIRC). Or maybe 'C' -locale  could
+</I>&gt;&gt;&gt;<i> be
+</I>&gt;&gt;&gt;<i> used?
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/34869d31/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/34869d31/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002273.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002275.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2274">[ date ]</a>
+              <a href="thread.html#2274">[ thread ]</a>
+              <a href="subject.html#2274">[ subject ]</a>
+              <a href="author.html#2274">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

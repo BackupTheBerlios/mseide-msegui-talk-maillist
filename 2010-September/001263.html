@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tcustomdropdowncontroller bug?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tcustomdropdowncontroller%20bug%3F&In-Reply-To=%3Ci7v7j2%24nd%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001262.html">
+   <LINK REL="Next"  HREF="001265.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tcustomdropdowncontroller%20bug%3F&In-Reply-To=%3Ci7v7j2%24nd%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Sep 29 13:24:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001262.html">[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?
+</A></li>
+        <LI>Next message: <A HREF="001265.html">[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1263">[ date ]</a>
+              <a href="thread.html#1263">[ thread ]</a>
+              <a href="subject.html#1263">[ subject ]</a>
+              <a href="author.html#1263">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>liuzg2 wrote:
+
+&gt;<i> procedure tcustomdropdowncontroller.dokeydown(var info: keyeventinfoty);
+</I>&gt;<i> begin
+</I>&gt;<i>  with info do begin
+</I>&gt;<i>   if (key = key_down) and (shiftstate = [ss_alt]) and
+</I>&gt;<i>        (deo_keydropdown in foptions) and fintf.geteditor.canedit then
+</I>&gt;<i>        begin
+</I>&gt;<i>    exclude(eventstate,es_processed);
+</I>&gt;<i>    dropdown;
+</I>&gt;<i>    include(eventstate,es_processed);
+</I>&gt;<i>   end;
+</I>&gt;<i>  end;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>&gt;<i> should be  like this  ??
+</I>&gt;<i>  include(eventstate,es_processed);  &lt;----
+</I>&gt;<i> 
+</I>&gt;<i>    dropdown;
+</I>&gt;<i>   exclude(eventstate,es_processed);&lt;---
+</I>&gt;<i> 
+</I>&gt;<i> if you is right ,my dropdown edit can not get first  letter i pressed!
+</I>
+I don't think the dropdown widget should receive the Alt+Down key,
+es_processed has no influence anyway.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001262.html">[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?
+</A></li>
+	<LI>Next message: <A HREF="001265.html">[MSEide-MSEgui-talk] tcustomdropdowncontroller bug?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1263">[ date ]</a>
+              <a href="thread.html#1263">[ thread ]</a>
+              <a href="subject.html#1263">[ subject ]</a>
+              <a href="author.html#1263">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

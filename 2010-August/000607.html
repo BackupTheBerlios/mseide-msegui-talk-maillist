@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] locate record in two primary keys
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3Ci43hlt%24lje%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000606.html">
+   <LINK REL="Next"  HREF="000690.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] locate record in two primary keys</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3Ci43hlt%24lje%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] locate record in two primary keys">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 13 15:35:38 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000606.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+        <LI>Next message: <A HREF="000690.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#607">[ date ]</a>
+              <a href="thread.html#607">[ thread ]</a>
+              <a href="subject.html#607">[ subject ]</a>
+              <a href="author.html#607">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>dan wrote:
+
+&gt;&gt;<i> As IvankoB writes, use a local index with the two key fields and
+</I>&gt;&gt;<i> tlocalindex.find(). Because it uses a binary search it is fast.
+</I>&gt;&gt;<i> I'll add a (slow) multi fields version of locate() to tmsebufdataset.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Martin
+</I>&gt;<i> Worked. Thanks Martin and IvankoB.
+</I>&gt;<i> Another Question, what are differences fkInternalCalc and fkCalculated?
+</I>&gt;<i> which one is faster? why only fkInternalCalc field accepted by
+</I>&gt;<i> tlocalindex?
+</I>&gt;<i> 
+</I>fkCalculated field data is not stored in the dataset but calculated by
+OnCalcFields, they are not writable. fkInternalcalc fields are like fkData
+fields but their values are not fetched from database, they can be
+calculated once by oninternalcalcfields for example. Because their value
+for every row of the dataset is known they can be used by local indexes.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000606.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+	<LI>Next message: <A HREF="000690.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#607">[ date ]</a>
+              <a href="thread.html#607">[ thread ]</a>
+              <a href="subject.html#607">[ subject ]</a>
+              <a href="author.html#607">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%09%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3Ci55lco%24ceq%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000832.html">
+   <LINK REL="Next"  HREF="000851.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%09%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3Ci55lco%24ceq%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 14:08:16 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000832.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+</A></li>
+        <LI>Next message: <A HREF="000851.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#835">[ date ]</a>
+              <a href="thread.html#835">[ thread ]</a>
+              <a href="subject.html#835">[ subject ]</a>
+              <a href="author.html#835">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>dan wrote:
+
+&gt;&gt;<i>
+</I>&gt;<i> Let us think, when the user make mistakes key pressing(not number, not
+</I>&gt;<i> dot, not comma) in edit of trealedit, it will waste time. Even, the
+</I>&gt;<i> user often will see format error( '' is invalid).
+</I>&gt;<i> It can be boring. That is a conclusion what i want is encapsulation
+</I>&gt;<i> about checking format error, not in user interaction.
+</I>&gt;<i> 
+</I>ontextedited is intended to do realtime text entry validation,
+tcustomedit.dotextedited() is virtual and can be overridden in inherited
+components. Please try again to explain why dotextedited() is not
+sufficient for you.
+
+&gt;&gt;<i> That is interresting. So if I press the keys '1','2','3' then the values
+</I>&gt;&gt;<i> reported by onchange and onsetvalue are &quot;1&quot;, &quot;12&quot;, &quot;123&quot;? Why is this
+</I>&gt;&gt;<i> useful? Probably I misunderstand, please explain more.
+</I>&gt;<i> example the realedit already have realty value 100 and text '100'
+</I>&gt;<i> 
+</I>&gt;<i> before we focus the realedit, fbackup is set to 100
+</I>&gt;<i> if i press the key '1', the realty value become 1, text become '1'
+</I>&gt;<i> and then if i press the key '2', the realty value become 12, text become
+</I>&gt;<i> '12' and so on.
+</I>
+And what do you with the wrong intermediate values? t*edit have been
+carfully designed to avoid incomplete intermediate values.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000832.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+</A></li>
+	<LI>Next message: <A HREF="000851.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#835">[ date ]</a>
+              <a href="thread.html#835">[ thread ]</a>
+              <a href="subject.html#835">[ subject ]</a>
+              <a href="author.html#835">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

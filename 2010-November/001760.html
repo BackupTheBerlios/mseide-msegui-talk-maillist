@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PG8.x%20%26%20PODPISKA%3A%20can%27t%20load%20%26%20run%20the%0A%09project&In-Reply-To=%3Ciaump0%24jd1%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001727.html">
+   <LINK REL="Next"  HREF="001765.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PG8.x%20%26%20PODPISKA%3A%20can%27t%20load%20%26%20run%20the%0A%09project&In-Reply-To=%3Ciaump0%24jd1%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 17:27:58 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001727.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+        <LI>Next message: <A HREF="001765.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ivanko B wrote:
+
+&gt;&gt;&gt;<i> The problem develops when creating DMMAINMO thus before the login
+</I>&gt;&gt;&gt;<i> procedure.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>It doesn't seem so.
+</I>&gt;&gt;<i>&quot;
+</I>&gt;&gt;<i>&#1055;&#1088;&#1086;&#1080;&#1079;&#1086;&#1096;&#1083;&#1072; &#1086;&#1096;&#1080;&#1073;&#1082;&#1072; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1103; &#1089; &#1041;&#1044;. &#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077; &#1086;&#1096;&#1080;&#1073;&#1082;&#1080;:
+</I>&gt;&gt;<i>conn: Execution of query failed (PostgreSQL: FEHLER:
+</I>&gt;&gt;<i>Relation &#187;ref_ss_post_office&#171; existiert nicht
+</I>&gt;&gt;<i>ZEILE 1: ...ref_ss_post_office_id_seq&quot;',(select  max(id) from
+</I>&gt;&gt;<i>ref_ss_pos...
+</I>&gt;&gt;<i>                                                              ^
+</I>&gt;&gt;<i>)
+</I>&gt;&gt;<i>&#1054;&#1090;&#1086;&#1073;&#1088;&#1072;&#1079;&#1080;&#1090;&#1100; &#1076;&#1080;&#1072;&#1083;&#1086;&#1075; &#1085;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1103;, &#1095;&#1090;&#1086;&#1073;&#1099; &#1080;&#1089;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100; &#1101;&#1090;&#1091; &#1086;&#1096;&#1080;&#1073;&#1082;&#1091; ?
+</I>&gt;&gt;<i>( &#1086;&#1090;&#1074;&#1077;&#1090; &quot;&#1053;&#1077;&#1090;&quot; &#1079;&#1072;&#1074;&#1077;&#1088;&#1096;&#1080;&#1090; &#1088;&#1072;&#1073;&#1086;&#1090;&#1091; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099; )
+</I>&gt;&gt;<i>&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Known :) Set the german &quot;LC_*&quot; in &quot;postgresql.conf&quot; to read the
+</I>&gt;<i> messages. Also activate &quot;add_missing_from&quot; option in this file, if
+</I>&gt;<i> needed.
+</I>
+There is no &quot;postgresql.conf&quot; on my system. There is
+a &quot;/etc/sysconfig/postgres&quot;. There is no &quot;add_missing_from&quot; option in this
+file.
+
+&gt;<i> To be sure, take the latest (29oct) DB from the binaries, we need to
+</I>&gt;<i> have this project running.
+</I>
+Does not help. The problem is wrong settings in dbconn.ini.
+&quot;
+procedure tdmmainmo.acnt1monthlistcalcfields(DataSet: TDataSet);
+begin
+with dataset do begin
+        fields[1].aswidestring:= monthnames[fields[0].asinteger];
+end;
+end;
+&quot;
+fields[0].asinteger returns 805314768.
+
+Martin
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001727.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+	<LI>Next message: <A HREF="001765.html">[MSEide-MSEgui-talk] PG8.x &amp; PODPISKA: can't load &amp; run the	project
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

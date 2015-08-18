@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20WM_IME_COMPOSITION%20or%20wm_ime_char&In-Reply-To=%3C4C241BBA.7020102%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000193.html">
+   <LINK REL="Next"  HREF="000204.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20WM_IME_COMPOSITION%20or%20wm_ime_char&In-Reply-To=%3C4C241BBA.7020102%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Fri Jun 25 05:00:10 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000193.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+        <LI>Next message: <A HREF="000204.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>WM_IME_STARTCOMPOSITION:begin
+
+po1.x:=application.caret.pos.x +application.activewidget.bounds_x ;
+po1.y:= application.activewidget.bounds_cy+
+application.activewidget.bounds_y;
+
+Imc:=ImmGetContext(sysevent.hwnd);
+CompositionForm.dwStyle := CFS_POINT;
+CompositionForm.ptCurrentPos.x :=po1.x ;
+CompositionForm.ptCurrentPos.y := po1.y;
+ImmSetCompositionWindow(Imc, @CompositionForm);
+ImmReleaseContext(sysevent.hwnd,Imc);
+
+end;
+
+
+
+could you add to mseguiintf.pas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000193.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+	<LI>Next message: <A HREF="000204.html">[MSEide-MSEgui-talk] about WM_IME_COMPOSITION or wm_ime_char
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

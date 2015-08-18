@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide with integrated context sensitive help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20with%20integrated%20context%20sensitive%0A%20help&In-Reply-To=%3C4CD27AED.3050607%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001740.html">
+   <LINK REL="Next"  HREF="001743.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide with integrated context sensitive help</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20with%20integrated%20context%20sensitive%0A%20help&In-Reply-To=%3C4CD27AED.3050607%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide with integrated context sensitive help">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 10:20:45 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001740.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+        <LI>Next message: <A HREF="001743.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1742">[ date ]</a>
+              <a href="thread.html#1742">[ thread ]</a>
+              <a href="subject.html#1742">[ subject ]</a>
+              <a href="author.html#1742">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-04 09:55, Martin Schreiber het geskryf:
+&gt;<i>
+</I>&gt;<i> twidget.helpcontext property returns the first found value searching the
+</I>&gt;<i> hierarchy upwards. Other sources for helpcontext values are
+</I>&gt;<i> application.activehelpcontext and application.mousehelpcontext.
+</I>
+OK, maybe I'm not understanding this correctly.
+
+* In &quot;Configure MSEide&quot; dialog, I selected the form at design time, and
+added a some text (the form name) in the helpcontext property.
+
+* On the main form, I dropped a thelpcontroller and implemented a OnHelp
+event handler as follows.
+
+   procedure tmainfo.ProcessHelp(const sender: tcustomhelpcontroller;
+               const helpsender: tmsecomponent; var handled: Boolean);
+   begin
+     writeln(Format('HelpSender.Name = %s (%s)[%s]', [HelpSender.Name,
+HelpSender.ClassName, Sender.HelpContext]));
+   end;
+
+* I compiled and ran the ide. I then selected &quot;Settings - Configure
+MSEide&quot;, and immediately pressed F1. At the time I pressed F1, the &quot;cancel&quot;
+button had focus. Below is the output I got from the OnHelp event handler.
+
+------------------------------------
+$ ./mseide.elf
+X Error: BadDrawable (invalid Pixmap or Window parameter)  9
+  Major opcode:  14
+X Error: BadDrawable (invalid Pixmap or Window parameter)  9
+  Major opcode:  14
+HelpSender.Name = tbutton2 (tbutton)[]
+------------------------------------
+
+As you can see, tbutton2 (the cancel button) was passed to the OnHelp event
+handler, because it is the component that had focus. But the Cancel button
+doesn't have information in the HelpContext property, the &quot;Configure
+MSEide&quot; form has HelpContext information [see attached screenshot], but it
+never got to the OnHelp event handler, and I never set Handled = True. What
+am I doing wrong?
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Object Inspector (settingsfo)_001.png
+Type: image/png
+Size: 11265 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/2bf24832/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/2bf24832/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001740.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+	<LI>Next message: <A HREF="001743.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1742">[ date ]</a>
+              <a href="thread.html#1742">[ thread ]</a>
+              <a href="subject.html#1742">[ subject ]</a>
+              <a href="author.html#1742">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

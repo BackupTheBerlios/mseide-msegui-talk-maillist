@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tcalendardatetimeedit problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tcalendardatetimeedit%20problem&In-Reply-To=%3CAANLkTimALp%3DZpbng6nVm8AcqwM3PD_32B_Px%2B8-tq0U5%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002053.html">
+   <LINK REL="Next"  HREF="002063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tcalendardatetimeedit problem</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tcalendardatetimeedit%20problem&In-Reply-To=%3CAANLkTimALp%3DZpbng6nVm8AcqwM3PD_32B_Px%2B8-tq0U5%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tcalendardatetimeedit problem">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Thu Dec  9 09:03:49 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002053.html">[MSEide-MSEgui-talk] using ttreeitemedit
+</A></li>
+        <LI>Next message: <A HREF="002063.html">[MSEide-MSEgui-talk] tcalendardatetimeedit problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2062">[ date ]</a>
+              <a href="thread.html#2062">[ thread ]</a>
+              <a href="subject.html#2062">[ subject ]</a>
+              <a href="author.html#2062">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>tcalendardatetimeedit got crash in my app(Access Violation). I think
+it is caused by using dock a form in recursive tdockpanel. I don't
+know exactly and I can create simple test project.
+If the form is display in dockpanel and I dropdown
+tcalendardatetimeedit than I get :
+
+#0  080F4327 mseevent.pas:226 TOBJECTEVENT__DELIVER(this=&lt;error
+reading variable&gt;)
+#1  08089485 msegui.pas:15025
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=&lt;error reading variable&gt;)
+#2  0808A4FC msegui.pas:15509
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=&lt;error reading
+variable&gt;)
+#3  080F2418 mseapplication.pas:1382
+TCUSTOMAPPLICATION__RUN(this=&lt;error reading variable&gt;)
+#4  0804CBFD Acosys.pas:45 main()
+
+I try to investigate this problem, and after I remove 2 line code from
+tdropdownwidgetcontroller, the problem is fixed. Please you
+investigate this problem.
+
+procedure tdropdownwidgetcontroller.receiveevent(const event: tobjectevent);
+begin
+ inherited;
+...
+...
+...
+   finally
+    fintf.geteditor.forcecaret:= false;
+    doafterclosedropdown;
+   end;
+   //setlinkedvar(nil,tmsecomponent(fdropdownwidget));
+   //freeandnil(fdropdownwidget);
+   //fdropdownwidget.Free;  ==================&gt; I remove this and
+   //fdropdownwidget:= nil; ===================&gt; this
+  end;
+ end;
+end;
+
+Thanks
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002053.html">[MSEide-MSEgui-talk] using ttreeitemedit
+</A></li>
+	<LI>Next message: <A HREF="002063.html">[MSEide-MSEgui-talk] tcalendardatetimeedit problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2062">[ date ]</a>
+              <a href="thread.html#2062">[ thread ]</a>
+              <a href="subject.html#2062">[ subject ]</a>
+              <a href="author.html#2062">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20101001014615.ce4ceaa7.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001329.html">
+   <LINK REL="Next"  HREF="001313.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20101001014615.ce4ceaa7.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Fri Oct  1 01:46:15 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001329.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001313.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1310">[ date ]</a>
+              <a href="thread.html#1310">[ thread ]</a>
+              <a href="subject.html#1310">[ subject ]</a>
+              <a href="author.html#1310">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Thu, 30 Sep 2010 21:18:41 +0200:
+
+&gt;<i> &gt; think I just removed &quot;fonttab&quot; and not &quot;fontactivetab&quot;.)
+</I>...
+&gt;<i> Ca you reproduce the error? If yes please send the *.mfm and steps how to
+</I>&gt;<i> reproduce.
+</I>
+Yes, at least kind of - maybe you can as well.
+
+I just tried it so: I have a &quot;tabwidget&quot; on the form that has tabs using
+the parent font style. Then I took the &quot;tabwidget&quot;, opened the &quot;tab&quot;
+subcomponent, and clicked at the &quot;fontactivetab&quot; entry, creating a new font
+style. This didn't work, but immediately produced an access violation
+message! (No further text, only &quot;Access violation&quot;.) I then didn't close
+the IDE, just &quot;clicked away&quot; the message window. The font didn't seem to
+have been created, but after switching to another component and back to the
+tabwidget's tab subcomponent, an entry &quot;ttab_fontactivetab&quot; was shown in
+the value column near &quot;fontactivetab&quot;. Trying to open it didn't produce
+anything unusual. Closing the project then produces a save requester, where
+I responded with the default &quot;Yes&quot;. Then after reopening the project the
+error message I posted before appears, and the form cannot be reloaded
+correctly. There seem to be just two lines added to the .mfm file:
+
+    tab_fontactivetab.xscale =  1.0000000000000000E+0000
+    tab_fontactivetab.dummy = 0
+
+Now to the _really_ weird part: When I tried to _first_ add a font to the
+&quot;fonttab&quot; field, there was no problem, and there was no problem either
+adding a font to the &quot;fontactivetab&quot; field thereafter!
+There was neither a problem _deleteing_ both &quot;fontactivetab&quot; and &quot;fonttab&quot;,
+but deleting the &quot;fonttab&quot; font only, then closing and saving the project
+also produces the error on reopening it.
+
+BTW, as I had to reopen the project quite some times now and each time
+select a component on the object inspector, it was rather annoying that the
+object inspector appears completely blank after loading a project - it
+doesn't show a component preloaded, not even the main form. It doesn't even
+contain a component list in its top drop down selector, you have to go to
+the form, select a component first, and only then are allowed to select
+anything in the object inspector.
+
+&gt;<i> &gt; mouse after activation. I have to shift the mouse cursor into the
+</I>&gt;<i> &gt; window of interest to heave that on top, although this should normally
+</I>&gt;<i> &gt; not be neccessary.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Openbox 3.11.4.2 works well for me with MSEide. Did you activate the
+</I>&gt;<i> &quot;focus under Mouse&quot; option in Openbox?
+</I>
+Uh, this is a lot newer than what I got here - mine's only version
+3.4.11.2, close to 7 subversions older.
+I'll have to look out for a newer version then, I guess...
+
+BTW, yes, I have &quot;focus under Mouse&quot; active, though just now I'm unsure
+what this effects.
+
+Thanks for the help and information!
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001329.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001313.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1310">[ date ]</a>
+              <a href="thread.html#1310">[ thread ]</a>
+              <a href="subject.html#1310">[ subject ]</a>
+              <a href="author.html#1310">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E32B44E.1020902%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003955.html">
+   <LINK REL="Next"  HREF="003959.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E32B44E.1020902%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jul 29 15:23:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003955.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003959.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3956">[ date ]</a>
+              <a href="thread.html#3956">[ thread ]</a>
+              <a href="subject.html#3956">[ subject ]</a>
+              <a href="author.html#3956">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/29/2011 02:03 PM, Marcos Douglas wrote:
+&gt;<i> 
+</I>&gt;<i> tiOPF remote persistence supports all field types, even BLOB/IMAGE/TEXT?
+</I>
+Yes. TEXT and  Text Blobs  are handled as  standard text/strings. Binary
+Blob, IMAGE etc  are handled via the  ParamAsStream() or FieldAsStream()
+which MimeEncodes/Decodes the data  before/after transmission (just like
+emails do with say image attachments).
+
+
+&gt;<i> Which you work, tiOPF or tiOPF2? Or is this the same project?
+</I>
+I use  tiOPF2. There is a tiOPF3  branch already, but currently  that is
+only for Delphi 2009 and up because we want to make that a fully Unicode
+enabled  version. FPC doesn't  support Unicode  string types  inside the
+compiler  yet,  so for  the  foreseeable  future,  I'll be  staying  and
+maintaining tiOPF2.
+
+
+What  I  didn't  touch  on  in  my  first  email  was  displaying  tiOPF
+objects/data in a GUI. There are various methods that can be used.
+
+ - tiOPF has  custom tiOPF-aware components. Currently only  VCL and LCL
+   are supported.
+
+ - Using  the tiDataset  unit will  allow you  to use  standard DB-aware
+   components (even MSEgui DB components should work here I think).
+
+ - Then  there  is also  my  preferred  choice using  Model-GUI-Mediator
+   (MGM  is  a  variant   of  Model-View-Controller).  The  tiOPF's  MGM
+   implementation  supports  the VCL,  LCL  and  fpGUI toolkits.  Adding
+   support for MSEgui is planned, and should be rather quick and easy to
+   do (if you  have MSEgui experience). The MGM mediators  are very well
+   abstracted, so  most of  its functionality  is actually  non-gui code
+   (thus working in any toolkit).
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003955.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003959.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3956">[ date ]</a>
+              <a href="thread.html#3956">[ thread ]</a>
+              <a href="subject.html#3956">[ subject ]</a>
+              <a href="author.html#3956">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

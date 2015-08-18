@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Repaz%3A%20Does%20it%20compile%20in%20latest%20MSE%20trunk%0A%20%3F&In-Reply-To=%3C4DF6E880.1030705%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003785.html">
+   <LINK REL="Next"  HREF="003787.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk ?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Repaz%3A%20Does%20it%20compile%20in%20latest%20MSE%20trunk%0A%20%3F&In-Reply-To=%3C4DF6E880.1030705%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk ?">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Jun 14 06:50:08 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003785.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+        <LI>Next message: <A HREF="003787.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3786">[ date ]</a>
+              <a href="thread.html#3786">[ thread ]</a>
+              <a href="subject.html#3786">[ subject ]</a>
+              <a href="author.html#3786">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 13.06.2011 22:08, schrieb Sri Wahono:
+&gt;<i> I don't get this error in my system. But I commit some changes in
+</I>&gt;<i> barcode generator.
+</I>&gt;<i> I found hard bug in converting image from msegui tcanvas to cairo
+</I>&gt;<i> library. I hope Martin can help me how to implement gdf_copyarea.
+</I>&gt;<i>
+</I>gdf_copyarea is one of the most difficult pieces in the graphic system.
+
+&gt;<i> In my investigation, some images does not print after exit from procedure :
+</I>&gt;<i>
+</I>&gt;<i> procedure tcanvas.internalcopyarea(asource: tcanvas; const asourcerect: rectty;
+</I>&gt;<i>                             const adestrect: rectty; acopymode: rasteropty;
+</I>&gt;<i>                             atransparentcolor: colorty;
+</I>&gt;<i>                             amask: tsimplebitmap{pixmapty;
+</I>&gt;<i> amaskgchandle: ptruint};
+</I>&gt;<i>                             const aalignment: alignmentsty;
+</I>&gt;<i>                             const atileorigin: pointty;
+</I>&gt;<i>                             const atransparency: colorty); //cl_none -&gt;  opaque
+</I>&gt;<i>
+</I>&gt;<i> in line code :
+</I>&gt;<i>
+</I>&gt;<i>    if not msegraphutils.intersectrect(makerect(dpoint,srect.size),
+</I>&gt;<i>                 rect1,drect) then begin
+</I>&gt;<i>     exit; =====================&gt;  exit here ... line 3142
+</I>&gt;<i>    end;
+</I>&gt;<i>
+</I>That means that the destination rectangle of the copy operation does not 
+intersect the current clipbox area of the destination canvas. Please 
+check the result of msegraphics.pas:3131
+&quot;
+  rect1:= moverect(clipbox,fvaluepo^.origin);
+&quot;
+whether it returns correct values.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003785.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+	<LI>Next message: <A HREF="003787.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3786">[ date ]</a>
+              <a href="thread.html#3786">[ thread ]</a>
+              <a href="subject.html#3786">[ subject ]</a>
+              <a href="author.html#3786">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

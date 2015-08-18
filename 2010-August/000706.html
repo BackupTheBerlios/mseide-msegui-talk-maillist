@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] locate record in two primary keys
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3Ci4io72%245c7%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000704.html">
+   <LINK REL="Next"  HREF="000587.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] locate record in two primary keys</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20locate%20record%20in%20two%20primary%20keys&In-Reply-To=%3Ci4io72%245c7%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] locate record in two primary keys">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 19 09:59:33 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000704.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+        <LI>Next message: <A HREF="000587.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#706">[ date ]</a>
+              <a href="thread.html#706">[ thread ]</a>
+              <a href="subject.html#706">[ subject ]</a>
+              <a href="author.html#706">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Julio Jim&#233;nez wrote:
+
+&gt;<i> It seems I'm wrong in some concepts. I guess find does binary search using
+</I>&gt;<i> local indexes
+</I>Correct.
+
+&gt;<i> but how does work locate? sequential search (not using 
+</I>&gt;<i> database engine)?
+</I>&gt;<i> 
+</I>locate() uses sequential search from current record with TDataset.Next and
+Prior.
+
+&gt;<i> About isnull vs nil for null search value, using nil in 'avalues' looks
+</I>&gt;<i> better from my point of view.
+</I>&gt;<i> 
+</I>
+I think now the &quot;isnull&quot; parameter is necessary because without it needs a
+different locate() call for every key/NIL combination, the type of the
+keyvalue (actual value or NIL) must be known at compile time. The &quot;isnull&quot;
+parameter can be an empty array, in this case it will be ignored. I'll add
+the NIL-pointer method to find() also so we have both possibilities in
+find() and locate().
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000704.html">[MSEide-MSEgui-talk] locate record in two primary keys
+</A></li>
+	<LI>Next message: <A HREF="000587.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#706">[ date ]</a>
+              <a href="thread.html#706">[ thread ]</a>
+              <a href="subject.html#706">[ subject ]</a>
+              <a href="author.html#706">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

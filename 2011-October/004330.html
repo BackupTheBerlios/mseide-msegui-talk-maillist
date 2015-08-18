@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tterminal again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C201110171017.47388.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004329.html">
+   <LINK REL="Next"  HREF="004331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tterminal again</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C201110171017.47388.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tterminal again">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Oct 17 10:17:47 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004329.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+        <LI>Next message: <A HREF="004331.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4330">[ date ]</a>
+              <a href="thread.html#4330">[ thread ]</a>
+              <a href="subject.html#4330">[ subject ]</a>
+              <a href="author.html#4330">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 17 October 2011 10.04:26 minoshi wrote:
+&gt;<i> Hello again!
+</I>&gt;<i> 
+</I>&gt;<i> I continue write pacmanXG. In it I run utility 'pacman' in tterminal and
+</I>&gt;<i> then parse output
+</I>&gt;<i> pacman is package manager for archlinux
+</I>&gt;<i> 
+</I>&gt;<i> Some time ago pacman was updated and now output in tterminal and in real
+</I>&gt;<i> console (for example xterm) is different.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> tterminal:
+</I>&gt;<i> 
+</I>&gt;<i> =====================================================
+</I>&gt;<i> =&gt; EXECUTE : pacman -Sw  acl
+</I>&gt;<i> =====================================================
+</I>&gt;<i> resolving dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Targets (1): acl-2.2.51-1
+</I>&gt;<i> 
+</I>&gt;<i> Total Download Size:    0.13 MB
+</I>&gt;<i> 
+</I>&gt;<i> Proceed with download? [Y/n] y
+</I>&gt;<i> 
+</I>&gt;<i> :: Retrieving packages from core...
+</I>&gt;<i> 
+</I>&gt;<i> downloading acl-2.2.51-1-i686.pkg.tar.xz...
+</I>&gt;<i> 
+</I>&gt;<i> =&gt; done
+</I>&gt;<i> 
+</I>&gt;<i> (&quot;=&gt; done&quot; is mark that tterminal finish executing)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> in real console :
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> pkg]# pacman -Sw  acl
+</I>&gt;<i> resolving dependencies...
+</I>&gt;<i> 
+</I>&gt;<i> Targets (1): acl-2.2.51-1
+</I>&gt;<i> 
+</I>&gt;<i> Total Download Size:    0.13 MB
+</I>&gt;<i> 
+</I>&gt;<i> Proceed with download? [Y/n] y
+</I>&gt;<i> 
+</I>&gt;<i> :: Retrieving packages from core...
+</I>&gt;<i> 
+</I>&gt;<i>   acl-2.2.51-1-i686       135.4K  247.1K/s 00:00:01
+</I>&gt;<i> [######################] 100%
+</I>&gt;<i> (1/1) checking package integrity
+</I>&gt;<i> [######################] 100%
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> pkg]#
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> In pacman news i wrote that now pacman is only front-end for library
+</I>&gt;<i> libalpm.so. And I suppose that missing output is output of  this library.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Unfortunaly there is no documentation for library (only promise to write
+</I>&gt;<i> it) and i can`t write own wrapper. I looked code of library but I don`t
+</I>&gt;<i> know c++ :(
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Any ideas?
+</I>
+Maybe a problem of the sent line editing characters for the progress display. 
+Please tee the pacman terminal output to a file and send the file.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004329.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+	<LI>Next message: <A HREF="004331.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4330">[ date ]</a>
+              <a href="thread.html#4330">[ thread ]</a>
+              <a href="subject.html#4330">[ subject ]</a>
+              <a href="author.html#4330">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

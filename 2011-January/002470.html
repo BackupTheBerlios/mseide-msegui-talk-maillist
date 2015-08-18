@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msestringsearch%20%26%20replacetext%20issue.&In-Reply-To=%3C201101141333.51174.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002469.html">
+   <LINK REL="Next"  HREF="002446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msestringsearch%20%26%20replacetext%20issue.&In-Reply-To=%3C201101141333.51174.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jan 14 13:33:50 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002469.html">[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.
+</A></li>
+        <LI>Next message: <A HREF="002446.html">[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2470">[ date ]</a>
+              <a href="thread.html#2470">[ thread ]</a>
+              <a href="subject.html#2470">[ subject ]</a>
+              <a href="author.html#2470">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday, 14. January 2011 10.52:48 IvankoB wrote:
+&gt;<i>
+</I>&gt;<i> Succeeds partially. See the attachments.
+</I>&gt;<i>
+</I>&gt;<i> Upper: the string is partially replaced partially
+</I>
+&quot;
+ S1:='&lt;text:text-input 
+text:description=&quot;&#1056;&#164;&#1056;&#176;&#1056;&#1112;&#1056;&#1105;&#1056;&#187;&#1056;&#1105;&#1057;&#1039;&quot;&gt;$&#1056;&#164;&#1056;&#176;&#1056;&#1112;&#1056;&#1105;&#1056;&#187;&#1056;&#1105;&#1057;&#1039;$&lt;/text:text-input&gt;';
+ se1.Value:=S1;
+ se2.Value:=UTF8ToString(S1);
+&quot;
+Doesn't work, 
+&quot;
+'&lt;text:text-input 
+text:description=&quot;&#1056;&#164;&#1056;&#176;&#1056;&#1112;&#1056;&#1105;&#1056;&#187;&#1056;&#1105;&#1057;&#1039;&quot;&gt;$&#1056;&#164;&#1056;&#176;&#1056;&#1112;&#1056;&#1105;&#1056;&#187;&#1056;&#1105;&#1057;&#1039;$&lt;/text:text-input&gt;'
+&quot;
+will be converted utf-8 -&gt; utf-16 on compiletime and converted utf-16 -&gt; 
+current system encoding on runtime by the unicodestringmanager.
+&quot;
+ S1:='&lt;t...
+&quot;
+
+Coneversion current system encoding -&gt; utf-16 on runtime by the 
+widestringmanager.
+&quot;
+ se1.Value:=S1;
+&quot;
+
+So either use all msestring and msestring version of replacestring():
+&quot;
+var
+ S1, S2 : msestring;
+begin
+ S1:='&lt;text:text-input 
+text:description=&quot;&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;&quot;&gt;$&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;$&lt;/text:text-input&gt;';
+ se2.Value:=S1;
+ se3.Value:=ReplaceString(S1, '$&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;$', '&#1048;&#1074;&#1072;&#1085;&#1086;&#1074;');
+&quot;
+
+or all utf-8 ansistring, now FPC ansi StringReplace() can be used:
+&quot;
+var
+ S1, S2 : string;
+begin
+ S1:= stringtoutf8('&lt;text:text-input 
+text:description=&quot;&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;&quot;&gt;$&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;$&lt;/text:text-input&gt;');
+ se2.Value:= utf8tostring(S1);
+ se3.Value:= utf8tostring(StringReplace(S1,stringtoutf8('$&#1060;&#1072;&#1084;&#1080;&#1083;&#1080;&#1103;$'),
+                                               stringtoutf8('&#1048;&#1074;&#1072;&#1085;&#1086;&#1074;'),[]));
+&quot;
+
+
+&gt;<i> Lower: there's should be nothing replaced.
+</I>
+Should be fixed in trunk 4265, there was a wrong parenthesis.
+
+Martin
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002469.html">[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.
+</A></li>
+	<LI>Next message: <A HREF="002446.html">[MSEide-MSEgui-talk] msestringsearch &amp; replacetext issue.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2470">[ date ]</a>
+              <a href="thread.html#2470">[ thread ]</a>
+              <a href="subject.html#2470">[ subject ]</a>
+              <a href="author.html#2470">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

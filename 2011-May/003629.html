@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image in a widgetgrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C201105161637.32747.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003625.html">
+   <LINK REL="Next"  HREF="003630.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image in a widgetgrid</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3C201105161637.32747.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Image in a widgetgrid">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon May 16 16:37:32 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003625.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+        <LI>Next message: <A HREF="003630.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3629">[ date ]</a>
+              <a href="thread.html#3629">[ thread ]</a>
+              <a href="subject.html#3629">[ subject ]</a>
+              <a href="author.html#3629">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag 16 Mai 2011, 15:56:30 schrieb Christian Nobel:
+&gt;<i> On 16-05-2011 15:40, Martin Schreiber wrote:
+</I>&gt;<i> &gt; Because the definition is:
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;    procedure writetostring(out avalue: string; const format: string;
+</I>&gt;<i> &gt;    
+</I>&gt;<i> &gt;                                   const params: array of const);
+</I>&gt;<i> &gt;                                   overload;
+</I>&gt;<i> &gt;    
+</I>&gt;<i> &gt;    function writetostring(const format: string;
+</I>&gt;<i> &gt;    
+</I>&gt;<i> &gt;                            const params: array of const): string;
+</I>&gt;<i> &gt;                            overload;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;
+</I>&gt;<i> &gt; Please use Ctrl+LeftClicke or Shift+Ctrl+Space after &quot;(&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> Ehhh, yes, so far I have also figured out, but how is the array of const
+</I>&gt;<i> defined, and what is the content?
+</I>&gt;<i> 
+</I>The parameters are defined in the mseformat*write units:
+&quot;
+unit mseformatjpgwrite;
+{$ifdef FPC}{$mode objfpc}{$h+}{$endif}
+interface
+const
+ jpglabel = 'jpg';
+ 
+implementation
+uses
+ classes,msegraphics,msebitmap,fpreadjpeg,msegraphicstream,msestockobjects,
+ msestream,fpwritejpeg,sysutils,typinfo;
+
+procedure writegraphic(const dest: tstream;
+                               const source: tobject;
+                               const params: array of const);
+                            //[compressionquality: integer] 0..100, default 75
+&quot;
+&quot;[]&quot; uses default values.
+
+&gt;<i> I have tried this:
+</I>&gt;<i> 
+</I>&gt;<i>  picture.writetostring(&lt;ansistring&gt;,'jpg',[]);
+</I>&gt;<i>  tdataimage1.gridvalue[1]:=readfiledatastring(&lt;ansistring&gt;);
+</I>&gt;<i> 
+</I>&gt;<i> I do have mseformatjpgread and mseformatjpgwrite in uses, and the
+</I>&gt;<i> program compiles fine.
+</I>&gt;<i> 
+</I>&gt;<i> However I get an iconv error 22 at runtime, when trying to run the
+</I>&gt;<i> procedure (and yes it is a jpg picture).
+</I>&gt;<i> 
+</I>Please show the code.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003625.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+	<LI>Next message: <A HREF="003630.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3629">[ date ]</a>
+              <a href="thread.html#3629">[ thread ]</a>
+              <a href="subject.html#3629">[ subject ]</a>
+              <a href="author.html#3629">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

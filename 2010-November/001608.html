@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] StringGrid usage
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3Ciambei%24q2t%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001606.html">
+   <LINK REL="Next"  HREF="001613.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] StringGrid usage</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20StringGrid%20usage&In-Reply-To=%3Ciambei%24q2t%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] StringGrid usage">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Nov  1 13:25:24 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001606.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+        <LI>Next message: <A HREF="001613.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1608">[ date ]</a>
+              <a href="thread.html#1608">[ thread ]</a>
+              <a href="subject.html#1608">[ subject ]</a>
+              <a href="author.html#1608">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> 
+</I>&gt;<i> I was pleasantly surprised to see the speed performance of my stringgrid
+</I>&gt;<i> implementation in fpGUI. MSEgui's Stringgrid was double as slow but still
+</I>&gt;<i> a very respectable result, and about a million times faster that LCL's
+</I>&gt;<i> TStringGrid. :-)
+</I>&gt;<i> 
+</I>Congrats! :-)
+
+The main difference between fpGUI and MSEgui probably is the additional
+iconv call because of the necessary AnsiString &gt; UnicodeString conversion
+in MSEgui.
+
+I get the following results with AMD Athlon XP3000+, 2GB RAM:
+
+1: Your testcase: 33.9s
+&quot;
+const
+ rowcountmax = 8000000;
+var
+ ti: tdatetime;
+ 
+procedure tmainfo.exec1(const sender: TObject);
+var
+ int1: integer;
+begin
+ ti:= now;
+ grid.beginupdate;
+ for int1:= 1 to rowcountmax do begin
+  grid.rowcount:= int1;
+  grid[0][int1-1]:= inttostr(int1);
+ end;
+ grid.endupdate;
+ tidi1.value:= (now-ti)*24*3600;
+end;
+&quot;
+
+2. Assigning a UnicodeString: 16.9s
+&quot;
+procedure tmainfo.exec2(const sender: TObject);
+var
+ int1: integer;
+ mstr1: msestring;
+begin
+ mstr1:= 'abc';
+ ti:= now;
+ grid.beginupdate;
+ for int1:= 1 to rowcountmax do begin
+  grid.rowcount:= int1;
+  grid[0][int1-1]:= mstr1;
+ end;
+ grid.endupdate;
+ tidi2.value:= (now-ti)*24*3600;
+end;
+&quot;
+
+3. No column index in loop: 16.3s
+&quot;
+procedure tmainfo.exec3(const sender: TObject);
+var
+ int1: integer;
+ mstr1: msestring;
+begin
+ mstr1:= 'abc';
+ ti:= now;
+ grid.beginupdate;
+ with grid[0] do begin
+  for int1:= 1 to rowcountmax do begin
+   grid.rowcount:= int1;
+   items[int1-1]:= mstr1;
+  end;
+ end;
+ grid.endupdate;
+ tidi3.value:= (now-ti)*24*3600;
+end;
+&quot;
+
+4: Direct access to the column datalist: 3.54s
+&quot;
+procedure tmainfo.exec4(const sender: TObject);
+var
+ int1: integer;
+ mstr1: msestring;
+begin
+ mstr1:= 'abc';
+ ti:= now;
+ with grid[0].datalist do begin
+  beginupdate;
+  for int1:= 1 to rowcountmax do begin
+   count:= int1;
+   items[int1-1]:= mstr1;
+  end;
+  endupdate;
+ end;
+ tidi4.value:= (now-ti)*24*3600;
+end;
+&quot;
+
+5: Direct access to the data with allocating the memory once:  0.52s
+&quot;
+procedure tmainfo.exec5(const sender: TObject);
+var
+ int1: integer;
+ mstr1: msestring;
+ po1: pmsestring;
+begin
+ mstr1:= 'abc';
+ ti:= now;
+ with grid[0].datalist do begin
+  beginupdate;
+  count:= rowcountmax;
+  po1:= datapo;
+  for int1:= rowcountmax-1 downto 0 do begin
+   po1^:= mstr1;
+   inc(po1);
+  end;
+  endupdate;
+ end;
+ tidi5.value:= (now-ti)*24*3600;
+end;
+&quot;
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001606.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+	<LI>Next message: <A HREF="001613.html">[MSEide-MSEgui-talk] StringGrid usage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1608">[ date ]</a>
+              <a href="thread.html#1608">[ thread ]</a>
+              <a href="subject.html#1608">[ subject ]</a>
+              <a href="author.html#1608">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

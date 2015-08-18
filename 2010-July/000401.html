@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] how to use odbc
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C328B94.9020705%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000380.html">
+   <LINK REL="Next"  HREF="000404.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] how to use odbc</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20use%20odbc&In-Reply-To=%3C4C328B94.9020705%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] how to use odbc">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Tue Jul  6 03:49:08 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000380.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+        <LI>Next message: <A HREF="000404.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+??????? i do not know what said about
+  <A HREF="http://support.microsoft.com/kb/140896">http://support.microsoft.com/kb/140896</A>
+&gt;&gt;<i> tmseodbcconnection1.UserName:= '*****';
+</I>&gt;&gt;<i> tmseodbcconnection1.Password:= '******';
+</I>&gt;&gt;<i> tmseodbcconnection1.Driver:='SQL server' ;
+</I>&gt;&gt;<i>    tmseodbcconnection1.Params.Add('database=*****');
+</I>&gt;&gt;<i>    tmseodbcconnection1.Params.Add('server=******');
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> tmseodbcconnection1.Connected:=true;
+</I>&gt;&gt;<i>     tmsesqlscript1.sql.text:='select top 1 * into #x from  r_sale';
+</I>&gt;&gt;<i>     tmsesqlscript1.execute();&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-----
+</I>
+  YES  !
+tmsesqlscript1 : SQL statement not set
+An exception occurred at $004B7398 :
+EDatabaseError : tmsesqlscript1 : SQL statement not set
+   $004B7398
+   $004E432B  TMSESQLSCRIPT__EXECUTE,  line 4107 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $00431E5D  TMAINFO__ODBCCONN,  line 69 of main.pas
+   $00489836  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+   $004AB8C6  TCUSTOMBUTTON__DOEXECUTE,  line 684 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/widgets/msesimplewidgets.pas
+   $004936D7  TACTIONSIMPLEBUTTON__INTERNALEXECUTE,  line 1799 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004936F7  TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE,  line 1806 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $0049AA76  UPDATEMOUSESHAPESTATE,  line 405 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseshapes.pas
+   $00493793  TACTIONSIMPLEBUTTON__CLIENTMOUSEEVENT,  line 1820 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $0041F027  DOCLIENTMOUSEEVENT,  line 8544 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $0041EEF6  TWIDGET__MOUSEEVENT,  line 8661 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $00497AFB  TACTIONWIDGET__MOUSEEVENT,  line 4260 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+   $004272A6  TWINDOW__DISPATCHMOUSEEVENT,  line 12458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $00429DE1  TINTERNALAPPLICATION__PROCESSMOUSEEVENT,  line 13807 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $0042B859  TINTERNALAPPLICATION__EVENTLOOP,  line 14536 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $0042C6BC  TINTERNALAPPLICATION__DOEVENTLOOP,  line 14943 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+   $00456598  TCUSTOMAPPLICATION__RUN,  line 1299 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseapplication.pas
+
+
+
+if use tmsesqlquery1
+ &gt;
+ &gt;     tmsesqlquery1.SQL.text:='select top 1 *  into #x from  r_sale';
+ &gt;     tmsesqlquery1.Active:=true;
+ &gt;      tmsesqlquery1.Active:=false;
+ &gt;      tmsesqlquery1.SQL.text:='select * from #x';
+ &gt;       tmsesqlquery1.Active:=true;
+ &gt;
+ &gt;
+ &gt; error  could not fetch new row from result set
+
+Could not fetch new row from result set ODBC error details: Record 1: 
+SqlState: 24000; NativeError: 0; Message: [Microsoft][ODBC SQL Server 
+Driver]&#26080;&#25928;&#30340;?
+An exception occurred at $005228CE :
+EODBCException : Could not fetch new row from result set ODBC error 
+details: Record 1: SqlState: 24000; NativeError: 0; Message: 
+[Microsoft][ODBC SQL Server Driver]&#26080;&#25928;&#30340;?
+   $005228CE  ODBCCHECKRESULT,  line 348 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $00523F48  TODBCCONNECTION__FETCH,  line 869 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $004E0A70  TSQLQUERY__FETCH,  line 2571 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004C90DB  TMSEBUFDATASET__LOADBUFFER,  line 2271 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004C8BFC  TMSEBUFDATASET__GETNEXTPACKET,  line 2154 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004C85D2  TMSEBUFDATASET__GETRECORD,  line 1994 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004B9879
+   $004D0071  TMSEBUFDATASET__GETNEXTRECORD,  line 5421 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004B994F
+   $004BA152
+   $004B9F08
+   $004CDCA2  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004E0437  TSQLQUERY__SETACTIVE,  line 2458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DC79E  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DBEA9  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $00431E58  TMAINFO__ODBCCONN,  line 73 of main.pas
+   $00489826  DOACTIONEXECUTE,  line 347 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+
+
+
+if use
+tmseodbcconnection1.StartTransaction;
+      tmseodbcconnection1.executedirect('select top 1 * into #x from 
+r_sale  ');
+
+     tmsesqlquery1.SQL.text:='select * from #x';
+      tmsesqlquery1.Active:=true;
+    tmseodbcconnection1.EndTransaction;
+
+
+Could not execute statement. ODBC error details: Record 1: SqlState: 
+42S02; NativeError: 208; Message: [Microsoft][ODBC SQL Server Driver] 
+[SQL Server]&#23545;&#35937;&#21517; '#x' ; Record 2: SqlState: 42000; NativeError: 8180; 
+Message: [Microsoft][ODBC SQL Server Driver][SQL Server]&#26080;&#27861;&#39044;&#23450;;
+An exception occurred at $005228CE :
+EODBCException : Could not execute statement. ODBC error details: Record 
+1: SqlState: 42S02; NativeError: 208; Message: [Microsoft][ODBC SQL 
+Server Driver][SQL Server]&#23545;&#35937;&#21517; '#x' ; Record 2: SqlState: 42000; 
+NativeError: 8180; Message: [Microsoft][ODBC SQL Server Driver][SQL 
+Server]&#26080;&#27861;&#39044;&#23450;;
+   $005228CE  ODBCCHECKRESULT,  line 348 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $00523EE4  TODBCCONNECTION__INTERNALEXECUTE,  line 851 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+   $004DEA60  TCUSTOMSQLCONNECTION__EXECUTE,  line 1597 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DCE94  DOEXECUTE,  line 819 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E0B40  TSQLQUERY__EXECUTE,  line 2586 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E16A5  TSQLQUERY__CONNECT,  line 2946 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004E1A03  TSQLQUERY__INTERNALOPEN,  line 2991 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DBF11  TMSESQLQUERY__INHERITEDINTERNALOPEN,  line 392 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DA32B  TDSCONTROLLER__INTERNALOPEN,  line 5679 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msedb.pas
+   $004DC017  TMSESQLQUERY__INTERNALOPEN,  line 417 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004B8F22
+   $004B9F08
+   $004CDCA2  TMSEBUFDATASET__SETACTIVE,  line 4302 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msebufdataset.pas
+   $004E0437  TSQLQUERY__SETACTIVE,  line 2458 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+   $004DC79E  TMSESQLQUERY__SETACTIVE,  line 563 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $004DBEA9  TMSESQLQUERY__SETACTIVE1,  line 375 of 
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msesqldb.pas
+   $00431E84  TMAINFO__ODBCCONN,  line 78 of main.pas
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000380.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+	<LI>Next message: <A HREF="000404.html">[MSEide-MSEgui-talk] how to use odbc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

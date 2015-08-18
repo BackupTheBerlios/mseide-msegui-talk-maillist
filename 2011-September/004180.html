@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Could not catch error message
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3CCABS2nhe2ChncoN2kp9XRUFjabh6b8jNMUdDuORKqW62mPG%2B8Vw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004179.html">
+   <LINK REL="Next"  HREF="004181.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Could not catch error message</H1>
+    <B>wahono sri</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3CCABS2nhe2ChncoN2kp9XRUFjabh6b8jNMUdDuORKqW62mPG%2B8Vw%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Could not catch error message">wahono77 at gmail.com
+       </A><BR>
+    <I>Thu Sep 15 05:54:08 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004179.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+        <LI>Next message: <A HREF="004181.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4180">[ date ]</a>
+              <a href="thread.html#4180">[ thread ]</a>
+              <a href="subject.html#4180">[ subject ]</a>
+              <a href="author.html#4180">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> The problem is, after post, applyupdates and savepointrollback, the
+</I>&gt;&gt;<i> state of dataset is dsbrowse, than I should call dataset.edit to edit
+</I>&gt;&gt;<i> to fix the errors. After I save again, data didn't store in database
+</I>&gt;&gt;<i> because SQL to be &quot;UPDATE table...&quot; and not &quot;INSERT INTO table...&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;<i> There seems something wrong, update kind should not change from ukInsert to
+</I>&gt;<i> ukModify by editing an inserted record. Are you sure?
+</I>&gt;<i>
+</I>
+The summary of my code like this :
+procedure saverecord;
+begin
+try
+  transaction.savepointbegin;
+  dataset1.append;
+  ...
+  ...
+  dataset1.post;
+  dataset2.append;
+  ...
+  ...
+  dataset2.post;
+  dataset1.applyupdates;
+  &gt;&gt;&gt;&gt;&gt;error from server
+  dataset2.applyupdates;
+  ...
+  transaction.commitretaining;
+except
+  transaction.savepointrollback;
+  &gt;&gt;&gt;&gt;&gt;caused by dataset1 and dataset2 state is set to dsbrowse, than
+I do dataset.edit
+  dataset1.edit;
+end;
+end;
+
+The dataset1 and dataset2 buffer don't remove than I can fix error of
+data input, I call saverecord again.
+And I got other error from server because dataset1 execute SQL &quot;UPDATE
+dataset1 ..WHERE key1=....&quot; and not &quot;INSERT INTO dataset1...&quot;, so
+dataset1 still empty (could not update cause server can not found key1
+of dataset1. The second error come from dataset2.applyupdates caused
+by dataset2 have foreign key to dataset1.
+
+The conclusion :
+Is possible to make dataset1.state still in dsInsert after
+savepointrollback, because after savepointrollback dataset1.buffer
+still exists?
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004179.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+	<LI>Next message: <A HREF="004181.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4180">[ date ]</a>
+              <a href="thread.html#4180">[ thread ]</a>
+              <a href="subject.html#4180">[ subject ]</a>
+              <a href="author.html#4180">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

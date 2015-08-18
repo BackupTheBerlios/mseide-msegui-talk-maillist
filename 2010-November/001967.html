@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C201011261912.10425.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001966.html">
+   <LINK REL="Next"  HREF="001968.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C201011261912.10425.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Nov 26 19:12:10 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001966.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001968.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1967">[ date ]</a>
+              <a href="thread.html#1967">[ thread ]</a>
+              <a href="subject.html#1967">[ subject ]</a>
+              <a href="author.html#1967">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday, 26. November 2010 18.37:40 MSEide MSEgui wrote:
+&gt;<i> &gt; I don't think so. I never used onkeydown/up on edit widgets. There
+</I>&gt;<i> &gt; probably are better solutions. Do you have an example where onkey* is
+</I>&gt;<i> &gt; necessary for edit widgets?
+</I>&gt;<i>
+</I>&gt;<i> I use onkeydown/up event in POS (Point Of Sale) app. I use
+</I>&gt;<i> tdbdropdownlisteditdb (wsn) to show serial number list of products. If
+</I>&gt;<i> user select a serial number and press enter, he asked &quot;Add another
+</I>&gt;<i> serial number?&quot;, if user answer &quot;Yes&quot;, cursor focused to &quot;wsn&quot;, but if
+</I>&gt;<i> user answer &quot;No&quot;, cursor focused to product code. Unfortunately, if
+</I>&gt;<i> cursor focused to product code, enter from showmessage dialog is sent
+</I>&gt;<i> to product code.
+</I>&gt;<i>
+</I>Why can't you use onsetvalue or ondataentered? Why do you use onkeyup?
+
+&gt;<i> For me, onkey* event on edit widget is important to create app that
+</I>&gt;<i> prepared to quick operation app. Please you don't delete this event,
+</I>&gt;<i> this is standard event for all GUI library.
+</I>&gt;<i>
+</I>&gt;<i> &gt; MSEgui has no OnKeypress event because accompanying characters are stored
+</I>&gt;<i> &gt; in info parameter of key events.
+</I>&gt;<i>
+</I>&gt;<i> I don't understand your reason clearly. Why onkeypress(var info:
+</I>&gt;<i> keyeventinfoty) cannot be used?
+</I>&gt;<i>
+</I>OnKeypress is fired by Delphi if Windows sends a wm_char message. wm_char will 
+be sent if a key press event represents an ansi character AFAIK. It is 
+problematic for input methods where there is no fix relation between keys and 
+characters. Because of this MSEgui has a field &quot;chars&quot; for keydown and keyup 
+events and no OnKeypress event with a char parameter.
+&quot;
+ keyeventinfoty = record
+  eventkind: eventkindty;
+  key,keynomod: keyty;
+  chars: msestring;
+  shiftstate: shiftstatesty;
+  eventstate: eventstatesty;
+  timestamp: longword; //usec
+ end;
+&quot;
+What should your &quot;onkeypress(var info: keyeventinfoty)&quot; do?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001966.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001968.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1967">[ date ]</a>
+              <a href="thread.html#1967">[ thread ]</a>
+              <a href="subject.html#1967">[ subject ]</a>
+              <a href="author.html#1967">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

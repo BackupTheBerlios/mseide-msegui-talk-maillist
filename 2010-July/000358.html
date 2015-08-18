@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BMSEgui%20version%202.4rc1&In-Reply-To=%3Ci0pvlo%24fcr%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000367.html">
+   <LINK REL="Next"  HREF="000372.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BMSEgui%20version%202.4rc1&In-Reply-To=%3Ci0pvlo%24fcr%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Jul  4 14:48:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000367.html">[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1
+</A></li>
+        <LI>Next message: <A HREF="000372.html">[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Krishna wrote:
+
+&gt;<i> I have a few questions regarding widget theming:
+</I>&gt;<i> 
+</I>&gt;<i> * Is it possible to skip the tface and tframe properties and instead
+</I>&gt;<i> use the platform's theming APIs. eg: DrawFrameControl on Win32 ?
+</I>&gt;<i> 
+</I>Not provided.
+
+&gt;<i> * tface and tframe options are not clear. I've been trying to get a
+</I>&gt;<i> shiny plastic button but so far no luck. Is it possible to support
+</I>&gt;<i> NinePatch images[1] ?
+</I>&gt;<i> 
+</I>Not directly, but a similar look can be achieved with the frame images and
+frame face.
+
+&gt;<i> * I did poke around the face-demo but I couldn't clearly understand
+</I>&gt;<i> the settings that are required to produce a nice round button (for a
+</I>&gt;<i> start!). Some docs or even better, a screencast, would be of great
+</I>&gt;<i> help.
+</I>&gt;<i> 
+</I>You are right. Who wants to volunteer? ;-)
+
+The rounded widget frames are made with tframe.frameimage_*. In
+frameimage_list are 8 images which are used in order to draw the frame
+counter clock wise. The image N is placed in the topleft corner, N+1
+stretched for left edge, N+2 bottomleft corner, N+3 stretched for bottom
+edge, N+4 bottom right corner, N+5 stretched for right edge, N+6 topleft
+corner, N+7 stretched for top edge. There are different starting offsets in
+the imagelist for different widget states. 
+The centre of the frame can be filled by tframe.frameface_list. There are
+different entries for the face number in tfacelist for different widget
+states.
+Because every widget in MSEgui has a frame and face property every widget
+has these possibilities.
+Use tfacecomp and tframecomp and tskincontroller in order to centralise
+skinning. tframecomp can be selected as a template into tframe.template,
+tfacecomp can be selected as a template into tface.template.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000367.html">[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1
+</A></li>
+	<LI>Next message: <A HREF="000372.html">[MSEide-MSEgui-talk] MSEide+MSEgui version 2.4rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

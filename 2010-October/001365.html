@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigSegv in the IDE when rearranging multiple	PODPISKA's windows (win-32)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20when%20rearranging%20multiple%0A%09PODPISKA%27s%20windows%20%28win-32%29&In-Reply-To=%3Cvoola6dglsgpe6ft8o45dbh9fnb593ja4r%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001364.html">
+   <LINK REL="Next"  HREF="001366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging multiple	PODPISKA's windows (win-32)</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20when%20rearranging%20multiple%0A%09PODPISKA%27s%20windows%20%28win-32%29&In-Reply-To=%3Cvoola6dglsgpe6ft8o45dbh9fnb593ja4r%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging multiple	PODPISKA's windows (win-32)">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Oct  5 10:53:19 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001364.html">[MSEide-MSEgui-talk] Squeezing maximized IDE's source file form
+</A></li>
+        <LI>Next message: <A HREF="001366.html">[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging multiple PODPISKA's windows (win-32)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1365">[ date ]</a>
+              <a href="thread.html#1365">[ thread ]</a>
+              <a href="subject.html#1365">[ subject ]</a>
+              <a href="author.html#1365">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>POPISKA.PRJ is hereattached.
+
+100% reproducible at me - just switch &amp; move the forms &amp; the
+datamodules in a random Z-order.
+
+//-------------------------------------------------------------------
+
+procedure tinternalapplication.checkwindowstack;
+
+ function findlevel(var item: windowstackinfoty): integer;
+ var
+  int1: integer;
+ begin
+  with item do begin
+   if (level = 0) and (lower &lt;&gt; nil) and not recursion then begin
+    if upper = nil then begin
+     result:= -bigint;
+    end
+    else begin
+     result:= 1; //not found upper
+     recursion:= true;
+     for int1:= 0 to high(fwindowstack) do begin
+      with fwindowstack[int1] do begin
+       if lower = item.upper then begin
+        result:= findlevel(fwindowstack[int1]) + 1;
+        break;
+       end;
+      end;
+     end;
+     recursion:= false;
+    end;
+   end
+   else begin
+    result:= level;
+   end;
+   level:= result;
+  end;
+ end;
+
+var
+ int1: integer;
+begin
+ if fwindowstack &lt;&gt; nil then begin
+  if not nozorderhandling then begin
+ {$ifdef mse_debugzorder}
+   debugwriteln('****checkwindowstack****');
+ {$endif}
+   for int1:= 0 to high(fwindowstack) do begin
+    findlevel(fwindowstack[int1]);
+   end;
+   sortarray(fwindowstack,{$ifdef FPC}@{$endif}cmpwindowstack,
+ sizeof(windowstackinfoty));
+   if gui_canstackunder then begin
+    for int1:= 0 to high(fwindowstack) do begin
+     with fwindowstack[int1] do begin
+      if lower &lt;&gt; nil then begin
+       if upper = nil then begin // &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HERE
+        gui_raisewindow(lower.winid);
+       end
+       else begin
+        gui_stackunderwindow(lower.winid,upper.winid);
+       end;
+      end;
+     end;
+    end;
+   end
+   else begin
+    for int1:= high(fwindowstack) downto 0 do begin
+     with fwindowstack[int1] do begin
+      if (lower &lt;&gt; nil) then begin
+       gui_raisewindow(fwindowstack[int1].lower.winid);
+      end;
+     end;
+    end;
+    for int1:= 0 to high(fwindowstack) do begin //raise top level
+window
+     with fwindowstack[int1] do begin
+      if lower &lt;&gt; nil then begin
+       if upper &lt;&gt; nil then begin
+        gui_raisewindow(fwindowstack[int1].upper.winid);
+       end;
+       break;
+      end;
+     end;
+    end;
+   end;
+   exclude(fstate,aps_zordervalid);
+  end;
+  fwindowstack:= nil;
+ end;
+end;
+
+//---------------------------------
+
+#0  0042EE27 msegui.pas:15040
+TINTERNALAPPLICATION__CHECKWINDOWSTACK(this=0x77020)
+
+TINTERNALAPPLICATION(this):=================
+{&lt;TGUIAPPLICATION&gt; = {&lt;TCUSTOMAPPLICATION&gt; = {&lt;TMSECOMPONENT&gt; =
+{&lt;TCOMPONENT&gt; = {&lt;TPERSISTENT&gt; = {&lt;TOBJECT&gt; = {_vptr$ = {0x7045f0,
+0x0}}, }, FOWNER = 0x0, FNAME = 0x0, FTAG = 0, FCOMPONENTS = 0x5cf28,
+FFREENOTIFIES = 0x0, FDESIGNINFO = 0, FVCLCOMOBJECT = 0x0,
+FCOMPONENTSTATE = [], FCOMPONENTSTYLE = []}, FONBEFOREUPDATESKIN = 0,
+FONAFTERUPDATESKIN = 0, FTAGPO = 0x0, FMSECOMPONENTSTATE = [],
+FOBJECTLINKER = 0x0, FACTUALCLASSNAME = 0x0, FANCESTORCLASSNAME = 0x0,
+FHELPCONTEXT = 0x0, FIFISERVERINTF = {&lt;INULLINTERFACE&gt; = {}, }},
+FAPPLICATIONNAME = 0x4c810, FLOCKTHREAD = 3392, FLOCKCOUNT = 1, FMUTEX
+= {0x4b9f8, 0x0, 0x1, 0xd40, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, FEVENTLIST
+= 0x55020, FEVENTLOCK = {0x4ba30, 0xffffffff, 0x0, 0x0, 0x0, 0x0, 0x0,
+0x0, 0x0, 0x0}, FPOSTEDEVENTS = 0x0, FPOSTEDEVENTSLOCAL = 0x0,
+FIDLECOUNT = 32775, FCHECKOVERLOADLOCK = 0, FEXCEPTIONACTIVE = 0,
+FEXCEPTIONCOUNT = 1, FONEXCEPTION = 0, FINITING = 0, FTHREAD = 3392,
+FSTATE = [APS_INITED..APS_RUNNING, APS_ZORDERVALID,
+APS_FOCUSED..APS_RESTORELOCKTRANSIENTFOR, APS_ACTIVE], FWAITCOUNT = 0,
+FONTERMINATEDLIST = 0x55000, FONTERMINATEQUERYLIST = 0x54fe0,
+FONIDLELIST = 0x54fc0}, FWINDOWS = 0x642bbc8, FGROUPZORDER =
+0x6596798, FACTIVEWINDOW = 0xcdd90, FWANTEDACTIVEWINDOW = 0x0,
+FINACTIVEWINDOW = 0x0, FFOCUSLOCKWINDOW = 0x0, FFOCUSLOCKTRANSIENTFOR
+= 0x0, FMOUSE = 0x54f60, FCARET = 0xb4588, FMOUSECAPTUREWIDGET = 0x0,
+FMOUSEWIDGET = 0x0, FMOUSEWIDGETPOS = {X = 140, Y = 4},
+FMOUSEHINTWIDGET = 0x0, FKEYBOARDCAPTUREWIDGET = 0x0,
+FCLIENTMOUSEWIDGET = 0x0, FHINTEDWIDGET = 0x0, FHINTFORWIDGET = 0x0,
+FHINTINFO = {FLAGS = [], CAPTION = 0x0, POSRECT = {X = 5, Y = 135, CX
+= 24, CY = 24, POS = {X = 5, Y = 135}, SIZE = {CX = 24, CY = 24}},
+PLACEMENT = CP_BOTTOMLEFT, SHOWTIME = 0, MOUSEREFPOS = {X = 191, Y =
+212}}, FMAINWINDOW = 0xd0db0, FDBLCLICKTIME = 400000, FCURSORSHAPE =
+CR_DEFAULT, FWIDGETCURSORSHAPE = CR_DEFAULT, FBUTTONPRESSWIDGETBEFORE
+= 0x4e0bcf8, FBUTTONRELEASEWIDGETBEFORE = 0x4e0bcf8, FACTMOUSEWINDOW =
+0x0, FDELAYEDMOUSESHIFT = {X = 0, Y = 0}, FMODALWINDOWBEFOREWAITDIALOG
+= 0x0, FONTERMINATEBEFORE = 0, FEXECUTEACTION = 0, FIDLEACTION = 0,
+FEVENTLOOPING = 29, FKEYHISTORY = 0x659bb50, FLASTSHIFTSTATE = [],
+FLASTKEY = KEY_RETURN, FLASTBUTTON = MB_LEFT, FKEYEVENTINFO = 0x0,
+FMOUSEEVENTINFO = 0x0, FMOUSEWHEELEVENTINFO = 0x0, FMOUSEWHEELFREQUMIN
+= 1, FMOUSEWHEELFREQUMAX = 100, FMOUSEWHEELDELTAMIN =
+0.050000000000000003, FMOUSEWHEELDELTAMAX = 30,
+FMOUSEWHEELACCELERATIONMAX = 30, FLASTMOUSEWHEELTIMESTAMP = 0,
+FLASTMOUSEWHEELTIMESTAMPBEFORE = 0, FMODALLEVEL = 0}, FONKEYPRESSLIST
+= 0x54e40, FONSHORTCUTLIST = 0x54e60, FONACTIVECHANGELIST = 0x54e80,
+FONWINDOWDESTROYEDLIST = 0x54ea0, FONWINIDDESTROYEDLIST = 0x54ec0,
+FONAPPLICATIONACTIVECHANGEDLIST = 0x54ee0, FONHELP = 0x54f00,
+FONSYSEVENTLIST = 0x54f20, FCARETWIDGET = 0xacbb0, FMOUSEWINID = 0,
+FDESIGNING = false, FMODALWINDOW = 0x0, FHINTWIDGET = 0x0, FHINTTIMER
+= 0x54f80, FMOUSEPARKTIMER = 0x54fa0, FMOUSEPARKEVENTINFO = {EVENTKIND
+= EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 140, Y = 4}, EVENTSTATE =
+[], TIMESTAMP = 1953564192, BUTTON = MB_NONE}, FTIMESTAMPBEFORE =
+1951095192, FLASTBUTTONPRESS = MB_LEFT, FLASTBUTTONPRESSTIMESTAMP =
+1951892192, FLASTBUTTONRELEASE = MB_LEFT, FLASTBUTTONRELEASETIMESTAMP
+= 1952345192, FDOUBLEMOUSEPRESS = false, FDOUBLEMOUSERELEASE = false,
+FWINDOWSTACK = 0x0, FTIMERTICK = false}
+
+
+#1  0042DF2D msegui.pas:14630
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=true,
+this=0x77020)
+#2  0042FD9F msegui.pas:15498 TGUIAPPLICATION__EVENTLOOP(ONCE=true,
+this=0x77020)
+#3  004636B5 mseguiintf.pas:4547 WINDOWPROC(AHWND=5243652, MSG=70,
+WPARAM=0, LPARAM=71666344)
+#4  7E368734 mseguiintf.pas:0 USER32!GetDC()
+#5  00500304 msedatalist.pas:5277
+TREALDATALIST__SETSTATDATA(INDEX=4598352, VALUE=0x44589e4, this=0x0)
+#6  7E368816 msedatalist.pas:0 USER32!GetDC()
+#7  00462A50 mseguiintf.pas:4248 GUI_RESETESCAPEPRESSED()
+#8  7E378EA0 mseguiintf.pas:0 USER32!DefWindowProcW()
+#9  00000000 mseguiintf.pas:0 ??()
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/octet-stream
+Size: 24994 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101005/a85695bf/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101005/a85695bf/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001364.html">[MSEide-MSEgui-talk] Squeezing maximized IDE's source file form
+</A></li>
+	<LI>Next message: <A HREF="001366.html">[MSEide-MSEgui-talk] SigSegv in the IDE when rearranging multiple PODPISKA's windows (win-32)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1365">[ date ]</a>
+              <a href="thread.html#1365">[ thread ]</a>
+              <a href="subject.html#1365">[ subject ]</a>
+              <a href="author.html#1365">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3CAANLkTinr9_sV_4dFt7cYXE5sQQFo2T_%2BGtBh5yH5-_yf%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001403.html">
+   <LINK REL="Next"  HREF="001405.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3CAANLkTinr9_sV_4dFt7cYXE5sQQFo2T_%2BGtBh5yH5-_yf%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Oct  8 15:39:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001403.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+        <LI>Next message: <A HREF="001405.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1404">[ date ]</a>
+              <a href="thread.html#1404">[ thread ]</a>
+              <a href="subject.html#1404">[ subject ]</a>
+              <a href="author.html#1404">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 8 October 2010 15:36, Martin Schreiber wrote:
+&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> The example does not compile with FPC 2.4 because of missing TThread.start.
+</I>
+TThread.start is an alias for TThread.Resume.  Just change it to
+Resume and it will compile.
+
+
+&gt;<i> FPC TThread mainly with synchronize(). Instead of synchronize() MSEgui uses
+</I>&gt;<i> application.lock/application.unlock.
+</I>
+Umm... that might work, but the code I'm looking at is not GUI code,
+so their is never a Application instance. The code in question is
+tiOPF (core or non-gui code, like threaded/cached logging etc).
+
+
+&gt;<i> Anyway, it makes no sense to start a thread from the main thread and then to
+</I>&gt;<i> wait on its termination because the main event loop will be dead in the
+</I>&gt;<i> meantime.
+</I>
+There is cases for this. Cached logging done via threads. It's cached
+because we don't want to slow down the main application while output
+is written to a file or window. So logging is written out to disk (or
+a GUI screen) when the thread gets time slices.  Now say you instantly
+generated 1 million log entries (so the thread has a huge backlog,
+because you have a slow hard drive), and now quit your application,
+the application needs to wait for the logging threads to complete.
+This is where the problem comes in. As soon as I call
+MyThread.WaitFor, the application is frozen - it never gets to
+terminate completely.
+
+
+&gt;<i> MSEgui has a thread safe tprogressbar where the value can be
+</I>&gt;<i> updated by threads without precautions.
+</I>
+Like I said on the fpc mailing list. My example was a stupid one, just
+to highlight the problem. The thread can be doing any long running
+process. Where I actually use TThread.WaitFor is in the cached logging
+of tiOPF.
+
+
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001403.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+	<LI>Next message: <A HREF="001405.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1404">[ date ]</a>
+              <a href="thread.html#1404">[ thread ]</a>
+              <a href="subject.html#1404">[ subject ]</a>
+              <a href="author.html#1404">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

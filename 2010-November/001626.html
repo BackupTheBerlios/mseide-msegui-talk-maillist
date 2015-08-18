@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3CAANLkTi%3D_Qz8HObgharYE6T7Gg-nAHnKX89ZPYcr%3DoYFF%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001625.html">
+   <LINK REL="Next"  HREF="001627.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3CAANLkTi%3D_Qz8HObgharYE6T7Gg-nAHnKX89ZPYcr%3DoYFF%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32">md at delfire.net
+       </A><BR>
+    <I>Mon Nov  1 19:16:30 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001625.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+        <LI>Next message: <A HREF="001627.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1626">[ date ]</a>
+              <a href="thread.html#1626">[ thread ]</a>
+              <a href="subject.html#1626">[ subject ]</a>
+              <a href="author.html#1626">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Nov 1, 2010 at 3:02 PM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> Marcos Douglas wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> How I can compile the MSEide and put the .ppu and .o files organized
+</I>&gt;&gt;<i> like \units\i386-win32 ?
+</I>&gt;<i>
+</I>&gt;<i> Please use the -FE compiler parameter.
+</I>&gt;<i> <A HREF="http://www.freepascal.org/docs-html/user/usersu14.html#x37-440005.1.3">http://www.freepascal.org/docs-html/user/usersu14.html#x37-440005.1.3</A>
+</I>&gt;<i>
+</I>&gt;<i> Compiler parameters can be set in 'Project'-'Options'-'Make'-'Make options'.
+</I>
+Can you give me an example?
+
+I use this BAT to compile:
+---------------------------------------------------
+@echo on
+set myroot=%cd%
+set myFPC=%myroot%\fpc\2.4.3
+set PATH=%myFPC%\bin\i386-win32;%PATH%
+cd mseide-msegui
+ppc386.exe apps\ide\mseide.pas -Fulib\common\* -B
+-Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel
+---------------------------------------------------
+What the best way? Put the only directory for all units ppu?
+
+Thanks,
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001625.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+	<LI>Next message: <A HREF="001627.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1626">[ date ]</a>
+              <a href="thread.html#1626">[ thread ]</a>
+              <a href="subject.html#1626">[ subject ]</a>
+              <a href="author.html#1626">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

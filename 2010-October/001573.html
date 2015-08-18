@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20keyboard%20shortcuts%20issues&In-Reply-To=%3C4CCA786A.2020400%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001571.html">
+   <LINK REL="Next"  HREF="001574.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20keyboard%20shortcuts%20issues&In-Reply-To=%3C4CCA786A.2020400%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Oct 29 09:31:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001571.html">[MSEide-MSEgui-talk] Updated mseconsts_es.pas
+</A></li>
+        <LI>Next message: <A HREF="001574.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1573">[ date ]</a>
+              <a href="thread.html#1573">[ thread ]</a>
+              <a href="subject.html#1573">[ subject ]</a>
+              <a href="author.html#1573">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+For a while I have switched back my keyboard layout to &quot;US Dvorak&quot;, but I
+found it is not optimized for programming, and I can't type the numbers
+very fast. It does make integrating keyboard shortcuts with applications a
+bit easier though.
+
+Anyway, I switched back to my preferred &quot;Programmer Dvorak&quot; layout (now
+comes standard with Ubuntu for a few releases already). Setting up bookmark
+keyboard shortcuts in MSEide has a few issues. See attached image for what
+I tried. The numbers in the screenshot is not self explanatory, so I'll
+explain how I setup the shortcuts.
+
+Setting bookmarks I used:
+  *  Ctrl+Shift+&lt;number from numpad&gt;
+
+My numlock key is on, so if I'm in any editor and I press the numpad key 7,
+I get the number 7.
+
+Clearing bookmarks I used:
+  *   Ctrl+Shift+&lt;numpad minus key&gt;
+
+To jump to bookmarks I used:
+  *   Ctrl+&lt;what is a normal qwerty keyboard's top number row&gt;
+
+So what is Ctrl+1 or a qwerty keyboard will be Ctrl+&amp; on the Programmer
+Dvorak keyboard. My buttons cap on my keyboard are not changed, so to me,
+it looks like I am pressing Ctrl+1 (my keyboard is really a qwerty
+keyboard, just layout is changed via software), when in fact it is Ctrl+&amp;.
+In Programmer Dvorak, the numbers in the top row is accessible via Shift.
+Just pressing the top row actually gives the symbols: eg: &amp;[{}(=*)+
+
+
+The problem #1:
+  * Setting up the shortcuts in MSEide seem to work fine, and no
+    conflicts are shown. Again, see attached screenshot.
+  * No while I am in the MSEide editor, I want to set the number 7
+    bookmark, so I press Ctrl+Shift+&lt;numpad 7&gt;
+    In the editor, all text is now highlighted, and the editor jumps
+    to the first line of the unit.
+
+So it seems like there is a &quot;source editor widget&quot; key conflict, that is
+not shown in the MSEide shortcuts dialog.
+
+Clearing a bookmark with my shortcut setup seems to work. Also jumping to a
+bookmark seems to work with my setup.
+
+The problem #1:
+ * Seeing that jumping to bookmarks work, I thought I would use the top
+   number row for setting bookmarks too. In Programmer Dvorak they aren't
+   really numbers, but remember my keycaps are not changed, so looking at
+   they keyboard, it looks like numbers.
+ * Again, setting up the shortcuts it the IDE seems to go well.
+ * Setting bookmarks 1, 2, 3 seems to work well.
+ * Setting bookmark 4, actually moves and sets bookmark 3.
+ * I thought I made a mistaking in the Shortcuts dialog, but in fact I did
+   not. No conflicts are shown, and the hex values are different for each
+   shortcut, get bookmark shortcut for 3 and 4 seem to be the same for
+   the source editor.
+
+
+I'm currently using Ubuntu 10.04 (with all latest updates installed).
+Programmer Dvorak is standard with Ubuntu since 8.10 I think.
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mseide_keyboard_shortcuts.png
+Type: image/png
+Size: 13141 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101029/4d42722c/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101029/4d42722c/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001571.html">[MSEide-MSEgui-talk] Updated mseconsts_es.pas
+</A></li>
+	<LI>Next message: <A HREF="001574.html">[MSEide-MSEgui-talk] MSEide keyboard shortcuts issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1573">[ date ]</a>
+              <a href="thread.html#1573">[ thread ]</a>
+              <a href="subject.html#1573">[ subject ]</a>
+              <a href="author.html#1573">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

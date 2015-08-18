@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tfieldparamlink%20%2B%20tfieldlink%20not%20working%0A%09as%20expected.&In-Reply-To=%3CAANLkTimTwc7z%3DgFaot26KsDxPdjscG6N5%2B%2BRmrbN73uf%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001748.html">
+   <LINK REL="Next"  HREF="001752.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tfieldparamlink%20%2B%20tfieldlink%20not%20working%0A%09as%20expected.&In-Reply-To=%3CAANLkTimTwc7z%3DgFaot26KsDxPdjscG6N5%2B%2BRmrbN73uf%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.">jujibo at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 13:05:53 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001748.html">[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.
+</A></li>
+        <LI>Next message: <A HREF="001752.html">[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1751">[ date ]</a>
+              <a href="thread.html#1751">[ thread ]</a>
+              <a href="subject.html#1751">[ subject ]</a>
+              <a href="author.html#1751">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dunno what you mean for 'inteference'. Both, master and detail tmsesqlquery
+fires after insert event no other event are fired, nor in datasources. Data
+are displayed in  tdbwidgetgrid widgets.
+
+I only used this method (link fields) for testing time ago.. and I forgot
+it. I usually intercept datasource ondatachanged to do the trick.
+
+
+Julio
+
+2010/11/4 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Thursday, 4. November 2010 12.03:59 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; Hi
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I use tfieldparamlink + tfieldlink in one of my projects (for
+</I>&gt;<i> &gt; master-&gt;detail facility) and it stopped working as expected. I see it
+</I>&gt;<i> omits
+</I>&gt;<i> &gt; always the first record in detail table, so when the detail table has
+</I>&gt;<i> only
+</I>&gt;<i> &gt; a record nothing is shown. I can add records to the detail table and all
+</I>&gt;<i> is
+</I>&gt;<i> &gt; fine except not showing the first record.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Is something changed?. It was working time ago.
+</I>&gt;<i> &gt;
+</I>&gt;<i> tparam.value is now published and can be changed in designtime. Is there an
+</I>&gt;<i> interference with tfieldparamlink?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tfieldlink.png
+Type: image/png
+Size: 22953 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: tfieldparamlink.png
+Type: image/png
+Size: 27420 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101104/840b0850/attachment-0001.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001748.html">[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.
+</A></li>
+	<LI>Next message: <A HREF="001752.html">[MSEide-MSEgui-talk] tfieldparamlink + tfieldlink not working	as expected.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1751">[ date ]</a>
+              <a href="thread.html#1751">[ thread ]</a>
+              <a href="subject.html#1751">[ subject ]</a>
+              <a href="author.html#1751">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

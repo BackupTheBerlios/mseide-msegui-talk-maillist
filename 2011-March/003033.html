@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3C201103041133.59648.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003031.html">
+   <LINK REL="Next"  HREF="003036.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3C201103041133.59648.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 11:33:59 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003031.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003036.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3033">[ date ]</a>
+              <a href="thread.html#3033">[ thread ]</a>
+              <a href="subject.html#3033">[ subject ]</a>
+              <a href="author.html#3033">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 04 March 2011 10:54:18 Julio Jim&#233;nez wrote:
+&gt;<i> &quot;MS Sans Serif&quot; is a bitmap font.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Really? in Windows XP it says, True Type Outlines. Are we speaking about
+</I>&gt;<i>
+</I>&gt;<i> different fonts?
+</I>
+That has probably changed from win2000 to XP or by an installed font pack.
+
+&gt;<i> .. Sorry I don't want to be noisy nor wasting your time. 
+</I>&gt;<i> I'm just wondering why old versions of MSEide+MSEgui compiled for windows
+</I>&gt;<i> have a look and feel different for fonts and sizes. You told me time ago
+</I>&gt;<i> have changed default font from MS Sans Serif to Tahoma. So I assumed all
+</I>&gt;<i> this happen because Tahoma font.
+</I>&gt;<i>
+</I>&gt;<i> Then I discovered, in windows XP sp3 (I haven't other versions), Tahoma
+</I>&gt;<i> font size 14 Bold is rendering using antialiasing (I provided a pic)
+</I>&gt;<i> windows system dialog, MS WordPad, java, lazarus... all they render this
+</I>&gt;<i> font using antialiasing and not MSEide+MSEgui.
+</I>&gt;<i>
+</I>&gt;<i> Then I tried to fix this changing default font in my program for windows
+</I>&gt;<i> versions (so the user can select the default font and size for the program,
+</I>&gt;<i> because MSEgui doesn't use the default windows font size by default) but
+</I>&gt;<i> can't get it working as I expected. I can change font family and size, and
+</I>&gt;<i> all is working fine (in the way I told earlier) except the antialiasing.
+</I>&gt;<i> This may be my fault because lack of knowledge about MSEgui in fonts usage.
+</I>&gt;<i>
+</I>Maybe today CLEARTYPE_QUALITY is necessary. I fear to use this enum because I 
+don't know what happes in older Windows versions. CLEARTYPE_QUALITY is not 
+even defined in windows unit. Cleartype AFAIK uses kerning and screen metrics 
+are different than printer metrics, both is broblematic.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003031.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003036.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3033">[ date ]</a>
+              <a href="thread.html#3033">[ thread ]</a>
+              <a href="subject.html#3033">[ subject ]</a>
+              <a href="author.html#3033">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

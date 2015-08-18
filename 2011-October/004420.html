@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] bug reports and wishes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20bug%20reports%20and%20wishes&In-Reply-To=%3C201110262008.26500.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004416.html">
+   <LINK REL="Next"  HREF="004413.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] bug reports and wishes</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20bug%20reports%20and%20wishes&In-Reply-To=%3C201110262008.26500.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] bug reports and wishes">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Oct 26 20:08:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004416.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+        <LI>Next message: <A HREF="004413.html">[MSEide-MSEgui-talk] Error: Can't create object file:	units\i386-win32\msereal.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4420">[ date ]</a>
+              <a href="thread.html#4420">[ thread ]</a>
+              <a href="subject.html#4420">[ subject ]</a>
+              <a href="author.html#4420">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 26 October 2011 17.54:14 minoshi wrote:
+&gt;<i> 25.10.2011 17:00, Martin Schreiber &#1087;&#1080;&#1096;&#1077;&#1090;:
+</I>&gt;<i> &gt;&gt; 1). Design time : access violation when cut components connected via
+</I>&gt;<i> &gt;&gt; tspacer (tspacer.linkleft =&lt;some widget1&gt;,tspacer.linkright =&lt;some
+</I>&gt;<i> &gt;&gt; widget2&gt;, etc)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Works for me. Please send a test project and steps how to reproduce.
+</I>&gt;<i> 
+</I>&gt;<i> here link to video with step by step
+</I>&gt;<i> <A HREF="http://almin-soft.nx0.ru/media/files/binaries/video.tar.bz2">http://almin-soft.nx0.ru/media/files/binaries/video.tar.bz2</A>
+</I>&gt;<i> 
+</I>Please try again with git master 5a2d00a2bbc1e73f94ce3cd8fb801d1fa54da5b7.
+
+&gt;<i> &gt;&gt; 3). Ttabwidget : mainfo.onchildmouseevent not work with widgets placed
+</I>&gt;<i> &gt;&gt; on ttabwidget. Why?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Probably because a widget in the hierarchy eats the event by setting
+</I>&gt;<i> &gt; es_processed. Only not used mouse and key events are reported to parent.
+</I>&gt;<i> 
+</I>&gt;<i> Sorry, Martin, can`t catch what you mean :( (Google.translate not ideal)
+</I>&gt;<i>   And where this &quot;es_processed&quot; ?
+</I>&gt;<i> 
+</I>See msegui.pas:
+
+&quot;
+procedure twidget.childmouseevent(const sender: twidget;
+                    var info: mouseeventinfoty);
+begin
+ if not (es_processed in info.eventstate) then begin
+  if fparentwidget &lt;&gt; nil then begin
+   fparentwidget.childmouseevent(sender,info);
+  end;
+ end;
+end;
+
+procedure twidget.mouseevent(var info: mouseeventinfoty);
+[...]
+
+begin
+ exclude(fwidgetstate,ws_newmousecapture);
+ if info.eventstate * [es_child,es_processed] = [] then begin
+  include(info.eventstate,es_child);
+  try
+   childmouseevent(self,info);
+  finally
+   exclude(info.eventstate,es_child);
+  end;
+ end;
+&quot;
+Mouse event processing is stopped if es_processed is set in info -&gt; if a 
+widget reacts on mouse event child mouse event of parent widget will not be 
+called.
+
+&gt;<i> 
+</I>&gt;<i> &gt;&gt; A couple wishes :
+</I>&gt;<i> &gt;&gt; 
+</I>&gt;<i> &gt;&gt; 1).Is there way to change tab position of source page without recompilng
+</I>&gt;<i> &gt;&gt; MSEide?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; No. Why?
+</I>&gt;<i> 
+</I>&gt;<i> Are you work with EEEPC 701  netbook?  I`m happy owner of it :) Great
+</I>&gt;<i> device but maximum screen resolution 800x480. Of cause, I can change
+</I>&gt;<i> width of tabs, but in this case i can`t read captions on tabs. So i need
+</I>&gt;<i> to recompile mseide with tabs placed on top.
+</I>&gt;<i> 
+</I>Attached source form with about 800x480. It seems to me height is more 
+limiting then width?
+
+&gt;<i> &gt;&gt; 2).caption property write to statfile?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Which components?
+</I>&gt;<i> 
+</I>&gt;<i> All.  With captions in statfile - there is very simple way to make
+</I>&gt;<i> multilanguage programs. Make copy of statfile and translate second copy.
+</I>&gt;<i> Then runtime change language something like this:
+</I>&gt;<i> 
+</I>&gt;<i> procedure tmainfo.on_set_ru(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i>    tstatfile1.filename := 'ru.lng';
+</I>&gt;<i>    tstatfile1.readstat;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>&gt;<i> procedure tmainfo.on_set_en(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i>    tstatfile1.filename := 'en.lng';
+</I>&gt;<i>    tstatfile1.readstat;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>&gt;<i> Statfile translate simply via text editor
+</I>&gt;<i> 
+</I>This is not the purpose of statfile property of editwidgets. The linked 
+statfile should automatically save and restore user settings. Please use 
+MSEi18n for translations or make a special tstatfile like &quot;translation 
+loader&quot;.
+
+&gt;<i> &gt;&gt; 3).borderless without stayontop form state.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Difficult to implement platform independent and problematic because users
+</I>&gt;<i> &gt; always should be able to move, resize and close windows. Borderless
+</I>&gt;<i> &gt; fullscreen should work.
+</I>&gt;<i> 
+</I>&gt;<i> it's a pity :(
+</I>
+What is the purpose of borderless non top level widgets?
+
+Martin
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mse_800_480.png
+Type: image/png
+Size: 44347 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20111026/3b32e36e/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20111026/3b32e36e/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004416.html">[MSEide-MSEgui-talk] bug reports and wishes
+</A></li>
+	<LI>Next message: <A HREF="004413.html">[MSEide-MSEgui-talk] Error: Can't create object file:	units\i386-win32\msereal.o
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4420">[ date ]</a>
+              <a href="thread.html#4420">[ thread ]</a>
+              <a href="subject.html#4420">[ subject ]</a>
+              <a href="author.html#4420">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

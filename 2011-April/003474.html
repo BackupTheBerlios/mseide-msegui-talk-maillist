@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3C4DB64019.10301%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003469.html">
+   <LINK REL="Next"  HREF="003475.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3C4DB64019.10301%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Apr 26 05:46:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003469.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+        <LI>Next message: <A HREF="003475.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3474">[ date ]</a>
+              <a href="thread.html#3474">[ thread ]</a>
+              <a href="subject.html#3474">[ subject ]</a>
+              <a href="author.html#3474">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 25.04.2011 14:57, schrieb Christian Nobel:
+&gt;<i> On 15-04-2011 09:05, Christian Nobel wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> - call&lt;yourdropdowneditwidgetinstance&gt;.dropdown.dropdown() in
+</I>&gt;&gt;&gt;<i> &lt;yourdropdowneditwidgetinstance&gt;.onactivate (not tested).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Great works
+</I>&gt;<i>
+</I>&gt;<i> How can I achive the opposite - meaning force the dropdown to close
+</I>&gt;<i> programmly?
+</I>&gt;<i>
+</I>One line below dropdown():
+&quot;
+  tcustomdropdowncontroller = class(teventpersistent,ibutton,ievent,
+                                    idropdowncontroller,idataeditcontroller)
+[...]
+   public
+    constructor create(const intf: idropdown); reintroduce;
+    destructor destroy; override;
+    procedure dropdown; virtual;
+    procedure canceldropdown; &lt;&lt;&lt;&lt;&lt;&lt;&lt;------
+[...]
+&quot;
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003469.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+	<LI>Next message: <A HREF="003475.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3474">[ date ]</a>
+              <a href="thread.html#3474">[ thread ]</a>
+              <a href="subject.html#3474">[ subject ]</a>
+              <a href="author.html#3474">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

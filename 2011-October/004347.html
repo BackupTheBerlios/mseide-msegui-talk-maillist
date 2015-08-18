@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tterminal again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C4E9DBF66.8000507%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004345.html">
+   <LINK REL="Next"  HREF="004348.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tterminal again</H1>
+    <B>minoshi</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C4E9DBF66.8000507%40yandex.ru%3E"
+       TITLE="[MSEide-MSEgui-talk] tterminal again">minoshi at yandex.ru
+       </A><BR>
+    <I>Tue Oct 18 20:03:18 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004345.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+        <LI>Next message: <A HREF="004348.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4347">[ date ]</a>
+              <a href="thread.html#4347">[ thread ]</a>
+              <a href="subject.html#4347">[ subject ]</a>
+              <a href="author.html#4347">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> Thanks, I made a program which copies the PTY output to a file:
+</I>&gt;<i> <A HREF="http://gitorious.org/mseuniverse/mseuniverse/trees/master/tools/utilities/ptytee">http://gitorious.org/mseuniverse/mseuniverse/trees/master/tools/utilities/ptytee</A>
+</I>&gt;<i>
+</I>&gt;<i> minoshi, can you run
+</I>&gt;<i> &quot;
+</I>&gt;<i> ptytee --command=&quot;pacman -Sw acl&quot; --file=test.txt
+</I>&gt;<i> &quot;
+</I>&gt;<i> and send the result?
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>
+
+no result.
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> &#1053;&#1086;&#1074;&#1099;&#1081;]# LANG=en_US.utf8 ./ptytee --command=&quot;pacman -Sw acl&quot; 
+--file=test.txtresolving dependencies...
+
+Targets (1): acl-2.2.51-1
+
+Total Download Size:    0.13 MB
+
+Proceed with download? [Y/n] y
+
+
+And program stop here. As I understand, ptytee can`t send answer to process.
+I add option --noconfirm to command line and got that :
+
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> tee]# LANG=en_US.utf8 ./ptytee --command=&quot;pacman -S 
+--noconfirm  acl&quot; --file=test.txt
+warning: acl-2.2.51-1 is up to date -- reinstalling
+resolving dependencies...
+looking for inter-conflicts...
+
+Targets (1): acl-2.2.51-1
+
+Total Download Size:    0.13 MB
+Total Installed Size:   0.59 MB
+
+Proceed with installation? [Y/n]
+::<i> Retrieving packages from core...
+</I>downloading acl-2.2.51-1-i686.pkg.tar.xz...
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> tee]#
+
+
+the test file:
+
+warning: acl-2.2.51-1 is up to date -- reinstalling
+resolving dependencies...
+looking for inter-conflicts...
+
+Targets (1): acl-2.2.51-1
+
+Total Download Size:    0.13 MB
+Total Installed Size:   0.59 MB
+
+Proceed with installation? [Y/n]
+::<i> Retrieving packages from core...
+</I>downloading acl-2.2.51-1-i686.pkg.tar.xz...
+
+
+
+
+-- 
+Yours,
+Alexandre Minoshi
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004345.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+	<LI>Next message: <A HREF="004348.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4347">[ date ]</a>
+              <a href="thread.html#4347">[ thread ]</a>
+              <a href="subject.html#4347">[ subject ]</a>
+              <a href="author.html#4347">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

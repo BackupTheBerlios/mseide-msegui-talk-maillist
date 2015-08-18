@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201108300748.57933.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004127.html">
+   <LINK REL="Next"  HREF="004129.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201108300748.57933.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Aug 30 07:48:57 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004127.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004129.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4128">[ date ]</a>
+              <a href="thread.html#4128">[ thread ]</a>
+              <a href="subject.html#4128">[ subject ]</a>
+              <a href="author.html#4128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Montag 29 August 2011, 21:38:33 schrieb Sieghard:
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> Du schriebst am Mon, 29 Aug 2011 07:46:35 +0200:
+</I>&gt;<i> &gt; &gt; The line via stderr seems to be inserted erratically, or rather
+</I>&gt;<i> &gt; &gt; _immedately_ after being issued, irrespecting the output state of the
+</I>&gt;<i> &gt; &gt; stdout derived lines. The linux terminal queues them correctly.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; True. How to fix? stdout and stderr pipereader both run in an own thread.
+</I>&gt;<i> 
+</I>&gt;<i> Synchronize them via a semaphore or something similar?
+</I>&gt;<i> The stdout lines seem to be issued sequentially, possibly even through a
+</I>&gt;<i> single write on the part of the called program. This should be carried
+</I>&gt;<i> through to the output procedure for display - as long as something was
+</I>&gt;<i> received from stdout and not displayed fully, the semaphore should stay
+</I>&gt;<i> locked. Afterwards, the line received via stderr can be displayed, and the
+</I>&gt;<i> reader process should lock the semaphore for itself, so stdout text cannot
+</I>&gt;<i> be displayed until stderr is finished with its current activity.
+</I>&gt;<i> 
+</I>It is done as you describe. If either of the two pipereader are active, it 
+will read all available data. While reading the other pipe is blocked by 
+application.lock() calls.
+I assume the timing is as follows:
+&quot;
+ stdout: checking dependencies...
+ stdout:
+ stdout: Remove (1): zip-3.0-2
+ stdout:
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;------ task switch
+ stdout: Total Removed Size:   0,49 MB
+ stdout:
+!stderr: Do you want to remove these packages? [Y/n] ^C
+&quot;
+It is undefined if the stderr or stdout reader threads will be activated after 
+the task switch.
+
+&gt;<i> _Does_ your display procedure allow for asynchrounously mixing text from
+</I>&gt;<i> different writers? If so, the above method should help.
+</I>
+It turned out that I forgot to introduce a flag pro_errortoout in 
+tmseprocess.options which feeds the stdout pipe to stdout and stderror in 
+execmse2() where the file descriptor will be dupe2() 'd twice. Fixed in trunk 
+4777.
+Minoshi, does activating pro_errortoout help?
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004127.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004129.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4128">[ date ]</a>
+              <a href="thread.html#4128">[ thread ]</a>
+              <a href="subject.html#4128">[ subject ]</a>
+              <a href="author.html#4128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

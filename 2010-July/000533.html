@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tsequencelink vs filter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tsequencelink%20vs%20filter&In-Reply-To=%3Ci1ottb%2491v%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000531.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tsequencelink vs filter</H1>
+    <B>Zsolt Szokolai</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tsequencelink%20vs%20filter&In-Reply-To=%3Ci1ottb%2491v%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tsequencelink vs filter">soky64 at gmail.com
+       </A><BR>
+    <I>Fri Jul 16 08:23:40 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000534.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+        <LI>Next message: <A HREF="000531.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#533">[ date ]</a>
+              <a href="thread.html#533">[ thread ]</a>
+              <a href="subject.html#533">[ subject ]</a>
+              <a href="author.html#533">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010.07.16. 6:17 keltez&#233;ssel, Ivanko B &#237;rta:
+&gt;&gt;<i> I set up a tsequencelink for a primary key field. I omitted this id field from
+</I>&gt;&gt;<i> tdbwidgetgrid and it's worked as expected (get nextval and fill it into key field)
+</I>&gt;&gt;<i> But the request is raised: filter by id field. So I set up as filter and it's
+</I>&gt;&gt;<i> working well.
+</I>&gt;&gt;<i> But sometimes get and fill the nex value unnecessary when query in filter edit mode.
+</I>&gt;&gt;<i> This is error or feature?
+</I>&gt;&gt;<i> When should get nextval? I think only when just before insert a new record, not
+</I>&gt;&gt;<i> when empty the target datafield.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Why do use use tsequencelink (wanna know exact sequence values, me
+</I>&gt;<i> guess ) ? It's mainly needed for 100% safe handling master-detuil
+</I>&gt;<i> table relationships since the DB facilties (nextval/currval)  is
+</I>&gt;<i> unreliable here (other DB clients may affect nextval thus currval). If
+</I>&gt;<i> Your case isn't master-datial then You may use the DB facilities:
+</I>&gt;<i>
+</I>&gt;<i> CREATE SEQUENCE uz_provinces_id_seq;
+</I>&gt;<i>
+</I>&gt;<i> CREATE TABLE uz_provinces (
+</I>&gt;<i>    id INTEGER PRIMARY KEY DEFAULT nextva('&quot;uz_provinces_id_seq&quot;'),
+</I>&gt;<i>   code INTEGER,
+</I>&gt;<i>   name TEXT,
+</I>&gt;<i> ...
+</I>&gt;<i> );
+</I>&gt;<i>
+</I>&gt;<i> INSERT INTO uz_provinces (code, name) VALUES (1, 'Tashkent'); /* no ID
+</I>&gt;<i> vale supplied - it'll be read from the bound sequence */
+</I>&gt;<i>
+</I>&gt;<i> It will generate a new value sequence value when each inserting -
+</I>&gt;<i> exactly what TYou need :)
+</I>
+And exactly I doing this! ;)
+There was a litle trouble: instruct the automatic insert query leave alone the 
+id field. I kicked out by pfInUpdate based on Martins help, thank you.
+
+Zsolt
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000534.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+	<LI>Next message: <A HREF="000531.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#533">[ date ]</a>
+              <a href="thread.html#533">[ thread ]</a>
+              <a href="subject.html#533">[ subject ]</a>
+              <a href="author.html#533">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

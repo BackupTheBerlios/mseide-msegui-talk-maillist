@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Broken PS-output for non-latin text on	PS-printer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Broken%20PS-output%20for%20non-latin%20text%20on%0A%09PS-printer&In-Reply-To=%3C0skne6t1k023g36i5op3jlhfekrgmbool3%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001919.html">
+   <LINK REL="Next"  HREF="001920.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Broken PS-output for non-latin text on	PS-printer</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Broken%20PS-output%20for%20non-latin%20text%20on%0A%09PS-printer&In-Reply-To=%3C0skne6t1k023g36i5op3jlhfekrgmbool3%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Broken PS-output for non-latin text on	PS-printer">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Nov 23 15:57:30 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001919.html">[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch
+</A></li>
+        <LI>Next message: <A HREF="001920.html">[MSEide-MSEgui-talk] Broken PS-output for non-latin text on	PS-printer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1918">[ date ]</a>
+              <a href="thread.html#1918">[ thread ]</a>
+              <a href="subject.html#1918">[ subject ]</a>
+              <a href="author.html#1918">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Non-latin chars are displayed as empty squares.
+
+win-32 on fpc-2.4.3, any report of the PODPISKA.
+
+The below &quot;$windows/Fonts/Fiontmap&quot; file is used:
+
+/TTF-Arhangai (arhangai.ttf)  ;
+/TTF-Arhangai (Arhangai.ttf)  ;
+/TTF-Arial  (arial.ttf) ;
+/TTF-Arial-Black  (ariblk.ttf)  ;
+/TTF-Arial-Bold (arialbd.ttf) ;
+/TTF-Arial-Bold-Italic  (arialbi.ttf) ;
+/TTF-Arial-Italic (ariali.ttf)  ;
+/TTF-Comic-Sans-MS-Bold (comicbd.ttf) ;
+/TTF-Comic-Sans-MS  (comic.ttf) ;
+/TTF-Courier-New-Bold (courbd.ttf)  ;
+/TTF-Courier-New-Bold-Italic  (courbi.ttf)  ;
+/TTF-Courier-New  (cour.ttf)  ;
+/TTF-Courier-New-Italic (couri.ttf) ;
+/TTF-DejaVu-Sans-Bold (DejaVu-Sans-Bold.ttf)  ;
+/TTF-DejaVu-Sans-Bold (DejaVuSans-Bold.ttf) ;
+/TTF-DejaVu-Sans-Bold-Italic  (DejaVu-Sans-Bold-Oblique.ttf)  ;
+/TTF-DejaVu-Sans-Bold-Italic  (DejaVuSans-BoldOblique.ttf)  ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold
+(DejaVu-Sans-Condensed-Bold.ttf)  ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold
+(DejaVuSansCondensed-Bold.ttf)  ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold-Italic
+(DejaVu-Sans-Condensed-Bold-Oblique.ttf)  ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold-Italic
+(DejaVuSansCondensed-BoldOblique.ttf) ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed  (DejaVu-Sans-Condensed.ttf) ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed  (DejaVuSansCondensed.ttf) ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Italic
+(DejaVu-Sans-Condensed-Oblique.ttf) ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Italic
+(DejaVuSansCondensed-Oblique.ttf) ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Light  (DejaVu-Sans-ExtraLight.ttf)  ;
+/TTF-DejaVu-Sans,DejaVu-Sans-Light  (DejaVuSans-ExtraLight.ttf) ;
+/TTF-DejaVu-Sans  (DejaVu-Sans.ttf) ;
+/TTF-DejaVu-Sans  (DejaVuSans.ttf)  ;
+/TTF-DejaVu-Sans-Italic (DejaVu-Sans-Oblique.ttf) ;
+/TTF-DejaVu-Sans-Italic (DejaVuSans-Oblique.ttf)  ;
+/TTF-DejaVu-Sans-Mono-Bold  (DejaVu-Sans-Mono-Bold.ttf) ;
+/TTF-DejaVu-Sans-Mono-Bold  (DejaVuSansMono-Bold.ttf) ;
+/TTF-DejaVu-Sans-Mono-Bold-Italic (DejaVu-Sans-Mono-Bold-Oblique.ttf)
+;
+/TTF-DejaVu-Sans-Mono-Bold-Italic (DejaVuSansMono-BoldOblique.ttf)  ;
+/TTF-DejaVu-Sans-Mono (DejaVu-Sans-Mono.ttf)  ;
+/TTF-DejaVu-Sans-Mono (DejaVuSansMono.ttf)  ;
+/TTF-DejaVu-Sans-Mono-Italic  (DejaVu-Sans-Mono-Oblique.ttf)  ;
+/TTF-DejaVu-Sans-Mono-Italic  (DejaVuSansMono-Oblique.ttf)  ;
+/TTF-DejaVu-Serif-Bold  (DejaVu-Serif-Bold.ttf) ;
+/TTF-DejaVu-Serif-Bold  (DejaVuSerif-Bold.ttf)  ;
+/TTF-DejaVu-Serif-Bold-Italic (DejaVu-Serif-Bold-Oblique.ttf) ;
+/TTF-DejaVu-Serif-Bold-Italic (DejaVuSerif-BoldOblique.ttf) ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold
+(DejaVu-Serif-Condensed-Bold.ttf) ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold
+(DejaVuSerifCondensed-Bold.ttf) ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold-Italic
+(DejaVu-Serif-Condensed-Bold-Oblique.ttf) ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold-Italic
+(DejaVuSerifCondensed-BoldOblique.ttf)  ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed  (DejaVu-Serif-Condensed.ttf)
+;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed  (DejaVuSerifCondensed.ttf) ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Italic
+(DejaVu-Serif-Condensed-Oblique.ttf)  ;
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Italic
+(DejaVuSerifCondensed-Oblique.ttf)  ;
+/TTF-DejaVu-Serif (DejaVu-Serif.ttf)  ;
+/TTF-DejaVu-Serif (DejaVuSerif.ttf) ;
+/TTF-DejaVu-Serif-Italic  (DejaVu-Serif-Oblique.ttf)  ;
+/TTF-DejaVu-Serif-Italic  (DejaVuSerif-Oblique.ttf) ;
+/TTF-Franklin-Gothic-Medium (framd.ttf) ;
+/TTF-Franklin-Gothic-Medium-Italic  (framdit.ttf) ;
+/TTF-FreeMono-Bold  (FreeMono-Bold.ttf) ;
+/TTF-FreeMono-Bold  (FreeMonoBold.ttf)  ;
+/TTF-FreeMono-Bold-Italic (FreeMono-BoldOblique.ttf)  ;
+/TTF-FreeMono-Bold-Italic (FreeMonoBoldOblique.ttf) ;
+/TTF-FreeMono (FreeMono-Medium.ttf) ;
+/TTF-FreeMono (FreeMono.ttf)  ;
+/TTF-FreeMono-Italic  (FreeMono-Oblique.ttf)  ;
+/TTF-FreeMono-Italic  (FreeMonoOblique.ttf) ;
+/TTF-FreeSans-Bold  (FreeSans-Bold.ttf) ;
+/TTF-FreeSans-Bold  (FreeSansBold.ttf)  ;
+/TTF-FreeSans-Bold-Italic (FreeSans-BoldOblique.ttf)  ;
+/TTF-FreeSans-Bold-Italic (FreeSansBoldOblique.ttf) ;
+/TTF-FreeSans (FreeSans-Medium.ttf) ;
+/TTF-FreeSans (FreeSans.ttf)  ;
+/TTF-FreeSans-Italic  (FreeSans-Oblique.ttf)  ;
+/TTF-FreeSans-Italic  (FreeSansOblique.ttf) ;
+/TTF-FreeSerif-Bold (FreeSerif-Bold.ttf)  ;
+/TTF-FreeSerif-Bold (FreeSerifBold.ttf) ;
+/TTF-FreeSerif-Bold-Italic  (FreeSerif-BoldItalic.ttf)  ;
+/TTF-FreeSerif-Bold-Italic  (FreeSerifBoldItalic.ttf) ;
+/TTF-FreeSerif  (FreeSerif-Medium.ttf)  ;
+/TTF-FreeSerif  (FreeSerif.ttf) ;
+/TTF-FreeSerif-Italic (FreeSerif-Italic.ttf)  ;
+/TTF-FreeSerif-Italic (FreeSerifItalic.ttf) ;
+/TTF-Georgia-Bold (georgiab.ttf)  ;
+/TTF-Georgia-Bold-Italic  (georgiaz.ttf)  ;
+/TTF-Georgia  (georgia.ttf) ;
+/TTF-Georgia-Italic (georgiai.ttf)  ;
+/TTF-Impact (impact.ttf)  ;
+/TTF-Lucida-Console (lucon.ttf) ;
+/TTF-Lucida-Sans-Unicode  (l_10646.ttf) ;
+/TTF-Microsoft-Sans-Serif (micross.ttf) ;
+/TTF-Palatino-Linotype-Bold-Italic  (palabi.ttf)  ;
+/TTF-Palatino-Linotype-Bold (palab.ttf) ;
+/TTF-Palatino-Linotype-Italic (palai.ttf) ;
+/TTF-Palatino-Linotype  (pala.ttf)  ;
+/TTF-Sylfaen,SylfaenARM (sylfaen.ttf) ;
+/TTF-Tahoma-Bold  (tahomabd.ttf)  ;
+/TTF-Tahoma (tahoma.ttf)  ;
+/TTF-Thryomanes-Bold-Italic (thrybi__.ttf)  ;
+/TTF-Thryomanes-Bold-Italic (Thryomanes-BoldItalic.ttf) ;
+/TTF-Thryomanes-Bold  (thryb___.ttf)  ;
+/TTF-Thryomanes-Bold  (Thryomanes-Bold.ttf) ;
+/TTF-Thryomanes-Italic  (thryi___.ttf)  ;
+/TTF-Thryomanes-Italic  (Thryomanes-Italic.ttf) ;
+/TTF-Thryomanes (Thryomanes-Normal.ttf) ;
+/TTF-Thryomanes (thryrg__.ttf)  ;
+/TTF-Times-New-Roman-Bold-Italic  (timesbi.ttf) ;
+/TTF-Times-New-Roman-Bold (timesbd.ttf) ;
+/TTF-Times-New-Roman-Italic (timesi.ttf)  ;
+/TTF-Times-New-Roman  (times.ttf) ;
+/TTF-Trebuchet-MS-Bold-Italic (trebucbi.ttf)  ;
+/TTF-Trebuchet-MS-Bold  (trebucbd.ttf)  ;
+/TTF-Trebuchet-MS-Italic  (trebucit.ttf)  ;
+/TTF-Trebuchet-MS (trebuc.ttf)  ;
+/TTF-Verdana-Bold-Italic  (verdanaz.ttf)  ;
+/TTF-Verdana-Bold (verdanab.ttf)  ;
+/TTF-Verdana-Italic (verdanai.ttf)  ;
+/TTF-Verdana  (verdana.ttf) ;
+
+(Arhangai)  /TTF-Arhangai ;
+(Arial Black) /TTF-Arial-Black  ;
+(Arial-BoldItalic)  /TTF-Arial-Bold-Italic  ;
+(Arial-Bold)  /TTF-Arial-Bold ;
+(Arial-Italic)  /TTF-Arial-Italic ;
+(Arial) /TTF-Arial  ;
+(Comic Sans MS-Bold)  /TTF-Comic-Sans-MS-Bold ;
+(Comic Sans MS) /TTF-Comic-Sans-MS  ;
+(Courier New-BoldItalic)  /TTF-Courier-New-Bold-Italic  ;
+(Courier New-Bold)  /TTF-Courier-New-Bold ;
+(Courier New-Italic)  /TTF-Courier-New-Italic ;
+(Courier New) /TTF-Courier-New  ;
+(DejaVu Sans-BoldItalic)  /TTF-DejaVu-Sans-Bold-Italic  ;
+(DejaVu Sans-Bold)  /TTF-DejaVu-Sans-Bold ;
+(DejaVu Sans,DejaVu Sans Condensed-BoldItalic)
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold-Italic  ;
+(DejaVu Sans,DejaVu Sans Condensed-Bold)
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Bold ;
+(DejaVu Sans,DejaVu Sans Condensed-Italic)
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed-Italic ;
+(DejaVu Sans,DejaVu Sans Condensed)
+/TTF-DejaVu-Sans,DejaVu-Sans-Condensed  ;
+(DejaVu Sans,DejaVu Sans Light) /TTF-DejaVu-Sans,DejaVu-Sans-Light  ;
+(DejaVu Sans-Italic)  /TTF-DejaVu-Sans-Italic ;
+(DejaVu Sans Mono-BoldItalic) /TTF-DejaVu-Sans-Mono-Bold-Italic ;
+(DejaVu Sans Mono-Bold) /TTF-DejaVu-Sans-Mono-Bold  ;
+(DejaVu Sans Mono-Italic) /TTF-DejaVu-Sans-Mono-Italic  ;
+(DejaVu Sans Mono)  /TTF-DejaVu-Sans-Mono ;
+(DejaVu Sans) /TTF-DejaVu-Sans  ;
+(DejaVu Serif-BoldItalic) /TTF-DejaVu-Serif-Bold-Italic ;
+(DejaVu Serif-Bold) /TTF-DejaVu-Serif-Bold  ;
+(DejaVu Serif,DejaVu Serif Condensed-BoldItalic)
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold-Italic  ;
+(DejaVu Serif,DejaVu Serif Condensed-Bold)
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Bold ;
+(DejaVu Serif,DejaVu Serif Condensed-Italic)
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed-Italic ;
+(DejaVu Serif,DejaVu Serif Condensed)
+/TTF-DejaVu-Serif,DejaVu-Serif-Condensed  ;
+(DejaVu Serif-Italic) /TTF-DejaVu-Serif-Italic  ;
+(DejaVu Serif)  /TTF-DejaVu-Serif ;
+(Franklin Gothic Medium-Italic) /TTF-Franklin-Gothic-Medium-Italic  ;
+(Franklin Gothic Medium)  /TTF-Franklin-Gothic-Medium ;
+(FreeMono-BoldItalic) /TTF-FreeMono-Bold-Italic ;
+(FreeMono-Bold) /TTF-FreeMono-Bold  ;
+(FreeMono-Italic) /TTF-FreeMono-Italic  ;
+(FreeMono)  /TTF-FreeMono ;
+(FreeSans-BoldItalic) /TTF-FreeSans-Bold-Italic ;
+(FreeSans-Bold) /TTF-FreeSans-Bold  ;
+(FreeSans-Italic) /TTF-FreeSans-Italic  ;
+(FreeSans)  /TTF-FreeSans ;
+(FreeSerif-BoldItalic)  /TTF-FreeSerif-Bold-Italic  ;
+(FreeSerif-Bold)  /TTF-FreeSerif-Bold ;
+(FreeSerif-Italic)  /TTF-FreeSerif-Italic ;
+(FreeSerif) /TTF-FreeSerif  ;
+(Georgia-BoldItalic)  /TTF-Georgia-Bold-Italic  ;
+(Georgia-Bold)  /TTF-Georgia-Bold ;
+(Georgia-Italic)  /TTF-Georgia-Italic ;
+(Georgia) /TTF-Georgia  ;
+(Impact)  /TTF-Impact ;
+(Lucida Console)  /TTF-Lucida-Console ;
+(Lucida Sans Unicode) /TTF-Lucida-Sans-Unicode  ;
+(Microsoft Sans Serif)  /TTF-Microsoft-Sans-Serif ;
+(Palatino Linotype-BoldItalic)  /TTF-Palatino-Linotype-Bold-Italic  ;
+(Palatino Linotype-Bold)  /TTF-Palatino-Linotype-Bold ;
+(Palatino Linotype-Italic)  /TTF-Palatino-Linotype-Italic ;
+(Palatino Linotype) /TTF-Palatino-Linotype  ;
+(Sylfaen,SylfaenARM)  /TTF-Sylfaen,SylfaenARM ;
+(Tahoma-Bold) /TTF-Tahoma-Bold  ;
+(Tahoma)  /TTF-Tahoma ;
+(Thryomanes-BoldItalic) /TTF-Thryomanes-Bold-Italic ;
+(Thryomanes-Bold) /TTF-Thryomanes-Bold  ;
+(Thryomanes-Italic) /TTF-Thryomanes-Italic  ;
+(Thryomanes)  /TTF-Thryomanes ;
+(Times New Roman-BoldItalic)  /TTF-Times-New-Roman-Bold-Italic  ;
+(Times New Roman-Bold)  /TTF-Times-New-Roman-Bold ;
+(Times New Roman-Italic)  /TTF-Times-New-Roman-Italic ;
+(Times New Roman) /TTF-Times-New-Roman  ;
+(Trebuchet MS-BoldItalic) /TTF-Trebuchet-MS-Bold-Italic ;
+(Trebuchet MS-Bold) /TTF-Trebuchet-MS-Bold  ;
+(Trebuchet MS-Italic) /TTF-Trebuchet-MS-Italic  ;
+(Trebuchet MS)  /TTF-Trebuchet-MS ;
+(Verdana-BoldItalic)  /TTF-Verdana-Bold-Italic  ;
+(Verdana-Bold)  /TTF-Verdana-Bold ;
+(Verdana-Italic)  /TTF-Verdana-Italic ;
+(Verdana) /TTF-Verdana  ;
+
+/Courier-BoldItalic /TTF-FreeMono-Bold-Italic ;
+/Courier-Bold /TTF-FreeMono-Bold  ;
+/Courier-Italic /TTF-FreeMono-Italic  ;
+/Courier  /TTF-FreeMono ;
+/Fixed-BoldItalic /TTF-FreeMono-Bold-Italic ;
+/Fixed-Bold /TTF-FreeMono-Bold  ;
+/Fixed-Italic /TTF-FreeMono-Italic  ;
+/Fixed  /TTF-FreeMono ;
+/Helvetica-BoldItalic /TTF-FreeSans-Bold-Italic ;
+/Helvetica-Bold /TTF-FreeSans-Bold  ;
+/Helvetica-Italic /TTF-FreeSans-Italic  ;
+/Helvetica  /TTF-FreeSans ;
+/Mono-BoldItalic  /TTF-FreeMono-Bold-Italic ;
+/Mono-Bold  /TTF-FreeMono-Bold  ;
+/Mono-Italic  /TTF-FreeMono-Italic  ;
+/Mono /TTF-FreeMono ;
+/Sans-BoldItalic  /TTF-FreeSans-Bold-Italic ;
+/Sans-Bold  /TTF-FreeSans-Bold  ;
+/Sans-Italic  /TTF-FreeSans-Italic  ;
+/Sans /TTF-FreeSans ;
+/Serif-BoldItalic /TTF-FreeSerif-Bold-Italic  ;
+/Serif-Bold /TTF-FreeSerif-Bold ;
+/Serif-Italic /TTF-FreeSerif-Italic ;
+/Serif  /TTF-FreeSerif  ;
+/Times-BoldItalic /TTF-FreeSerif-Bold-Italic  ;
+/Times-Bold /TTF-FreeSerif-Bold ;
+/Times-Italic /TTF-FreeSerif-Italic ;
+/Times  /TTF-FreeSerif  ;
+
+================
+
+An output file is here attached (ps-file). 
+It seems to contain correct char tables (E04 for Russian) and fonts
+bound to them (F04*).
+Maybe , on Your system the text will be displayed correctly//.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/octet-stream
+Size: 20688 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101123/6e72adfb/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101123/6e72adfb/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001919.html">[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch
+</A></li>
+	<LI>Next message: <A HREF="001920.html">[MSEide-MSEgui-talk] Broken PS-output for non-latin text on	PS-printer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1918">[ date ]</a>
+              <a href="thread.html#1918">[ thread ]</a>
+              <a href="subject.html#1918">[ subject ]</a>
+              <a href="author.html#1918">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823115452.d2163408.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000759.html">
+   <LINK REL="Next"  HREF="000761.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100823115452.d2163408.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Mon Aug 23 11:54:52 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000759.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000761.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 23 Aug 2010 07:01:05 +0200:
+
+&gt;<i> &gt; The problem is with externally compiled subforms / subwindows, like
+</I>...
+&gt;<i> - are the needed *_mfm units listed in uses of the form units?
+</I>
+The individual form units of the respective dialogs: yes.
+The main form unit: no - this wasn't neccessary as yet.
+(Of course it contains the *_mfm for its own form.)
+
+&gt;<i> - are the *_mfm units up to date?
+</I>
+Yes.
+
+For evaluation and closer inspection, I prepared a test project that simply
+calls an external dialog in such a way as I mentioned. Even this does fail.
+I've sent it to you separately to not unduly increase message sizes here.
+
+As an aside, since quite some time I keep getting the compiler (linker,
+actually) message
+ '/usr/bin/ld: warning: link.res contains output sections;
+  did you forget -T?'.
+The compiled programs seem to run correctly, though. Above that, I was
+unable to get rid of this message by adding this option to any of the
+accessible command lines (mostly, it was rejected as not existing, and
+adding &quot;linux&quot; to the &quot;T&quot; as fpc itself would require had no effect).
+Does this have any significance?
+
+BTW, a couple remarks about the IDE window management:
+ I don't quite like the &quot;habit&quot; of leaving all windows displayed if a
+project is closed - clutters the screen and hides other windows one may
+want to access. (Wasn't that different formerly?)
+ When exited with no project open, it starts out &quot;at the root&quot; (one's home
+directory) using an arbitrary layout; i.e. it does not remeber the layout
+on closing. Not too much of a concern, but distracting.
+ When I prepared the sample project, saving the project &quot;as copy&quot; didn't
+save any of the subordinate files (not even the main file), nor did it ask
+whether they should get new names. Saving the main file under a different
+name did not save the form file under that name, either, nor did explicit
+renaming of this and subsequent saving modify all the pertinent entries -
+the .mfm file still contained references to the old form name.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000759.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000761.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

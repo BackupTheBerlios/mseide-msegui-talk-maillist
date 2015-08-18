@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTikFx_x2dnKGjcHCJ3SrNnCE_kLp2x5dFAwd18TA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002249.html">
+   <LINK REL="Next"  HREF="002251.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTikFx_x2dnKGjcHCJ3SrNnCE_kLp2x5dFAwd18TA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Tue Dec 28 10:13:57 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002249.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002251.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2250">[ date ]</a>
+              <a href="thread.html#2250">[ thread ]</a>
+              <a href="subject.html#2250">[ subject ]</a>
+              <a href="author.html#2250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Running Pclinux ps:
+
+ps aux | grep gdb
+jujibo    3497  3.3  2.2  50292 45768 ?        S    10:12   0:00 gdb
+--interpreter=mi --nx
+jujibo    3574  0.0  0.0   3296   776 pts/4    S+   10:12   0:00 grep
+--color=auto gdb
+
+only one gdb  (of course in ubuntu there was no gdb running before executing
+MSEide)
+
+
+
+2010/12/28 Julio Jim&#233;nez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">jujibo at gmail.com</A>&gt;
+
+&gt;<i> I use ubuntu 32 bits. Tried two different computers. in a computer I have
+</I>&gt;<i> ubuntu 10.10 (upgraded from 10.04) and pclinux 2010.11 (only ubuntu fails)
+</I>&gt;<i> at home I have two partitions ubuntu 10.04 (working fine)  and ubuntu 10.10
+</I>&gt;<i> (fresh install) failing.
+</I>&gt;<i>
+</I>&gt;<i> All the computers use freepascal 2.4.2 downloaded from freepascal.org (the
+</I>&gt;<i> link I gave you) I also compile fpc for cross-win32 (I tried a fresh fpc
+</I>&gt;<i> installation and failing too ,without fpc cross-win).
+</I>&gt;<i>
+</I>&gt;<i> I have read in the forums a lot of gdb fails...
+</I>&gt;<i>
+</I>&gt;<i> I used gdb 7.1 from pclinux partition and get the same problem so it seems
+</I>&gt;<i> is not gdb itself.
+</I>&gt;<i>
+</I>&gt;<i> I also tried detach (in debug menu) and the program runs but it get stucked
+</I>&gt;<i> at some point.. (writing to files). May be is not fully detached.
+</I>&gt;<i>
+</I>&gt;<i> ps reports:
+</I>&gt;<i>
+</I>&gt;<i> ps aux | grep gdb
+</I>&gt;<i> jujibo    2813  0.0  0.0   1896   508 ?        S    10:04   0:00 /bin/sh -c
+</I>&gt;<i> /usr/bin/gdb  --interpreter=mi --nx
+</I>&gt;<i> jujibo    2816  6.3  2.1  52752 43840 ?        S    10:04   0:00
+</I>&gt;<i> /usr/bin/gdb --interpreter=mi --nx
+</I>&gt;<i> jujibo    2848  0.0  0.0   5172   764 pts/5    S+   10:05   0:00 grep
+</I>&gt;<i> --color=auto gdb
+</I>&gt;<i>
+</I>&gt;<i> two gdb running
+</I>&gt;<i>
+</I>&gt;<i> 2010/12/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Tuesday, 28. December 2010 09.49:38 Julio Jim&#233;nez wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; I also tried   'gdb  program'   and gdb was working that's why I said it
+</I>&gt;&gt;<i> &gt; seems something between the ide (MSEide) and gdb, but it's strange
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> It is strange that I can not reproduce. Are you using 32 or 64 bit Ubuntu
+</I>&gt;&gt;<i> and
+</I>&gt;&gt;<i> FPC?
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/7e02c2c0/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101228/7e02c2c0/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002249.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002251.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2250">[ date ]</a>
+              <a href="thread.html#2250">[ thread ]</a>
+              <a href="subject.html#2250">[ subject ]</a>
+              <a href="author.html#2250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dump MYSQL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3CAANLkTi%3DnvCrxTsoD%2BWFm2UU0hefTb0Yvk%2BCVinpksKEX%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002024.html">
+   <LINK REL="Next"  HREF="002022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dump MYSQL</H1>
+    <B>dan</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3CAANLkTi%3DnvCrxTsoD%2BWFm2UU0hefTb0Yvk%2BCVinpksKEX%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Dump MYSQL">kungfusoccer at gmail.com
+       </A><BR>
+    <I>Tue Nov 30 16:33:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002024.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+        <LI>Next message: <A HREF="002022.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2026">[ date ]</a>
+              <a href="thread.html#2026">[ thread ]</a>
+              <a href="subject.html#2026">[ subject ]</a>
+              <a href="author.html#2026">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 11/30/10, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> execwaitmse should work too. Are you sure the constructed commandline is
+</I>&gt;<i> correct?
+</I>I done with TProcess with this:
+
+const
+   READ_BYTES = 2048;
+ var
+   S: TStringList;
+   M: TMemoryStream;
+   P: TProcess;
+   n: LongInt;
+   BytesRead: LongInt;
+begin
+  	M := TMemoryStream.Create;
+   BytesRead := 0;
+
+   P := TProcess.Create(nil);
+   P.CommandLine := 'mysqldump -h localhost -u root -padmin db1 table1';
+   P.Options := [poUsePipes];
+   P.Execute;
+   while P.Running do
+   begin
+     // make sure we have room
+     M.SetSize(BytesRead + READ_BYTES);
+
+     // try reading it
+     n := P.Output.Read((M.Memory + BytesRead)^, READ_BYTES);
+     if n &gt; 0
+     then begin
+       Inc(BytesRead, n);
+//       Write('.')
+     end
+     else begin
+       // no data, wait 100 ms
+       Sleep(100);
+     end;
+   end;
+   // read last part
+   repeat
+     // make sure we have room
+     M.SetSize(BytesRead + READ_BYTES);
+     // try reading it
+     n := P.Output.Read((M.Memory + BytesRead)^, READ_BYTES);
+     if n &gt; 0
+     then begin
+       Inc(BytesRead, n);
+//       Write('.');
+     end;
+   until n &lt;= 0;
+//   if BytesRead &gt; 0 then WriteLn;
+   M.SetSize(BytesRead);
+
+   S := TStringList.Create;
+   S.LoadFromStream(M);
+{   for n := 0 to S.Count - 1 do
+   begin
+     WriteLn('| ', S[n]);
+   end;
+   WriteLn('-- end --');}
+   S.SaveToFile('tempfile.sql');
+   S.Free;
+   P.Free;
+   M.Free;
+end;
+
+Thanks
+Dan
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002024.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+	<LI>Next message: <A HREF="002022.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2026">[ date ]</a>
+              <a href="thread.html#2026">[ thread ]</a>
+              <a href="subject.html#2026">[ subject ]</a>
+              <a href="author.html#2026">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Where/how does MSEgui ignore	TProcess.ShowWindow options?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Where/how%20does%20MSEgui%20ignore%0A%09TProcess.ShowWindow%20options%3F&In-Reply-To=%3CAANLkTinTqv%3DFyh02iavnJw2kVjDzqBYbQTayLd-mXc4R%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000901.html">
+   <LINK REL="Next"  HREF="000904.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Where/how does MSEgui ignore	TProcess.ShowWindow options?</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Where/how%20does%20MSEgui%20ignore%0A%09TProcess.ShowWindow%20options%3F&In-Reply-To=%3CAANLkTinTqv%3DFyh02iavnJw2kVjDzqBYbQTayLd-mXc4R%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Where/how does MSEgui ignore	TProcess.ShowWindow options?">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue Aug 31 15:01:30 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000901.html">[MSEide-MSEgui-talk] Unable to load a fom to the form designer
+</A></li>
+        <LI>Next message: <A HREF="000904.html">[MSEide-MSEgui-talk] Where/how does MSEgui ignore	TProcess.ShowWindow options?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#903">[ date ]</a>
+              <a href="thread.html#903">[ thread ]</a>
+              <a href="subject.html#903">[ subject ]</a>
+              <a href="author.html#903">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+This is a strange request. I believe fpGUI works correctly, and other
+toolkits (including VCL) wrong, but I would like to follow the crowd.
+:<i>)
+</I>
+When I launch a MSEgui or VCL or LCL application (even just a single
+form app, no buttons/labels etc) via the following code:
+
+var
+  p: TProcess;
+begin
+  p := TProcess.Create(self);
+  p.CommandLine := FileNameedit1.Text;
+  p.ShowWindow := swoHIDE;
+  p.Execute;
+
+
+... the main form of the application is always shown. Basically, the
+app starts normally, as if you double clicked on it's icon. fpGUI
+based apps on the other hand adhere to the swoHide, which means the
+application starts up, but the main form is *not* shown. As you can
+imagine, this does cause problems if the application only has one
+form. :)
+
+Unfortunately I can't take credit to adhering so well to the Windows
+API rules - simply because I have no idea why it works. :-) Where in
+MSEgui, or better yet, how do I ignore the swoHide (apparently Windows
+STARTUPINFO record information) at application startup?
+
+I debugged one of my apps (a single form application with no other
+components), and traced the windows messages it receives. When I
+double click the icon, it receives in order WM_NCActive,  WM_Active,
+WM_Move, WM_Paint.  But when that same application is launched via
+TProcess, I only receive WM_NCActive,  WM_Active.  The important
+message WM_Paint is never received in the latter case.
+
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000901.html">[MSEide-MSEgui-talk] Unable to load a fom to the form designer
+</A></li>
+	<LI>Next message: <A HREF="000904.html">[MSEide-MSEgui-talk] Where/how does MSEgui ignore	TProcess.ShowWindow options?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#903">[ date ]</a>
+              <a href="thread.html#903">[ thread ]</a>
+              <a href="subject.html#903">[ subject ]</a>
+              <a href="author.html#903">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

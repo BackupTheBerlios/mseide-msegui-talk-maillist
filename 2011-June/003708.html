@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] mseIFI and CGI application?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3C201106010726.33203.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003713.html">
+   <LINK REL="Next"  HREF="003709.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] mseIFI and CGI application?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3C201106010726.33203.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] mseIFI and CGI application?">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Jun  1 07:26:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003713.html">[MSEide-MSEgui-talk] Test	from	http://news.gmane.org/gmane.comp.ide.mseide.user
+</A></li>
+        <LI>Next message: <A HREF="003709.html">[MSEide-MSEgui-talk] IDE editor slowdown
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3708">[ date ]</a>
+              <a href="thread.html#3708">[ thread ]</a>
+              <a href="subject.html#3708">[ subject ]</a>
+              <a href="author.html#3708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag 31 Mai 2011, 13:50:50 schrieb Sri Wahono:
+&gt;<i> 2011/5/31 Graeme Geldenhuys &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt;:
+</I>&gt;<i> &gt; On 31/05/2011 08:54, Sri Wahono wrote:
+</I>&gt;<i> &gt;&gt; application to run in my webserver, maybe as CGI app. Than I want to
+</I>&gt;<i> &gt;&gt; run my app from browser to get some result as I need.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If you developed your application with a good design - separating UI
+</I>&gt;<i> &gt; from business logic, then it is really easy to do. Business logic can be
+</I>&gt;<i> &gt; reused as-is in a CGI app, and you simply need to slap a new UI layer on
+</I>&gt;<i> &gt; it via HTTP.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; We currently do this, and have desktop and CGI versions of our
+</I>&gt;<i> &gt; applications. We use Powtils for CGI development. We also use tiOPF v2
+</I>&gt;<i> &gt; for data persistence.
+</I>&gt;<i> 
+</I>&gt;<i> Yes, you're right. It so easy if UI is separated with data. MSEgui has
+</I>&gt;<i> tmsedatamodule for it. But too complex for me to separate data and UI
+</I>&gt;<i> in separated module.
+</I>
+Additionally the MSEifi data connection components can be used to separate 
+business logic.  Attached a screenshot of a complex form and the corresponding 
+datamodule. The whole implementation code in the form unit:
+
+&quot;
+implementation
+uses
+ exportdialog_mfm,exportedit,exportmodule,exportfileview;
+ 
+{ texportdialogfo }
+
+function texportdialogfo.getinstancepo: pbasedialogfo;
+begin
+ result:= @exportdialogfo;
+end;
+
+function texportdialogfo.geteditinstancepo: pwidget;
+begin
+ result:= @exporteditfo;
+end;
+
+procedure texportdialogfo.recipshowexe(const sender: TObject);
+begin
+ exportmo.recipientsrefresh;
+end;
+
+procedure texportdialogfo.reciphideexe(const sender: TObject);
+begin
+ exportmo.recipientsclose;
+end;
+
+procedure texportdialogfo.viewexe(const sender: TObject);
+begin
+ texportfileviewfo.create(nil,exportfilenameed.value);
+end;
+
+procedure texportdialogfo.colmoveexe(const sender: tcustomgrid;
+               const fromindex: Integer; const toindex: Integer;
+               const acount: Integer);
+begin
+ updateorder;
+end;
+
+procedure texportdialogfo.updateorder;
+var
+ int1: integer;
+ mstr1: msestring;
+begin
+ mstr1:= '';
+ with recipgrid.fixrows[-1] do begin
+  for int1:= 2 to captions.count-1 do begin
+   mstr1:= mstr1+captions[int1].caption+',';
+  end;
+  setlength(mstr1,length(mstr1)-1);
+ end;
+ exportmo.setreciporder(mstr1);
+end;
+
+procedure texportdialogfo.loadedexe(const sender: TObject);
+begin
+ updateorder;
+end;
+
+procedure texportdialogfo.beforestoreexe(const sender: TObject;
+               var accept: Boolean);
+begin
+ accept:= askyesno(
+  'Do you want to store the export for the selected recipients?');
+
+end;
+
+procedure texportdialogfo.beforeremoveexe(const sender: TObject;
+               var accept: Boolean);
+begin
+ accept:= askyesno(
+  'Do you want to remove the export from the selected recipients?');
+end;
+
+procedure texportdialogfo.activateexe(const sender: TObject);
+begin
+ inherited;
+ exportmo.recipientsdso.bringtofront;
+end;
+
+procedure texportdialogfo.pasteselectionexe(const sender: tcustomgrid;
+               var handled: Boolean);
+var
+ mstr1: msestring;
+begin
+ handled:= true;
+ if pastefromclipboard(mstr1) then begin
+  exportmo.paste(mstr1);
+ end;
+end;
+
+procedure texportdialogfo.recipcelleventexe(const sender: TObject;
+               var info: celleventinfoty);
+begin
+ if iscellclick(info,[ccr_dblclick]) then begin
+  recipnavigator.dialogbutton.execute;
+ end;
+end;
+
+procedure texportdialogfo.refrexe(const sender: TObject);
+begin
+ qu1.refresh;
+ qu2.refresh;
+end;
+
+procedure texportdialogfo.recipreceseldatent(const sender: TObject);
+begin
+ recipgrid.seteditfocus;
+end;
+
+end.
+&quot;
+
+Martin
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: form.png
+Type: image/png
+Size: 22399 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/8e652620/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/8e652620/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: datamodule.png
+Type: image/png
+Size: 46827 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/8e652620/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/8e652620/attachment-0001.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003713.html">[MSEide-MSEgui-talk] Test	from	http://news.gmane.org/gmane.comp.ide.mseide.user
+</A></li>
+	<LI>Next message: <A HREF="003709.html">[MSEide-MSEgui-talk] IDE editor slowdown
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3708">[ date ]</a>
+              <a href="thread.html#3708">[ thread ]</a>
+              <a href="subject.html#3708">[ subject ]</a>
+              <a href="author.html#3708">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3C4DA7CCE7.4010205%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003436.html">
+   <LINK REL="Next"  HREF="003438.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3C4DA7CCE7.4010205%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Apr 15 06:43:19 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003436.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+        <LI>Next message: <A HREF="003438.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3437">[ date ]</a>
+              <a href="thread.html#3437">[ thread ]</a>
+              <a href="subject.html#3437">[ subject ]</a>
+              <a href="author.html#3437">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 14.04.2011 21:56, schrieb Christian Nobel:
+&gt;&gt;<i> What do you mean with &quot;dropdown&quot;, which component class?
+</I>&gt;<i>
+</I>&gt;<i> I have some fields i want to be filled by choosing from a database like
+</I>&gt;<i> this:
+</I>&gt;<i>
+</I>&gt;<i> procedure tactivityfo.actselectlist(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i> tseactname.value:=actlookupsource.dataset.fieldbyname('actname').asstring;	
+</I>&gt;<i> tddownerid.value:=actlookupsource.dataset.fieldbyname('actownerid').asstring;
+</I>&gt;<i> treacttime.value:=actlookupsource.dataset.fieldbyname('acttime').asfloat;
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>&gt;<i> I use a tdropdownlisteditdb to determine the record I want to copy from,
+</I>&gt;<i> works ok, but even though I have done the following:
+</I>&gt;<i>
+</I>&gt;<i> procedure tactivityfo.showdropdown(const sender: TObject);
+</I>&gt;<i> begin
+</I>&gt;<i> tdropdownlisteditdb1.visible:=true;
+</I>&gt;<i> tdropdownlisteditdb1.bringtofront;	
+</I>&gt;<i> tdropdownlisteditdb1.setfocus;	
+</I>&gt;<i> end
+</I>&gt;<i>
+</I>&gt;<i> I still have to click on the tdropdownlisteditdb1 to have the dropdown
+</I>&gt;<i> to actually drop down.
+</I>&gt;<i>
+</I>&gt;<i> What I would like to achieve is that the dropdown automatically drops
+</I>&gt;<i> down when it receives focus.
+</I>&gt;<i>
+</I>- activate &lt;yourdropdowneditwidgetinstance&gt;.dropdown.options 
+deo_autodropdown, then the dropdown list will be activated with 
+incremental search by entering the first character into the edit widget.
+- call &lt;yourdropdowneditwidgetinstance&gt;.dropdown.dropdown() in 
+&lt;yourdropdowneditwidgetinstance&gt;.onactivate (not tested).
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003436.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+	<LI>Next message: <A HREF="003438.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3437">[ date ]</a>
+              <a href="thread.html#3437">[ thread ]</a>
+              <a href="subject.html#3437">[ subject ]</a>
+              <a href="author.html#3437">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

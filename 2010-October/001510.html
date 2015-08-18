@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pipe%20usage%20in%20MSE%20-%20a%20pipe%20dream%3F&In-Reply-To=%3C20101020222435.63cae4be.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001503.html">
+   <LINK REL="Next"  HREF="001511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Pipe%20usage%20in%20MSE%20-%20a%20pipe%20dream%3F&In-Reply-To=%3C20101020222435.63cae4be.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Wed Oct 20 22:24:35 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001503.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+        <LI>Next message: <A HREF="001511.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1510">[ date ]</a>
+              <a href="thread.html#1510">[ thread ]</a>
+              <a href="subject.html#1510">[ subject ]</a>
+              <a href="author.html#1510">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Mon, 18 Oct 2010 19:29:47 +0200:
+
+&gt;<i> &gt; starts). So I reaearched a bit and found your &quot;pipereadercomp&quot;, which
+</I>&gt;<i> &gt; seems to provide a convenient interface to accept the data. It does
+</I>&gt;<i> &gt; not, though, provide a mechanism to start an external program
+</I>...
+&gt;<i> There is tmseprocess with a pipereader for stdin, stderr and a pipewriter
+</I>&gt;<i> for stdout, tab NoGui.
+</I>&gt;<i> execmse2() accepts tpipereader/tpipewriter parameters.
+</I>
+Ah, fine - I didn't realize that it will let one _communicate_ with the
+process as well. I'll try it.
+
+&gt;<i> &gt; How on earth do I give the pipereader notice about the file's handle?
+</I>&gt;<i> 
+</I>&gt;<i> Please use tpipereadercomp.pipereader.handle.
+</I>
+Erm, yes, thank you. Isn't this inheritance a great advantage, it makes it
+so easy to overlook something essential being a given and have you search
+for days on end for an easy workaround for a non existing problem...
+(or so;)
+
+&gt;<i> tpipereader/tpipewriter are used for example in MSEide for communication
+</I>&gt;<i> with gdb. File lib/common/designutils/msegdbutils.pas, procedure
+</I>&gt;<i> tgdbmi.startgdb().
+</I>
+Thanks, I'll have to have a look at this for correct usage.
+
+(It seems your MSEGUI has grown to a state where it is near to impossible
+for a casual user to cope with its complexitiy, and only the creator and
+perhaps a few coworkers have full overview over its scope, though the
+latter ones mostly concerning their own part only. For a newcomer, it looks
+like a thicket of different components, many related, many irrelevant for
+his immediate task, and no easy way to achieve what should be done in sight.
+Sadly, that is the phase, where good projects may break down - this is the
+phase where the least rewarding, least productive and least renouncing task
+becomes unavoidable, if there should be some persistence to the project:
+It's documentation time. In the beginning, much of this can be done
+automatically, like &quot;charting the terrain&quot;, i.e. finding the interrelations
+of components, their locations, and their interfaces. Then the result has
+to be ordered, layed out to be readable, and be included into the
+distribution. And nowadays...
+Well, sorry for the digression, these were just a few thoughts about useful
+to neccessary additions to your project to make it catch on further.)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001503.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+	<LI>Next message: <A HREF="001511.html">[MSEide-MSEgui-talk] Pipe usage in MSE - a pipe dream?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1510">[ date ]</a>
+              <a href="thread.html#1510">[ thread ]</a>
+              <a href="subject.html#1510">[ subject ]</a>
+              <a href="author.html#1510">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

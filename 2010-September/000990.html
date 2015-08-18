@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about msequery or msesqlresult insert
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20msequery%20or%20msesqlresult%20insert&In-Reply-To=%3C4C89E6EE.5020901%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000989.html">
+   <LINK REL="Next"  HREF="000991.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about msequery or msesqlresult insert</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20msequery%20or%20msesqlresult%20insert&In-Reply-To=%3C4C89E6EE.5020901%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about msequery or msesqlresult insert">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Fri Sep 10 10:06:06 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000989.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+        <LI>Next message: <A HREF="000991.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#990">[ date ]</a>
+              <a href="thread.html#990">[ thread ]</a>
+              <a href="subject.html#990">[ subject ]</a>
+              <a href="author.html#990">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> liuzg2 wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>    and it   (tmseibconnection) not suport
+</I>&gt;&gt;<i> rowsreturned
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> rowsaffected
+</I>&gt;<i>
+</I>&gt;<i> Does Firebird support rowsreturned and rowsaffected? If yes please point to
+</I>&gt;<i> the API definition.
+</I>&gt;<i>
+</I>no simple api
+
+
+
+function TIBPerformanceMonitor.GetReadFetchesCount: TMetricValue;
+var
+   local_buffer: array[0..8191] of Char;
+   len: Integer;
+	_DBInfoCommand: Char;
+
+   RVal : LongInt;
+
+begin
+	Result := nil;
+   _DBInfoCommand := Char(isc_info_fetches);
+	FIBConnection.IB_Session.errcode := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_database_info(@FIBConnection.IB_Session.Status, 
+@FIBConnection.DBHandle, 1, @_DBInfoCommand, 8192, local_buffer);
+	if FIBConnection.IB_Session.errcode = 0 then
+   begin
+     len := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[1], 
+2);
+		RVal := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[3], 
+Len);
+     SetPerformMetricRetVal(FReadFetchesCount, RVal);
+   end;
+   if FIBConnection.IB_Session.errcode &lt;&gt; 0 then
+     FIBConnection.IB_Session.HandleException(Self)
+   else
+     Result := FReadFetchesCount;
+end;
+
+function TIBPerformanceMonitor.GetReadInsertCount: TMetricValue;
+var
+   local_buffer: array[0..8191] of Char;
+   len: Integer;
+   _DBInfoCommand: Char;
+
+   RVal : LongInt;
+
+begin
+   Result := nil;
+   _DBInfoCommand := Char(isc_info_insert_count);
+   FIBConnection.IB_Session.errcode := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_database_info(@FIBConnection.IB_Session.Status, 
+@FIBConnection.DBHandle, 1, @_DBInfoCommand, 8192, local_buffer);
+	if FIBConnection.IB_Session.errcode = 0 then
+	begin
+     len := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[1], 
+2);
+     RVal := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[3], 
+Len);
+     SetPerformMetricRetVal(FReadInsertCount, RVal);
+   end;
+   if FIBConnection.IB_Session.errcode &lt;&gt; 0 then
+		FIBConnection.IB_Session.HandleException(Self)
+   else
+     Result := FReadInsertCount;
+end;
+
+function TIBPerformanceMonitor.GetReadMarksCount: TMetricValue;
+var
+	local_buffer: array[0..8191] of Char;
+   len: Integer;
+   _DBInfoCommand: Char;
+
+   RVal : LongInt;
+
+begin
+   Result := nil;
+	_DBInfoCommand := Char(isc_info_marks);
+   FIBConnection.IB_Session.errcode := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_database_info(@FIBConnection.IB_Session.Status, 
+@FIBConnection.DBHandle, 1, @_DBInfoCommand, 8192, local_buffer);
+   if FIBConnection.IB_Session.errcode = 0 then
+	begin
+     len := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[1], 
+2);
+     RVal := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[3], 
+Len);
+     SetPerformMetricRetVal(FReadMarksCount, RVal);
+   end;
+   if FIBConnection.IB_Session.errcode &lt;&gt; 0 then
+     FIBConnection.IB_Session.HandleException(Self)
+   else
+     Result := FReadMarksCount;
+end;
+
+function TIBPerformanceMonitor.GetReadNumBuffers: Integer;
+var
+   local_buffer: array[0..8191] of Char;
+	len: Integer;
+   _DBInfoCommand: Char;
+
+   RVal : LongInt;
+
+begin
+   RVal := 0;
+	Result := 0;
+	_DBInfoCommand := Char(isc_info_num_buffers);
+   FIBConnection.IB_Session.errcode := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_database_info(@FIBConnection.IB_Session.Status, 
+@FIBConnection.DBHandle, 1, @_DBInfoCommand, 8192, local_buffer);
+   if FIBConnection.IB_Session.errcode = 0 then
+   begin
+		len := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[1], 
+2);
+     RVal := {$IFnDEF 
+IBO_40_OR_GREATER}FIBConnection.IB_Session.{$ENDIF}isc_vax_integer(@local_buffer[3], 
+Len);
+	end;
+   if FIBConnection.IB_Session.errcode &lt;&gt; 0 then
+     FIBConnection.IB_Session.HandleException(Self)
+   else
+		Result := RVal;
+end;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000989.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+	<LI>Next message: <A HREF="000991.html">[MSEide-MSEgui-talk] about msequery or msesqlresult insert
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#990">[ date ]</a>
+              <a href="thread.html#990">[ thread ]</a>
+              <a href="subject.html#990">[ subject ]</a>
+              <a href="author.html#990">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

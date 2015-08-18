@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEuniverse is open!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3CAANLkTimsiOOy7PJKF00ojGfn3KWH_a%2BMZioBnW7YxWut%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002739.html">
+   <LINK REL="Next"  HREF="002741.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEuniverse is open!</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3CAANLkTimsiOOy7PJKF00ojGfn3KWH_a%2BMZioBnW7YxWut%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEuniverse is open!">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Wed Feb  2 10:15:43 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002739.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+        <LI>Next message: <A HREF="002741.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2740">[ date ]</a>
+              <a href="thread.html#2740">[ thread ]</a>
+              <a href="subject.html#2740">[ subject ]</a>
+              <a href="author.html#2740">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Why difficult ?
+</I>&gt;<i>
+</I>&gt;<i> //-----------------
+</I>&gt;<i> unit osprinter;
+</I>&gt;<i>
+</I>&gt;<i> {$mode objfpc}{H+}
+</I>&gt;<i>
+</I>&gt;<i> {$ifdef mswindows}
+</I>&gt;<i> &#160;[ALL WIN CODE]
+</I>&gt;<i> {$else}
+</I>&gt;<i> &#160;[ALL LINUX CODE]
+</I>&gt;<i> {$endif}
+</I>&gt;<i>
+</I>&gt;<i> end.
+</I>
+We need too much IFDEF.
+&gt;<i>
+</I>&gt;&gt;<i> I use this script to build from script:
+</I>&gt;&gt;<i> -Fu${MSELIBDIR}addon/osprinter/i386-win32/
+</I>&gt;&gt;<i> -Fi${MSELIBDIR}addon/osprinter/i386-win32/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Me have to add these commands for every addon using such OS-platform switch.
+</I>&gt;<i> Not seems to be ideal approach for building a variable bunch of addons.
+</I>
+If you use variable you can change &quot;i386-win32&quot; to &quot;${TARGET}&quot; as I
+use ${MSELIBDIR} variable to define MSEGUI folder.
+
+-Fu${MSELIBDIR}addon/osprinter/${TARGET}/
+-Fi${MSELIBDIR}addon/osprinter/${TARGET}/
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002739.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+	<LI>Next message: <A HREF="002741.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2740">[ date ]</a>
+              <a href="thread.html#2740">[ thread ]</a>
+              <a href="subject.html#2740">[ subject ]</a>
+              <a href="author.html#2740">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20OnInternalCalcFields/OnInternalCalc%20and%0A%09onAfterScroll%20problem&In-Reply-To=%3C201109210958.01600.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004194.html">
+   <LINK REL="Next"  HREF="004196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20OnInternalCalcFields/OnInternalCalc%20and%0A%09onAfterScroll%20problem&In-Reply-To=%3C201109210958.01600.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Sep 21 09:58:01 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004194.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem
+</A></li>
+        <LI>Next message: <A HREF="004196.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and onAfterScroll problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4195">[ date ]</a>
+              <a href="thread.html#4195">[ thread ]</a>
+              <a href="subject.html#4195">[ subject ]</a>
+              <a href="author.html#4195">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 21 September 2011 05.29:49 wahono sri wrote:
+&gt;<i> procedure dataset1_onafterscroll(DataSet: TDataSet);
+</I>&gt;<i> begin
+</I>&gt;<i>  dataset2.active:= false;
+</I>&gt;<i>  dataset2.params.parambyname('pid').value:=
+</I>&gt;<i> dataset.fieldbyname('id').value; dataset2.active:= true;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>Hint: tmsesqlquery.refresh() is faster because it uses already prepared 
+statement.
+
+&gt;<i> procedure dataset1_oninternalcalcfields(const sender: tmsebufdataset;
+</I>&gt;<i>                const fetching: Boolean);
+</I>&gt;<i> begin
+</I>&gt;<i>  sender.fieldbyname('unitdef').value:=
+</I>&gt;<i> dataset2.fieldbyname('defunit').value; end;
+</I>&gt;<i> 
+</I>&gt;<i> My purpose is after scrolling dataset and dataset2 refreshed, I will
+</I>&gt;<i> change field 'unitdef' (fk_IntercalCalc) with new value from field
+</I>&gt;<i> 'defunit' from dataset2.
+</I>&gt;<i> But the problem is dataset2.fieldbyname('defunit').value always get
+</I>&gt;<i> same value. I think oninternalcalcfields did not call after
+</I>&gt;<i> onafterscroll.
+</I>&gt;<i> As designed? or this is bug?
+</I>&gt;<i> 
+</I>I probably don't fully understand your purpose.
+
+fkInternalcalc fields are stored in dataset record buffer. The purpose of 
+fkInternalCalc fields is to store field values which are not fetched from 
+database. Because of that oninternalcalcfields is only called in 
+checkbrowsemode() if the record has been edited.
+fkCalculated fields are not stored in record buffer but stored in the edit 
+buffer only.
+fkInternalCalc fields are writable by direct data access so one can use 
+&quot;
+ &lt;tmsebufdataset&gt;.currentas*[&lt;thefield&gt;,-1]:= &lt;thevalue&gt;;
+&quot;
+to set the field value of the current record without beeing in edit mode. Ex.:
+&quot;
+ dataset1.currentasinteger[dataset1.fieldbyname('unitdef'),-1]:=
+                  dataset2.fieldbyname('defunit').asinteger;
+&quot;
+Hint: better use field components instead of fieldbyname().
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004194.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and	onAfterScroll problem
+</A></li>
+	<LI>Next message: <A HREF="004196.html">[MSEide-MSEgui-talk] OnInternalCalcFields/OnInternalCalc and onAfterScroll problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4195">[ date ]</a>
+              <a href="thread.html#4195">[ thread ]</a>
+              <a href="subject.html#4195">[ subject ]</a>
+              <a href="author.html#4195">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTi%3DODB%3DkB9%2BXBJZQa%3DrMJt4K-4OSCf_GcyAw3hsw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000817.html">
+   <LINK REL="Next"  HREF="000826.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)</H1>
+    <B>dan</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20inconsistency%20value%20when%20undo%20in%20t%2Aedit%0A%20%28by%20press%20ESCAPE%20key%29&In-Reply-To=%3CAANLkTi%3DODB%3DkB9%2BXBJZQa%3DrMJt4K-4OSCf_GcyAw3hsw%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)">kungfusoccer at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 11:20:45 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000817.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+        <LI>Next message: <A HREF="000826.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#822">[ date ]</a>
+              <a href="thread.html#822">[ thread ]</a>
+              <a href="subject.html#822">[ subject ]</a>
+              <a href="author.html#822">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 8/26/10, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> The purpose of ontextedited is to react and modify user key entries. You
+</I>&gt;<i> think it should be triggered by tinplaceedit.undo also?
+</I>Sorry, I just answered now because i was sick. IMHO, Yes. because ESC
+is an user key entry that pressed by user, although that's a misc key.
+But, i try with onchange event: tlabel1.caption:= trealedit1.editor.text;
+It's worked when ESC pressed.
+
+&gt;<i> I am not sure about. Restoring an unedited value is not the same as typing text.
+</I>&gt;<i> Additionally it should not be possible to modify the restored backup value
+</I>&gt;<i> in an event because then it can be that data validation fails and it is not
+</I>&gt;<i> possible to defocus an edit widget after pressing Esc.
+</I>&gt;<i>
+</I>&gt;<i> trealedit.text is tinplaceedit.text:
+</I>&gt;<i> &quot;
+</I>&gt;<i>  tcustomedit = class(tpublishedwidget,iedit)
+</I>&gt;<i> [...]
+</I>&gt;<i>   public
+</I>&gt;<i> [...]
+</I>&gt;<i>    property text: msestring read gettext write settext;
+</I>&gt;<i> [...]
+</I>&gt;<i>
+</I>&gt;<i> function tcustomedit.gettext: msestring;
+</I>&gt;<i> begin
+</I>&gt;<i>  result:= feditor.text;
+</I>&gt;<i> end;
+</I>&gt;<i> &quot;
+</I>it's okay if too hard. I was guess it can be.
+
+&gt;<i> What do you want to do? Why do you need ontextedited, text and backup
+</I>&gt;<i> properties? I would like to understand before I make changes.
+</I>&gt;<i> Normally one uses onsetvalue or ondataentered, I *never* used ontextedited
+</I>&gt;<i> up to now...
+</I>
+for make observation of value in that t*edit, like text,oldtext and
+backup(by press ESC) before exit from the t*edit.
+
+i make new descendant class from trealedit (for me),
+
+trrealedit = class (trealedit)
+  protected
+   procedure dotextedited; override;
+   procedure editnotification(var info: editnotificationinfoty); override;
+[..]
+
+[..]
+procedure trrealedit.editnotification(var info: editnotificationinfoty);
+begin
+ if info.action=ea_undo then
+ begin
+  text:=editor.backup;
+  dotextedited;
+ end;
+ inherited;
+end;
+[..]
+
+so, i need backup variable to be a property. Could you grant my wish? :)
+
+Thanks.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000817.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+	<LI>Next message: <A HREF="000826.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit	(by press ESCAPE key)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#822">[ date ]</a>
+              <a href="thread.html#822">[ thread ]</a>
+              <a href="subject.html#822">[ subject ]</a>
+              <a href="author.html#822">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

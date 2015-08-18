@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3CAANLkTikeqwFnhaNOSvrTwAgzpGBVoy8P5%3DTrpqabyLyP%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002795.html">
+   <LINK REL="Next"  HREF="002801.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3CAANLkTikeqwFnhaNOSvrTwAgzpGBVoy8P5%3DTrpqabyLyP%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;">jujibo at gmail.com
+       </A><BR>
+    <I>Wed Feb  9 10:09:29 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002795.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+        <LI>Next message: <A HREF="002801.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2798">[ date ]</a>
+              <a href="thread.html#2798">[ thread ]</a>
+              <a href="subject.html#2798">[ subject ]</a>
+              <a href="author.html#2798">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey.. respond to Smile Girl.. I know how it does work ;)
+
+
+2011/2/8 Sieghard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">s_c_h_s at arcor.de</A>&gt;
+
+&gt;<i> Hallo Julio,
+</I>&gt;<i>
+</I>&gt;<i> Du schriebst am Tue, 8 Feb 2011 10:11:40 +0100:
+</I>&gt;<i>
+</I>&gt;<i> &gt; parambyname('idvalue').asinteger :=  inttostr(tstringedit.value);
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --&gt; idvalue  not id  :)
+</I>&gt;<i>
+</I>&gt;<i>  parambyname ('idvalue').asinteger:= stringedit.value;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>If you want an integer.. why do you use a tmsestringedit?
+
+That's why I gave her an alternative... even with typo bug.. sry :)
+
+tmsesqlquery.params.parambyname('idvalue').asinteger :=  tintegeredit.value;
+
+
+or even
+
+tmsesqlquery.params.parambyname('id').value :=  integeredit.value;
+
+
+&gt;<i> presumed that &quot;tstringedit.value&quot; has an integer type - but isn't the
+</I>&gt;<i>
+</I>
+probably you presumed too much ;) (about the value in the tstringedit)... of
+course you can check it before to ensure there is a valid integer value.
+
+My point of view is.. if you want to get an integer, use tintegeredit.. it's
+designed for it.. of course you have the freedom to do it in many ways...
+
+&quot;value&quot; field of a &quot;tstringedit&quot; typed as _string_ anyway? So the really
+&gt;<i> syntacically correct statement might rather be something like
+</I>&gt;<i>
+</I>&gt;<i>  parambyname ('idvalue').asinteger:=  strtoint (stringedit.value);
+</I>&gt;<i>  ^unknown type           ^regarded    ^converts            ^string
+</I>&gt;<i>                          as integer   string to integer
+</I>&gt;<i> or simpler
+</I>&gt;<i>
+</I>&gt;<i>  parambyname ('idvalue').asstring:= stringedit.value;
+</I>&gt;<i>
+</I>&gt;<i> which still doesn't account for wrong input provoking a conversion
+</I>&gt;<i> exception.
+</I>&gt;<i>
+</I>&gt;<i> Sorry for the nit-picking - the original poster didn't exactly make the
+</I>&gt;<i> impression of a master of FPC and component programming, so I think it
+</I>&gt;<i> appropriate to analyse the syntactical requirements a little closer.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Yes, now she may be really confused ;)
+
+cheers
+
+
+&gt;<i> --
+</I>&gt;<i> (Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+</I>&gt;<i> nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+</I>&gt;<i> -----------------------------------------------------------
+</I>&gt;<i> Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+</I>&gt;<i> -----------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110209/bdf0c723/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110209/bdf0c723/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002795.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+	<LI>Next message: <A HREF="002801.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2798">[ date ]</a>
+              <a href="thread.html#2798">[ thread ]</a>
+              <a href="subject.html#2798">[ subject ]</a>
+              <a href="author.html#2798">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,9 @@
+From ivankob4mse2 at gmail.com  Sat Jun 23 11:29:02 2012
+From: ivankob4mse2 at gmail.com (Ivanko B)
+Date: Sat, 23 Jun 2012 14:29:02 +0500
+Subject: [MSEide-MSEgui-talk] Win7 (default style & theme): IDE window group
+ reactivates from taskbar on 3+rd attempt
+Message-ID: <CALGS61Eq5XWaokxBjE5Yq1KtTm3JTOC-P76Hv=k8ATzn08UOLA@mail.gmail.com>
+
+after minimizing or covering by another application
+

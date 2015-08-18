@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image in a widgetgrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3Ciqphuu%24vsn%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003613.html">
+   <LINK REL="Next"  HREF="003617.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image in a widgetgrid</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20in%20a%20widgetgrid&In-Reply-To=%3Ciqphuu%24vsn%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Image in a widgetgrid">chr.nobel at gmail.com
+       </A><BR>
+    <I>Sun May 15 23:52:30 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003613.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+        <LI>Next message: <A HREF="003617.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3614">[ date ]</a>
+              <a href="thread.html#3614">[ thread ]</a>
+              <a href="subject.html#3614">[ subject ]</a>
+              <a href="author.html#3614">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> On 12-05-2011 15:23, Martin Schreiber wrote:
+</I>&gt;&gt;<i>
+</I>&gt;<i> msestream.
+</I>&gt;<i> 
+</I>&gt;<i> Martin
+</I>
+Ok, I can get it to work, but I still do not quite understand the logic.
+
+
+If I drop a tstringedit on a form I would do like this:
+
+ tstringedit1.value:='xxx';
+
+If I drop a tdataimage on a form I would do like this:
+
+ tdataimage1.bitmap.LoadFromfile(tfiledialog1.controller.filename);
+
+or I could co like this if I want to manipulate my picture like resizing
+or something else:
+
+ var
+  picture: tmaskedbitmap;
+ begin
+  .
+  .
+  picture := tmaskedbitmap.create(false);
+  picture.bitmap.LoadFromfile(tfiledialog1.controller.filename);
+  .
+  .
+  tdataimage1.bitmap:=picture;
+ end;
+
+
+If however I drop my tstringedit inside a widgetgrid, instead of a form,
+it behaves exactly the same way as if it was on a form, now only giving
+the possibility to index the row:
+
+ tstringedit2.gridvalue[1]:='xxx';
+
+
+BUT if I then make the same intuitive assumption with regards to the
+tdataimage, it should look like this:
+ tdataimage2.gridvalue[1].LoadFromfile(tfiledialog1.controller.filename);
+
+and it should be possible to do like this:
+
+ var
+  picture: tmaskedbitmap;
+ begin
+  .
+  .
+  picture := tmaskedbitmap.create(false);
+  picture.bitmap.LoadFromfile(tfiledialog1.controller.filename);
+  .
+  .
+  tdataimage2.gridvalue[1]:=picture;
+ end;
+
+
+But as you have explained earlier this it not  the case, which to me
+seems very counterintuitive, so my question is simply - why?
+
+And how come that the picture has to be loaded as an Ansistring?
+
+Lastly, if I want to manipulate my picture (eg. resizing) how do I then
+load the tmaskedbitmap into the tdataimage in the widgetgrid?
+
+
+Tnx
+/Christian
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003613.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+	<LI>Next message: <A HREF="003617.html">[MSEide-MSEgui-talk] Image in a widgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3614">[ date ]</a>
+              <a href="thread.html#3614">[ thread ]</a>
+              <a href="subject.html#3614">[ subject ]</a>
+              <a href="author.html#3614">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

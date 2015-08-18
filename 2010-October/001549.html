@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] HOME directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3Cia0ns0%24nce%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001548.html">
+   <LINK REL="Next"  HREF="001550.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] HOME directory</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20HOME%20directory&In-Reply-To=%3Cia0ns0%24nce%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] HOME directory">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Oct 24 09:42:15 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001548.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+        <LI>Next message: <A HREF="001550.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1549">[ date ]</a>
+              <a href="thread.html#1549">[ thread ]</a>
+              <a href="subject.html#1549">[ subject ]</a>
+              <a href="author.html#1549">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> 
+</I>&gt;&gt;<i> &gt; If you could kindly explain what the caret should signify here?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> See the first mail of this thread:
+</I>&gt;&gt;<i> &quot;
+</I>&gt;&gt;<i> &quot;~/&quot; now returns sys_getuserhomedir() value, please use &quot;^/&quot; for
+</I>&gt;&gt;<i> sys_getapphomedir().
+</I>&gt;<i> 
+</I>&gt;<i> Ah, now - sorry, I just missed the meaning of these funny characters.
+</I>&gt;<i> So these routines are path parser elements, and supply some special path
+</I>&gt;<i> for some special signal character? Both of &quot;~&quot; and &quot;^&quot; have to be
+</I>&gt;<i> restricted to the beginning of the path string, then.
+</I>&gt;<i> 
+</I>And must be followed by &quot;/&quot;.
+
+&gt;&gt;<i> [...]
+</I>&gt;&gt;<i> Jup, that was the original question.
+</I>&gt;&gt;<i> &quot;
+</I>&gt;&gt;<i> Should sys_getapphomedir() return &quot;&lt;home&gt;/.config/&quot; if it exists on
+</I>&gt;&gt;<i> linux? &quot;
+</I>&gt;<i> Well, and the answer, as stated, is:
+</I>&gt;<i> No, it shoudln't usually, except it is completely certain that the
+</I>&gt;<i> application using the mechanism may _never_ use more than one single
+</I>&gt;<i> configuration file. In any other case the path should _also_ contain the
+</I>&gt;<i> binary's name as its last element, to be used (and created) as a
+</I>&gt;<i> subdirectory, &quot;&lt;home&gt;/.config/&lt;application name&gt;&quot;.
+</I>
+Where to get the application name? I don't think the binary name is correct
+because the binary can be renamed or several binaries belong to a common
+application with a common directory for configuration files. Maybe it is
+better the programmer adds the application directory himself? MSEide and
+MSEi18n have &quot;^/.mseide&quot; in tstatfile.filedir for example.
+
+&gt;<i> And as another condition - although I cannot state that with any authority
+</I>&gt;<i> - the application ought to conform to the open desktop standard
+</I>&gt;<i> definition. If you want to drop the last requirement, you should simply
+</I>&gt;<i> not use the &quot;.config/&quot; part of the path, all other arguments staying the
+</I>&gt;<i> same. On Linux, you _have_ choices.
+</I>&gt;<i> 
+</I>In this case one should not use &quot;^/&quot;. It is rather difficult for MSEgui to
+check if an application confirms to the open desktop standard. ;-)
+
+&gt;&gt;<i> On Windows it returns the result of SHGetFolderPathW() with
+</I>&gt;&gt;<i> CSIDL_APPDATA.
+</I>&gt;<i> 
+</I>&gt;<i> On Windows, Microsoft thinks for you.  ];-&gt;
+</I>&gt;<i> 
+</I>That's not always bad. :-)
+Now we have to find the equivalence for Linux.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001548.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+	<LI>Next message: <A HREF="001550.html">[MSEide-MSEgui-talk] HOME directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1549">[ date ]</a>
+              <a href="thread.html#1549">[ thread ]</a>
+              <a href="subject.html#1549">[ subject ]</a>
+              <a href="author.html#1549">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

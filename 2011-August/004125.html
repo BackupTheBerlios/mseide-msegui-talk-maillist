@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] problem with tterminal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201108290746.35171.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004124.html">
+   <LINK REL="Next"  HREF="004127.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] problem with tterminal</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20problem%20with%20tterminal&In-Reply-To=%3C201108290746.35171.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] problem with tterminal">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Aug 29 07:46:35 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004124.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+        <LI>Next message: <A HREF="004127.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4125">[ date ]</a>
+              <a href="thread.html#4125">[ thread ]</a>
+              <a href="subject.html#4125">[ subject ]</a>
+              <a href="author.html#4125">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Samstag 27 August 2011, 21:30:41 schrieb Sieghard:
+
+&gt;<i> That's probabely caused by interleaved output on stdout/stderr.
+</I>&gt;<i> The lines that get swapped are output rather fast one after another,
+</I>&gt;<i> somewhat like so:
+</I>&gt;<i> 
+</I>&gt;<i>  stdout: checking dependencies...
+</I>&gt;<i>  stdout:
+</I>&gt;<i>  stdout: Remove (1): zip-3.0-2
+</I>&gt;<i>  stdout:
+</I>&gt;<i>  stdout: Total Removed Size:   0,49 MB
+</I>&gt;<i>  stdout:
+</I>&gt;<i> !stderr: Do you want to remove these packages? [Y/n] ^C
+</I>&gt;<i> 
+</I>&gt;<i> The line via stderr seems to be inserted erratically, or rather
+</I>&gt;<i> _immedately_ after being issued, irrespecting the output state of the
+</I>&gt;<i> stdout derived lines. The linux terminal queues them correctly.
+</I>
+True. How to fix? stdout and stderr pipereader both run in an own thread.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004124.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+	<LI>Next message: <A HREF="004127.html">[MSEide-MSEgui-talk] problem with tterminal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4125">[ date ]</a>
+              <a href="thread.html#4125">[ thread ]</a>
+              <a href="subject.html#4125">[ subject ]</a>
+              <a href="author.html#4125">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

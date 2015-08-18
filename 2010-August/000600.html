@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Conditional breakpoints
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Conditional%20breakpoints&In-Reply-To=%3Ci4384v%24irl%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000598.html">
+   <LINK REL="Next"  HREF="000601.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Conditional breakpoints</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Conditional%20breakpoints&In-Reply-To=%3Ci4384v%24irl%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Conditional breakpoints">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 13 12:53:00 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000598.html">[MSEide-MSEgui-talk] Conditional breakpoints
+</A></li>
+        <LI>Next message: <A HREF="000601.html">[MSEide-MSEgui-talk] Conditional breakpoints
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#600">[ date ]</a>
+              <a href="thread.html#600">[ thread ]</a>
+              <a href="subject.html#600">[ subject ]</a>
+              <a href="author.html#600">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> On 13 August 2010 10:50, Martin Schreiber wrote:
+</I>&gt;&gt;<i> The '!' denotes that gdb reports an error in the condition. On first stop
+</I>&gt;&gt;<i> on the breakpoint there should be an errormessage like 'No symbol &quot;name&quot;
+</I>&gt;&gt;<i> in current context.'. &quot;FName&quot; instead of &quot;Name&quot; solves that problem but
+</I>&gt;&gt;<i> the
+</I>&gt;<i> 
+</I>&gt;<i> GDB never complained about the Name property, it did mention some
+</I>&gt;<i> issue about 'TRGBTriple' though. Probably the ansi-string issue you
+</I>&gt;<i> mentioned. :-(
+</I>&gt;<i> 
+</I>String constants must be quoted by '&quot;' for gdb, example:
+&quot;
+TypeDecl.FName = &quot;TRGBTriple&quot;
+&quot;
+It still does not work because gdb compares the address of the strings
+instead of the text AFAIK.
+
+Trunk 3828 additionally shows the errormessage in a popup hint for the
+exclamation mark in breakpoints window.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000598.html">[MSEide-MSEgui-talk] Conditional breakpoints
+</A></li>
+	<LI>Next message: <A HREF="000601.html">[MSEide-MSEgui-talk] Conditional breakpoints
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#600">[ date ]</a>
+              <a href="thread.html#600">[ thread ]</a>
+              <a href="subject.html#600">[ subject ]</a>
+              <a href="author.html#600">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

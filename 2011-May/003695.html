@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] mseIFI and CGI application?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3Cis249b%24g0v%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003702.html">
+   <LINK REL="Next"  HREF="003698.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] mseIFI and CGI application?</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20mseIFI%20and%20CGI%20application%3F&In-Reply-To=%3Cis249b%24g0v%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] mseIFI and CGI application?">chr.nobel at gmail.com
+       </A><BR>
+    <I>Tue May 31 09:10:35 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003702.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+        <LI>Next message: <A HREF="003698.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3695">[ date ]</a>
+              <a href="thread.html#3695">[ thread ]</a>
+              <a href="subject.html#3695">[ subject ]</a>
+              <a href="author.html#3695">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31-05-2011 08:54, Sri Wahono wrote:
+&gt;<i> I don't know much about CGI programming. But I want to create msegui
+</I>&gt;<i> application to run in my webserver, maybe as CGI app. Than I want to
+</I>&gt;<i> run my app from browser to get some result as I need.
+</I>&gt;<i> 
+</I>&gt;<i> Is mseIFI is designed for this goal too?
+</I>&gt;<i> I see Powtils and ExtPascal, anyone can share about these?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks
+</I>
+I have been using PowTils for years, and I am very satisfied.
+
+It is rock steady and fast - and a big advantage as I see it is there is
+no risk of memory leaks, as the compiled CGI program only runs once, and
+then shuts down.
+
+I have tried to stress test it the &quot;reverse way&quot; using the most
+underpowered computer I could find in my piles of old junk, and even on
+a 100mhz P2 with only some 64Meg memory, and an ooooold disk it was
+running as a charm with 5+ users concurrently running an application
+uploading data via web to a MySQL database on the same box.
+Trying to make some request (database lookups) through the
+webapplication was not noticeable influenced, despite the 5 uploads.
+
+Unfortunately it seems like Lars have stopped developing PowTils, there
+have been no activity on his website for years, and I never managed to
+get access to the forum - but still the program as such is out there,
+and it is still outstanding.
+
+And if you are thinking about going that way, I have made an improved
+session control, where the session is controlled in a MySQL database -
+IMHO more reliable than built-in session control which sometimes could
+lock if there were many users.
+
+/Christian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003702.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+	<LI>Next message: <A HREF="003698.html">[MSEide-MSEgui-talk] mseIFI and CGI application?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3695">[ date ]</a>
+              <a href="thread.html#3695">[ thread ]</a>
+              <a href="subject.html#3695">[ subject ]</a>
+              <a href="author.html#3695">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

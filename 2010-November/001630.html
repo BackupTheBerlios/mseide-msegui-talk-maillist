@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3C4CCFC234.2070601%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001627.html">
+   <LINK REL="Next"  HREF="001631.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3C4CCFC234.2070601%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue Nov  2 08:48:04 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001627.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+        <LI>Next message: <A HREF="001631.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1630">[ date ]</a>
+              <a href="thread.html#1630">[ thread ]</a>
+              <a href="subject.html#1630">[ subject ]</a>
+              <a href="author.html#1630">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-01 20:16, Marcos Douglas het geskryf:
+&gt;<i> Can you give me an example?
+</I>
+See my previous reply... I use Linux, but the exact same can be done in
+Windows.
+
+I haven't written bat files since DOS 6 days, so you need to fill in the
+gaps. :-)
+
+The easiest is to manually create the output directory. eg:
+
+mkdir units
+mkdir units\i386-win32
+
+
+&gt;<i> I use this BAT to compile:
+</I> ---------------------------------------------------
+ @echo on
+ set myroot=%cd%
+ set myFPC=%myroot%\fpc\2.4.3
+ set PATH=%myFPC%\bin\i386-win32;%PATH%
+ cd mseide-msegui
+ ppc386.exe apps\ide\mseide.pas -Fulib\common\* -B
+ -Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel
+  -FUunits\i386-win32
+  -omseide.exe
+ ---------------------------------------------------
+
+The last 4 lines must actually be in one long line in the batch file.
+
+
+This will output all all .ppu and .o files into 'units\i386-win32'
+directory, and create the mseide.exe in the root of your msegui directory
+(nice and easy to find).
+
+If you have done this once, you can remove the -B compiler option, and
+simply add a new entry somewhere in the top to clean out the
+'units\i386-win32' directory before a compile (but not strictly needed).
+
+
+PS:
+I recommend you recusively delete all existing .ppu and .o and .a files out
+of your existing sources BEFORE you run the batch file. I don't know what
+is the DOS command to recursively do such a delete. Doing this means you
+have no stray (and possible old) compiled units lying around that could
+confuse the compiler - this is a good thing. ;)
+
+
+After this, all other projects based on MSEgui can simply reference the
+'units\i386-win32' too (no need to have them recompiled for every project.
+This is done by adding the following to your MSEgui projects options.
+   -Fu&lt;msegui&gt;\units\i386-win32
+
+This has pros and cons. Quicker to compile your project, but then you need
+to remember to recompile MSEgui whenever you get a new MSEgui update. Also,
+less copies of compiled units lying around on your hard drive.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001627.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+	<LI>Next message: <A HREF="001631.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1630">[ date ]</a>
+              <a href="thread.html#1630">[ thread ]</a>
+              <a href="subject.html#1630">[ subject ]</a>
+              <a href="author.html#1630">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

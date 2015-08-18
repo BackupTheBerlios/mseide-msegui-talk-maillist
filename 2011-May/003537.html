@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about  isrowexit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20%20isrowexit&In-Reply-To=%3C4DBF9F15.10508%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003536.html">
+   <LINK REL="Next"  HREF="003538.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about  isrowexit</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20%20isrowexit&In-Reply-To=%3C4DBF9F15.10508%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about  isrowexit">liuzg4 at gmail.com
+       </A><BR>
+    <I>Tue May  3 08:22:13 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003536.html">[MSEide-MSEgui-talk] about  isrowexit
+</A></li>
+        <LI>Next message: <A HREF="003538.html">[MSEide-MSEgui-talk] about  isrowexit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3537">[ date ]</a>
+              <a href="thread.html#3537">[ thread ]</a>
+              <a href="subject.html#3537">[ subject ]</a>
+              <a href="author.html#3537">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&#20110; 2011-5-3 12:23, Martin Schreiber &#20889;&#36947;:
+&gt;<i> Am 03.05.2011 04:47, schrieb liuzg2:
+</I>&gt;&gt;<i> i want check one row and one cell is empty
+</I>&gt;&gt;<i> if empty then can not move to next cell or row.
+</I>&gt;&gt;<i> i use the isrowexit().
+</I>&gt;&gt;<i> if isrowexit(info) then
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i> if info.cellbefore.row&gt;= 0 then
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i> if
+</I>&gt;&gt;<i> tstringedit(twidgetgrid(sender).datacols[0].editwidget).gridvalue[info.cellbefore.row]=''
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> then
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i> showmessage(inttostr(info.cellbefore.row));
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> twidgetgrid(sender).row := info.cellbefore.row;
+</I>&gt;&gt;<i> twidgetgrid(sender).col := info.cellbefore.col;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> tstringedit(twidgetgrid(sender).datacols[twidgetgrid(sender).col].editwidget).seteditfocus;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> //
+</I>&gt;&gt;<i> tstringedit(twidgetgrid(sender).datacols[twidgetgrid(sender).col].editwidget).editor.dofocus;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> how can i do ??
+</I>&gt;<i>
+</I>&gt;<i> Activate optionsedit oe_notnull in the editwidget.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>
+oe_notnull  only checked  when  defoucus the editwidget
+if not foucus this edit,then not trigger
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003536.html">[MSEide-MSEgui-talk] about  isrowexit
+</A></li>
+	<LI>Next message: <A HREF="003538.html">[MSEide-MSEgui-talk] about  isrowexit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3537">[ date ]</a>
+              <a href="thread.html#3537">[ thread ]</a>
+              <a href="subject.html#3537">[ subject ]</a>
+              <a href="author.html#3537">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

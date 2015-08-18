@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3C4CCFBF72.7010409%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001669.html">
+   <LINK REL="Next"  HREF="001638.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Compiling%20MSEide%20-%20%5Cunits%5Ci386-win32&In-Reply-To=%3C4CCFBF72.7010409%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Tue Nov  2 08:36:18 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001669.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+        <LI>Next message: <A HREF="001638.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1629">[ date ]</a>
+              <a href="thread.html#1629">[ thread ]</a>
+              <a href="subject.html#1629">[ subject ]</a>
+              <a href="author.html#1629">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-11-01 19:07, Marcos Douglas het geskryf:
+&gt;<i> How I can compile the MSEide and put the .ppu and .o files organized
+</I>&gt;<i> like \units\i386-win32 ?
+</I>
++1
+
+I hate Martin's idea of polluting the source directory with .ppu and .o
+files. For my own projects I created various marco groups. It creates the
+output directories for me, and I can simply switch between marco groups (in
+project option or via ide command line parameter) and it works a treat.
+Such a sample template project is attached. You should be able to work from
+that and customize it to your needs.
+
+For the IDE itself, I use the script shown below. Here you need to create
+the unit output directory manually, though with a bit of tweaking it could
+be done in the script too. For the IDE, the secret is the -FE or -FU
+compiler parameter.
+
+When I compile the IDE (from root msegui directory), all compiled units go
+to 'units/x86_64-linux' and the IDE executable ends up in the root
+directory (not the output directory). If you want the latter, the use the
+-FE compiler parameter instead of -FU
+
+------------[ go.sh ]---------------------
+#!/bin/sh
+
+# Default compiler settings
+# -vi -O2 -CX -XX -B
+
+# Compiler parameter explanation:
+#  -O1  minor optimization and debugger friendly (a good/safe choice)
+#  -O2  optimization (slow &amp; unstable on 64-bit systems)
+#  -XX  try to smartlink
+#  -Xs  strip all debug symbols from executable
+#  -B   build all modules
+#  -OpATHLON64  optimize for AMD64
+#  -OpPENTIUMM  optimize for Core-2-xxx processors
+#  -ve  only report compiler errors
+
+#rm ./mseide.elf
+rm units/x86_64-linux/*
+
+#/opt/fpc_2.4.1/x86_64-linux/bin/ppcx64 \
+fpc \
+  -XX -Xs -ve -O1 -B \
+  -FUunits/x86_64-linux \
+  -Fi${PWD}/lib/common/kernel \
+  -Fu${PWD}/lib/common/kernel -Fu${PWD}/lib/common/db \
+  -Fu${PWD}/lib/common/designutils -Fu${PWD}/lib/common/dialogs \
+  -Fu${PWD}/lib/common/editwidgets -Fu${PWD}/lib/common/i18n \
+  -Fu${PWD}/lib/common/ifi -Fu${PWD}/lib/common/image \
+  -Fu${PWD}/lib/common/opengl -Fu${PWD}/lib/common/pascalscript \
+  -Fu${PWD}/lib/common/printer -Fu${PWD}/lib/common/regcomponents \
+  -Fu${PWD}/lib/common/report -Fu${PWD}/lib/common/serialcomm \
+  -Fu${PWD}/lib/common/sysutils -Fu${PWD}/lib/common/unicode \
+  -Fu${PWD}/lib/common/widgets -Fu${PWD}/lib/common/kernel/i386-linux \
+  -Fu${PWD}/lib/common/math \
+  -dmse_withoutdb \
+  -o./mseide.elf apps/ide/mseide.pas
+---------------------------------
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: template_fpgui_project.tar.gz
+Type: application/x-gzip
+Size: 5050 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101102/7642fed9/attachment.bin">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101102/7642fed9/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001669.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+	<LI>Next message: <A HREF="001638.html">[MSEide-MSEgui-talk] Compiling MSEide - \units\i386-win32
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1629">[ date ]</a>
+              <a href="thread.html#1629">[ thread ]</a>
+              <a href="subject.html#1629">[ subject ]</a>
+              <a href="author.html#1629">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

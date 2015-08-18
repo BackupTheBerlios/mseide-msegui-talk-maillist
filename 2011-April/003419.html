@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Danish characters (Ubuntu)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Danish%20characters%20%28Ubuntu%29&In-Reply-To=%3C4DA42B46.6090105%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003418.html">
+   <LINK REL="Next"  HREF="003420.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Danish characters (Ubuntu)</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Danish%20characters%20%28Ubuntu%29&In-Reply-To=%3C4DA42B46.6090105%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Danish characters (Ubuntu)">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Apr 12 12:36:54 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003418.html">[MSEide-MSEgui-talk] Danish characters (Ubuntu)
+</A></li>
+        <LI>Next message: <A HREF="003420.html">[MSEide-MSEgui-talk] Danish characters (Ubuntu)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3419">[ date ]</a>
+              <a href="thread.html#3419">[ thread ]</a>
+              <a href="subject.html#3419">[ subject ]</a>
+              <a href="author.html#3419">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 12.04.2011 12:28, schrieb Christian Nobel:
+&gt;<i> I have a weird problem (and unfortunately some feeling of deju vu, but
+</I>&gt;<i> not able to remember the cure).
+</I>&gt;<i>
+</I>&gt;<i> If I enter a text like '&#230;&#248;&#229;' eg. for a label in the object manager the
+</I>&gt;<i> text is show correctly at both design and runtime.
+</I>&gt;<i>
+</I>&gt;<i> If I however in the same project makes a messagebox like this:
+</I>&gt;<i>
+</I>&gt;<i> showmessage('&#230;&#248;&#229;', '&#230;&#248;&#229;', [mr_yes], mr_yes);
+</I>&gt;<i>
+</I>&gt;<i> Then I get some 2byte characters which seems to be UTF shown as Ansi.
+</I>&gt;<i>
+</I>&gt;<i> It makes no changes whether I change between locale, utf8 or iso8859-1
+</I>&gt;<i> in the properties for the editor.
+</I>&gt;<i>
+</I>&gt;<i> I could understand if it consequently was a problem, but why only text
+</I>&gt;<i> shown in the messagebox entered in the editor, and not the objectinspector?
+</I>&gt;<i>
+</I>It works because MSEgui uses UnicodeString in all visible text 
+properties and is independent from FPC resources and the like.
+Try to add -Fcutf8 to the compiler options there probably is a problem 
+with string constants.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003418.html">[MSEide-MSEgui-talk] Danish characters (Ubuntu)
+</A></li>
+	<LI>Next message: <A HREF="003420.html">[MSEide-MSEgui-talk] Danish characters (Ubuntu)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3419">[ date ]</a>
+              <a href="thread.html#3419">[ thread ]</a>
+              <a href="subject.html#3419">[ subject ]</a>
+              <a href="author.html#3419">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

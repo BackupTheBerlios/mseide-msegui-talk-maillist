@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Not specific MSE - findfirst
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Not%20specific%20MSE%20-%20findfirst&In-Reply-To=%3C201105171621.27753.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003638.html">
+   <LINK REL="Next"  HREF="003652.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Not specific MSE - findfirst</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Not%20specific%20MSE%20-%20findfirst&In-Reply-To=%3C201105171621.27753.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Not specific MSE - findfirst">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue May 17 16:21:27 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003638.html">[MSEide-MSEgui-talk] Not specific MSE - findfirst
+</A></li>
+        <LI>Next message: <A HREF="003652.html">[MSEide-MSEgui-talk] TDBWidgetGrid: how to disable any displaying	in specific datacol[i] ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3639">[ date ]</a>
+              <a href="thread.html#3639">[ thread ]</a>
+              <a href="subject.html#3639">[ subject ]</a>
+              <a href="author.html#3639">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag 17 Mai 2011, 15:55:29 schrieb Christian Nobel:
+&gt;<i> Hi.
+</I>&gt;<i> 
+</I>&gt;<i> I want to be able to open several files, depending on their extension,
+</I>&gt;<i> meaning masks like '*.pas', '*.ppu' etc.
+</I>&gt;<i> 
+</I>&gt;<i> However as I can understand findfirst does only allow for one mask to be
+</I>&gt;<i> defined like:
+</I>&gt;<i> 
+</I>&gt;<i> FindFirst(tdirdropdownedit1.value+'*.pas', faAnyFile - faDirectory, SR) = 0
+</I>&gt;<i> 
+</I>&gt;<i> So, do any of you have a good idea how to select from a &quot;multi&quot; mask?
+</I>&gt;<i> 
+</I>MSEgui sys_opendirstream(), sys_readdirstream(), sys_closedirstrean() can 
+handle multiple file masks.
+Please use
+&quot;
+ tcustomfiledatalist = class(tdynamicdatalist)
+[...]
+   procedure adddirectory(const directoryname: filenamety;
+        ainfolevel: fileinfolevelty = fil_name; const amask: filenamearty = 
+nil;
+        const aincludeattrib: fileattributesty = [fa_all];
+        const aexcludeattrib: fileattributesty = [];
+        const aoptions: dirstreamoptionsty = [];
+        const acheckproc: checkfileeventty = nil); overload;
+        //amask = nil -&gt; all,
+&quot;
+for convenience (unit msefileutils).
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003638.html">[MSEide-MSEgui-talk] Not specific MSE - findfirst
+</A></li>
+	<LI>Next message: <A HREF="003652.html">[MSEide-MSEgui-talk] TDBWidgetGrid: how to disable any displaying	in specific datacol[i] ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3639">[ date ]</a>
+              <a href="thread.html#3639">[ thread ]</a>
+              <a href="subject.html#3639">[ subject ]</a>
+              <a href="author.html#3639">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

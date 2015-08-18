@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] what about code completion?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20what%20about%20code%20completion%3F&In-Reply-To=%3CAANLkTik_tc_7OqDTzM2MOQgJvSa%3DeaJ7hMaZ%2BWnN9w2n%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000703.html">
+   <LINK REL="Next"  HREF="000695.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] what about code completion?</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20what%20about%20code%20completion%3F&In-Reply-To=%3CAANLkTik_tc_7OqDTzM2MOQgJvSa%3DeaJ7hMaZ%2BWnN9w2n%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] what about code completion?">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Wed Aug 18 11:24:13 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000703.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project
+</A></li>
+        <LI>Next message: <A HREF="000695.html">[MSEide-MSEgui-talk] what about code completion?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#683">[ date ]</a>
+              <a href="thread.html#683">[ thread ]</a>
+              <a href="subject.html#683">[ subject ]</a>
+              <a href="author.html#683">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 3 July 2010 12:19, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> That was a relict of an experiment and has been removed.
+</I>&gt;<i> Uncomment apps/ide/sourcepage.pas:609 in order to reactivate.
+</I>&gt;<i> &quot;
+</I>&gt;<i> &#160; &#160; &#160; &#160;key_space: begin
+</I>&gt;<i> &#160; &#160; &#160; &#160; showsourceitems(edit.editpos);
+</I>&gt;<i> &#160; &#160; &#160; &#160;end
+</I>&gt;<i> &quot;
+</I>
+Was this working at all?
+
+I thought I would give it a try, so uncommented that code and
+recompiled the ide.
+
+I type something like the following...
+
+var
+  lNode: TfpgTreeNode;
+begin
+   lNode.             &lt;&lt;----   Then press Ctrl+Shift+SpaceBar
+
+
+The mouse cursor quick changes to busy, then back to the normal
+cursor. Nothing is displayed in the source editor though.
+
+I have setup the fpGUI source paths in the &quot;Project Options &gt; Debugger
+&gt;<i> Source Directories&quot;. I tested that it works by Ctrl+Click on
+</I>TfpgTreeNode (in the code above), and the source editor opens the
+correct fpGUI unit for me.
+
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000703.html">[MSEide-MSEgui-talk] &quot;not decorated&quot; exception when building	project
+</A></li>
+	<LI>Next message: <A HREF="000695.html">[MSEide-MSEgui-talk] what about code completion?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#683">[ date ]</a>
+              <a href="thread.html#683">[ thread ]</a>
+              <a href="subject.html#683">[ subject ]</a>
+              <a href="author.html#683">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

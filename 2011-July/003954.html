@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E329A21.5020102%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003953.html">
+   <LINK REL="Next"  HREF="003955.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3C4E329A21.5020102%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jul 29 13:31:45 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003953.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003955.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3954">[ date ]</a>
+              <a href="thread.html#3954">[ thread ]</a>
+              <a href="subject.html#3954">[ subject ]</a>
+              <a href="author.html#3954">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/29/2011 01:13 PM, Christian Nobel wrote:
+&gt;<i> with MySQL after Oracle have taken over, I am considering some
+</I>&gt;<i> alternatives, it could be Firebird, Postgres, MariaDB og SQlite.
+</I>
+If you used something like tiOPF (a Object Persistence Framework), that
+would simply require a different compiler define and a recompile. NO
+other source code or components need changing. tiOPF supports many
+database backends using various DB components: CSV, Tab, XML, SqlDB,
+ADO, DOA, BDE, UIB, Zeos, dBase, FBlib, IBO, FIB, IBX, IBO etc.
+accessing database like Firebird, MS SQL Server, Oracle, Nexus, MySQL,
+SQLite, FlashFiler etc.
+
+  <A HREF="http://www.tiopf.com">http://www.tiopf.com</A>
+
+tiOPF is hosted on SourceForge.net
+
+
+&gt;<i> However all these databases requires the presence of an installed
+</I>&gt;<i> library (libmysql.so, libsqlite.so etc) to be installed on the computer
+</I>&gt;<i> running the program.
+</I>
+You can always implement a 3-tier (aka n-tier) system. That means your
+client application would normally not require any database libraries on
+the client side. tiOPF supports this too, via the remote persistence
+layer which uses TCP (the HTTP protocol) and XML. Again, the tiOPF takes
+care of the SQL-&gt;XML-&gt;dataset result transitions.
+
+Other technologies that can be used for 3-tier designs are: WebServices,
+CORBA, plain Sockets, custom HTTP+XML etc. Delphi used the proprietary
+MIDAS for this.
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003953.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003955.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3954">[ date ]</a>
+              <a href="thread.html#3954">[ thread ]</a>
+              <a href="subject.html#3954">[ subject ]</a>
+              <a href="author.html#3954">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

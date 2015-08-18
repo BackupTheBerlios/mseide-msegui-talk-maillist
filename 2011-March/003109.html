@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigGEGV on finalizing Synapse:synautil.pas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigGEGV%20on%20finalizing%20Synapse%3Asynautil.pas&In-Reply-To=%3Cop.vrxjuzakyl4sxz%40vano-home.home%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003108.html">
+   <LINK REL="Next"  HREF="003110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigGEGV on finalizing Synapse:synautil.pas</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigGEGV%20on%20finalizing%20Synapse%3Asynautil.pas&In-Reply-To=%3Cop.vrxjuzakyl4sxz%40vano-home.home%3E"
+       TITLE="[MSEide-MSEgui-talk] SigGEGV on finalizing Synapse:synautil.pas">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Sun Mar  6 17:24:25 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003108.html">[MSEide-MSEgui-talk] Focused form designer get defocused
+</A></li>
+        <LI>Next message: <A HREF="003110.html">[MSEide-MSEgui-talk] SigGEGV on finalizing Synapse:synautil.pas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3109">[ date ]</a>
+              <a href="thread.html#3109">[ thread ]</a>
+              <a href="subject.html#3109">[ subject ]</a>
+              <a href="author.html#3109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Simply include &quot;ftpsend.pas&quot; to implementaion of &quot;main.pas&quot;.
+The crash occurs on closing ( via clicking the &quot;x&quot; on teh title bar ) the  
+main form.
+
+Synapse can be taken as &quot;svn co  
+<A HREF="https://synalist.svn.sourceforge.net/svnroot/synalist/trunk">https://synalist.svn.sourceforge.net/svnroot/synalist/trunk</A> synapse&quot;.
+
+The &quot;utf-8&quot; ready version of synautil.pas is here attached.
+
+#0  0804D6F1 :0 fpc_ansistr_decr_ref()
+#1  082D4E78 :0 TC_SYNAUTIL_MYMONTHNAMES()
+#2  0805D017 :0 fpc_finalize()
+#3  0805CF4C :0 SYSTEM_ARRAYRTTI$POINTER$POINTER$TRTTIPROC()
+#4  082D54AA :0 INIT_SYNAUTIL_DEF71()
+#5  00000004 :0 ??()
+#6  0805CFD0 :0 ??()
+#7  082D4E74 :0 TC_SYNAUTIL_MYMONTHNAMES()
+#8  082D4E74 :0 TC_SYNAUTIL_MYMONTHNAMES()
+#9  082D54A8 :0 ??()
+#10  00000006 :0 ??()
+#11  0805D03C :0 fpc_finalize()
+#12  0805CF4C :0 SYSTEM_ARRAYRTTI$POINTER$POINTER$TRTTIPROC()
+#13  082D54BE :0 INIT_SYNAUTIL_DEF70()
+#14  00000030 :0 ??()
+#15  0805CFD0 :0 ??()
+#16  082D4D54 :0 _$SYNAUTIL$_Ld159()
+#17  082D54BC :0 ??()
+#18  081F4140 :0 ??()
+#19  0805D03C :0 fpc_finalize()
+#20  081E8B10 synautil.pas:1820 SYNAUTIL_finalize_implicit()
+#21  0805DA49 synautil.pas:0 SYSTEM_FINALIZEUNITS()
+#22  0805DAB7 synautil.pas:0 SYSTEM_INTERNALEXIT()
+#23  00000001 synautil.pas:0 ??()
+#24  080DB7A2 synautil.pas:0  
+MSELIST_TPOINTERLIST_$__REMOVE$POINTER$$LONGINT()
+#25  08222CD0 synautil.pas:0 _$MSECLASSES$_Ld68()
+#26  08222CD0 synautil.pas:0 _$MSECLASSES$_Ld68()
+#27  080D8948 synautil.pas:0  
+MSECLASSES_TLINKEDQUEUE_$__OBJEVENT$IOBJECTLINK$OBJECTEVENTTY()
+#28  B75A3455 synautil.pas:0 __libc_start_main()
+#29  081F4182 synautil.pas:0 SI_C21__FPC_LIBC21_START()
+
+(Linux)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: synautil.pas
+Type: application/octet-stream
+Size: 50304 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110306/44aa4847/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110306/44aa4847/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003108.html">[MSEide-MSEgui-talk] Focused form designer get defocused
+</A></li>
+	<LI>Next message: <A HREF="003110.html">[MSEide-MSEgui-talk] SigGEGV on finalizing Synapse:synautil.pas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3109">[ date ]</a>
+              <a href="thread.html#3109">[ thread ]</a>
+              <a href="subject.html#3109">[ subject ]</a>
+              <a href="author.html#3109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

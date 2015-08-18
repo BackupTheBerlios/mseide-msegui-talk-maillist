@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Proposal for MSEgui: &quot;mono&quot; alias instead of currenty used &quot;fixed&quot; for CourierNew/FreeMono
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Proposal%20for%20MSEgui%3A%20%22mono%22%20alias%20instead%20of%0A%20currenty%20used%20%22fixed%22%20for%20CourierNew/FreeMono&In-Reply-To=%3Cop.voubnvzcyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002326.html">
+   <LINK REL="Next"  HREF="002329.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Proposal for MSEgui: &quot;mono&quot; alias instead of currenty used &quot;fixed&quot; for CourierNew/FreeMono</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Proposal%20for%20MSEgui%3A%20%22mono%22%20alias%20instead%20of%0A%20currenty%20used%20%22fixed%22%20for%20CourierNew/FreeMono&In-Reply-To=%3Cop.voubnvzcyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] Proposal for MSEgui: &quot;mono&quot; alias instead of currenty used &quot;fixed&quot; for CourierNew/FreeMono">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed Jan  5 15:53:45 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002326.html">[MSEide-MSEgui-talk] Updated &quot;xft2gs.sh&quot;
+</A></li>
+        <LI>Next message: <A HREF="002329.html">[MSEide-MSEgui-talk] Proposal for MSEgui: &quot;mono&quot; alias instead of currenty used &quot;fixed&quot; for CourierNew/FreeMono
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2328">[ date ]</a>
+              <a href="thread.html#2328">[ thread ]</a>
+              <a href="subject.html#2328">[ subject ]</a>
+              <a href="author.html#2328">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Since in LINUX, &quot;fixed&quot; doesn't have an alias in &quot;/etc/fonts/fonts.conf&quot;  
+thus manual editing of this file is necessary which means problems with  
+automatic installation of MSEgui apps.
+
+The current font situation for application addressing font generics is as  
+follows:
+
+LINUX &amp; win-32 share 3 generic font sets (Linux - directly via FontConfig,  
+win-32 - via font substitutions):
+
+Courier   : LINUX=&quot;Nimbus Mono L&quot; (PS-font) / Win-32=&quot;Courier New&quot; (TTF)
+Times     : LINUX=&quot;Nimbus Roman No9 L&quot; (PS-font) / Win-32=&quot;Times New  
+Roman&quot; (TTF)
+Helvetica : LINUX=&quot;Nimbus Sans L&quot; (PS-font) / Win-32=&quot;Arial&quot; (TTF)
+
+For addressing non-generics (exact selecting &quot;Times New Roman&quot;,..),  
+there's no difference for LINUX &amp; win-32.
+
+PS:
+Current LINUX distros are equipped with multiple charset ( incl  
+iso10646-1, rechecked today with FontForge) Type1 fonts for the generics  
+(and XOrg is capable of charset selection within them) thus the magic with  
+TTF for these fonts isn't needed anymore.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002326.html">[MSEide-MSEgui-talk] Updated &quot;xft2gs.sh&quot;
+</A></li>
+	<LI>Next message: <A HREF="002329.html">[MSEide-MSEgui-talk] Proposal for MSEgui: &quot;mono&quot; alias instead of currenty used &quot;fixed&quot; for CourierNew/FreeMono
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2328">[ date ]</a>
+              <a href="thread.html#2328">[ thread ]</a>
+              <a href="subject.html#2328">[ subject ]</a>
+              <a href="author.html#2328">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

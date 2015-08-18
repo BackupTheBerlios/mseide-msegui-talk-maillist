@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5e0o7%24fm9%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000883.html">
+   <LINK REL="Next"  HREF="000887.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci5e0o7%24fm9%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Aug 29 18:09:40 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000883.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000887.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#884">[ date ]</a>
+              <a href="thread.html#884">[ thread ]</a>
+              <a href="subject.html#884">[ subject ]</a>
+              <a href="author.html#884">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> continuing my last message, I did some further &quot;research&quot; (tinkering) with
+</I>&gt;<i> the &quot;loadlangunit&quot; effects.
+</I>&gt;<i> 
+</I>&gt;<i> As intended, I tried to keep everything else beyond the changed dimension
+</I>&gt;<i> values in the original .trd file, both &quot;flagging&quot; them as unchanged and
+</I>&gt;<i> not.
+</I>&gt;<i> 
+</I>&gt;<i> Didn't help either way, though. Even though the debugger _does_ show the
+</I>&gt;<i> form events set, they aren't executed; neither, e.g., OnKeyPress nor
+</I>&gt;<i> OnClose. Neither do the form.options show any effect then.
+</I>&gt;<i> 
+</I>Set a breakpoint on lib/common/widgets/mseforms.pas
+&quot;
+function tcustommseform.canclose(const newfocus: twidget): boolean;
+var
+ modres: modalresultty;
+begin
+ result:= inherited canclose(newfocus);
+ if result and (newfocus = nil) then begin
+  if canevent(tmethod(fonclosequery)) then begin
+   modres:= twindow1(window).fmodalresult;
+   if modres = mr_none then begin
+    modres:= mr_canclose;
+   end;
+   fonclosequery(self,modres);
+   result:= modres &lt;&gt; mr_none;
+   if twindow1(window).fmodalresult &lt;&gt; mr_canclose then begin
+    twindow1(window).fmodalresult:= modres;
+   end;
+  end;
+  if result and ((twindow1(window).fmodalresult &lt;&gt; mr_none) or 
+                                    (application.terminating)) then begin
+   if canevent(tmethod(fonclose)) then begin &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;--------here
+    fonclose(self);
+   end;
+&quot;
+check why fonclose is not called.
+An event property has to pointer values (see tmethod), I don't know if gdb
+checks both, probably not.
+
+&gt;<i> Both things work correctly when no &quot;lang unit&quot; gets loaded. (Though
+</I>&gt;<i> there's a &quot;nice&quot; exception window showing &quot;up&quot; &quot;behind the scenes&quot;, i.e.
+</I>&gt;<i> behind the application window, centered on the screen, centered on the
+</I>&gt;<i> screen. ;-) That's somewhat of a problem, as that way, the exception
+</I>&gt;<i> window is hidden at first, and when uncovered, it doesn't refresh, so it's
+</I>&gt;<i> kind of hard to
+</I>&gt;<i> tell what it might have meant to say...  But perhaps that might give a
+</I>&gt;<i> clue?)
+</I>&gt;<i> 
+</I>An exception window should always be on top of normal windows. Has the main
+window the override_redirect flag set?
+ 
+&gt;<i> I'm stuck at this point now, just hopeing you might be able to give me a
+</I>&gt;<i> hint as to where to proceed. Or whether to abandon this approach
+</I>&gt;<i> altogether.
+</I>&gt;<i> 
+</I>Did you test the standard functionality of MSEi18n without manipulating the
+files with your script?
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000883.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000887.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#884">[ date ]</a>
+              <a href="thread.html#884">[ thread ]</a>
+              <a href="subject.html#884">[ subject ]</a>
+              <a href="author.html#884">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

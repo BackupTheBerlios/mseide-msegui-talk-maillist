@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] msewindowwidget procedure
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msewindowwidget%20procedure&In-Reply-To=%3C201107091811.43128.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003882.html">
+   <LINK REL="Next"  HREF="003884.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] msewindowwidget procedure</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20msewindowwidget%20procedure&In-Reply-To=%3C201107091811.43128.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] msewindowwidget procedure">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Jul  9 18:11:42 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003882.html">[MSEide-MSEgui-talk] msewindowwidget procedure
+</A></li>
+        <LI>Next message: <A HREF="003884.html">[MSEide-MSEgui-talk] msewindowwidget procedure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3883">[ date ]</a>
+              <a href="thread.html#3883">[ thread ]</a>
+              <a href="subject.html#3883">[ subject ]</a>
+              <a href="author.html#3883">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 09 July 2011 17:38:53 wahono sri wrote:
+&gt;<i> I make request to make private or public procedure checkwindowrect in
+</I>&gt;<i> twindowwidget.
+</I>&gt;<i> I use this procedure to resize window handle from third party when the
+</I>&gt;<i> widget is resized.
+</I>&gt;<i> Or checkwindowrect is done with twindowwidget directly?
+</I>&gt;<i>
+</I>twindowwidget.checkwindowrect() is called from different places in 
+twindowwidget, please have a look into the code.
+checkwindowrect() updates the windowrect of the client window.
+&quot;
+procedure tcustomwindowwidget.checkwindowrect;
+var
+ rect1,rect2{,rect3}: rectty;
+ bo1: boolean;
+begin
+ if fclientwindow.id &lt;&gt; 0 then begin
+  bo1:= false;
+  rect1:= innerwidgetrect;
+  rect2:= intersectrect(rect1,clippedpaintrect);
+  rect1.x:= rect1.x - rect2.x;
+  rect1.y:= rect2.y + rect2.cy - rect1.y - rect1.cy;
+  addpoint1(rect2.pos,rootpos);
+  if not rectisequal(rect2,fchildrect) then begin
+   bo1:= true;
+   fchildrect:= rect2;
+   gui_setembeddedwindowrect(fclientwindow.id,rect2);
+//   gui_reposwindow(fclientwindow.id,rect2,true);
+  end;
+  if not rectisequal(rect1,fviewport) then begin
+   bo1:= true;
+   if rect1.cy = 0 then begin
+    faspect:= 1;
+   end
+   else begin
+    faspect:= -rect1.cx/rect1.cy;
+   end;
+   fviewport:= rect1;
+   updateviewport(fviewport);
+  end;
+  if bo1 then begin 
+   doclientrectchanged;
+  end;
+ end;
+end;
+&quot;
+Please use twindowwidget.onresize for a notification of size change of the 
+MSEgui widget. twindowwidget.onclinentrectchanged will be called after the 
+client windowrect has been changed.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003882.html">[MSEide-MSEgui-talk] msewindowwidget procedure
+</A></li>
+	<LI>Next message: <A HREF="003884.html">[MSEide-MSEgui-talk] msewindowwidget procedure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3883">[ date ]</a>
+              <a href="thread.html#3883">[ thread ]</a>
+              <a href="subject.html#3883">[ subject ]</a>
+              <a href="author.html#3883">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

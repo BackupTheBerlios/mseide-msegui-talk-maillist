@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTikfVRvc4qhuJwdpB_ft1ZgyB3-0VnW-JrWPjADW%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002167.html">
+   <LINK REL="Next"  HREF="002170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTikfVRvc4qhuJwdpB_ft1ZgyB3-0VnW-JrWPjADW%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Dec 16 18:19:43 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002167.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="002170.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2169">[ date ]</a>
+              <a href="thread.html#2169">[ thread ]</a>
+              <a href="subject.html#2169">[ subject ]</a>
+              <a href="author.html#2169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Rechecked home on the bundled FPC 2.4.2- works 20 times faster &amp; w/o
+any errors in IDE-in-IDE mode:)
+As to the work machine, AVIRA shows no virus activity but... what else
+can it be ??? And two UDMA100-to-PIO0 resets at HDD within the last
+week...
+So, it smells reinstalling.
+
+2010/12/16, Ivanko B &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">ivankob4mse2 at gmail.com</A>&gt;:
+&gt;&gt;<i>The signalling problem in the outer IDE occurs w/o loading the
+</I>&gt;&gt;<i>PODPISKA to the inner IDE - just on pressing F9 for running the inner.
+</I>&gt;<i>
+</I>&gt;<i> How me build MSE:
+</I>&gt;<i>
+</I>&gt;<i> - go the MSE work copy
+</I>&gt;<i> - svn update
+</I>&gt;<i> - svn export .\ &lt;target&gt;
+</I>&gt;<i> - runing the below CMD-script in the export target directory:
+</I>&gt;<i>
+</I>&gt;<i> //-----------------------
+</I>&gt;<i> fpc -B apps\ide\mseide.pas -Fulib\common\*
+</I>&gt;<i> -Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel -dmse_with_ifi
+</I>&gt;<i>
+</I>&gt;<i> fpc -B tools\bmp2pas.pas   -Fulib\common\*
+</I>&gt;<i> -Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel
+</I>&gt;<i>
+</I>&gt;<i> fpc -B tools\form2pas.pas  -Fulib\common\*
+</I>&gt;<i> -Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel
+</I>&gt;<i> //-----------------------
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002167.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="002170.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2169">[ date ]</a>
+              <a href="thread.html#2169">[ thread ]</a>
+              <a href="subject.html#2169">[ subject ]</a>
+              <a href="author.html#2169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

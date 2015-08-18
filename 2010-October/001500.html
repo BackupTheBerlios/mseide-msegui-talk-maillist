@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] transaction for mysql database
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20transaction%20for%20mysql%20database&In-Reply-To=%3Ci9f229%241df%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001499.html">
+   <LINK REL="Next"  HREF="001504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] transaction for mysql database</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20transaction%20for%20mysql%20database&In-Reply-To=%3Ci9f229%241df%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] transaction for mysql database">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Oct 17 16:45:37 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001499.html">[MSEide-MSEgui-talk] transaction for mysql database
+</A></li>
+        <LI>Next message: <A HREF="001504.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>dan wrote:
+
+&gt;<i> Hi Martin,
+</I>&gt;<i> How exactly use tmsemysqlconnection, tmsesqlquery, tmsesqltransaction
+</I>&gt;<i> for using transaction in mysql 5.1?
+</I>&gt;<i> 
+</I>1. Add 1 tmsemysqlconnection as 'conn'
+2. Set the connection properties
+3. Add 1 tmsesqltransaction as 'trans'
+4. Set conn.transaction = trans
+5. Add 1 tmsesqlquery as 'query'
+6. Set query.connection = conn
+7. Enter the query sql in query.SQL
+8. Add 1 tmsedatasource as 'dataso'
+9. Set dataso.dataset = query
+10. Add 1 tdbstringgrid as 'grid'
+11. Set grid.options dsgo_autofields = true
+12. Set grid.datalink.datasource = dataso
+13. Set query.active = true
+
+On runtime:
+14. Change some data.
+15. Run query.applyupdates (in button)
+16. Run trans.commitretaining (in button)
+17. Run query.refresh (in button)
+
+&gt;<i> Why the data back to before, not the new one.  When i checked with
+</I>&gt;<i> other program, the data has changed. What's wrong?
+</I>
+You used different transactions for reading an writing, you probably
+commited the write transaction, the read transaction shows the old data
+because of the default transaction isolation level in MySQL.
+If you want to use different transactions for reading an writing and opening
+a new read transaction by refresh, activate query.controller.options
+dso_refreshtransaction.
+
+&gt;<i> Could you explain the correct step to use the transaction in mysql?
+</I>&gt;<i> What difference tmsemysqlconnection and tmsemysql50connection?
+</I>&gt;<i> 
+</I>tmsemysql50connection is deprecated, please use tmsemysqlconnection for
+MySQL 5.0+. tmsemysqlconnection should work with all MySQL versions &gt;= 5.0.
+
+Martin
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001499.html">[MSEide-MSEgui-talk] transaction for mysql database
+</A></li>
+	<LI>Next message: <A HREF="001504.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

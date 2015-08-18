@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3Cop.vqknc5hjyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002788.html">
+   <LINK REL="Next"  HREF="002790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Syntax%20to%20access%0A%09tmsesqlquery.%3Ctsqlstringlist%3E&In-Reply-To=%3Cop.vqknc5hjyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Feb  8 07:37:43 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002788.html">[MSEide-MSEgui-talk] Syntax to access tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+        <LI>Next message: <A HREF="002790.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2789">[ date ]</a>
+              <a href="thread.html#2789">[ thread ]</a>
+              <a href="subject.html#2789">[ subject ]</a>
+              <a href="author.html#2789">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>        Please tell me the syntax to write my sql statement.
+</I>&gt;<i> I dont want to write it in the object inspector.
+</I>&gt;<i>
+</I>&gt;<i> tmsesqlquery.tsqlstringlist :=? ???
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+AFAIK, the usual TStringList way :
+
+&lt;tmsesqlquery&gt;.active:= false;
+&lt;tmsesqlquery&gt;.sql.clear; // only needed to replace previous SQL-commands
+&lt;tmsesqlquery&gt;.sql.add('select * from table1');
+[..]
+&lt;tmsesqlquery&gt;.sql.add('select * from table1');
+&lt;tmsesqlquery&gt;.active:= true;
+
+AFAIK, for TMSESQLQuery, PrepareStatement option should be switched off if  
+sevaral commands per list are put  ( because of DB servers are usually  
+limited to single SQL-command per parameterized query)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002788.html">[MSEide-MSEgui-talk] Syntax to access tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+	<LI>Next message: <A HREF="002790.html">[MSEide-MSEgui-talk] Syntax to access	tmsesqlquery.&lt;tsqlstringlist&gt;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2789">[ date ]</a>
+              <a href="thread.html#2789">[ thread ]</a>
+              <a href="subject.html#2789">[ subject ]</a>
+              <a href="author.html#2789">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

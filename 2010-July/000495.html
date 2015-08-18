@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Insert/delete row in twidgetgrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Insert/delete%20row%20in%20twidgetgrid&In-Reply-To=%3Ci1jq9v%24qpv%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000493.html">
+   <LINK REL="Next"  HREF="000496.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Insert/delete%20row%20in%20twidgetgrid&In-Reply-To=%3Ci1jq9v%24qpv%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Jul 14 09:52:59 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000493.html">[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid
+</A></li>
+        <LI>Next message: <A HREF="000496.html">[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#495">[ date ]</a>
+              <a href="thread.html#495">[ thread ]</a>
+              <a href="subject.html#495">[ subject ]</a>
+              <a href="author.html#495">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;<i> On 13-07-2010 15:27, Julio Jim&#233;nez wrote:
+</I>&gt;&gt;<i> How easy is when you know how to do it, right? ;)
+</I>&gt;<i> 
+</I>&gt;<i> Hehe, yes, exactly.
+</I>&gt;<i> Unfortunately some of strengths of MSEGUI are also the weaknesses, in
+</I>&gt;<i> the sense that (at least I do) one are searching blindly, until one
+</I>&gt;<i> stumbles over a solution which actually then is both simple and obvious
+</I>&gt;<i> (first you have seen the light).
+</I>&gt;<i> 
+</I>&gt;<i> Maybe over time an improved code completion will make it simpler.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I think Martin didn't say you to create a custom class, he usually
+</I>&gt;&gt;<i> points to the class where the function/method is declared :)
+</I>&gt;<i> 
+</I>&gt;<i> You are probably right, one have to understand the prerequisites.
+</I>&gt;<i> 
+</I>Uhh, sorry I was not at work yesterday. The code I posted
+&quot;
+&#160;tcustomgrid = class [...]
+&#160; &#160;procedure moverow(const curindex,newindex: integer; const count: integer
+= 1);
+&#160; &#160;procedure insertrow(aindex: integer; acount: integer = 1); virtual;
+&#160; &#160;procedure deleterow(aindex: integer; acount: integer = 1); virtual;
+&quot;
+Was copied from msegrids.pas, tcustomgrid is the base class for all grids -&gt;
+all grids have this procedures. In order to see the available procedures of
+a class Ctrl+LeftClick on the type of the definition (twidgetgrid in
+example).
+&quot;
+type
+ tsimplefo = class(tmseform)
+   twidgetgrid1: twidgetgrid;
+ end;
+&quot;
+twidgetgrid will be displayed. Ctrl+LeftClick on tcustomwidgetgrid in order
+to show the ancestor tcustomwidgetgrid, Ctrl+LeftClick on tcustomgrid in
+order to show the ancestor tcustomgrid.
+Scroll down until the public procedures, functions and properties are
+visible.
+Navigation back and forth with the blue arrow buttons in topright corner of
+the source editor.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000493.html">[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid
+</A></li>
+	<LI>Next message: <A HREF="000496.html">[MSEide-MSEgui-talk] Insert/delete row in twidgetgrid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#495">[ date ]</a>
+              <a href="thread.html#495">[ thread ]</a>
+              <a href="subject.html#495">[ subject ]</a>
+              <a href="author.html#495">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

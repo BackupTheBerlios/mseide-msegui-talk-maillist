@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Image processing - resize, thumbnails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci58b1d%24hah%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000863.html">
+   <LINK REL="Next"  HREF="000865.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Image processing - resize, thumbnails</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Image%20processing%20-%20resize%2C%20thumbnails&In-Reply-To=%3Ci58b1d%24hah%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Image processing - resize, thumbnails">chr.nobel at gmail.com
+       </A><BR>
+    <I>Fri Aug 27 14:28:29 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000863.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+        <LI>Next message: <A HREF="000865.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 27-08-2010 14:00, Martin Schreiber wrote:
+
+&gt;<i> mseformatjpg is for reading, writing needs mseformatjpgwrite.
+</I>&gt;<i> Should I rename unit mseformatjpg by mseformatjpgread?
+</I>
+Aha - now it works.
+
+Might be a good idea, because it automatically will raise an alarm if a 
+module only is called something stating that it can only read.
+
+And FYI, this is what I ended up with:
+
+procedure tmainfo.makethumb(const sender: TObject);
+var
+   picture: tmaskedbitmap;
+   smallpicture: tmaskedbitmap;
+   picstream: TMemoryStream;
+   smallpicstream: TMemoryStream;
+   x,y:integer;
+begin
+   picstream := TMemoryStream.Create;
+   smallpicstream := TMemoryStream.Create;
+   picture := tmaskedbitmap.create(false);
+   smallpicture := tmaskedbitmap.create(false);
+   TBlobField(tmsedatasource1.dataset.FieldByName('img')).
+         SaveToStream(picstream);
+   picstream.Position :=0;
+   picture.bitmap.LoadFromStream(picstream);
+   x:=picture.size.cx;
+   y:=picture.size.cy;
+   smallpicture.size:=makesize(100,(y*100)div x);
+   picture.stretch(smallpicture);
+   smallpicture.bitmap.writetostream(smallpicstream,'jpg',[]);
+   tmsezquery1.edit;	
+   smallpicstream.Position:=0;
+   TBlobField(tmsedatasource1.dataset.FieldByName('thumb')).
+         LoadFromStream(smallpicstream);
+   tmsezquery1.post;
+   picture.Free;
+   picstream.Free;
+   smallpicture.Free;
+   smallpicstream.Free;
+end;
+
+Off topic:
+Why is it only possible (in Thunderbird??) to have lines that are only 
+72 characters long, before wrapping, when using a newsgroup?
+I haven't seen 72 characters since the old IBM punch card in the sixties 
+and seventies.
+
+Tnx
+Christian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000863.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+	<LI>Next message: <A HREF="000865.html">[MSEide-MSEgui-talk] Image processing - resize, thumbnails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

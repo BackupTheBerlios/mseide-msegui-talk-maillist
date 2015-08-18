@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tterminal again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C4E9BE18A.4080000%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004341.html">
+   <LINK REL="Next"  HREF="004329.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tterminal again</H1>
+    <B>minoshi</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C4E9BE18A.4080000%40yandex.ru%3E"
+       TITLE="[MSEide-MSEgui-talk] tterminal again">minoshi at yandex.ru
+       </A><BR>
+    <I>Mon Oct 17 10:04:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004341.html">[MSEide-MSEgui-talk] twidgetgrid + tprogressbar
+</A></li>
+        <LI>Next message: <A HREF="004329.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4328">[ date ]</a>
+              <a href="thread.html#4328">[ thread ]</a>
+              <a href="subject.html#4328">[ subject ]</a>
+              <a href="author.html#4328">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello again!
+
+I continue write pacmanXG. In it I run utility 'pacman' in tterminal and 
+then parse output
+pacman is package manager for archlinux
+
+Some time ago pacman was updated and now output in tterminal and in real 
+console (for example xterm) is different.
+
+
+tterminal:
+
+=====================================================
+=&gt; EXECUTE : pacman -Sw  acl
+=====================================================
+resolving dependencies...
+
+Targets (1): acl-2.2.51-1
+
+Total Download Size:    0.13 MB
+
+Proceed with download? [Y/n] y
+::<i> Retrieving packages from core...
+</I>downloading acl-2.2.51-1-i686.pkg.tar.xz...
+
+=&gt; done
+
+(&quot;=&gt; done&quot; is mark that tterminal finish executing)
+
+
+in real console :
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> pkg]# pacman -Sw  acl
+resolving dependencies...
+
+Targets (1): acl-2.2.51-1
+
+Total Download Size:    0.13 MB
+
+Proceed with download? [Y/n] y
+::<i> Retrieving packages from core...
+</I>  acl-2.2.51-1-i686       135.4K  247.1K/s 00:00:01 
+[######################] 100%
+(1/1) checking package integrity 
+[######################] 100%
+[<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">root at server</A> pkg]#
+
+
+In pacman news i wrote that now pacman is only front-end for library 
+libalpm.so. And I suppose that missing output is output of  this library.
+
+
+Unfortunaly there is no documentation for library (only promise to write 
+it) and i can`t write own wrapper. I looked code of library but I don`t 
+know c++ :(
+
+
+Any ideas?
+
+-- 
+Yours,
+Alexandre Minoshi
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004341.html">[MSEide-MSEgui-talk] twidgetgrid + tprogressbar
+</A></li>
+	<LI>Next message: <A HREF="004329.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4328">[ date ]</a>
+              <a href="thread.html#4328">[ thread ]</a>
+              <a href="subject.html#4328">[ subject ]</a>
+              <a href="author.html#4328">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

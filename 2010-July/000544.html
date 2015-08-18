@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown window bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20window%20bug&In-Reply-To=%3CAANLkTinpF5gwhUQSBsYpaikdAIfQ5slNyWniyIWyTla2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000543.html">
+   <LINK REL="Next"  HREF="000545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown window bug</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20window%20bug&In-Reply-To=%3CAANLkTinpF5gwhUQSBsYpaikdAIfQ5slNyWniyIWyTla2%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown window bug">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Fri Jul 16 18:44:15 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000543.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+        <LI>Next message: <A HREF="000545.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/7/16 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> MSEide MSEgui wrote:
+</I>&gt;<i>
+</I>&gt;<i> It is with your application only, it is not possible to reproduce with a
+</I>&gt;<i> simplified testcase?
+</I>
+Yes, I can't create it with simple test.
+
+&gt;<i> The probelm is possibly in application.workarea which has been changed
+</I>&gt;<i> recently for better multi-monitor support. Please place a breakpoint into
+</I>&gt;<i> getdropdownpos() (lib/common/kernel/msewidgets.pas:1379) and check what
+</I>&gt;<i> happens.
+</I>&gt;<i>
+</I>
+I don't know why after procedure  TWINDOW.BEGINMODAL, dropdown receive
+event and open dropdown?
+I see in this procedure :
+
+function tinternalapplication.beginmodal(const sender: twindow): boolean;
+                 //true if modalwindow destroyed
+var
+ bo1: boolean;
+ window1: twindow;
+begin
+...
+...
+ try
+  sender.activate;
+  inc(fmodallevel);
+  result:= eventloop(sender);
+
+In stack trace I got :
+
+#0  004B815C msewidgets.pas:1396 GETDROPDOWNPOS(PARENT=0x2859a0,
+RIGHT=false, RECT={X = 98, Y = 292, CX = 164, CY = 41, POS = {X = 98,
+Y = 292}, SIZE = {CX = 164, CY = 41}})
+#1  00534039 msedropdownlist.pas:929
+TCUSTOMDROPDOWNCONTROLLER__UPDATEDROPDOWNPOS(this=0x2c6f68)
+#2  00536072 msedropdownlist.pas:1624 TDROPDOWNLIST__SHOW(AWIDTH=164,
+AROWCOUNT=3, AITEMINDEX=-1, AFILTERTEXT=0x7c015e0, this=0x84ac228)
+#3  00534F35 msedropdownlist.pas:1238
+TCUSTOMDROPDOWNLISTCONTROLLER__RECEIVEEVENT(EVENT=0x7a89bf8,
+this=0x2c6f68)
+#4  0047957A mseevent.pas:189 TOBJECTEVENT__DELIVER(this=0x7a89bf8)
+#5  0042FD67 msegui.pas:14556
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x79cdd70, ONCE=false,
+this=0x277e00)
+#6  00430151 msegui.pas:14623
+TINTERNALAPPLICATION__BEGINMODAL(SENDER=0x79cdd70, this=0x277e00)
+#7  0042ACDA msegui.pas:12265 TWINDOW__BEGINMODAL(this=0x79cdd70)
+#8  00424704 msegui.pas:9434 TWIDGET__INTERNALSHOW(MODAL=true,
+TRANSIENTFOR=0x0, WINDOWEVENT=false, this=0x8345688)
+#9  00424832 msegui.pas:9471 TWIDGET__SHOW(MODAL=true,
+TRANSIENTFOR=0x0, this=0x8345688)
+#10  004479F1 main.pas:330 TMAINFO__SHOWLOGIN(SENDER=0x0, this=0x831ba58)
+#11  00447568 main.pas:266 TMAINFO__MAINFO_ONLOADED(SENDER=0x831ba58,
+this=0x831ba58)
+#12  00434B27 mseforms.pas:1015 TCUSTOMMSEFORM__DOONLOADED(this=0x831ba58)
+#13  00434537 mseforms.pas:868 TCUSTOMMSEFORM__DOAFTERLOAD(this=0x831ba58)
+#14  00434095 mseforms.pas:803 TCUSTOMMSEFORM__CREATE(AOWNER=0x277e00,
+LOAD=true, vmt=0x0, this=0x831ba58)
+#15  004367D6 mseforms.pas:1750 TMSEFORM__CREATE(AOWNER=0x277e00,
+LOAD=true, vmt=0x0, this=0x831ba58)
+#16  00434161 mseforms.pas:812 TCUSTOMMSEFORM__CREATE(AOWNER=0x277e00,
+vmt=0x1, this=0x831ba58)
+#17  0047A263 mseclasses.pas:1571 CREATEMODULE(AOWNER=0x277e00,
+INSTANCECLASS=&lt;incomplete type&gt;, REFERENCE=void)
+#18  0043125D msegui.pas:15139
+TGUIAPPLICATION__CREATEFORM(INSTANCECLASS=&lt;incomplete type&gt;,
+REFERENCE=void, this=0x277e00)
+#19  00402694 Acosys.pas:45 main()
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000543.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+	<LI>Next message: <A HREF="000545.html">[MSEide-MSEgui-talk] Dropdown window bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

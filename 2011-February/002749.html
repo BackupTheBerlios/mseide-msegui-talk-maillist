@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSE Installer project has built!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSE%20Installer%20project%20has%20built%21&In-Reply-To=%3Cop.vqbqenmryl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002734.html">
+   <LINK REL="Next"  HREF="002751.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSE Installer project has built!</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSE%20Installer%20project%20has%20built%21&In-Reply-To=%3Cop.vqbqenmryl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] MSE Installer project has built!">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Feb  3 12:05:01 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002734.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+        <LI>Next message: <A HREF="002751.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2749">[ date ]</a>
+              <a href="thread.html#2749">[ thread ]</a>
+              <a href="subject.html#2749">[ subject ]</a>
+              <a href="author.html#2749">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> So, &quot;regcomponents.inc&quot; is absent now.
+</I>&gt;<i>
+</I>
+Me already see it restored :).
+But for InnoSetup, me recreate this file based on install time selections :
+
+//----------------------------
+[Code]
+
+[..]
+
+function MakeAddonsBuild(Param: String): String;
+var
+   ResultCode: Integer;
+   use_addons: boolean;
+begin
+   result:= '';
+   use_addons:= false;
+
+   if isComponentSelected('addons') then begin
+
+     if isTaskSelected('videoplayer') then begin
+       SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),  
+'regvideoplayer,', true);
+       use_addons:= true;
+     end;
+
+     if isTaskSelected('repaz') then begin
+       SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),  
+'regrepaz,', true);
+       use_addons:= true;
+     end;
+
+     if isTaskSelected('repaz\compdesigner') then begin
+       SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),  
+'regcompdesigner,', true);
+       use_addons:= true;
+     end;
+
+     if isTaskSelected('osprinter') then begin
+       SaveStringToFile(ExpandConstant('{app}\apps\ide\regcomponents.inc'),  
+'regosprinter,', true);
+       use_addons:= true;
+     end;
+
+      if use_addons then begin
+       result:= '-dmorecomponents -Fulib\addon\*  
+-Fulib\addon\osprinter\i386-win32';
+     end;
+   end;
+end;
+
+//-------------
+
+function MakeIFIOptions(Param: String): String;
+begin
+   result:= '';
+   if isTaskSelected('ifi') then result:= '-dmse_with_ifi';
+end;
+
+//-------------
+
+[Run]
+
+Filename: &quot;fpc.exe&quot;; StatusMsg: &quot;Building IDE...&quot;; WorkingDir: &quot;{app}&quot;;  
+Parameters: &quot;-Mobjfpc -Sh -B apps\ide\mseide.pas -Fulib\common\*  
+-Fulib\common\kernel\i386-win32 -Fi\lib\common\kernel  
+{code:MakeIFIOptions} {code:MakeAddonsBuild}&quot;
+
+//----------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002734.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+	<LI>Next message: <A HREF="002751.html">[MSEide-MSEgui-talk] MSE Installer project has built!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2749">[ date ]</a>
+              <a href="thread.html#2749">[ thread ]</a>
+              <a href="subject.html#2749">[ subject ]</a>
+              <a href="author.html#2749">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

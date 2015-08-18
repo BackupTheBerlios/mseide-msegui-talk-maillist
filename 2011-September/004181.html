@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Could not catch error message
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3C201109150647.57787.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004180.html">
+   <LINK REL="Next"  HREF="004182.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Could not catch error message</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Could%20not%20catch%20error%20message&In-Reply-To=%3C201109150647.57787.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Could not catch error message">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Sep 15 06:47:57 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004180.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+        <LI>Next message: <A HREF="004182.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4181">[ date ]</a>
+              <a href="thread.html#4181">[ thread ]</a>
+              <a href="subject.html#4181">[ subject ]</a>
+              <a href="author.html#4181">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 15 September 2011 05:54:08 wahono sri wrote:
+&gt;<i> The summary of my code like this :
+</I>&gt;<i> procedure saverecord;
+</I>&gt;<i> begin
+</I>&gt;<i> try
+</I>&gt;<i>   transaction.savepointbegin;
+</I>&gt;<i>   dataset1.append;
+</I>&gt;<i>   ...
+</I>&gt;<i>   ...
+</I>&gt;<i>   dataset1.post;
+</I>&gt;<i>   dataset2.append;
+</I>&gt;<i>   ...
+</I>&gt;<i>   ...
+</I>&gt;<i>   dataset2.post;
+</I>&gt;<i>   dataset1.applyupdates;
+</I>&gt;<i> 
+</I>&gt;<i>   &gt;&gt;&gt;&gt;&gt;error from server
+</I>&gt;<i> 
+</I>&gt;<i>   dataset2.applyupdates;
+</I>&gt;<i>   ...
+</I>&gt;<i>   transaction.commitretaining;
+</I>&gt;<i> except
+</I>&gt;<i>   transaction.savepointrollback;
+</I>&gt;<i> 
+</I>&gt;<i>   &gt;&gt;&gt;&gt;&gt;caused by dataset1 and dataset2 state is set to dsbrowse, than
+</I>&gt;<i> 
+</I>&gt;<i> I do dataset.edit
+</I>&gt;<i>   dataset1.edit;
+</I>&gt;<i> end;
+</I>&gt;<i> end;
+</I>&gt;<i> 
+</I>A sequence of insert-post-edit-post-applyupdate still calls &quot;INSERT INTO&quot;. 
+Maybe the exception happens in dataset2.applyupdates after 
+dataset1.applyupdate has been finished and the dataset1.updatebuffer is clear
+so the dataset1.edit creates an new ukModify update item?
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004180.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+	<LI>Next message: <A HREF="004182.html">[MSEide-MSEgui-talk] Could not catch error message
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4181">[ date ]</a>
+              <a href="thread.html#4181">[ thread ]</a>
+              <a href="subject.html#4181">[ subject ]</a>
+              <a href="author.html#4181">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

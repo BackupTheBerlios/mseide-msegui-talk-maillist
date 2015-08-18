@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide with integrated context sensitive help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20with%20integrated%20context%20sensitive%20help&In-Reply-To=%3C4CD264D7.7030305%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001720.html">
+   <LINK REL="Next"  HREF="001740.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide with integrated context sensitive help</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20with%20integrated%20context%20sensitive%20help&In-Reply-To=%3C4CD264D7.7030305%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide with integrated context sensitive help">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 08:46:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001720.html">[MSEide-MSEgui-talk] Window Position when &quot;compiz&quot; is used
+</A></li>
+        <LI>Next message: <A HREF="001740.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1739">[ date ]</a>
+              <a href="thread.html#1739">[ thread ]</a>
+              <a href="subject.html#1739">[ subject ]</a>
+              <a href="author.html#1739">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+I noticed last night that MSEide has a predefined F1 keyboard shortcut
+setup, but there is no help integration support anywhere in the IDE.
+Nothing in the IDE acts on the F1 key press. I played around and wanted to
+add support for MSEide + DocView (fpGUI's help viewer) to give context
+sensitive help to the IDE.
+
+I noticed you can do it in one of two ways. Via the
+Application.RegisterHelpHandler() or via dropping a HelpController
+component and use it's OnHelp event.
+
+I then added a simple writeln() statement to see what actually comes
+through to those event handlers, and it seems to be the current active
+widget at the time F1 was pressed.
+
+But how can I have help for a whole Window (eg: Configure MSEide dialog)
+and not specific to a component on that window. I can't set focus to the
+Form itself. So if the OK button has focus and I press F1, the OK button is
+passed to the help handlers. Now if the OK button doesn't have any
+helpcontext information it stops there. But how can I tell MSEgui to ripple
+the help request through the component hierarchy up to the &quot;top level&quot;
+form. eg: OK button has no helpcontext, try the button's parent, so the
+Form itself is tried. Ah, the Configure MSEide dialog has helpcontext info,
+now launch DocView with that information.
+
+Any hints?
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001720.html">[MSEide-MSEgui-talk] Window Position when &quot;compiz&quot; is used
+</A></li>
+	<LI>Next message: <A HREF="001740.html">[MSEide-MSEgui-talk] MSEide with integrated context sensitive	help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1739">[ date ]</a>
+              <a href="thread.html#1739">[ thread ]</a>
+              <a href="subject.html#1739">[ subject ]</a>
+              <a href="author.html#1739">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] IFI components?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20IFI%20components%3F&In-Reply-To=%3Cibdk14%2429t%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001836.html">
+   <LINK REL="Next"  HREF="001844.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] IFI components?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20IFI%20components%3F&In-Reply-To=%3Cibdk14%2429t%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] IFI components?">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Nov 10 09:13:23 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001836.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+        <LI>Next message: <A HREF="001844.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Brian Winfrey wrote:
+
+&gt;<i> This looks interesting, where can I learn more?
+</I>
+The tifi*link components can be used as connectors between gui and business
+logic.
+
+If MSEide is compiled with -dmse_with_ifi_rem there are additional
+experimental components for remote or local client-server connections. The
+idea is that MSEgui form resource data (*.mfm equivalent) is transferred
+over data streams (pipes, sockets...) from server to a client &quot;MSEgui
+interpreter&quot;. The client instantiates the forms/modules. The ifi components
+on the client form/module instances communicate with the server application
+by the stream connection and exchanges data and events. An example is here:
+<A HREF="http://svn.berlios.de/viewvc/msedocumenting/mse/trunk/help/tutorials/mseifi/ifipipedemo/">http://svn.berlios.de/viewvc/msedocumenting/mse/trunk/help/tutorials/mseifi/ifipipedemo/</A>
+
+If MSEide is compiled with -dmse_with_pascalscript there are additional
+experimental components in tab 'PaSc'. They can be used with
+a 'File'-'New'-'Form'-'Scriptform' in order to execute pascalscript code on
+client. There are PascalScript import units and components for basic
+testing purpose only at the moment.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001836.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+	<LI>Next message: <A HREF="001844.html">[MSEide-MSEgui-talk] IFI components?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] How to intercept ttimer (defined on main	form) elapsed event within a procedure enabling the timer ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20How%20to%20intercept%20ttimer%20%28defined%20on%20main%0A%09form%29%20elapsed%20event%20within%20a%20procedure%20enabling%20the%20timer%20%3F&In-Reply-To=%3Ci43sr3%24b0o%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000615.html">
+   <LINK REL="Next"  HREF="000620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] How to intercept ttimer (defined on main	form) elapsed event within a procedure enabling the timer ?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20How%20to%20intercept%20ttimer%20%28defined%20on%20main%0A%09form%29%20elapsed%20event%20within%20a%20procedure%20enabling%20the%20timer%20%3F&In-Reply-To=%3Ci43sr3%24b0o%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] How to intercept ttimer (defined on main	form) elapsed event within a procedure enabling the timer ?">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 13 18:46:10 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000615.html">[MSEide-MSEgui-talk] How to intercept ttimer (defined on main form)	elapsed event within a procedure enabling the timer ?
+</A></li>
+        <LI>Next message: <A HREF="000620.html">[MSEide-MSEgui-talk] How to intercept ttimer (defined on main form) elapsed event within a procedure enabling the timer ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ivanko B wrote:
+
+&gt;<i> (win32)
+</I>&gt;<i> For some reason, me failed when tried to check for a public boolean
+</I>&gt;<i> variable set within OnTimer.
+</I>&gt;<i> 
+</I>OnTimer is called from main event loop, it is not called if calcexec does
+not return. Use threads or a timestamp.
+&quot;
+ ts:= timestep(&lt;max.elapsed time in us&gt;);
+ repeat
+  //dosomething
+ until &lt;finished&gt; or timeout(ts);
+&quot;
+timestep() and timeout() are in msesysutils.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000615.html">[MSEide-MSEgui-talk] How to intercept ttimer (defined on main form)	elapsed event within a procedure enabling the timer ?
+</A></li>
+	<LI>Next message: <A HREF="000620.html">[MSEide-MSEgui-talk] How to intercept ttimer (defined on main form) elapsed event within a procedure enabling the timer ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

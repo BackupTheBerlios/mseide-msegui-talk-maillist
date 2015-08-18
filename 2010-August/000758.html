@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100822220824.2cee4b2e.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000675.html">
+   <LINK REL="Next"  HREF="000759.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100822220824.2cee4b2e.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Aug 22 22:08:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000675.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000759.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+here's another update on my &quot;progress&quot; to get the i18n form layout
+modification working.
+Actually, it's no longer on the i18n mechanism you provide - after changing
+to MSE-IDE 2.2 (and fpc 2.4.0 in the process), this seems to work
+&quot;perfectly&quot;.
+
+My latest problem, concerning the background activity of an application
+ceasing with time if not constantly &quot;retriggered&quot; by a separately running
+timer signalling the program seems to be solved now as well - it seems to
+have been something with getting at or passing on the handler address.
+It could've been an issue with calling conventions or type specification of
+the intermediately used procedural variable, or maybe assimple as accessing
+the wrong field for storing this address - Linux provides two kinds of
+handler interface, and they used to be passed or retrieved by a union. But
+maybe this has changed recently, and I just copied the wrong field...
+Anyway, after revising the code and setting up another function to just
+retrieve a handler address, this part also seems to work fine.
+
+But now, another problem has surfaced, also unrelated to the i18n functions.
+It did appear lately during installation of a customer's new appliance, and
+I could not yet find an amendment, Though for now, it's not yet very much
+of a problem, I need to find a correction to it before the installation
+will be handed to my customer's customer.
+
+The problem is with externally compiled subforms / subwindows, like (self
+written) dialogs. (E.g. the screen keypad / keyboard utilities I posted
+some time ago.) I cannot tell about your GUI dialogs, because I do not use
+them here, but a quick cross check seems to show they're not affected.
+The problem shows up by just simply not displaying the pertaining windows,
+instead claiming &quot;Resource not found:t {dialog name} fo. {application name}
+fo. {dialog name} fo.&quot; (the parts within &quot;{}&quot; are showing the respective
+resources' names). For the most part (there are no exceptions as far as I
+remember) they're dynamically instantiated, and it doesn't matter whether
+there is a unit internal form variable defined or not.
+
+This exact same setup _did_ work correctly with MSEIDE/MSEGUI 1.8, up to
+GUI version 1.8b and IDE even 1.8r, and fpc 2.2.5. I didn't work much with
+2.0, but I do remember having a problem at a customer with one probabely 2.0
+compiled program from this suite, and found it existing with that same setup
+(MSEIDE/MSEGUI 2.0 and fpc 2.2.5) on my notebook recently.
+
+The problem also cannot be resolved by clearing all of the .o and .ppu
+files, be it only within the project or even for all of MSEGUI's library,
+which I _did_ already try (short of reinstallation of the whole stuff).
+I cannot even crosscheck with older versions, since there seems to be an
+incompatibility between fpc 2.4 and the 2.2 series concerning the wide
+string handling (&quot;TWideStringManager&quot; cannot be found with older versions
+of MSEGUI). The problem must have been existing with MSEIDE/MSEGUI 2.0 and
+fpc 2.2.5 also, though, because that's what I've installed on my notebook,
+where I had compiled the latest versions of the programs running at my
+customer's installement now.
+Do you know about the cause of the problem, and what to do against it?
+
+Sorry for the lengthy description - I thought it might help if I provide
+as much dtail as I can figure. If you need me to perform some tests, please
+say so here; I've all the neccessary files on my machine here
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000675.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000759.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

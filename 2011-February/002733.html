@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEuniverse is open!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3Cop.vp9cyogcyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002730.html">
+   <LINK REL="Next"  HREF="002735.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEuniverse is open!</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEuniverse%20is%20open%21&In-Reply-To=%3Cop.vp9cyogcyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEuniverse is open!">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed Feb  2 05:19:26 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002730.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+        <LI>Next message: <A HREF="002735.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2733">[ date ]</a>
+              <a href="thread.html#2733">[ thread ]</a>
+              <a href="subject.html#2733">[ subject ]</a>
+              <a href="author.html#2733">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> The tosprinter (OS specific unit) is inherited from tprinter (general
+</I>&gt;<i> unit).And it's difficult to switching between printer library in
+</I>&gt;<i> linux (cups) and windows (gdi).
+</I>
+Why difficult ?
+
+//-----------------
+unit osprinter;
+
+{$mode objfpc}{H+}
+
+{$ifdef mswindows}
+   [ALL WIN CODE]
+{$else}
+   [ALL LINUX CODE]
+{$endif}
+
+end.
+//-----------------
+
+&gt;<i> Please you add ${MSEDIR}lib\addon\osprinter\$TARGET\ to project make  
+</I>&gt;<i> directory.
+</I>&gt;<i> I use this script to build from script:
+</I>&gt;<i> -Fu${MSELIBDIR}addon/osprinter/i386-win32/
+</I>&gt;<i> -Fi${MSELIBDIR}addon/osprinter/i386-win32/
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Me have to add these commands for every addon using such OS-platform  
+switch. Not seems to be ideal approach for building a variable bunch of  
+addons.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002730.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+	<LI>Next message: <A HREF="002735.html">[MSEide-MSEgui-talk] MSEuniverse is open!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2733">[ date ]</a>
+              <a href="thread.html#2733">[ thread ]</a>
+              <a href="subject.html#2733">[ subject ]</a>
+              <a href="author.html#2733">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

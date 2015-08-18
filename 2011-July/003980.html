@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALVqcdg%2Bkmeb%3DtBkpOuM2mV01Vvv0wkuOwsGahuC3CD1ioCVuw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003979.html">
+   <LINK REL="Next"  HREF="003981.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALVqcdg%2Bkmeb%3DtBkpOuM2mV01Vvv0wkuOwsGahuC3CD1ioCVuw%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Sat Jul 30 20:56:17 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003979.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003981.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3980">[ date ]</a>
+              <a href="thread.html#3980">[ thread ]</a>
+              <a href="subject.html#3980">[ subject ]</a>
+              <a href="author.html#3980">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday, 30 July 2011, Marcos Douglas wrote:
+&gt;<i>
+</I>&gt;<i> I got it. But I see two problems here:
+</I>&gt;<i> a) An explosion of objects
+</I>
+Those report objects are &quot;lite&quot; objects. They don't necessarily
+descend from the same class as your business objects.
+Comparing them to TDataset and its TField class instances, there is
+really no difference in principle. Memory usage will be near
+identical.
+
+&gt;<i> and b) You still have SQL hard-coded.
+</I>
+Don't you write SQL for your reports too? As I mentioned hard coded
+SQL is one option, you can normally let the framework generate the SQL
+automatically as well. My personal choice is to write the SQL myself
+so I can optimize it where possible. Not ideal, but I have created a
+SQL editor tool that I use to maintain my databases, and write my SQL.
+This tool has extra features for tiOPF as well. It can generate Object
+Pascal source code from the SQL and resultset - reducing the amount of
+pascal code I need to manually write by a considerable amount.
+
+
+&gt;<i> a) If you have many, many reports, will have a ReportVisitor class for
+</I>&gt;<i> each report?
+</I>
+Just like you now have many many TDataset and TField instances for
+each report. :-)
+
+&gt;<i> b) For reasons performance, you still have SQL hard-coded... this is a
+</I>&gt;<i> fact. But is really necessary create these overhead with objects to
+</I>&gt;<i> show a report?
+</I>
+As I mentioned, the SQL can be auto generated. And even in your
+current projects you too have many object instances. TDataset, TField
+and friends. Your RAD style of programming is simply hiding those
+objects from you.
+
+
+&gt;<i> See, I like your thoughts, but I am trying to be the &quot;devil's advocate&quot;.
+</I>
+No problems, I'm used to answers similar questions.
+
+Graeme.
+
+
+-- 
+Regards,
+  - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://fpgui.sourceforge.net">http://fpgui.sourceforge.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003979.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003981.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3980">[ date ]</a>
+              <a href="thread.html#3980">[ thread ]</a>
+              <a href="subject.html#3980">[ subject ]</a>
+              <a href="author.html#3980">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3C201005181548.59064.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3C201005181548.59064.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue May 18 15:48:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000021.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+        <LI>Next message: <A HREF="000023.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 18 May 2010 14:42:25 Graeme Geldenhuys wrote:
+&gt;<i> Hi Martin,
+</I>&gt;<i>
+</I>&gt;<i> Any reason why MSEgui doesn't use the TBasicAction class (included
+</I>&gt;<i> with FPC) as a starting point for MSEgui actions? As you described in
+</I>&gt;<i> the other message thread about activators - that is functionality the
+</I>&gt;<i> TBasicAction class already supports. Maybe MSEgui code pre-dates FPC's
+</I>&gt;<i> TBasicAction (fpc's subversion repository only goes back to 2005 so I
+</I>&gt;<i> don't know the actual date TBasicAction was implemented)?
+</I>
+I don't remember if it already existed and worked when I implemented MSEgui's 
+action system. Basing own functionality on FPC technology is problematic 
+because it is normally not possible to change FPC code in reasonable time and 
+with reasonable energy except if FPC is not Delphi compatible. ;-)
+MSEgui taction concept is very different from Delphi.
+A good example are datasets where MSEgui still inherits from TDataset and 
+TField for easy integration of foreign components. Because of that MSEgui 
+needs cracker classes in order to access private class elements for 
+workarounds and extensions and the design flexibility is limited.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000021.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+	<LI>Next message: <A HREF="000023.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

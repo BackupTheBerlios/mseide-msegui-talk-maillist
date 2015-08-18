@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] field.asfloat problem!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20field.asfloat%20problem%21&In-Reply-To=%3CBANLkTinokmgT8NSQ5Ehq84sThC%3DW1DQ8Pg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003733.html">
+   <LINK REL="Next"  HREF="003737.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] field.asfloat problem!</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20field.asfloat%20problem%21&In-Reply-To=%3CBANLkTinokmgT8NSQ5Ehq84sThC%3DW1DQ8Pg%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] field.asfloat problem!">jujibo at gmail.com
+       </A><BR>
+    <I>Wed Jun  1 18:44:56 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003733.html">[MSEide-MSEgui-talk] field.asfloat problem!
+</A></li>
+        <LI>Next message: <A HREF="003737.html">[MSEide-MSEgui-talk] field.asfloat problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3734">[ date ]</a>
+              <a href="thread.html#3734">[ thread ]</a>
+              <a href="subject.html#3734">[ subject ]</a>
+              <a href="author.html#3734">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As expected, no? ;)
+
+You can't manage exact decimal values in float vars for every decimal
+number. IIRC there was a talk about it time ago.
+
+Is not MSE take a  look at this python copy/paste:
+
+Python 2.6.6 (r266:84292, Apr 20 2011, 11:58:30)
+[GCC 4.5.2] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;<i> 9.8
+</I>9.8000000000000007
+&gt;&gt;&gt;<i> print 9.8
+</I>9.8
+&gt;&gt;&gt;<i>
+</I>
+<A HREF="http://www.freepascal.org/docs-html/prog/progsu144.html#x187-1940008.2.5">http://www.freepascal.org/docs-html/prog/progsu144.html#x187-1940008.2.5</A>
+
+To get correct values, try to cast to numeric or decimal (in mysql)
+
+Julio
+
+
+
+
+2011/6/1 Sri Wahono &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mseidemsegui at gmail.com</A>&gt;
+
+&gt;<i> In MySQL database, I get result 9.8 (it's from 10-0.2), but in
+</I>&gt;<i> tdataset, I got 9.800000000000007.
+</I>&gt;<i> I use field type DOUBLE in MySQL.
+</I>&gt;<i> How to debug it?
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/70cec821/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110601/70cec821/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003733.html">[MSEide-MSEgui-talk] field.asfloat problem!
+</A></li>
+	<LI>Next message: <A HREF="003737.html">[MSEide-MSEgui-talk] field.asfloat problem!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3734">[ date ]</a>
+              <a href="thread.html#3734">[ thread ]</a>
+              <a href="subject.html#3734">[ subject ]</a>
+              <a href="author.html#3734">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

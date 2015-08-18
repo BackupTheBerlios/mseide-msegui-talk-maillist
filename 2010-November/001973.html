@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101128013731.656e1ffe.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001971.html">
+   <LINK REL="Next"  HREF="001972.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3C20101128013731.656e1ffe.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Sun Nov 28 01:37:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001971.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001972.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1973">[ date ]</a>
+              <a href="thread.html#1973">[ thread ]</a>
+              <a href="subject.html#1973">[ subject ]</a>
+              <a href="author.html#1973">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Sat, 27 Nov 2010 07:56:10 +0100:
+
+&gt;<i> If a keydown event changes the focused widget it is logical for me that
+</I>&gt;<i> any further keyevents (the keyup of enter key for example) go to the
+</I>&gt;<i> current focused widget.
+</I>
+Maybe for you, because that's the easy way to implement.
+But this behaviour can get you any number of weird and unwieldy effects,
+because these key events are _not_ independent from one another. Any keyup
+_has to be_ associated to a corresponding keydown, when it's occurring
+within the same widget's context. A sole keydown may initiate some action,
+but a sole keyup may never do so.
+For illustration, imagine you have a program to delete any number of files
+on your disk, and have it request a confirmation with the default answer
+being &quot;no&quot; (also executed by pressing enter), but which will do the action
+if it receives an &quot;enter&quot; key up event. You simply press &quot;enter&quot; to reject
+the action - and the program deletes your files nontheless...
+Of course, this is bad design - but what good is an event which cannot be
+used for any sensible purpose? So either the keyup event should be removed
+(most radical solution;), or there should be some mechanism to prevent a
+lone keyup (usually occurring in conjunction with a focus change) to be
+ignored. This can be some procedure to be implemented by the programmer,
+if that's clearly stated in the documentation (possibly even illustrated by
+an example), or it can be a mechanism implemented within the event handler
+system.
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001971.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001972.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1973">[ date ]</a>
+              <a href="thread.html#1973">[ thread ]</a>
+              <a href="subject.html#1973">[ subject ]</a>
+              <a href="author.html#1973">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

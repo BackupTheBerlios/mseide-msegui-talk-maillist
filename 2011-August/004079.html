@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Testing db using console application
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Testing%20db%20using%20console%20application&In-Reply-To=%3C201108180907.22579.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004078.html">
+   <LINK REL="Next"  HREF="004080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Testing db using console application</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Testing%20db%20using%20console%20application&In-Reply-To=%3C201108180907.22579.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Testing db using console application">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 18 09:07:22 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004078.html">[MSEide-MSEgui-talk] Testing db using console application
+</A></li>
+        <LI>Next message: <A HREF="004080.html">[MSEide-MSEgui-talk] Testing db using console application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4079">[ date ]</a>
+              <a href="thread.html#4079">[ thread ]</a>
+              <a href="subject.html#4079">[ subject ]</a>
+              <a href="author.html#4079">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 18 August 2011 08:38:28 Graeme Geldenhuys wrote:
+&gt;<i> On 08/18/2011 07:57 AM, Martin Schreiber wrote:
+</I>&gt;<i> &gt; tmseibconnection uses timer&#8230;
+</I>&gt;<i>
+</I>&gt;<i> Now you got me curious. :)  What is a timer used for in a database
+</I>&gt;<i> connection?
+</I>&gt;<i>
+</I>For example handling of the Firebird or Postgres asynchronous server side DB 
+events. Firebird uses a thread for the purpose which feeds the events into 
+the application main event queue by a single shot zero delay timer, Postgres 
+needs polling.
+MSE datasets have the possibility to make delayed lookups and delayed filling 
+of lookupbuffers and the like. MSE components also use the main event queue 
+for non blocking component event communication.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004078.html">[MSEide-MSEgui-talk] Testing db using console application
+</A></li>
+	<LI>Next message: <A HREF="004080.html">[MSEide-MSEgui-talk] Testing db using console application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4079">[ date ]</a>
+              <a href="thread.html#4079">[ thread ]</a>
+              <a href="subject.html#4079">[ subject ]</a>
+              <a href="author.html#4079">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

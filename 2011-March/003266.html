@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Max length in tdbstring*edit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Max%20length%20in%20tdbstring%2Aedit&In-Reply-To=%3CAANLkTinb-v6przv8aPt_-czWdBcQcYotPGkqqKOte2xX%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003265.html">
+   <LINK REL="Next"  HREF="003267.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Max length in tdbstring*edit</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Max%20length%20in%20tdbstring%2Aedit&In-Reply-To=%3CAANLkTinb-v6przv8aPt_-czWdBcQcYotPGkqqKOte2xX%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Max length in tdbstring*edit">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Thu Mar 24 12:13:38 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003265.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+        <LI>Next message: <A HREF="003267.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3266">[ date ]</a>
+              <a href="thread.html#3266">[ thread ]</a>
+              <a href="subject.html#3266">[ subject ]</a>
+              <a href="author.html#3266">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Trunk 4442 has tcustomeditwidgetdatalink.options oed_limitcharlen.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>I have field with fielddef.size=5 and controller.field.size=5, but
+maxlength to be 15.
+I do debugging and in this procedure :
+
+procedure tmsebufdataset.bindfields(const bind: boolean);
+var
+ int1: integer;
+ field1: tfield;
+ int2: integer;
+...
+...
+  if field1 is tmsestringfield then begin
+   int2:= 0;
+   if bind then begin
+    int2:= field1.size; ====================&gt; get 5
+    if fielddef1 &lt;&gt; nil then begin
+     int2:= fielddef1.size;==================&gt; get 15, I think error
+is from here
+    end;
+    tmsestringfield1(field1).setismsestring(@getmsestringdata,
+         @setmsestringdata,int2,(fielddef1 &lt;&gt; nil) and
+                        (fielddef1.datatype in widestringfields));
+...
+...
+
+BTW, for tmsestringfield, why you should add options oed_limitcharlen?
+I think it should protect max chars automatically. Because if data is
+longer than field size in db, it will got error when updating record.
+
+Thanks
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003265.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+	<LI>Next message: <A HREF="003267.html">[MSEide-MSEgui-talk] Max length in tdbstring*edit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3266">[ date ]</a>
+              <a href="thread.html#3266">[ thread ]</a>
+              <a href="subject.html#3266">[ subject ]</a>
+              <a href="author.html#3266">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

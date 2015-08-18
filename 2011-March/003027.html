@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTinuuOKb_EOcm0eCQ-4o9VRjUWNK-D_9PxwOjaoc%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003025.html">
+   <LINK REL="Next"  HREF="003032.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTinuuOKb_EOcm0eCQ-4o9VRjUWNK-D_9PxwOjaoc%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">jujibo at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 09:43:51 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003025.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003032.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3027">[ date ]</a>
+              <a href="thread.html#3027">[ thread ]</a>
+              <a href="subject.html#3027">[ subject ]</a>
+              <a href="author.html#3027">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I tried it using stockobjects.fonts[stf_default] name and height. This was
+working fine except not using antialiasing :)
+
+Can you provide an example (only a few lines of code) of registerfontalias
+to change the default font (family, size, foo_antialiasisng...)
+
+Thank you.
+
+
+Julio
+
+
+
+2011/3/4 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Thursday, 3. March 2011 20.18:39 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; I also wonder why using:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; stockobjects.fonts[stf_default].name:= 'Helvetica';
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; have no effect but if I change the font of a label and in name I type
+</I>&gt;<i> &gt; 'Helvetica' antialiasing is used. (but not, using stf_default even when I
+</I>&gt;<i> &gt; changed it to 'Helvetica') that's why I thought was using the font
+</I>&gt;<i> &gt; configuration wrongly.
+</I>&gt;<i> &gt;
+</I>&gt;<i> stockobjects.fonts[stf_default] will be used if no widget or parent widget
+</I>&gt;<i> has
+</I>&gt;<i> an activated font property instance. If you want to redefine the mapping
+</I>&gt;<i> of 'stf_default' font name use registerfontalias().
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/39feda78/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/39feda78/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003025.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003032.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3027">[ date ]</a>
+              <a href="thread.html#3027">[ thread ]</a>
+              <a href="subject.html#3027">[ subject ]</a>
+              <a href="author.html#3027">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

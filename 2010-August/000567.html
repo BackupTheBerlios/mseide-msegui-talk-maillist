@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Wishes for PostgreSQL 8+: (TMSESQLTransaction:	isolation level) &amp; (TMSESQLQuery: named savepoint to return	data if the query fails thus rollback-ed)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Wishes%20for%20PostgreSQL%208%2B%3A%20%28TMSESQLTransaction%3A%0A%09isolation%20level%29%20%26%20%28TMSESQLQuery%3A%20named%20savepoint%20to%20return%0A%09data%20if%20the%20query%20fails%20thus%20rollback-ed%29&In-Reply-To=%3Cipnc561blpfuunq7vpstrga9kh9if2hna2%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000563.html">
+   <LINK REL="Next"  HREF="000568.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+: (TMSESQLTransaction:	isolation level) &amp; (TMSESQLQuery: named savepoint to return	data if the query fails thus rollback-ed)</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Wishes%20for%20PostgreSQL%208%2B%3A%20%28TMSESQLTransaction%3A%0A%09isolation%20level%29%20%26%20%28TMSESQLQuery%3A%20named%20savepoint%20to%20return%0A%09data%20if%20the%20query%20fails%20thus%20rollback-ed%29&In-Reply-To=%3Cipnc561blpfuunq7vpstrga9kh9if2hna2%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+: (TMSESQLTransaction:	isolation level) &amp; (TMSESQLQuery: named savepoint to return	data if the query fails thus rollback-ed)">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Aug  2 08:06:14 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000563.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+        <LI>Next message: <A HREF="000568.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In more details:
+================================
+In PostgreSQL, transactions usually run at the READ COMMITTED
+isolation level. If you need to avoid the problems present in READ 
+COMMITTED, you can change isolation levels using the SET TRANSACTION
+command. The syntax for the SET TRANSACTION
+command is
+SET TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE };
+The SET TRANSACTION command affects only the current transaction (and
+it must be executed before the first DML[13]
+command 
+within the transaction). If you want to change the isolation level for
+your session (that is, change the isolation level for future 
+transactions), you can use the SET SESSION command:
+[13]
+A DML (data manipulation language) command is any command that can
+update or read the data within a 
+table. SELECT, INSERT, UPDATE, FETCH, and COPY are DML commands.
+SET SESSION CHARACTERISTICS AS 
+TRANSACTION ISOLATION LEVEL { READ COMMITTED | SERIALIZABLE }
+
+---------------------------
+
+movies=# START TRANSACTION;
+START TRANSACTION
+movies=# INSERT INTO customers VALUES( 5, 'Kemp, Hans' );
+INSERT 44272 1
+movies=# SELECT * FROM customers;
+customer_id |    customer_name     |  phone   | birth_date | balance
+-------------+----------------------+----------+------------+---------
+3 | Panky, Henry         | 555-1221 | 1968-01-21 |    0.00
+1 | Jones, Henry         | 555-1212 | 1970-10-10 |    0.00
+4 | Wonderland, Alice N. | 555-1122 | 1969-03-05 |    3.00
+2 | Rubin, William       | 555-2211 | 1972-07-10 |   15.00
+5 | Kemp, Hans           |          |            |
+(5 rows)
+At this point, you've started a new transaction and inserted a new
+row, but you haven't committed your changes yet. Now define 
+a SAVEPOINT named p1 and insert a second row:
+movies=# SAVEPOINT P1;
+SAVEPOINT
+movies=# INSERT INTO customers VALUES( 6, 'Falkstein, Gerhard' );
+INSERT 44273 1
+The SAVEPOINT command inserted a marker into the transaction stream.
+If you execute a ROLLBACK command at this point, both 
+of the newly inserted rows will be discarded (in other words, all of
+the changes you've made in this transaction will be rolled 
+back):
+movies=# ROLLBACK;
+ROLLBACK
+movies=# SELECT * FROM customers;
+customer_id |    customer_name     |  phone   | birth_date | balance 
+-------------+----------------------+----------+------------+---------
+3 | Panky, Henry         | 555-1221 | 1968-01-21 |    0.00 
+1 | Jones, Henry         | 555-1212 | 1970-10-10 |    0.00 
+4 | Wonderland, Alice N. | 555-1122 | 1969-03-05 |    3.00 
+2 | Rubin, William       | 555-2211 | 1972-07-10 |   15.00 
+(4 rows)
+Now repeat the same sequence of commands, but this time around,
+execute a qualified ROLLBACK command, like this:
+movies=# ROLLBACK TO SAVEPOINT P1;
+ROLLBACK
+movies=# SELECT * FROM customers;
+customer_id |    customer_name     |  phone   | birth_date | balance
+-------------+----------------------+----------+------------+---------
+3 | Panky, Henry         | 555-1221 | 1968-01-21 |    0.00
+1 | Jones, Henry         | 555-1212 | 1970-10-10 |    0.00
+4 | Wonderland, Alice N. | 555-1122 | 1969-03-05 |    3.00
+2 | Rubin, William       | 555-2211 | 1972-07-10 |   15.00
+5 | Kemp, Hans           |          |            |
+(5 rows)
+When you ROLLBACK to a SAVEPOINT, changes made since the SAVEPOINT are
+discarded, but not changes made before the
+SAVEPOINT. So, you see that the customers table retains the first row
+that you inserted, but not the second row. When you 
+ROLLBACK to a SAVEPOINT, you are still in the middle of a
+transaction&#8212;you must complete the transaction with a COMMIT or
+ROLLBACK command.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000563.html">[MSEide-MSEgui-talk] tsequencelink vs filter
+</A></li>
+	<LI>Next message: <A HREF="000568.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+:	(TMSESQLTransaction: isolation level) &amp; (TMSESQLQuery: named	savepoint to return data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

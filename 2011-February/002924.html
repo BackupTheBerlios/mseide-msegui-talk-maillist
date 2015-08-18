@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SIGSEGV since last trunk update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SIGSEGV%20since%20last%20trunk%20update&In-Reply-To=%3CAANLkTi%3DDOGUAsXxD_Zfoiw7%3DD0EzMkeyJRnWne0jicim%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002914.html">
+   <LINK REL="Next"  HREF="002925.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SIGSEGV since last trunk update</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SIGSEGV%20since%20last%20trunk%20update&In-Reply-To=%3CAANLkTi%3DDOGUAsXxD_Zfoiw7%3DD0EzMkeyJRnWne0jicim%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SIGSEGV since last trunk update">jujibo at gmail.com
+       </A><BR>
+    <I>Mon Feb 28 12:28:40 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002914.html">[MSEide-MSEgui-talk] Reset tdropdownlistedit
+</A></li>
+        <LI>Next message: <A HREF="002925.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2924">[ date ]</a>
+              <a href="thread.html#2924">[ thread ]</a>
+              <a href="subject.html#2924">[ subject ]</a>
+              <a href="author.html#2924">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, I've updated from trunk version and when I run my program and close it I
+get SIGSEGV
+
+Before the update all was fine.
+
+Thanks.
+
+
+Julio
+
+
+Stack trace:
+
+#0  080951BB msegraphics.pas:2585 TCANVAS__GDI(FUNC=GDF_DESTROYREGION,
+this=&lt;error reading variable&gt;)
+#1  08098850 msegraphics.pas:4102 TCANVAS__DESTROYREGION(REGION=0,
+this=&lt;error reading variable&gt;)
+#2  080957D7 msegraphics.pas:2759 TCANVAS__FREEVALUES(VALUES={CHANGED =
+[CS_REGIONCOPY..CS_CLIPREGION], ORIGIN = {X = 0, Y = 0}, BRUSHORIGIN = {X =
+0, Y = 0}, CLIPREGION = 0, COLOR = 2684354562, RASTEROP = ROP_COPY,
+COLORBACKGROUND = 2147483651, FONT = {HANDLES = {0, 0, 0, 0}, COLOR =
+2684354562, COLORBACKGROUND = 2147483651, SHADOW_COLOR = 2147483654,
+SHADOW_SHIFTX = 1, SHADOW_SHIFTY = 1, GLOSS_COLOR = 2147483654, GLOSS_SHIFTX
+= -1, GLOSS_SHIFTY = -1, STYLE = [], HEIGHT = 0, WIDTH = 0, EXTRASPACE = 0,
+NAME = 0x0, CHARSET = 0x0, OPTIONS = [], GLYPH = 0, ROTATION = 0, XSCALE =
+1}, BRUSH = 0x0, LINEINFO = {WIDTH = 0, DASHES = '', CAPSTYLE = CS_BUTT,
+JOINSTYLE = JS_MITER, OPTIONS = []}}, this=&lt;error reading variable&gt;)
+#3  08095941 msegraphics.pas:2793 TCANVAS__RESTORE(INDEX=1, this=&lt;error
+reading variable&gt;)
+#4  0828A0F6 mseprinter.pas:1690 TSTREAMPRINTERCANVAS__RESET(this=&lt;error
+reading variable&gt;)
+#5  080954CA msegraphics.pas:2662 TCANVAS__UNLINK(this=&lt;error reading
+variable&gt;)
+#6  08094F79 msegraphics.pas:2527 TCANVAS__DESTROY(vmt=0x1, this=&lt;error
+reading variable&gt;)
+#7  08059C12 msegraphics.pas:0 SYSTEM_TOBJECT_$__FREE()
+#8  08285EF2 mseprinter.pas:523 TCUSTOMPRINTER__DESTROY(vmt=0x1, this=&lt;error
+reading variable&gt;)
+#9  080B0E5F mseprinter.pas:0 CLASSES_TCOMPONENT_$__DESTROYCOMPONENTS()
+#10  B77FF1E0 mseprinter.pas:0 ??()
+#11  0813FEDD msedatamodules.pas:151 TMSEDATAMODULE__DESTROY(vmt=0x0,
+this=&lt;error reading variable&gt;)
+#12  0809B6CF imprimir.pas:159 TIMPRIMIRMO__DESTROY(vmt=0x1, this=&lt;error
+reading variable&gt;)
+#13  08059C12 imprimir.pas:0 SYSTEM_TOBJECT_$__FREE()
+#14  080877EC msegui.pas:15579 TGUIAPPLICATION__DESTROYFORMS(this=&lt;error
+reading variable&gt;)
+#15  0808A151 msegui.pas:16718 TGUIAPPLICATION__DOAFTERRUN(this=&lt;error
+reading variable&gt;)
+#16  080DE377 mseapplication.pas:1392 TCUSTOMAPPLICATION__RUN(this=&lt;error
+reading variable&gt;)
+#17  0804BCC9 GestionTVT.pas:60 main()
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110228/1fa78afd/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110228/1fa78afd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002914.html">[MSEide-MSEgui-talk] Reset tdropdownlistedit
+</A></li>
+	<LI>Next message: <A HREF="002925.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2924">[ date ]</a>
+              <a href="thread.html#2924">[ thread ]</a>
+              <a href="subject.html#2924">[ subject ]</a>
+              <a href="author.html#2924">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

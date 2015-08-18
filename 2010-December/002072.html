@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] ttreeedititem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ttreeedititem&In-Reply-To=%3C4D035456.3020203%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002070.html">
+   <LINK REL="Next"  HREF="002074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] ttreeedititem</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ttreeedititem&In-Reply-To=%3C4D035456.3020203%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] ttreeedititem">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Dec 11 11:37:10 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002070.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+        <LI>Next message: <A HREF="002074.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2072">[ date ]</a>
+              <a href="thread.html#2072">[ thread ]</a>
+              <a href="subject.html#2072">[ subject ]</a>
+              <a href="author.html#2072">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 11.12.2010 09:46, schrieb dan:
+&gt;<i> Hi, Martin. I have two questions:
+</I>&gt;<i> 1. How to use ns_checkbox(activated) in ttreeedititem? why checkbox
+</I>&gt;<i> isn't appeared?
+</I>
+ns_checkbox must be activated in the individual node states.
+
+&gt;<i> 2. I use tbooleanedit, ttreeedititem, tstringedit in twidgetedit. And
+</I>&gt;<i> i have some data in that twidgetedit.
+</I>&gt;<i>   When i collapse and then expand one of tree in ttreeedititem, value
+</I>&gt;<i> in tbooleanedit is blank(missing).
+</I>
+ttreeitemedit maps expanded tree nodes to grid rows, there are no rows 
+for collapsed nodes. The values of additionally columns must be 
+transferred from treeitem in code, for example in 
+ttreeitemedit.onupdaterowvalues.
+If you want to have rows for all items without using treeitem use a 
+tfoldedit instead ttreeitemedit. optionsgrid og_folded must be activated 
+in order to enable folding support. The folding state of the rows are in 
+the rowhidden/rowfold* properties.
+
+&gt;<i> 3. How to disable tree expanding in ttreeeditem?
+</I>&gt;<i>
+</I>I don't know.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002070.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+	<LI>Next message: <A HREF="002074.html">[MSEide-MSEgui-talk] ttreeedititem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2072">[ date ]</a>
+              <a href="thread.html#2072">[ thread ]</a>
+              <a href="subject.html#2072">[ subject ]</a>
+              <a href="author.html#2072">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

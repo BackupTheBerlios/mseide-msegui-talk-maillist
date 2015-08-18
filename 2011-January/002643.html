@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] ffmpeg component
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ffmpeg%20component&In-Reply-To=%3C4D3EE153.5000302%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002641.html">
+   <LINK REL="Next"  HREF="002644.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] ffmpeg component</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20ffmpeg%20component&In-Reply-To=%3C4D3EE153.5000302%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] ffmpeg component">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Jan 25 15:42:27 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002641.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+        <LI>Next message: <A HREF="002644.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2643">[ date ]</a>
+              <a href="thread.html#2643">[ thread ]</a>
+              <a href="subject.html#2643">[ subject ]</a>
+              <a href="author.html#2643">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 25.01.2011 15:51, schrieb Sri Wahono:
+&gt;<i> I try to create widget for video player (use ffmpeg libraries/
+</I>&gt;<i> <A HREF="http://ffmpeg.org">http://ffmpeg.org</A>). And the result in Windows is OK to play video
+</I>&gt;<i> (mp4, flv, etc), but play sound from video not yet implemented.
+</I>&gt;<i>
+</I>&gt;<i> But in Linux I got problem about copymemory (only in windows). Then I
+</I>&gt;<i> use move procedure to copy data to tmaskedbitmap (fbmp).
+</I>&gt;<i>
+</I>&gt;<i> procedure tazvideoplayer.createbitmap;
+</I>&gt;<i> var
+</I>&gt;<i>   i: integer;
+</I>&gt;<i>   po1,po2: plongword;
+</I>&gt;<i> begin
+</I>&gt;<i>   fbmp.size:= makesize(pCodecCtx^.width,pCodecCtx^.height);
+</I>&gt;<i>   for i := 0 to fbmp.size.cy - 1 do begin
+</I>&gt;<i>    {$ifdef windows}
+</I>&gt;<i>    CopyMemory(fbmp.scanline[i],pointer(integer(pFrameRGB^.data[0])+fbmp.size.cx*4*i),fbmp.size.cx*4);
+</I>&gt;<i>    {$endif}
+</I>&gt;<i>    {$ifdef linux}
+</I>&gt;<i>    move(pointer(integer(pFrameRGB^.data[0])+fbmp.size.cx*4*i),fbmp.scanline[i],
+</I>&gt;<i> fbmp.size.cx*4); =====&gt;  here
+</I>&gt;<i>    {$endif}
+</I>&gt;<i>   end;
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>&gt;<i> I got error message :
+</I>&gt;<i>
+</I>&gt;<i> Free Pascal Compiler version 2.4.2 [2010/12/17] for i386
+</I>&gt;<i> ....
+</I>&gt;<i> ....
+</I>&gt;<i> Compiling /usr/local/msegui/lib/addon/aztools/azvideoplayer.pas
+</I>&gt;<i> Compiling /usr/local/msegui/lib/common/widgets/mseimage.pas
+</I>&gt;<i> azvideoplayer.pas(124,78) Error: Can't take the address of constant expressions
+</I>&gt;<i> azvideoplayer.pas(342) Fatal: There were 1 errors compiling module, stopping
+</I>&gt;<i> Fatal: Compilation aborted
+</I>&gt;<i>
+</I>&gt;<i> How to fix it?
+</I>&gt;<i>
+</I>move is defined as:
+&quot;
+Procedure Move(const source;var dest;count:SizeInt);
+&quot;
+Don't use  adress but variables at the address:
+&quot; 
+move(pointer(integer(pFrameRGB^.data[0])+fbmp.size.cx*4*i)^,fbmp.scanline[i]^,
+                          fbmp.size.cx*4);
+&quot;
+The memory in tbitmap is contiguous, maybe it is possible to move the 
+whole frame in a single block if the row padding is the same or even to 
+use the memory of the image source.
+
+&gt;<i> BTW, did you plan to create video player for MSE after you finished
+</I>&gt;<i> create taudioout and tmidiout?
+</I>
+No. There is another video player with MSEgui already AFAIK.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002641.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+	<LI>Next message: <A HREF="002644.html">[MSEide-MSEgui-talk] ffmpeg component
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2643">[ date ]</a>
+              <a href="thread.html#2643">[ thread ]</a>
+              <a href="subject.html#2643">[ subject ]</a>
+              <a href="author.html#2643">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

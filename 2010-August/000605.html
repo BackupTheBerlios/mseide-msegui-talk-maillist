@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tdbdataimage - upload
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci43ecu%24tt5%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000604.html">
+   <LINK REL="Next"  HREF="000609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tdbdataimage - upload</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci43ecu%24tt5%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tdbdataimage - upload">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 13 14:39:39 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000604.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+        <LI>Next message: <A HREF="000609.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#605">[ date ]</a>
+              <a href="thread.html#605">[ thread ]</a>
+              <a href="subject.html#605">[ subject ]</a>
+              <a href="author.html#605">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;<i> Hmm, don't quite get it.
+</I>&gt;<i> 
+</I>&gt;<i> I am using Zeos to a MySQL database.
+</I>&gt;<i> 
+</I>&gt;<i>     TZConnection1: TZConnection;
+</I>&gt;<i>     tmsezquery1: tmsezquery;
+</I>&gt;<i>     tmsedatasource1: tmsedatasource;
+</I>&gt;<i>     tdbstringgrid1: tdbstringgrid;
+</I>&gt;<i>     tdbnavigator1: tdbnavigator;
+</I>&gt;<i>     tdbdataimage1: tdbdataimage;
+</I>&gt;<i> 
+</I>Aha, ZEOS instead of MSEgui SQLDB family!
+
+&gt;<i> At designtime the tmsezquery1 is set to true, and I can navigate the
+</I>&gt;<i> images with the navigator and se the recordnumber in the stringgrid - no
+</I>&gt;<i> problem.
+</I>&gt;<i> 
+</I>&gt;<i> However, if I drop a tmsegraphicfield on the form, and try to link it to
+</I>&gt;<i> tmsezquery1, I get a warning that the operation cannot be performed on
+</I>&gt;<i> an active dataset.
+</I>&gt;<i> 
+</I>&gt;<i> I can set tmsezquery1.active to false, but when I then try to set it
+</I>&gt;<i> active, i get a new warning that the fields in tdbstringgrid1 cannot be
+</I>&gt;<i> found.
+</I>&gt;<i> 
+</I>It is because if there is at least one persistent field the automatic
+creation of fields for all fielddefs is switched off. Click on the ellipse
+in objectinspector tmsezquery1.controller.fields.count in order to open the
+fields editor, move the wanted fields from 'Fielddefs' to 'Fields'.
+
+I don't know how graphic fields work in ZEOS, i assume that Zeos creates a
+TBlobField for Image access, so TBlobField.LoadFromFile() should work.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000604.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+	<LI>Next message: <A HREF="000609.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#605">[ date ]</a>
+              <a href="thread.html#605">[ thread ]</a>
+              <a href="subject.html#605">[ subject ]</a>
+              <a href="author.html#605">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

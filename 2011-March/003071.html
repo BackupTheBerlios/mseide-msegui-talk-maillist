@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTikZqN_sZUMGKZ9u6yGe5PeUrGtec9QrucLayAwi%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003070.html">
+   <LINK REL="Next"  HREF="003078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTikZqN_sZUMGKZ9u6yGe5PeUrGtec9QrucLayAwi%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">jujibo at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 20:54:23 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003070.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003078.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3071">[ date ]</a>
+              <a href="thread.html#3071">[ thread ]</a>
+              <a href="subject.html#3071">[ subject ]</a>
+              <a href="author.html#3071">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2011/3/4 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> Julio Jim&#233;nez wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; I see both equals.. both using default font size 14 bold with and without
+</I>&gt;<i> &gt; cleartype
+</I>&gt;<i> &gt;
+</I>&gt;<i> Attached the screeshot I meant.
+</I>&gt;<i> Another question. Because CLEARTYPE_QUALITY does not antialias on all
+</I>&gt;<i> systems it must be replaced by ANTIALIASED_QUALITY where cleartype is not
+</I>&gt;<i> supported. How to find out if cleartype is supported? What happens with
+</I>&gt;<i> fonts which do not support cleartype
+</I>&gt;<i>
+</I>
+It seems are rendering in default mode
+
+
+
+&gt;<i> &quot;
+</I>&gt;<i>  The following situations do not support ClearType antialiasing:
+</I>&gt;<i>
+</I>&gt;<i>    * Text is rendered on a printer.
+</I>&gt;<i>    * Display set for 256 colors or less.
+</I>&gt;<i>    * Text is rendered to a terminal server client.
+</I>&gt;<i>    * The font is not a TrueType font or an OpenType font with TrueType
+</I>&gt;<i> outlines. For example, the following do not support ClearType antialiasing:
+</I>&gt;<i> Type 1 fonts, Postscript OpenType fonts without TrueType outlines, bitmap
+</I>&gt;<i> fonts, vector fonts, and device fonts.
+</I>&gt;<i>    * The font has tuned embedded bitmaps, for any font sizes that contain
+</I>&gt;<i> the embedded bitmaps. For example, this occurs commonly in East Asian
+</I>&gt;<i> fonts.
+</I>&gt;<i> &quot;
+</I>&gt;<i> are they &quot;normal&quot; antialiased instead or must ANTIALIASED_QUALITY be used?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>I think it's ok as it is actually... I suggested creartype as another
+option.  MSEgui actually render fonts using antialiasing when windows is
+able to do it. There was an error from my side thinking that MSEide was
+using points for font size instead of pixels. Using the right proportion
+they render in the same way.
+
+If the system supports cleartype, the user can enable/disable it in desktop
+preferences (screen preferences, appearance, effects...)
+
+Could be interesting to have it as another option but not overwriting the
+default one, I think. Windows Vista and up uses clear type by default so
+MSEide uses it too (without extra options) if enabled in the OS.
+
+The good thing is now we know how to enable/disable it in the software :)
+
+
+Julio
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/2946a42b/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/2946a42b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003070.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003078.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3071">[ date ]</a>
+              <a href="thread.html#3071">[ thread ]</a>
+              <a href="subject.html#3071">[ subject ]</a>
+              <a href="author.html#3071">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

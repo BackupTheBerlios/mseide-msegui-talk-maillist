@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] trying to compile the demo...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20trying%20to%20compile%20the%20demo...&In-Reply-To=%3C201011030927.05019.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001676.html">
+   <LINK REL="Next"  HREF="001679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] trying to compile the demo...</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20trying%20to%20compile%20the%20demo...&In-Reply-To=%3C201011030927.05019.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] trying to compile the demo...">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Nov  3 09:27:04 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001676.html">[MSEide-MSEgui-talk] trying to compile the demo...
+</A></li>
+        <LI>Next message: <A HREF="001679.html">[MSEide-MSEgui-talk] trying to compile the demo...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1678">[ date ]</a>
+              <a href="thread.html#1678">[ thread ]</a>
+              <a href="subject.html#1678">[ subject ]</a>
+              <a href="author.html#1678">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday, 3. November 2010 08.36:47 Graeme Geldenhuys wrote:
+&gt;<i> Op 2010-11-02 21:48, Julio Jim&#233;nez het geskryf:
+</I>&gt;<i> &gt; ${MSEDIR} is not set. (path to msedir instalation)
+</I>&gt;<i>
+</I>&gt;<i> Martin, I know this was a rather obvious error (looking at the
+</I>&gt;<i> screenshots), so not sure if what I am about to suggest is worth the
+</I>&gt;<i> effort. Maybe the IDE could raise an error when you use a macro that wasn't
+</I>&gt;<i> defined yet (or has a empty string as value)?
+</I>&gt;<i>
+</I>&gt;<i> Pros:
+</I>&gt;<i> -----
+</I>&gt;<i>  * Catches cases as this message thread lists
+</I>&gt;<i>  * Catches spelling mistakes of macro names. I once had this problem in
+</I>&gt;<i>    the Project Options dialog, and it took quite a while before I spotted
+</I>&gt;<i>    the problem.
+</I>&gt;<i>
+</I>First, I think users should read README.TXT. There are not many steps to do 
+for installing MSEide+MSEgui so I think we can expect that users make the 
+necessary settings. I see from the download statistics that often the Windows 
+binary package is the solely downloaded file, MSEide+MSEgui is useless 
+without the source package...
+What also sometimes happens is that users read 'Project'-'Open' 
+as 'File'-'Open'.
+
+Because ${MSEDIR} is located in settings dialog it is always defined, an empty 
+string as macro value is sometimes needed too, so I think there is no general 
+solution. Unresolved macro references are not touched so they show up in the 
+popup hint of the option edits. Please report if you find an edit widget in 
+project options where the macro expansion popup hint is not enabled.
+
+&gt;<i> Maybe show an error state like the &quot;shortcut conflict&quot; in the Shortcuts
+</I>&gt;<i> dialog. The field is highlighted in error if the macro doesn't exist or is
+</I>&gt;<i> empty, but doesn't force the user to take action immediately. At least the
+</I>&gt;<i> user is notified though.
+</I>&gt;<i>
+</I>Complicate to implement. Don't you think the popup hints are enough? It 
+wouldn't help for empty ${MSEDIR} anyway if users don't 
+check 'Project'-'Options'.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001676.html">[MSEide-MSEgui-talk] trying to compile the demo...
+</A></li>
+	<LI>Next message: <A HREF="001679.html">[MSEide-MSEgui-talk] trying to compile the demo...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1678">[ date ]</a>
+              <a href="thread.html#1678">[ thread ]</a>
+              <a href="subject.html#1678">[ subject ]</a>
+              <a href="author.html#1678">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

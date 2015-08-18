@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about grid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20grid&In-Reply-To=%3C4C6B36A6.5050703%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000673.html">
+   <LINK REL="Next"  HREF="000679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about grid</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20grid&In-Reply-To=%3C4C6B36A6.5050703%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] about grid">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Wed Aug 18 03:25:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000673.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+        <LI>Next message: <A HREF="000679.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>msegrids.pas
+procedure tcustomgrid.clientmouseevent(var info: mouseeventinfoty);
+9514:  if (cell1.col &lt; 0)
+       //or (co_nofocus in fdatacols[cell1.col].options)
+       then begin
+        cell1.col:= nextfocusablecol(0,false,cell1.row);
+       end;
+      end;
+      if (cell1.col &gt;= 0)
+// and
+ 
+//fdatacols[cell1.col].canfocus(info.button,info.shiftstate,bo1)
+
+i build a find row text form
+
+    tpopupmenu.additems(amenu,self,mouseinfo,['find'],[],[],[{$ifdef 
+FPC}@{$endif}findclick]);
+
+so  it can not   focused when co_nofocus in options
+maybe you can add procedure to  check canmousefocus?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000673.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+	<LI>Next message: <A HREF="000679.html">[MSEide-MSEgui-talk] about grid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

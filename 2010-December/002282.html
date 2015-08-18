@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide+GDB issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTimTisbJtVjgSW%3DK39GNfWUGzMdwA_Mks1W401F%2B%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002281.html">
+   <LINK REL="Next"  HREF="002283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide+GDB issue</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%2BGDB%20issue&In-Reply-To=%3CAANLkTimTisbJtVjgSW%3DK39GNfWUGzMdwA_Mks1W401F%2B%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide+GDB issue">jujibo at gmail.com
+       </A><BR>
+    <I>Wed Dec 29 09:59:34 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002281.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+        <LI>Next message: <A HREF="002283.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2282">[ date ]</a>
+              <a href="thread.html#2282">[ thread ]</a>
+              <a href="subject.html#2282">[ subject ]</a>
+              <a href="author.html#2282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/12/29 Sieghard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">s_c_h_s at arcor.de</A>&gt;
+
+&gt;<i> Hallo Julio,
+</I>&gt;<i>
+</I>&gt;<i> Du schriebst am Tue, 28 Dec 2010 20:41:45 +0100:
+</I>&gt;<i>
+</I>&gt;<i> &gt; probably you mean LC_MESSAGES? ;)
+</I>&gt;<i>
+</I>&gt;<i> Oops - yes, right, sorry for the typo. That's what I wanted to write.
+</I>&gt;<i>
+</I>&gt;<i> &gt; BTW, ubuntu 10.04 have also localized gdb messages but it does work
+</I>&gt;<i> &gt; properly.. may be not all the strings are translated. I didn't check it.
+</I>&gt;<i>
+</I>&gt;<i> _Probabely_ they were not complete then, I guess.
+</I>&gt;<i> But even if they are now, it's not neccessary in general to switch to
+</I>&gt;<i> another locale completely, as the localisation can be set rather finely
+</I>&gt;<i> grained.
+</I>
+
+Yes, I did check and messages are incomplete (that's ok from my point of
+view. Something like translating objectpascal, C, java  to spanish,
+german...)  :D
+
+
+
+
+
+
+
+&gt;<i> There are quite a number of environment variables resonsible for
+</I>&gt;<i> different aspects of localisation, their settings are listed by the simple
+</I>&gt;<i> command &quot;locale&quot;. The names are rather self-explanatory, and most are
+</I>&gt;<i> independent from each other, with the exception of &quot;LANG&quot;, which defines a
+</I>&gt;<i> preset value, and &quot;LC_ALL&quot;, which is an override taking precedence over all
+</I>&gt;<i> the other settings.
+</I>&gt;<i> BTW, there's even a man page for locale and the pertaining environment
+</I>&gt;<i> variables.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Yes, I know how locale does work. But to prepend vars you need to run it in
+a shell, something like
+
+bash -c 'LC_MESSAGES=C  gdb'
+
+I think you can't prepend vars in MSEide as it it.
+
+Probably MSEide can be modified to run a shell with the desired vars.
+
+Martin?
+
+Thanks.
+
+
+Julio
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101229/56e70d28/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101229/56e70d28/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002281.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+	<LI>Next message: <A HREF="002283.html">[MSEide-MSEgui-talk] MSEide+GDB issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2282">[ date ]</a>
+              <a href="thread.html#2282">[ thread ]</a>
+              <a href="subject.html#2282">[ subject ]</a>
+              <a href="author.html#2282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

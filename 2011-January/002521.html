@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%20icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3Cop.vphsp01zyl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002512.html">
+   <LINK REL="Next"  HREF="002523.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%20icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3Cop.vphsp01zyl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Jan 18 08:07:02 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002512.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+        <LI>Next message: <A HREF="002523.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2521">[ date ]</a>
+              <a href="thread.html#2521">[ thread ]</a>
+              <a href="subject.html#2521">[ subject ]</a>
+              <a href="author.html#2521">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Also an asking to include :
+
+//----------------
+program mseide;
+
+{$ifdef mswindows}
+  {$R mseide.res}
+{$endif}
+
+[..]
+//---------------
+
+to &quot;mseide.pas&quot;, the SVN manistream - it'll be neccessary for win-23  
+installer.
+
+The &quot;res&quot; file is compiled by &quot;windres -O res -i mseide.rc -o mseide.res&quot;  
+for the attached files.
+You may put the attached res-file to &quot;apps/ide&quot; directory so that the IDE  
+to compile once change is applied - it refers to IDE v 2.4 &amp; 64x64 32bit  
+icon with transparency (converted from the 64x64 &quot;mseide&quot; PNG).
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mseide.res
+Type: application/octet-stream
+Size: 17732 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment.obj</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mseide.ico
+Type: image/x-icon
+Size: 16958 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment.ico">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment.ico</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: mseide.rc
+Type: application/octet-stream
+Size: 508 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment-0001.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110118/72695425/attachment-0001.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002512.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+	<LI>Next message: <A HREF="002523.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2521">[ date ]</a>
+              <a href="thread.html#2521">[ thread ]</a>
+              <a href="subject.html#2521">[ subject ]</a>
+              <a href="author.html#2521">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

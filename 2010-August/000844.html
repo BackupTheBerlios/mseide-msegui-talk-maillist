@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] DocView and FPC documentation release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20DocView%20and%20FPC%20documentation%20release&In-Reply-To=%3C4C768F34.5040603%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000882.html">
+   <LINK REL="Next"  HREF="000852.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] DocView and FPC documentation release</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20DocView%20and%20FPC%20documentation%20release&In-Reply-To=%3C4C768F34.5040603%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] DocView and FPC documentation release">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Aug 26 17:58:44 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000882.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+</A></li>
+        <LI>Next message: <A HREF="000852.html">[MSEide-MSEgui-talk] DocView and FPC documentation release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#844">[ date ]</a>
+              <a href="thread.html#844">[ thread ]</a>
+              <a href="subject.html#844">[ subject ]</a>
+              <a href="author.html#844">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Everybody,
+
+I am pleased to announce that fpGUI's DocView is available for download in
+a convenient binary executable from fpGUI's SourceForge project page. See
+the URL below.
+
+I have also made available RTL, FCL, LCL and fpGUI class documentation in
+INF help format. The documentation downloads are grouped, so you only need
+to download what you really need.
+
+
+  <A HREF="http://sourceforge.net/projects/fpgui/files/">http://sourceforge.net/projects/fpgui/files/</A>
+
+
+Download size:
+--------------
+DocView plus it's help file:
+  Linux 32-bit    =  533KB
+  Linux 64-bit    =  446KB
+  Windows 32-bit  =  367KB
+
+Class Documentation:
+  fpGUI      [fpgui-20100826.zip]    = 0.1MB
+  RTL + FCL  [rtl_fcl-20100826.zip]  = 1.3MB
+  LCL        [lcl-20100826.zip]      = 1.4MB
+
+
+
+Why DocView and INF help?
+-------------------------
+INF is a very compact and very efficient file format created by IBM and was
+originally meant for OS/2. As an example of efficiency, let compare the LCL
+documentation. LCL class documentation in INF format is a mere 3.8MB in
+size - compare that to the same documentation in HTML format (65MB) or CHM
+format (12.1MB).
+
+DocView + INF is a perfect match. Here are some of DocView's features:
+
+* DocView's rich text component is custom built for viewing INF
+  documents. It is also very fast. Just view something like
+  LCL's Forms.TApplication method overview help and you will see.
+  DocView can load it instantly, under a second. Scrolling such a
+  large page is no problem either [unlike another help viewer I
+  know ;-)].
+
+* DocView can open a single INF file, multiple INF files, or a whole
+  directory of INF files. DocView doesn't even blink.
+
+* Opening multiple files means the Table of Content tab appends each
+  help files TOC to the list. Indexes get merged as well.
+
+* Searching is lightning fast, and across all open help files.
+
+* Create a &quot;virtual bookshelf&quot; of documentation. Docview can open
+  directories, or environment variables pointing to help files.
+
+* DocView is customizable. Change the fonts, adjust the search
+  highlighting color, hide the navigation tab etc.
+
+* DocView comes with it's own help file to explain all it's features and
+  has multiple examples of how it can be used.
+
+* DocView is very easy to integrate with any programmer editor or IDE.
+  No need to have support compiled into a IDE.
+  Attached are screenshots of how to set it up with Lazarus IDE and
+  MSEide. Simply use the &quot;external tools&quot; feature of each IDE, and pass
+  in the current token to edit cursor is on.
+
+* The latest fpdoc (in FPC 2.5.1) has had a major rewrite of the IPF
+  output writer. IPF is the markup language (similar to other markup
+  languages) used to create INF help files.
+  fpGUI's source repository contains the IPF Compiler in binary form,
+  for Windows and Linux. It also includes a IPF Reference Guide.
+
+
+What's to come
+--------------
+* I have more features planned for DocView.
+
+* I'm working on translating the Free Pascal Language Reference document
+  to INF format. That way developers have syntax help as well in there
+  IDE's
+
+* Lots more fpGUI class documentation coming.
+
+
+
+Please enjoy, and I welcome any feedback.
+
+
+PS:
+To all MSEide &amp; MSEgui users. I'll build some class documentation for
+MSEgui soon, and populate one or two classes with documentation I can find.
+I hope this will inspire you guys to work together at completing the class
+documentation for MSEgui, and that DocView + INF will be a suitable solution.
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: docview-lazarus.png
+Type: image/png
+Size: 13528 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100826/ef362ccc/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100826/ef362ccc/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: docview-mseide.png
+Type: image/png
+Size: 8711 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100826/ef362ccc/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100826/ef362ccc/attachment-0001.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000882.html">[MSEide-MSEgui-talk] inconsistency value when undo in t*edit (by press ESCAPE key)
+</A></li>
+	<LI>Next message: <A HREF="000852.html">[MSEide-MSEgui-talk] DocView and FPC documentation release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#844">[ date ]</a>
+              <a href="thread.html#844">[ thread ]</a>
+              <a href="subject.html#844">[ subject ]</a>
+              <a href="author.html#844">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

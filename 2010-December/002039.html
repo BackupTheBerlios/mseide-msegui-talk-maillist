@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20dbdropdown%20with%20lookup%20-%20delete%20dropdown%3F&In-Reply-To=%3C201012021156.33864.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002038.html">
+   <LINK REL="Next"  HREF="002040.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20dbdropdown%20with%20lookup%20-%20delete%20dropdown%3F&In-Reply-To=%3C201012021156.33864.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Dec  2 11:56:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002038.html">[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?
+</A></li>
+        <LI>Next message: <A HREF="002040.html">[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2039">[ date ]</a>
+              <a href="thread.html#2039">[ thread ]</a>
+              <a href="subject.html#2039">[ subject ]</a>
+              <a href="author.html#2039">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday, 2. December 2010 11.39:20 Christian Nobel wrote:
+&gt;<i> I have:
+</I>&gt;<i>
+</I>&gt;<i> subprojamount:=lookupsource.dataset.recordcount;
+</I>&gt;<i> tddsubprojname.dropdown.dropdownrowcount:=subprojamount;
+</I>&gt;<i> lookupsource.dataset.first;
+</I>&gt;<i> while not lookupsource.dataset.eof do
+</I>&gt;<i> begin
+</I>&gt;<i> tddsubprojname.dropdown.cols[0].add(lookupsource.dataset.fieldbyname('projs
+</I>&gt;<i>ubid').asstring);
+</I>&gt;<i> tddsubprojname.dropdown.cols[1].add(lookupsource.dataset.fieldbyname('projs
+</I>&gt;<i>ubname').asstring); lookupsource.dataset.next;
+</I>&gt;<i> end;
+</I>&gt;<i>
+</I>The tdbdropdowneditdb or tdbenumeditdb does this, there is no need to build 
+dropdown list filling in code?
+
+&gt;<i> Works fine first time, but second time only on line is shown in the
+</I>&gt;<i> dropdown, end next time even only a half or other strange behavior.
+</I>&gt;<i>
+</I>&gt;<i> I think that it all depends on that the dropdown is not cleared/erased,
+</I>&gt;<i> and then I thought it was something like:
+</I>&gt;<i>
+</I>&gt;<i> tddsubprojname.dropdown.clear (or delete)
+</I>&gt;<i>
+</I>&gt;<i> But no, so what to do?
+</I>&gt;<i>
+</I> tdropdowncols = class(townedpersistentarrayprop)
+[...]
+  public
+   constructor create(const aowner: tcustomdropdownlistcontroller); 
+reintroduce;
+   class function getitemclasstype: persistentclassty; override;
+   procedure beginupdate;
+   procedure endupdate;
+   procedure clear;
+   function addrow(const aitems: array of msestring): integer; //returns 
+itemindex
+   procedure insertrow(const aindex: integer; const aitems: array of 
+msestring);
+   procedure deleterow(const aindex: integer);
+   function getrow(const aindex: integer): msestringarty;
+   property nostreaming: boolean read fnostreaming 
+                                          write setnostreaming;
+   property rowcount: integer read maxrowcount write setrowcount;
+   property onitemchange: indexeventty read fonitemchange write fonitemchange;
+   property items[const index: integer]: tdropdowncol read getitems; default;
+ end;
+
+
+&gt;<i> Do I need to mention again that code completion would probably given me
+</I>&gt;<i> the answer?
+</I>&gt;<i>
+</I>&gt;<i> Tnx
+</I>&gt;<i> Christian
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002038.html">[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?
+</A></li>
+	<LI>Next message: <A HREF="002040.html">[MSEide-MSEgui-talk] dbdropdown with lookup - delete dropdown?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2039">[ date ]</a>
+              <a href="thread.html#2039">[ thread ]</a>
+              <a href="subject.html#2039">[ subject ]</a>
+              <a href="author.html#2039">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

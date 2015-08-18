@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] PODPISKA (23sep2010): new SigSegv
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PODPISKA%20%2823sep2010%29%3A%20new%20SigSegv&In-Reply-To=%3Cfbgm96t1qoms6q6ubdg7275c9ai0hi0q7q%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001171.html">
+   <LINK REL="Next"  HREF="001184.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] PODPISKA (23sep2010): new SigSegv</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PODPISKA%20%2823sep2010%29%3A%20new%20SigSegv&In-Reply-To=%3Cfbgm96t1qoms6q6ubdg7275c9ai0hi0q7q%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] PODPISKA (23sep2010): new SigSegv">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Sep 23 14:18:04 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001171.html">[MSEide-MSEgui-talk] trealedit formatdisp how to set 0.22	display as 22%
+</A></li>
+        <LI>Next message: <A HREF="001184.html">[MSEide-MSEgui-talk] Squeezing maximized IDE's source file form
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1170">[ date ]</a>
+              <a href="thread.html#1170">[ thread ]</a>
+              <a href="subject.html#1170">[ subject ]</a>
+              <a href="author.html#1170">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Happened when:
+
+ - opened refeditionviewform.pas
+ - called F12 for designing the form
+ - tried to recover position &amp; size of sgdbCode (wrongly place in the
+fixcol) &amp; dbieCode (wider than sgdbCode so sgdbCode is left truncated
+)
+- since failed above, me tried to see/fix source of the mfm-file  
+- &quot;show as text&quot; then &quot;show as form
+ - the SigSegv&quot; 
+
+-----------------------------------
+
+procedure tcustomeditwidgetdatalink.setwidgetdatasource(const avalue:
+tdatasource);
+begin
+ if not ((csloading in fintf.getwidget.componentstate) and
+datasourcefixed or 
+                  (fintf.getgridintf &lt;&gt; nil)) then begin //&lt;&lt;&lt; HERE
+&lt;&lt;&lt;
+  inherited datasource:= avalue;
+ end;
+end;
+
+--------------------------
+
+The call stack:
+
+#0  00680499 msedbedit.pas:2833
+TCUSTOMEDITWIDGETDATALINK__SETWIDGETDATASOURCE(AVALUE=0x6288c48, where
+this=0x632e1c0)
+(tdatasource(this))=
+{&lt;TCOMPONENT&gt; = {&lt;TPERSISTENT&gt; = {&lt;TOBJECT&gt; = {_vptr$ = {0x632e14c,
+0x633091c}}, }, FOWNER = 0x633091c, FNAME = 0x200020
+'k'#148#2#2'l'#148#2#2'm'#148#2#2'n'#148#2#2'o'#148#2#2'p'#148#2#2'q'#148#2#2'r'#148#2#2's'#148#2#2't'#148#2#2'u'#148#2#2'v'#148#2#2'w'#148#2#2'x'#148#2#2'y'#148#2#2'z'#148#2#2'{'#148#2#2'|'#148#2#2'}'#148#2#2'~'#148#2#2#127#148#2#2#128#148#2#2#129#148#2#2#130#148#2#2#131#148#2#2#132#148#2#2#133#148#2#2#134#148#2#2#135#148#2#2#136#148#2#2#137#148#2#2#138#148#2#2#139#148#2#2#140#148#2#2#141#148#2#2#142#148#2#2#143#148#2#2#144#148#2#2#145#148#2#2#146#148#2#2#147#148#2#2#148#148#2#2#149#148#2#2#150#148#2#2#151#148#2#2#152#148#2#2#153#148#2#2#154#148#2#2#155#148#2#2#156#148#2#2...,
+FTAG = 2097184, FCOMPONENTS = 0x200020, FFREENOTIFIES = 0x200020,
+FDESIGNINFO = 2097184, FVCLCOMOBJECT = 0x690077, FCOMPONENTSTATE =
+[CSWRITING, CSANCESTOR..CSUPDATING], FCOMPONENTSTYLE = [CSINHERITABLE,
+CSSUBCOMPONENT]}, FDATASET = 0x65006d, FDATALINKS = 0x3d0020, FENABLED
+= true (32), FAUTOEDIT = false, FSTATE = 6422628, FONSTATECHANGE =
+0x65006e &lt;TCUSTOMDIALCONTROLLER__CHECKLAYOUT+3198&gt;, FONDATACHANGE =
+0x790054 &lt;RTTI_MSELISTBROWSER_TLISTVIEW+832&gt;, FONUPDATEDATA = 0x640045
+&lt;EDITPERSISTENTFIELDS+245&gt;}
+
+
+#1  004F42F0 msedbedit.pas:0
+TYPINFO_SETORDPROP$TOBJECT$PPROPINFO$INT64()
+#2  004F4545 msedbedit.pas:0
+TYPINFO_SETOBJECTPROP$TOBJECT$PPROPINFO$TOBJECT()
+#3  004793C1 msedbedit.pas:0
+CLASSES_TUNRESOLVEDREFERENCE_$__RESOLVE$TPERSISTENT$$BOOLEAN()
+#4  04E35A01 msedbedit.pas:0 ??()
+#5  04D48E60 msedbedit.pas:0 ??()
+#6  04D4B380 msedbedit.pas:0 ??()
+#7  04C7A1D8 msedbedit.pas:0 ??()
+#8  0047958F msedbedit.pas:0
+CLASSES_TUNRESOLVEDINSTANCE_$__RESOLVEREFERENCES$$BOOLEAN()
+#9  00060970 msedbedit.pas:0 ??()
+#10  04C7A1D8 msedbedit.pas:0 ??()
+#11  0091ADE4 msedbedit.pas:0 U_SYSTEM_ENTRYINFORMATION()
+#12  00479C15 msedbedit.pas:0
+CLASSES_TRESOLVEREFERENCEVISITOR_$__VISIT$TLINKEDLISTITEM$$BOOLEAN()
+#13  00060970 msedbedit.pas:0 ??()
+#14  04C7A1D8 msedbedit.pas:0 ??()
+#15  00479014 msedbedit.pas:0
+CLASSES_TLINKEDLIST_$__FOREACH$TLINKEDLISTVISITOR()
+#16  00719738 msedbedit.pas:0 $CLASSES$_Ld305()
+#17  00719738 msedbedit.pas:0 $CLASSES$_Ld305()
+#18  00479224 msedbedit.pas:0
+CLASSES_VISITRESOLVELIST$TLINKEDLISTVISITOR()
+#19  004792AD msedbedit.pas:0 CLASSES_GLOBALFIXUPREFERENCES()
+#20  0048165B msedbedit.pas:0
+CLASSES_TREADER_$__READROOTCOMPONENT$TCOMPONENT$$TCOMPONENT()
+#21  00578DBA msedesigner.pas:3105
+TDESIGNER__COPYCOMPONENT(SOURCE=0x647ea78, ROOT=0x647ea78,
+this=0x127fa0)
+#22  00576831 msedesigner.pas:2102
+TMODULELIST__NEWMODULE(AINHERITED=true, AFILENAME=0x65507f8,
+AMODULECLASSNAME=0x62ee7e8 'trefeditionviewfo',
+AINSTANCEVARNAME=0x4e378c0 'refeditionviewfo',
+DESIGNMODULECLASSNAME=0x62de968 'trefviewform_intcodefo',
+this=0x6e408)
+
+#23  0057AB2D msedesigner.pas:3831
+TDESIGNER__LOADFORMFILE(FILENAME=0x65507f8, this=0x127fa0)
+-------&gt; filename='/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/refs/ref_edition/refeditionviewform.mfm'
+
+
+#24  00456E83 main.pas:1416 TMAINFO__OPENFORMFILE(FILENAME=0x64e8550,
+ASHOW=true, AACTIVATE=false, SHOWSOURCE=false, CREATEMENU=true,
+this=0x4c0e630)
+#25  0060CDA5 sourcepage.pas:233 TSOURCEPAGE__DOASYNCEVENT(ATAG=0,
+this=0x4d0c7f0)
+#26  004706DD mseclasses.pas:3230
+TMSECOMPONENT__RECEIVEEVENT(EVENT=0x4e32c78, this=0x4d0c7f0)
+#27  00515D77 mseapplication.pas:560
+TACTCOMPONENT__RECEIVEEVENT(EVENT=0x4e32c78, this=0x4d0c7f0)
+#28  00425BEA msegui.pas:10866 TWIDGET__RECEIVEEVENT(EVENT=0x4e32c78,
+this=0x4d0c7f0)
+#29  004DCA1B msewidgets.pas:4587
+TACTIONWIDGET__RECEIVEEVENT(EVENT=0x4e32c78, this=0x4d0c7f0)
+
+#30  0055B8BA mseforms.pas:1079
+TCUSTOMMSEFORM__RECEIVEEVENT(EVENT=0x4e32c78, this=0x4d0c7f0)
+--------&gt;fname='btnEdit'
+
+#31  004F594A mseevent.pas:189 TOBJECTEVENT__DELIVER(this=0x4e32c78)
+#32  0042E623 msegui.pas:14793
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=0x771d8)
+#33  0042F44C msegui.pas:15220
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=0x771d8)
+#34  00517868 mseapplication.pas:1348
+TCUSTOMAPPLICATION__RUN(this=0x771d8)
+#35  004025D7 mseide.pas:61 main()
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001171.html">[MSEide-MSEgui-talk] trealedit formatdisp how to set 0.22	display as 22%
+</A></li>
+	<LI>Next message: <A HREF="001184.html">[MSEide-MSEgui-talk] Squeezing maximized IDE's source file form
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1170">[ date ]</a>
+              <a href="thread.html#1170">[ thread ]</a>
+              <a href="subject.html#1170">[ subject ]</a>
+              <a href="author.html#1170">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

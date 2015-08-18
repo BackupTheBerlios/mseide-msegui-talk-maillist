@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTinhrCtfXp60b_1ijk9%2BXrrOtoO6X_uRSp50VSR9%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002138.html">
+   <LINK REL="Next"  HREF="002142.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%20exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3CAANLkTinhrCtfXp60b_1ijk9%2BXrrOtoO6X_uRSp50VSR9%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Error writting the MSEide statfile when exiting (File-&gt;Exit) the IDE after closing the PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Wed Dec 15 21:09:04 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002138.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="002142.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2139">[ date ]</a>
+              <a href="thread.html#2139">[ thread ]</a>
+              <a href="subject.html#2139">[ subject ]</a>
+              <a href="author.html#2139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The smaller one isn't empty - here its contents:
+//----------------------------
+
+program getapppath;
+
+uses windows;
+// GetLongPathNameW: function(lpszShortPath: LPCWSTR; lpszLongPath: LPCWSTR;
+//                               cchBuffer: DWORD):DWORD; stdcall;
+
+const
+
+  CSIDL_PROGRAMS                = $0002; { %SYSTEMDRIVE%\Program Files
+                                     }
+  CSIDL_PERSONAL                = $0005; { %USERPROFILE%\My Documents
+                                     }
+  CSIDL_FAVORITES               = $0006; { %USERPROFILE%\Favorites
+                                     }
+  CSIDL_STARTUP                 = $0007; { %USERPROFILE%\Start
+menu\Programs\Startup                        }
+  CSIDL_RECENT                  = $0008; { %USERPROFILE%\Recent
+                                     }
+  CSIDL_SENDTO                  = $0009; { %USERPROFILE%\Sendto
+                                     }
+  CSIDL_STARTMENU               = $000B; { %USERPROFILE%\Start menu
+                                     }
+  CSIDL_MYMUSIC                 = $000D; { %USERPROFILE%\Documents\My
+Music                                 }
+  CSIDL_MYVIDEO                 = $000E; { %USERPROFILE%\Documents\My
+Videos                                }
+  CSIDL_DESKTOPDIRECTORY        = $0010; { %USERPROFILE%\Desktop
+                                     }
+  CSIDL_NETHOOD                 = $0013; { %USERPROFILE%\NetHood
+                                     }
+  CSIDL_TEMPLATES               = $0015; { %USERPROFILE%\Templates
+                                     }
+  CSIDL_COMMON_STARTMENU        = $0016; { %PROFILEPATH%\All
+users\Start menu                               }
+  CSIDL_COMMON_PROGRAMS         = $0017; { %PROFILEPATH%\All
+users\Start menu\Programs                      }
+  CSIDL_COMMON_STARTUP          = $0018; { %PROFILEPATH%\All
+users\Start menu\Programs\Startup              }
+  CSIDL_COMMON_DESKTOPDIRECTORY = $0019; { %PROFILEPATH%\All
+users\Desktop                                  }
+  CSIDL_APPDATA                 = $001A; { %USERPROFILE%\Application
+Data (roaming)                         }
+  CSIDL_PRINTHOOD               = $001B; { %USERPROFILE%\Printhood
+                                     }
+  CSIDL_LOCAL_APPDATA           = $001C; { %USERPROFILE%\Local
+Settings\Application Data (non roaming)      }
+  CSIDL_COMMON_FAVORITES        = $001F; { %PROFILEPATH%\All
+users\Favorites                                }
+  CSIDL_INTERNET_CACHE          = $0020; { %USERPROFILE%\Local
+Settings\Temporary Internet Files            }
+  CSIDL_COOKIES                 = $0021; { %USERPROFILE%\Cookies
+                                     }
+  CSIDL_HISTORY                 = $0022; { %USERPROFILE%\Local
+settings\History                             }
+  CSIDL_COMMON_APPDATA          = $0023; { %PROFILESPATH%\All
+Users\Application Data                        }
+  CSIDL_WINDOWS                 = $0024; { %SYSTEMROOT%
+                                     }
+  CSIDL_SYSTEM                  = $0025; { %SYSTEMROOT%\SYSTEM32 (may
+be system on 95/98/ME)                }
+  CSIDL_PROGRAM_FILES           = $0026; { %SYSTEMDRIVE%\Program Files
+                                     }
+  CSIDL_MYPICTURES              = $0027; { %USERPROFILE%\My
+Documents\My Pictures                           }
+  CSIDL_PROFILE                 = $0028; { %USERPROFILE%
+                                     }
+  CSIDL_PROGRAM_FILES_COMMON    = $002B; { %SYSTEMDRIVE%\Program
+Files\Common                               }
+  CSIDL_COMMON_TEMPLATES        = $002D; { %PROFILEPATH%\All
+Users\Templates                                }
+  CSIDL_COMMON_DOCUMENTS        = $002E; { %PROFILEPATH%\All
+Users\Documents                                }
+  CSIDL_COMMON_ADMINTOOLS       = $002F; { %PROFILEPATH%\All
+Users\Start Menu\Programs\Administrative Tools }
+  CSIDL_ADMINTOOLS              = $0030; { %USERPROFILE%\Start
+Menu\Programs\Administrative Tools           }
+  CSIDL_COMMON_MUSIC            = $0035; { %PROFILEPATH%\All
+Users\Documents\my music                       }
+  CSIDL_COMMON_PICTURES         = $0036; { %PROFILEPATH%\All
+Users\Documents\my pictures                    }
+  CSIDL_COMMON_VIDEO            = $0037; { %PROFILEPATH%\All
+Users\Documents\my videos                      }
+  CSIDL_CDBURN_AREA             = $003B; { %USERPROFILE%\Local
+Settings\Application Data\Microsoft\CD Burning }
+  CSIDL_PROFILES                = $003E; { %PROFILEPATH%
+                                     }
+
+  CSIDL_FLAG_CREATE             = $8000; { (force creation of
+requested folder if it doesn't exist yet)     }
+
+  CSIDL_FLAG_NO_ALIAS           = $1000;
+  CSIDL_FLAG_PER_USER_INIT      = $0800;
+
+
+
+function SHGetFolderPathW (
+  hwndowner: HWND;
+  nFolder: integer;
+  hToken: thandle;
+  dwFlags: DWORD;
+  pszPath: LPTSTR
+): HRESULT; stdcall; external 'shfolder.dll';
+
+
+var
+  buffer: array[0..255] of widechar;
+  apphomedir: widestring;
+  i: integer;
+  rc: integer;
+
+begin
+
+fillchar(buffer,0,255);
+rc:= SHGetFolderPathW(0,CSIDL_APPDATA {CSIDL_LOCAL_APPDATA} {or
+CSIDL_FLAG_CREATE}<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">,0,0, at buffer</A>);
+if rc = 0 then begin
+  setlength(apphomedir,0);
+  for i:=0 to 255 do begin
+    if buffer[i] = widechar(0) then break;
+    setlength(apphomedir,i+1);
+    apphomedir[i+1]:= buffer[i];
+  end;
+  writeln(apphomedir);
+end else begin
+  writeln('SHGetFolderPathW(0,CSIDL_APPDATA or
+<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">CSIDL_FLAG_CREATE,0,0, at buffer</A>) is unusable on Your system, rc= ',rc );
+end;
+
+
+end.
+
+
+2010/12/15, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> Ivanko B wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>Just checked (with the console testcase) on several WinXP SP3 Russian
+</I>&gt;&gt;&gt;<i>installations - the flag fails on all of them.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> One more installation ( the whole are 3 different CDs ) - so we have a
+</I>&gt;&gt;<i> system problem.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The testcase is here attached.
+</I>&gt;<i>
+</I>&gt;<i> The attached files have no name and seem to be empty.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002138.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="002142.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2139">[ date ]</a>
+              <a href="thread.html#2139">[ thread ]</a>
+              <a href="subject.html#2139">[ subject ]</a>
+              <a href="author.html#2139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

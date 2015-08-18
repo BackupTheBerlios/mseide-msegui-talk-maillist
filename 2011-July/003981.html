@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeZvMBkt6PcckoxU5G7n2%3DbPzX0QWT0bfpV5QvT3G_dWUA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003980.html">
+   <LINK REL="Next"  HREF="003984.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>Marcos Douglas</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCA%2BixmeZvMBkt6PcckoxU5G7n2%3DbPzX0QWT0bfpV5QvT3G_dWUA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">md at delfire.net
+       </A><BR>
+    <I>Sat Jul 30 21:28:45 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003980.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003984.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3981">[ date ]</a>
+              <a href="thread.html#3981">[ thread ]</a>
+              <a href="subject.html#3981">[ subject ]</a>
+              <a href="author.html#3981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jul 30, 2011 at 3:56 PM, Graeme Geldenhuys
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt; wrote:
+&gt;<i> On Saturday, 30 July 2011, Marcos Douglas wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I got it. But I see two problems here:
+</I>&gt;&gt;<i> a) An explosion of objects
+</I>&gt;<i>
+</I>&gt;<i> Those report objects are &quot;lite&quot; objects. They don't necessarily
+</I>&gt;<i> descend from the same class as your business objects.
+</I>
+But you will have many names for each class, long names...
+
+&gt;<i> Comparing them to TDataset and its TField class instances, there is
+</I>&gt;<i> really no difference in principle. Memory usage will be near
+</I>&gt;<i> identical.
+</I>
+Memory usage is Ok.
+In my codes, I use DataSets but they are created dinamically. I do not
+have to codify a new class for each one.
+
+&gt;&gt;<i> and b) You still have SQL hard-coded.
+</I>&gt;<i>
+</I>&gt;<i> Don't you write SQL for your reports too? As I mentioned hard coded
+</I>&gt;<i> SQL is one option, you can normally let the framework generate the SQL
+</I>&gt;<i> automatically as well. My personal choice is to write the SQL myself
+</I>&gt;<i> so I can optimize it where possible. Not ideal, but I have created a
+</I>&gt;<i> SQL editor tool that I use to maintain my databases, and write my SQL.
+</I>&gt;<i> This tool has extra features for tiOPF as well. It can generate Object
+</I>&gt;<i> Pascal source code from the SQL and resultset - reducing the amount of
+</I>&gt;<i> pascal code I need to manually write by a considerable amount.
+</I>
+I prefer write my own SQL (for search). Just CRUD I do with something like OPF.
+
+&gt;&gt;<i> a) If you have many, many reports, will have a ReportVisitor class for
+</I>&gt;&gt;<i> each report?
+</I>&gt;<i>
+</I>&gt;<i> Just like you now have many many TDataset and TField instances for
+</I>&gt;<i> each report. :-)
+</I>
+I talk about an explosion of names.
+TDataSet is just one classe but can have many instances... not many
+classes and many instances.
+
+&gt;&gt;<i> b) For reasons performance, you still have SQL hard-coded... this is a
+</I>&gt;&gt;<i> fact. But is really necessary create these overhead with objects to
+</I>&gt;&gt;<i> show a report?
+</I>&gt;<i>
+</I>&gt;<i> As I mentioned, the SQL can be auto generated. And even in your
+</I>&gt;<i> current projects you too have many object instances. TDataset, TField
+</I>&gt;<i> and friends. Your RAD style of programming is simply hiding those
+</I>&gt;<i> objects from you.
+</I>
+I don't use RAD style... well, maybe 30~40%.  ;-)
+
+&gt;&gt;<i> See, I like your thoughts, but I am trying to be the &quot;devil's advocate&quot;.
+</I>&gt;<i>
+</I>&gt;<i> No problems, I'm used to answers similar questions.
+</I>
+I'm searching for real answers a long time ago.  =)
+
+Marcos Douglas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003980.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003984.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3981">[ date ]</a>
+              <a href="thread.html#3981">[ thread ]</a>
+              <a href="subject.html#3981">[ subject ]</a>
+              <a href="author.html#3981">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

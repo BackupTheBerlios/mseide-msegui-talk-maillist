@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Closing a form post data to database
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Closing%20a%20form%20post%20data%20to%20database&In-Reply-To=%3C201108182146.59500.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004086.html">
+   <LINK REL="Next"  HREF="004088.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Closing a form post data to database</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Closing%20a%20form%20post%20data%20to%20database&In-Reply-To=%3C201108182146.59500.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Closing a form post data to database">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 18 21:46:59 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004086.html">[MSEide-MSEgui-talk] Closing a form post data to database
+</A></li>
+        <LI>Next message: <A HREF="004088.html">[MSEide-MSEgui-talk] Closing a form post data to database
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4087">[ date ]</a>
+              <a href="thread.html#4087">[ thread ]</a>
+              <a href="subject.html#4087">[ subject ]</a>
+              <a href="author.html#4087">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Donnerstag 18 August 2011, 20:14:51 schrieb Julio Jim&#233;nez:
+&gt;<i> I open a form with a tdbnavigator and tdbwidgetgrid. There is a button with
+</I>&gt;<i> modalresult set to mr_ok (just to close the form)
+</I>&gt;<i> 
+</I>&gt;<i> Curious.. If I'm editing and close the form, the database is updated with
+</I>&gt;<i> the changes and I check in onClose ds.state is dsBrowse
+</I>&gt;<i> The same happens if I press the button (form is closed and ds.state is
+</I>&gt;<i> dsBrowse)
+</I>&gt;<i> 
+</I>&gt;<i> Then I check inside the button (onexecute) and here... ds.state is dsEdit
+</I>&gt;<i> but again.. when the form is closed due the button pressed.. it changes
+</I>&gt;<i> again to dsBrowse and changes are saved to the database.
+</I>&gt;<i> 
+</I>&gt;<i> I have detected it because I used a check in form.onclose to check if the
+</I>&gt;<i> user was inserting or editing data giving a warning and allowing to cancel
+</I>&gt;<i> the form close.
+</I>&gt;<i> 
+</I>&gt;<i> I also discovered if I remove the tdbnavigator all is working as
+</I>&gt;<i> expected... weird.
+</I>&gt;<i> 
+</I>&gt;<i> IIRC this was working in the past.
+</I>&gt;<i> 
+</I>&gt;<i> Did something changed that I missed?
+</I>&gt;<i> 
+</I>Did you activate tdbnavigator.options dno_postoncanclose (default false)?
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004086.html">[MSEide-MSEgui-talk] Closing a form post data to database
+</A></li>
+	<LI>Next message: <A HREF="004088.html">[MSEide-MSEgui-talk] Closing a form post data to database
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4087">[ date ]</a>
+              <a href="thread.html#4087">[ thread ]</a>
+              <a href="subject.html#4087">[ subject ]</a>
+              <a href="author.html#4087">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

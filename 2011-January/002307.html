@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] AV reading values of non existan fields.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3CAANLkTikei9CQOnoH7Uw1WvyXrsi5oPi%3DRibGnvREU4kB%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002306.html">
+   <LINK REL="Next"  HREF="002308.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] AV reading values of non existan fields.</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20reading%20values%20of%20non%20existan%20fields.&In-Reply-To=%3CAANLkTikei9CQOnoH7Uw1WvyXrsi5oPi%3DRibGnvREU4kB%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] AV reading values of non existan fields.">jujibo at gmail.com
+       </A><BR>
+    <I>Mon Jan  3 19:30:39 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002306.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+        <LI>Next message: <A HREF="002308.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2307">[ date ]</a>
+              <a href="thread.html#2307">[ thread ]</a>
+              <a href="subject.html#2307">[ subject ]</a>
+              <a href="author.html#2307">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yes, it's freeing resources.
+
+Stack dump:
+
+#0  08081B32 :0 MSEGUI_TINTERNALAPPLICATION_$__ENDMODAL$TWINDOW()
+#1  B6D97C01 :0 ??()
+#2  080762B9 :0 MSEGUI_TWIDGET_$__INTERNALHIDE$BOOLEAN()
+#3  084F18F4 :0 U_SYSTEM_FREELISTS()
+#4  0805F5A2 :0 SYSTEM_SYSFREEMEM$POINTER$$LONGWORD()
+#5  00000000 :0 ??()
+
+
+code snippet:
+
+ f := trfacturasfo.create(nil);
+ try
+  f.nfactura:= facturas.fieldbyname('factura1212').asinteger; &lt;&lt;&lt;&lt;&lt; correct
+field name is 'factura'. This line fire the SIGSEGV exception..  then Access
+Violation dialog is shown.
+  f.accion:= acFactura;
+  f.mostrar:= false;
+  f.factura;
+  archivo:= f.archivo;
+ finally
+  f.free;
+ end;
+
+f is of type trfacturasfo = class(tmseform) with default visible to false.
+
+2011/1/3 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Monday, 3. January 2011 19.16:24 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; 2011/1/3 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Are you sure you see the first exception?
+</I>&gt;<i> &gt; &gt; Is 'Project'-'Options'-'Debugger'-'Stop on Exception' activated and
+</I>&gt;<i> &gt; &gt; EDatabaseError not ignored?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes, only Activate on Break and Value Hints are active in Debugger page.
+</I>&gt;<i> No
+</I>&gt;<i> &gt; exceptions marked.
+</I>&gt;<i>
+</I>&gt;<i> fieldbyname() is :
+</I>&gt;<i> &quot;
+</I>&gt;<i> Function TDataset.FieldByName(const FieldName: string): TField;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> begin
+</I>&gt;<i>  Result:=FindField(FieldName);
+</I>&gt;<i>  If Result=Nil then
+</I>&gt;<i>    DatabaseErrorFmt(SFieldNotFound,[FieldName],Self);
+</I>&gt;<i> end;
+</I>&gt;<i> &quot;
+</I>&gt;<i> So the AV probably has another reason.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110103/683f436c/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110103/683f436c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002306.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+	<LI>Next message: <A HREF="002308.html">[MSEide-MSEgui-talk] AV reading values of non existan fields.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2307">[ date ]</a>
+              <a href="thread.html#2307">[ thread ]</a>
+              <a href="subject.html#2307">[ subject ]</a>
+              <a href="author.html#2307">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] confirm	babc041240280df32e18fe4ed9617942c2aaf39c
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20confirm%0A%09babc041240280df32e18fe4ed9617942c2aaf39c&In-Reply-To=%3Cop.v4yfkffpyl4sxz%40vano-home.home%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004445.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] confirm	babc041240280df32e18fe4ed9617942c2aaf39c</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20confirm%0A%09babc041240280df32e18fe4ed9617942c2aaf39c&In-Reply-To=%3Cop.v4yfkffpyl4sxz%40vano-home.home%3E"
+       TITLE="[MSEide-MSEgui-talk] confirm	babc041240280df32e18fe4ed9617942c2aaf39c">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Nov 14 22:06:05 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004445.html">[MSEide-MSEgui-talk] confirm	babc041240280df32e18fe4ed9617942c2aaf39c
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4446">[ date ]</a>
+              <a href="thread.html#4446">[ thread ]</a>
+              <a href="subject.html#4446">[ subject ]</a>
+              <a href="author.html#4446">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Some results of tests of POSTGRESQL (9.0) performance penalty on  
+device_mapper-encrypted &quot;loop&quot; file-device  (LINUX) :
+
+Master table: 100.000 recs
+Details table: 100.000*10(master_refs) = 1.000.000 recs
+
+--------------------------
+Filling with data from dump file:
+
+Not encrypted storage: 11 secs
+AES-encrypted storage: 16 secs
+--------------------------
+Non indexed two tables SELECT join:
+
+Not encrypted storage: 1.6 secs
+AES-encrypted storage: 2.4 secs
+
+-------------------------
+Indexed two tables SELECT join:
+
+Not encrypted storage: 0.3 secs
+AES-encrypted storage: 0.3 secs
+
+
+So, the penalty looks quite acceptable (sure because the kernel VFS -layer  
+&amp; encryptor are used here).
+Though, my machine may be not a good testacase anymore - now  it has 4G  
+DDR3-1333 thus huge FS caches...
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004445.html">[MSEide-MSEgui-talk] confirm	babc041240280df32e18fe4ed9617942c2aaf39c
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4446">[ date ]</a>
+              <a href="thread.html#4446">[ thread ]</a>
+              <a href="subject.html#4446">[ subject ]</a>
+              <a href="author.html#4446">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

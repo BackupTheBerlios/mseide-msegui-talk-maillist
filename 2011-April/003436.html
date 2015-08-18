@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3Cio7n1j%24otu%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003435.html">
+   <LINK REL="Next"  HREF="003437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dropdown%20-%20autoropdown/expand.&In-Reply-To=%3Cio7n1j%24otu%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.">chr.nobel at gmail.com
+       </A><BR>
+    <I>Thu Apr 14 22:56:19 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003435.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+        <LI>Next message: <A HREF="003437.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3436">[ date ]</a>
+              <a href="thread.html#3436">[ thread ]</a>
+              <a href="subject.html#3436">[ subject ]</a>
+              <a href="author.html#3436">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> What do you mean with &quot;dropdown&quot;, which component class?
+</I>
+I have some fields i want to be filled by choosing from a database like
+this:
+
+procedure tactivityfo.actselectlist(const sender: TObject);
+begin
+tseactname.value:=actlookupsource.dataset.fieldbyname('actname').asstring;	
+tddownerid.value:=actlookupsource.dataset.fieldbyname('actownerid').asstring;
+treacttime.value:=actlookupsource.dataset.fieldbyname('acttime').asfloat;
+.
+.
+end;
+
+I use a tdropdownlisteditdb to determine the record I want to copy from,
+works ok, but even though I have done the following:
+
+procedure tactivityfo.showdropdown(const sender: TObject);
+begin
+tdropdownlisteditdb1.visible:=true;
+tdropdownlisteditdb1.bringtofront;	
+tdropdownlisteditdb1.setfocus;	
+end
+
+I still have to click on the tdropdownlisteditdb1 to have the dropdown
+to actually drop down.
+
+What I would like to achieve is that the dropdown automatically drops
+down when it receives focus.
+
+/Christian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003435.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+	<LI>Next message: <A HREF="003437.html">[MSEide-MSEgui-talk] Dropdown - autoropdown/expand.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3436">[ date ]</a>
+              <a href="thread.html#3436">[ thread ]</a>
+              <a href="subject.html#3436">[ subject ]</a>
+              <a href="author.html#3436">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

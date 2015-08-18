@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tsequencelink vs filter
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tsequencelink%20vs%20filter&In-Reply-To=%3Ci33bn5%24h3c%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000566.html">
+   <LINK REL="Next"  HREF="000567.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tsequencelink vs filter</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tsequencelink%20vs%20filter&In-Reply-To=%3Ci33bn5%24h3c%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tsequencelink vs filter">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Aug  1 10:37:04 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000566.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+        <LI>Next message: <A HREF="000567.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+: (TMSESQLTransaction:	isolation level) &amp; (TMSESQLQuery: named savepoint to return	data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin Schreiber wrote:
+
+&gt;<i> Martin Schreiber wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Autoinc primary key fields are updated automatically for MySQL and
+</I>&gt;&gt;<i> Sqlite3 after applyupdate(). It should also be possible to use the
+</I>&gt;&gt;<i> RETURNING clause in insert statement in tmsesqlquery.onapplyrecupdate
+</I>&gt;&gt;<i> with a tsqlresult, field values are writeable in onapplyrecupdate. Hmm, I
+</I>&gt;&gt;<i> think I should test this method first...
+</I>&gt;<i> 
+</I>&gt;<i> Trunk 3811 has tsqlquery.SQLInsert/SQLUpdate.options uso_refresh.
+</I>&gt;<i> RETURNING clause used in order to update the field values after executing
+</I>&gt;<i> the statement.
+</I>
+Removed in trunk 3814, please use the new tmse*field.providerflags1 property
+and pf1_refresh where refreshing the field value after insert and update
+can be activated individually.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000566.html">[MSEide-MSEgui-talk] To PostgreSQL users
+</A></li>
+	<LI>Next message: <A HREF="000567.html">[MSEide-MSEgui-talk] Wishes for PostgreSQL 8+: (TMSESQLTransaction:	isolation level) &amp; (TMSESQLQuery: named savepoint to return	data if the query fails thus rollback-ed)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

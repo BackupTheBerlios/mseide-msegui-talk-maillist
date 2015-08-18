@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SIGSEGV since last trunk update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SIGSEGV%20since%20last%20trunk%20update&In-Reply-To=%3CAANLkTinSTZUvDZdjYv-X%2Bn-ghbbAsm9PEiyq2XaP%2BKzT%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002925.html">
+   <LINK REL="Next"  HREF="002927.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SIGSEGV since last trunk update</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SIGSEGV%20since%20last%20trunk%20update&In-Reply-To=%3CAANLkTinSTZUvDZdjYv-X%2Bn-ghbbAsm9PEiyq2XaP%2BKzT%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SIGSEGV since last trunk update">jujibo at gmail.com
+       </A><BR>
+    <I>Mon Feb 28 13:19:45 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002925.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+        <LI>Next message: <A HREF="002927.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2926">[ date ]</a>
+              <a href="thread.html#2926">[ thread ]</a>
+              <a href="subject.html#2926">[ subject ]</a>
+              <a href="author.html#2926">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Can't compile:
+
+Free Pascal Compiler version 2.4.2 [2010/11/08] for i386
+Copyright (c) 1993-2010 by Florian Klaempfl
+Target OS: Linux for i386
+Compiling GestionTVT.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/cwstring.pp
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysbindings.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Compiling
+/home/jujibo/Dev/mseide-msegui/lib/common/kernel/i386-linux/msesysintf.pas
+Fatal: Compilation aborted
+An unhandled exception occurred at $0808702E :
+EListError : List index exceeds bounds (9)
+  $0808702E
+
+If you are refactoring.. I can wait :)
+
+Thank you.
+
+
+Julio
+
+
+2011/2/28 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Monday, 28. February 2011 12.28:40 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; Hi, I've updated from trunk version and when I run my program and close
+</I>&gt;<i> it
+</I>&gt;<i> &gt; I get SIGSEGV
+</I>&gt;<i> &gt;
+</I>&gt;<i> I am currently refactoring GDI because of the new OpenGL backend so some
+</I>&gt;<i> mismatch between the different GDI systems (Linux, Windows, printer) is
+</I>&gt;<i> possible at the moment. Please try again with trunk 4362,
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110228/ca257911/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110228/ca257911/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002925.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+	<LI>Next message: <A HREF="002927.html">[MSEide-MSEgui-talk] SIGSEGV since last trunk update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2926">[ date ]</a>
+              <a href="thread.html#2926">[ thread ]</a>
+              <a href="subject.html#2926">[ subject ]</a>
+              <a href="author.html#2926">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

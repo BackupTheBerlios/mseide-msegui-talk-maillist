@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Databases - libraries and linking etc.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALGS61FrbN%3DPudfpsqz-RAwha3%3DcOJ%2BkSx-79Z6n03MCXLFDqQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003992.html">
+   <LINK REL="Next"  HREF="003995.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Databases - libraries and linking etc.</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Databases%20-%20libraries%20and%20linking%20etc.&In-Reply-To=%3CCALGS61FrbN%3DPudfpsqz-RAwha3%3DcOJ%2BkSx-79Z6n03MCXLFDqQ%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Databases - libraries and linking etc.">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Sun Jul 31 20:45:06 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003992.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+        <LI>Next message: <A HREF="003995.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3993">[ date ]</a>
+              <a href="thread.html#3993">[ thread ]</a>
+              <a href="subject.html#3993">[ subject ]</a>
+              <a href="author.html#3993">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>All code is open source and well unit tested. The latter is possible,
+because most of the MGM functionality is actually non-gui code.
+
+For more details, feel welcome to checkout a copy of tiOPF2 and try
+the demos. For more details on how MGM works, I
+==================
+At a glance, it looks not RAD-friendly :)
+BTW, can tiOPF replace boring PHP coding WWW DB-apps with forms ?
+(MySQL &amp; PostgreSQL) Or even AJAX apps ? (ZendFW etc monsters put many
+people incl me to fright ) If yes, how to implement CGI/apache_module
+engine for such apps?
+
+
+2011/7/31, Graeme Geldenhuys &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">graemeg.lists at gmail.com</A>&gt;:
+&gt;<i> On 31 July 2011 18:18, IvankoB for-mse wrote:
+</I>&gt;&gt;<i> Really exciting ! but how about GUI candies - database-state
+</I>&gt;&gt;<i> enabling/disabling/tuning widgets etc ? For instance - disabling
+</I>&gt;&gt;<i> action buttons until a table row is selected. Hiding/disabling whole
+</I>&gt;&gt;<i> tab page once no more data for this page so that users won't even try
+</I>&gt;<i>
+</I>&gt;<i> Just like Martin took his experience from Delphi, Kylix etc and
+</I>&gt;<i> improved on them and made things easier with MSEide and MSEgui. So too
+</I>&gt;<i> I have taken my experiences with Delphi, Kylix and Lazarus, plus my
+</I>&gt;<i> fondness for OOP, and tried to make something better and very easy to
+</I>&gt;<i> use. And very importantly, easy to maintaing, no matter how big the
+</I>&gt;<i> project becomes.
+</I>&gt;<i>
+</I>&gt;<i> What you list is all very easily handled with tiOPF's MGM, and with
+</I>&gt;<i> tiOPF's custom object-aware component.
+</I>&gt;<i>
+</I>&gt;<i> eg:
+</I>&gt;<i> Here is how you can display an object list in a Grid component.
+</I>&gt;<i>
+</I>&gt;<i> const
+</I>&gt;<i>   cTransGridCols      =
+</I>&gt;<i> 'TransDate(80,&quot;%s&quot;);TransType(80,&quot;%s&quot;);TransCode(80,&quot;%s&quot;);TransDesc(300,&quot;%s&quot;);TaxAmount(80,&quot;%s&quot;,&gt;);TransAmount(80,&quot;%s&quot;,&gt;)';
+</I>&gt;<i>
+</I>&gt;<i> The above constant defines the properties to display, the default
+</I>&gt;<i> width of each column, place holder for locale aware header titles, and
+</I>&gt;<i> the alignment of the columns.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   if not Assigned(FMediator) then
+</I>&gt;<i>   begin
+</I>&gt;<i>     FMediator := TFormMediator.Create(self);
+</I>&gt;<i>     FMediator.AddComposite(Format(cTransGridCols, [uiDate,
+</I>&gt;<i> uiTransType, uiTransCode, uiDescription, uiVAT, uiAmount]),
+</I>&gt;<i> grdTransactions);
+</I>&gt;<i>   end;
+</I>&gt;<i>   FMediator.Subject := DisplayData;
+</I>&gt;<i>   FMediator.Active := True;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> TFormMediator is a component you can use at runtime or designtime.
+</I>&gt;<i> DisplayData is the list object containing my data. grdTransaction is
+</I>&gt;<i> the Grid component instance variable.
+</I>&gt;<i>
+</I>&gt;<i> All mediators in MGM are two-way edit aware. You can edit the data
+</I>&gt;<i> object, and all GUI components that observer that data object or
+</I>&gt;<i> property automatically get update. The reverse is true as well. MGM
+</I>&gt;<i> supplies generic mediators for all types and edit widgets. If you
+</I>&gt;<i> wanted something more specialized, simply create a subclass of one of
+</I>&gt;<i> those generic mediators and customize to your needs. Register it with
+</I>&gt;<i> the MGM registry and for which class or type it must apply. The
+</I>&gt;<i> TFormMediator would then take care of the rest.
+</I>&gt;<i>
+</I>&gt;<i> All code is open source and well unit tested. The latter is possible,
+</I>&gt;<i> because most of the MGM functionality is actually non-gui code.
+</I>&gt;<i>
+</I>&gt;<i> For more details, feel welcome to checkout a copy of tiOPF2 and try
+</I>&gt;<i> the demos. For more details on how MGM works, I have written an
+</I>&gt;<i> article on it for The Toolbox magazine (a German programming
+</I>&gt;<i> magazine). You can download the English article here. It introduces a
+</I>&gt;<i> simple MGM implementation using Mediator and Observer design patterns.
+</I>&gt;<i> The MGM implementation in tiOPF is *much* more advanced and feature
+</I>&gt;<i> complete - yet still very easy to use.
+</I>&gt;<i>
+</I>&gt;<i>   <A HREF="http://opensoft.homeip.net:8080/articles/">http://opensoft.homeip.net:8080/articles/</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Regards,
+</I>&gt;<i> &#160; - Graeme -
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> fpGUI - a cross-platform Free Pascal GUI toolkit
+</I>&gt;<i> <A HREF="http://fpgui.sourceforge.net">http://fpgui.sourceforge.net</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003992.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+	<LI>Next message: <A HREF="003995.html">[MSEide-MSEgui-talk] Databases - libraries and linking etc.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3993">[ date ]</a>
+              <a href="thread.html#3993">[ thread ]</a>
+              <a href="subject.html#3993">[ subject ]</a>
+              <a href="author.html#3993">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

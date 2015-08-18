@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC 2.4.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%5Bpatch%5D%20to%20fix%20compilation%20bug%20under%20FPC%0A%202.4.3&In-Reply-To=%3C4CC96F29.6060100%40opensoft.homeip.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001592.html">
+   <LINK REL="Next"  HREF="001566.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC 2.4.3</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20%5Bpatch%5D%20to%20fix%20compilation%20bug%20under%20FPC%0A%202.4.3&In-Reply-To=%3C4CC96F29.6060100%40opensoft.homeip.net%3E"
+       TITLE="[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC 2.4.3">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Thu Oct 28 14:40:09 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001592.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+        <LI>Next message: <A HREF="001566.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1565">[ date ]</a>
+              <a href="thread.html#1565">[ thread ]</a>
+              <a href="subject.html#1565">[ subject ]</a>
+              <a href="author.html#1565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Op 2010-10-28 13:19, Ivanko B het geskryf:
+&gt;<i> 
+</I>&gt;<i> What is these templates ? Their usage ?
+</I>
+Code Templates or Code Snippets. Ctrl+T select the template (*.mct files),
+and the code is inserted into your source.
+
+Here is a very simple TODO list code template. It inserts a code comment
+which makes TODO items for me, it also correctly positions the edit cursor
+for me. I have stacks more like this, and use them for fpdoc xml
+documentation, creating classes or visitors for tiOPF, unit header
+comments, a basic project template with a single form etc...
+
+
+---------------[ todo.mct ]--------------------
+[header]
+name=todo
+comment=Add a todo comment item
+noselect=1
+cursorrow=0
+cursorcol=9
+[]
+{ TODO :  }
+-----------------------------------------------
+
+
+Save the above to &lt;msegui&gt;/apps/ide/templates/todo.mct
+
+Restart the IDE and type:  todo
+Then press Ctrl+T
+
+
+The Code Template Editor dialog can be found by doing the following (I
+don't know if it is available from somewhere else too).
+
+  - Right click in your source editor
+  - select 'insert template'
+  - on the right edge of the grid click the '...' button
+
+
+
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net:8080/fpgui/">http://opensoft.homeip.net:8080/fpgui/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001592.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+	<LI>Next message: <A HREF="001566.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1565">[ date ]</a>
+              <a href="thread.html#1565">[ thread ]</a>
+              <a href="subject.html#1565">[ subject ]</a>
+              <a href="author.html#1565">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

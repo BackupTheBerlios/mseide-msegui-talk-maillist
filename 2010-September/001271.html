@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100930003425.4034ad3a.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001261.html">
+   <LINK REL="Next"  HREF="001280.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEGUI%202.2%20programs%20won%27t%20work%20on%20old%20X11&In-Reply-To=%3C20100930003425.4034ad3a.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Thu Sep 30 00:34:25 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001261.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+        <LI>Next message: <A HREF="001280.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1271">[ date ]</a>
+              <a href="thread.html#1271">[ thread ]</a>
+              <a href="subject.html#1271">[ subject ]</a>
+              <a href="author.html#1271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Wed, 29 Sep 2010 08:03:25 +0200:
+
+&gt;<i> &gt; One gripe found as far: The tabwidget doesn't allow to hide the tabs any
+</I>&gt;<i> &gt; more, at least not easily and without tricks...
+</I>...
+&gt;<i> Disable tab_optionswidget1 ow1_autoheight.
+</I>
+I think I _did_ try this already, and it didn't work - but I might not also
+have set the height value to 0 as well.
+Well, now it did work, kind of, at least.
+
+Could it be the case that there are a couple of inconsistencies left?
+There were several occasions now when some value I had changed appeared
+with the _old_ value again after compilation, and the compiled program did
+not show like the new value had been used at all.
+
+And just right now, after having changed the tab height field, I got an
+error message &quot;Can not read form file &quot;...&quot;. Error reading
+Seitenwahl.tab_fontactivetab.shadow_color: Access violation&quot;!
+I didn't even _look up_ this value!
+
+And upon trying to move the error message dialog to the workspace where I'm
+typing this, the message window got lost (could not shift it over) and the
+IDE locked up, after having closed the source window (only). The only way
+to get rid of it was an &quot;xkill&quot; application to it, as it wouldn't even
+respond to a window manager close command. I could even reproduce this
+another time: shifting the error message (which _did_ reappear after
+reloading, so the error became even saved to the .mfm file) to another work
+space loses the window, on switching back the source window is gone and the
+IDE locked up.
+As to the error message, removing the field mentioned just shifted the
+failure to the next entry - until all occurences of &quot;tab_fontactivetab&quot;
+were gone. Thereafter, the .mfm file could be reshown as form again.
+Could that have been caused because I _had_ set a specific font there (and
+for the &quot;fonttab&quot; field also), but removed it just before? (I think I just
+removed &quot;fonttab&quot; and not &quot;fontactivetab&quot;.)
+Possibly it was not removed completely internally, and an ensuing
+recompilation resurrected part of it, but messed up something else doing so?
+
+Well, now everything seems to be in best order again, so I can no longer
+find out more about these interesting (but unwieldy) &quot;effects&quot;... ;-&gt;
+
+BTW, the focus behaviour of the IDE is somewhat, err, unusual, as to say.
+It does not really yield to another window made active by means of the
+window manager. if the mouse cursor still sits within its reach, even if
+the other window would normally get into possession of the mouse after
+activation. I have to shift the mouse cursor into the window of interest to
+heave that on top, although this should normally not be neccessary.
+
+This effect occurs even among the IDE windows alone, and switching between
+them redraws all affected windows several times, hiding and reshowing parts
+of them in rapid succession, like the IDE was undecided what to really
+prefer now....
+It also occurred several times that I wasn't able to bring the main (menu)
+window into the foreground, when it was covered partly by the component
+palette - this would even stay in the foreground when it was _not_ active.
+
+Most of these effects, BTW, did _not_ occur with the previous version(s),
+where the editor also had the old behaviour of &quot;jumping&quot; to the nearest
+word begin whether forward or backward. The new behaviour is really
+awkward, always jumping to the _farthest_ end of the nearest word.
+I _heartily_ _dislike_ it so. And it is _not_ configurable!
+I consider switching to Lazarus because of this...  ;-&gt;
+
+Sorry for the lengthy sermon...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001261.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+	<LI>Next message: <A HREF="001280.html">[MSEide-MSEgui-talk] MSEGUI 2.2 programs won't work on old X11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1271">[ date ]</a>
+              <a href="thread.html#1271">[ thread ]</a>
+              <a href="subject.html#1271">[ subject ]</a>
+              <a href="author.html#1271">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

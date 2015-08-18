@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] a odbc bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20a%20odbc%20bug&In-Reply-To=%3C4C6107AE.3010908%4021cn.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000578.html">
+   <LINK REL="Next"  HREF="000580.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] a odbc bug</H1>
+    <B>liuzg2</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20a%20odbc%20bug&In-Reply-To=%3C4C6107AE.3010908%4021cn.com%3E"
+       TITLE="[MSEide-MSEgui-talk] a odbc bug">liuzg2 at 21cn.com
+       </A><BR>
+    <I>Tue Aug 10 10:02:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000578.html">[MSEide-MSEgui-talk] about tmsesqlscript,tmsesqlquery
+</A></li>
+        <LI>Next message: <A HREF="000580.html">[MSEide-MSEgui-talk] a odbc bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#579">[ date ]</a>
+              <a href="thread.html#579">[ thread ]</a>
+              <a href="subject.html#579">[ subject ]</a>
+              <a href="author.html#579">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>when i use
+
+self.tmsesqlscript1.sql.clear;
+     self.tmsesqlscript1.sql.text:='delete from  indent_c;';
+     tmsesqlscript1.execute();
+   tmsesqlscript1.database.Transaction.Commit;
+
+
+when  indent_c have data  then all ok
+but when indent_c have no data  then
+Could not execute statement. ODBC error details:
+An exception occurred at $00534F10 :
+EODBCException : Could not execute statement. ODBC error details:
+  $00534F10  ODBCCHECKRESULT,  line 353 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+  $0053649F  TODBCCONNECTION__INTERNALEXECUTE,  line 856 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/modbcconn.pas
+  $004EC9D0  TCUSTOMSQLCONNECTION__EXECUTE,  line 1653 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+  $004EC538  TCUSTOMSQLCONNECTION__INTERNALEXECUTEDIRECT,  line 1554 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+  $004EC620  TCUSTOMSQLCONNECTION__EXECUTEDIRECT,  line 1576 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+  $004F26E9  TMSESQLSCRIPT__EXECUTE,  line 4306 of
+H:/update/MSEGUI/mseide-msegui/lib/common/db/msqldb.pas
+  $00432A07  TMAINFO__ODBCCONN,  line 421 of main.pas
+  $0048D3CD  DOACTIONEXECUTE,  line 347 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseact.pas
+  $004B0292  TCUSTOMBUTTON__DOEXECUTE,  line 684 of
+H:/update/MSEGUI/mseide-msegui/lib/common/widgets/msesimplewidgets.pas
+  $004979F7  TACTIONSIMPLEBUTTON__INTERNALEXECUTE,  line 1799 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+  $00497A17  TACTIONSIMPLEBUTTON__DOSHAPEEXECUTE,  line 1806 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+  $004A0018  UPDATEMOUSESHAPESTATE,  line 405 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/mseshapes.pas
+  $00497AAE  TACTIONSIMPLEBUTTON__CLIENTMOUSEEVENT,  line 1820 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+  $0041ECC7  DOCLIENTMOUSEEVENT,  line 8617 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+  $0041EBA8  TWIDGET__MOUSEEVENT,  line 8734 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+  $0049CF79  TACTIONWIDGET__MOUSEEVENT,  line 4262 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msewidgets.pas
+  $00426888  TWINDOW__DISPATCHMOUSEEVENT,  line 12556 of
+H:/update/MSEGUI/mseide-msegui/lib/common/kernel/msegui.pas
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000578.html">[MSEide-MSEgui-talk] about tmsesqlscript,tmsesqlquery
+</A></li>
+	<LI>Next message: <A HREF="000580.html">[MSEide-MSEgui-talk] a odbc bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#579">[ date ]</a>
+              <a href="thread.html#579">[ thread ]</a>
+              <a href="subject.html#579">[ subject ]</a>
+              <a href="author.html#579">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

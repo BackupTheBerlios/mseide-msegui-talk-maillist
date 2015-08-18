@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci491v7%24q89%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000630.html">
+   <LINK REL="Next"  HREF="000636.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3Ci491v7%24q89%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Aug 15 17:44:31 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000630.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000636.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#632">[ date ]</a>
+              <a href="thread.html#632">[ thread ]</a>
+              <a href="subject.html#632">[ subject ]</a>
+              <a href="author.html#632">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Back then, you suggested using the &quot;i18n&quot; ancilliary tool you provide. But
+</I>&gt;<i> because of lack of time, I never yet came about to try this until
+</I>&gt;<i> recently. And when I finally tried it, it failed on me - it did switch the
+</I>&gt;<i> layout correctly (after I had found out how to create the neccessary
+</I>&gt;<i> control files), but then the application was not functional, it couldn't
+</I>&gt;<i> even be terminated regularly any more, but had to be killed forcedly.
+</I>&gt;<i> 
+</I>Then probably not all went well. ;-)
+
+&gt;<i> I understand that the i18n mechanism is really meant for translating
+</I>&gt;<i> labelling strings and other text, which I don't need (yet), but you said
+</I>&gt;<i> it could be used for other modifications, too. Is that not supported any
+</I>&gt;<i> more?
+</I>
+MSEi18n can be used in order to build different *.mfm files with different
+property values based on common master versions. The *.mfm files are
+compiled into resource so's or dll's which can be switched at runtime.
+MSEi18n supports string and numeric values. A form designer in order to
+change widget position and size is planned but difficult to implement.
+
+&gt;<i> What should one use instead? Could this be solved using &quot;skins&quot;? (Do 
+</I>&gt;<i> skins support changing sizes of control elements including the whole
+</I>&gt;<i> window?)
+</I>
+tskincontroller has hooks where user code can control all aspects of loaded
+components (onbeforeupdate, onafterupdate). I don't think tskincontroller
+should be used for layout purposes.
+
+&gt;<i> Or is there a mechanism similar to the IDE's way of building an 
+</I>&gt;<i> application's window reading the .mfm file which is also available at the
+</I>&gt;<i> user level? (This would probabely be the most elegant solution.)
+</I>&gt;<i> 
+</I>MSEi18n does this, components can be loaded from streams
+(TStream.ReadComponent(), TReader.ReadRootComponent()).
+
+&gt;<i> I don't mean to inconvenience you - if there's no easy solution, please
+</I>&gt;<i> just tell me and ignore my inquiry; I'll try to find some way myself then.
+</I>
+Suggestion: use automatically adjusting layouts. Some possible elements:
+
+- twidget.anchors.
+- tspacer.
+- tsplitter.
+- tlayouter.
+- tmseform.onchildscaled and several other event properties.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000630.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000636.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#632">[ date ]</a>
+              <a href="thread.html#632">[ thread ]</a>
+              <a href="subject.html#632">[ subject ]</a>
+              <a href="author.html#632">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

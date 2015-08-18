@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] askyesno function problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTikVrvhxhspgJ2wceFXQx8eaF2-nN0CzHZCRW524%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001964.html">
+   <LINK REL="Next"  HREF="001966.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] askyesno function problem</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20askyesno%20function%20problem&In-Reply-To=%3CAANLkTikVrvhxhspgJ2wceFXQx8eaF2-nN0CzHZCRW524%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] askyesno function problem">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Fri Nov 26 18:37:40 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001964.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+        <LI>Next message: <A HREF="001966.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1965">[ date ]</a>
+              <a href="thread.html#1965">[ thread ]</a>
+              <a href="subject.html#1965">[ subject ]</a>
+              <a href="author.html#1965">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I don't think so. I never used onkeydown/up on edit widgets. There probably
+</I>&gt;<i> are better solutions. Do you have an example where onkey* is necessary for
+</I>&gt;<i> edit widgets?
+</I>
+I use onkeydown/up event in POS (Point Of Sale) app. I use
+tdbdropdownlisteditdb (wsn) to show serial number list of products. If
+user select a serial number and press enter, he asked &quot;Add another
+serial number?&quot;, if user answer &quot;Yes&quot;, cursor focused to &quot;wsn&quot;, but if
+user answer &quot;No&quot;, cursor focused to product code. Unfortunately, if
+cursor focused to product code, enter from showmessage dialog is sent
+to product code.
+
+For me, onkey* event on edit widget is important to create app that
+prepared to quick operation app. Please you don't delete this event,
+this is standard event for all GUI library.
+
+&gt;<i> MSEgui has no OnKeypress event because accompanying characters are stored in
+</I>&gt;<i> info parameter of key events.
+</I>
+I don't understand your reason clearly. Why onkeypress(var info:
+keyeventinfoty) cannot be used?
+
+Thanks
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001964.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+	<LI>Next message: <A HREF="001966.html">[MSEide-MSEgui-talk] askyesno function problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1965">[ date ]</a>
+              <a href="thread.html#1965">[ thread ]</a>
+              <a href="subject.html#1965">[ subject ]</a>
+              <a href="author.html#1965">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

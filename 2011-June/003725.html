@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide fails to link
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20fails%20to%20link&In-Reply-To=%3C201106011720.07561.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003721.html">
+   <LINK REL="Next"  HREF="003726.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide fails to link</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20fails%20to%20link&In-Reply-To=%3C201106011720.07561.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide fails to link">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Jun  1 17:20:07 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003721.html">[MSEide-MSEgui-talk] MSEide fails to link
+</A></li>
+        <LI>Next message: <A HREF="003726.html">[MSEide-MSEgui-talk] MSEide fails to link
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3725">[ date ]</a>
+              <a href="thread.html#3725">[ thread ]</a>
+              <a href="subject.html#3725">[ subject ]</a>
+              <a href="author.html#3725">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 01 June 2011 03:45:03 pm Graeme Geldenhuys wrote:
+&gt;<i> Hi Martin,
+</I>&gt;<i>
+</I>&gt;<i> I saw your standard FPC vs Delphi post in the fpc-devel mailing list. :)
+</I>&gt;<i> [I always love those]. Anyway, I tried the exact same FPC compile
+</I>&gt;<i> command you used for those results. Only difference is, I run 64-bit
+</I>&gt;<i> Linux with 64-bit FPC.
+</I>&gt;<i>
+</I>&gt;<i> Any ideas why it doesn't work for me. I always get linking errors as
+</I>&gt;<i> shown below. &quot;undefined reference to ...&quot; errors.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----8&lt;-------------8&lt;-------------8&lt;-------------8&lt;-------------8&lt;----
+</I>&gt;<i> $ cat test.sh
+</I>&gt;<i> fpc -O2 -CX -XX -Xs -B -Fi../.. /lib/common/kernel \           &lt;&lt;&lt;&lt;----
+</I>
+There is a wrong &quot; &quot; between &quot;-Fi../..&quot; and &quot;/lib/common/kernel \&quot; in my mail 
+to fpc-devel, it has no influence AFAIK.
+
+&gt;<i> Linking mseidefpc.elf64
+</I>&gt;<i> /usr/bin/ld: warning: link.res contains output sections; did you forget -T?
+</I>&gt;<i> lib/libpmsegui.a(msegui0s1123.o):(.data+0x0): undefined reference to
+</I>&gt;<i> `WRPR_MSEGUI_TINTERNALAPPLICATION_$_IMOUSE_$_0_$_MSEGUI_TINTERNALAPPLICATIO
+</I>&gt;<i>N_$__GETMOUSEWINID$$QWORD' lib/libpmsedock.a(msedock0s253.o):(.data+0x0):
+</I>&gt;<i> undefined reference to
+</I>&gt;<i> `WRPR_MSEDOCK_TDOCKTABPAGE_$_IDOCKTARGET_$_0_$_MSEDOCK_TDOCKTABPAGE_$__GETD
+</I>&gt;<i>OCKCONTROLLER$$TDOCKCONTROLLER' mseide.pas(65,1) Error: Error while linking
+</I>&gt;<i> mseide.pas(65,1) Fatal: There were 1 errors compiling module, stopping
+</I>&gt;<i> Fatal: Compilation aborted
+</I>&gt;<i> Error: /opt/fpc_fixes_svn/x86_64-linux/bin/ppcx64 returned an error
+</I>&gt;<i> exitcode (normal if you did not specify a source file to be compiled)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>I get with FPC 2.4.4:
+&quot;
+Linking mseidefpc
+/home/mse/packs/standard/svn/mse/trunk/lib/common/kernel/libpmsegui.a(msegui0s1123.o):
+(.data+0x0): undefined reference to 
+`WRPR_MSEGUI_TINTERNALAPPLICATION_$_IMOUSE_$_0_$_MSEGUI_TINTERNALAPPLICATION_$__GETMOUSEWINID$$QWORD'
+/home/mse/packs/standard/svn/mse/trunk/lib/common/widgets/libpmsedock.a(msedock0s253.o):
+(.data+0x0): undefined reference to 
+`WRPR_MSEDOCK_TDOCKTABPAGE_$_IDOCKTARGET_$_0_$_MSEDOCK_TDOCKTABPAGE_$__GETDOCKCONTROLLER$$TDOCKCONTROLLER'
+mseide.pas(65,1) Error: Error while linking
+mseide.pas(65,1) Fatal: There were 1 errors compiling module, stopping
+Fatal: Compilation aborted
+&quot;
+Without -CX:
+&quot;
+msedial.pas(531,12) Warning: Class types &quot;tdialfont&quot; and &quot;tdialpropfont&quot; are 
+not related
+Fatal: Compilation aborted
+An unhandled exception occurred at $00000000004BD589 :
+EAccessViolation : Access violation
+  $00000000004BD589
+  $00000000004BFBA0
+  $00000000004BF6EA
+  $00000000004BC8B6
+  $0000000000519045
+  $000000000051942D
+  $0000000000515B1B
+  $000000000051895E
+  $000000000054B3BD
+  $000000000055A429
+  $000000000056434E
+  $000000000054B3BD
+  $000000000055A429
+  $000000000056434E
+  $000000000054B3BD
+  $000000000055A429
+  $000000000056434E
+&quot;
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003721.html">[MSEide-MSEgui-talk] MSEide fails to link
+</A></li>
+	<LI>Next message: <A HREF="003726.html">[MSEide-MSEgui-talk] MSEide fails to link
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3725">[ date ]</a>
+              <a href="thread.html#3725">[ thread ]</a>
+              <a href="subject.html#3725">[ subject ]</a>
+              <a href="author.html#3725">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

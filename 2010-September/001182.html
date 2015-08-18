@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PODPISKA%3A%20can%27t%20execute%20inherited%20method&In-Reply-To=%3C9ogo96960qfas27manmbca00p53819votm%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001178.html">
+   <LINK REL="Next"  HREF="001187.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20PODPISKA%3A%20can%27t%20execute%20inherited%20method&In-Reply-To=%3C9ogo96960qfas27manmbca00p53819votm%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Fri Sep 24 08:26:54 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001178.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+        <LI>Next message: <A HREF="001187.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;&gt;&gt;<i> REFPOSTOFFICEDITFORM.actSaveRec.onexecute should execute
+</I>&gt;&gt;&gt;&gt;<i> RECEDITFORM_STRINGCODE but it doesn't, in run-time.
+</I>&gt;&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i>And what does it instead? ;-)
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Catch the most recent files (7z).
+</I>&gt;<i>
+</I>&gt;<i>Steps?
+</I>
+Take the latest project &amp; its DB-setup  from the binaries: 7z
+&quot;PODPISKA 24sep2010&quot;.
+The steps are here attached (as long as for reproducing wrong painting
+in WinXP).
+
+refpostofficeeditfor.actSaveRec.OnExecute should call :
+//-----------------------
+procedure treceditform_stringcodefo.stringrecsaveexec(const sender:
+TObject);
+begin
+  if not
+viewform.codecheck(dbseCode.datalink.datasource.dataset.fieldbyname('code'))
+then begin
+  	showmessage('+BBAEOgRCBDgEMgQ9BDAETw- +BDcEMAQ/BDgEQQRM- +BEE- +BEIEMAQ6BDgEPA- +BDoEPgQ0BD4EPA- +BEMENgQ1- +BEEEQwRJBDUEQQRCBDIEQwQ1BEI-!');
+    exit;
+  end else  
+    inherited recsaveexec(sender);
+end;
+//-----------------------
+
+but doesn't.
+Other forms choosen at step 3 doesn't expose this miss on
+actSaveRec.execute.
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: image+AC8-png
+Size: 14282 bytes
+Desc: not available
+URL: &lt;https:+AC8ALw-lists.berlios.de+AC8-pipermail+AC8-mseide-msegui-talk+AC8-attachments+AC8-20100924+AC8-3b3a6245+AC8-attachment.png&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: image+AC8-png
+Size: 23260 bytes
+Desc: not available
+URL: &lt;https:+AC8ALw-lists.berlios.de+AC8-pipermail+AC8-mseide-msegui-talk+AC8-attachments+AC8-20100924+AC8-3b3a6245+AC8-attachment-0001.png&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: image+AC8-png
+Size: 17685 bytes
+Desc: not available
+URL: &lt;https:+AC8ALw-lists.berlios.de+AC8-pipermail+AC8-mseide-msegui-talk+AC8-attachments+AC8-20100924+AC8-3b3a6245+AC8-attachment-0002.png&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: image+AC8-png
+Size: 9235 bytes
+Desc: not available
+URL: &lt;https:+AC8ALw-lists.berlios.de+AC8-pipermail+AC8-mseide-msegui-talk+AC8-attachments+AC8-20100924+AC8-3b3a6245+AC8-attachment-0003.png&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: image+AC8-png
+Size: 18347 bytes
+Desc: not available
+URL: &lt;https:+AC8ALw-lists.berlios.de+AC8-pipermail+AC8-mseide-msegui-talk+AC8-attachments+AC8-20100924+AC8-3b3a6245+AC8-attachment-0004.png&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001178.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+	<LI>Next message: <A HREF="001187.html">[MSEide-MSEgui-talk] PODPISKA: can't execute inherited method
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

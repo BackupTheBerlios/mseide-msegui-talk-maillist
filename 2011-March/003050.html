@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTi%3Dt%3DHeo%2BS8CY8oZxPv-URn50sWaSdrBfh48Rh6a%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003049.html">
+   <LINK REL="Next"  HREF="003051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTi%3Dt%3DHeo%2BS8CY8oZxPv-URn50sWaSdrBfh48Rh6a%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">jujibo at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 13:39:25 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003049.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003051.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3050">[ date ]</a>
+              <a href="thread.html#3050">[ thread ]</a>
+              <a href="subject.html#3050">[ subject ]</a>
+              <a href="author.html#3050">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Have to install fpc+mseide in windows to debug it... :/
+
+
+
+
+2011/3/4 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Friday 04 March 2011 13:09:43 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt; At what level?  Switching windows configuration to use cleartype apply
+</I>&gt;<i> &gt; smoothing to all the fonts, no matter the size.
+</I>&gt;<i> &gt;
+</I>&gt;<i> lib/common/kernel/i386-win32/mseguiintf.pas:
+</I>&gt;<i>
+</I>&gt;<i> function dogetfont(var drawinfo: drawinfoty; const ahighres: boolean):
+</I>&gt;<i> boolean;
+</I>&gt;<i> [...]
+</I>&gt;<i>   if foo_antialiased in h.antialiasedoptions then begin
+</I>&gt;<i>    lfquality:= antialiased_quality;      &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;-------------here
+</I>&gt;<i>   end
+</I>&gt;<i>   else begin
+</I>&gt;<i>    if foo_nonantialiased in h.antialiasedoptions then begin
+</I>&gt;<i>     lfquality:= nonantialiased_quality;
+</I>&gt;<i>    end;
+</I>&gt;<i>   end;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/f6e2caeb/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/f6e2caeb/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003049.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003051.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3050">[ date ]</a>
+              <a href="thread.html#3050">[ thread ]</a>
+              <a href="subject.html#3050">[ subject ]</a>
+              <a href="author.html#3050">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

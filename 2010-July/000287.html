@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3Ci0k92o%24j6n%242%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000283.html">
+   <LINK REL="Next"  HREF="000252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tmsesqlquery.SQLInsert%20howto&In-Reply-To=%3Ci0k92o%24j6n%242%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Jul  2 09:48:39 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000283.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+        <LI>Next message: <A HREF="000252.html">[MSEide-MSEgui-talk] 1000000'th try
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Zsolt Szokolai schrieb:
+&gt;<i> 2010/7/1 Zsolt Szokolai &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">soky64 at gmail.com</A>&gt;:
+</I>&gt;&gt;<i> How can I use the SQLInsert in tmsesqlquery?
+</I>&gt;&gt;<i> I have a table with an autoincrement integer primary key:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CREATE TABLE utemmegrend
+</I>&gt;&gt;<i> (
+</I>&gt;&gt;<i>   id integer PRIMARY KEY DEFAULT nextval('sequence'),
+</I>&gt;&gt;<i>   blah boolean,
+</I>&gt;&gt;<i>   ...
+</I>&gt;&gt;<i> )
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The problem is the error message at new record post:
+</I>&gt;&gt;<i> An error occured while applying the UPDATES in a record:
+</I>&gt;&gt;<i> tmsepqconnection1: Execution of query failed
+</I>&gt;&gt;<i> (PostgreSQL: ERROR: null value in column &quot;id&quot; violates not-null constraint)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I suspect it's resolvable by own insert SQL but how?
+</I>&gt;&gt;<i> How can I retrieve the values from the actual row which are entered by
+</I>&gt;&gt;<i> user for build my own insert statement?
+</I>&gt;&gt;<i> Via parameters?
+</I>&gt;&gt;<i> params[0].asinteger:= editwidget.value?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Zsolt
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> My experience I can use fields in insert sql like params :
+</I>&gt;<i> insert into utemmegrend
+</I>&gt;<i> (matroszam,partner,darabszam,utemezettdatum,vevoihatarido)
+</I>&gt;<i> values
+</I>&gt;<i> (:matroszam,:partner,111,:utemezettdatum,'2010-12-31')
+</I>&gt;<i> 
+</I>&gt;<i> Is my suppose correct?
+</I>&gt;<i> 
+</I>Correct. Normally tmsesqlquery should build the statement automatically 
+based on the settings of the provider flags.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000283.html">[MSEide-MSEgui-talk] tmsesqlquery.SQLInsert howto
+</A></li>
+	<LI>Next message: <A HREF="000252.html">[MSEide-MSEgui-talk] 1000000'th try
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

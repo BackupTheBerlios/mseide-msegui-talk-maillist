@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Link two dropdown menus
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Link%20two%20dropdown%20menus&In-Reply-To=%3CAANLkTinp-8ao_6Gv%3DL6nAt15MikiPX2afgC1cDJ94JzL%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002607.html">
+   <LINK REL="Next"  HREF="002608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Link two dropdown menus</H1>
+    <B>Brian Winfrey</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Link%20two%20dropdown%20menus&In-Reply-To=%3CAANLkTinp-8ao_6Gv%3DL6nAt15MikiPX2afgC1cDJ94JzL%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Link two dropdown menus">bwcode4u at gmail.com
+       </A><BR>
+    <I>Wed Jan 26 22:22:55 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002607.html">[MSEide-MSEgui-talk] Link two dropdown menus
+</A></li>
+        <LI>Next message: <A HREF="002608.html">[MSEide-MSEgui-talk] Link two dropdown menus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2676">[ date ]</a>
+              <a href="thread.html#2676">[ thread ]</a>
+              <a href="subject.html#2676">[ subject ]</a>
+              <a href="author.html#2676">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jan 20, 2011 at 9:24 AM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+&gt;<i> On Thursday 20 January 2011 16:49:08 Brian Winfrey wrote:
+</I>&gt;&gt;<i> On Wed, Jan 19, 2011 at 8:58 PM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;&gt;<i> &gt; Am 20.01.2011 05:53, schrieb Smile Girl:
+</I>&gt;&gt;<i> &gt; &#160;dropdownedit.dropdown.cols.addrow(['the text of col 0']);
+</I>&gt;&gt;<i> &gt; &quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Two quesions about this.
+</I>&gt;&gt;<i> Are the brackets required, and why (doh! mulitiple columns)?
+</I>&gt;<i>
+</I>&gt;<i> Correct.
+</I>&gt;<i> &quot;
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols.count:= 2;
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols.addrow(
+</I>&gt;<i> ['the text of col 0 lastrow','the text of col 1 lastrow']);
+</I>&gt;<i> &quot;
+</I>&gt;&gt;<i> Did you mean to enter 'the text of _row_ 0' as the value? ie.
+</I>&gt;&gt;<i> 'is a row's value enetered'
+</I>&gt;&gt;<i> 'or'
+</I>&gt;&gt;<i> 'is'
+</I>&gt;&gt;<i> 'it'
+</I>&gt;&gt;<i> 'a'
+</I>&gt;&gt;<i> 'col'
+</I>&gt;&gt;<i>
+</I>&gt;<i> &quot;
+</I>&gt;<i> &#160; with dropdownedit.dropdown.cols[0] do begin
+</I>&gt;<i> &#160; &#160;count:= 2;
+</I>&gt;<i> &#160; &#160;items[0]:= 'the text of col 0 row 0';
+</I>&gt;<i> &#160; &#160;items[1]:= 'the text of col 0 row 1';
+</I>&gt;<i> &#160; end;
+</I>&gt;<i> &#160;with dropdownedit.dropdown.cols[1] do begin
+</I>&gt;<i> &#160; count:= 2;
+</I>&gt;<i> &#160; items[0]:= 'the text of col 1 row 0';
+</I>&gt;<i> &#160; items[1]:= 'the text of col 1 row 1';
+</I>&gt;<i> &#160;end;
+</I>&gt;<i> &quot;
+</I>&gt;<i> or
+</I>&gt;<i> &quot;
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols.rowcount:= 2;
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols[0][0]:= 'the text of col 0 row 0';
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols[0][1]:= 'the text of col 0 row 1';
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols[1][0]:= 'the text of col 1 row 0';
+</I>&gt;<i> &#160;dropdownedit.dropdown.cols[1][1]:= 'the text of col 1 row 1';
+</I>&gt;<i> &quot;
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+Apparently, I was unclear in question two.  It was a poorly worded
+aside regarding the value that you had entered as a parameter in your
+example.
+
+&gt;&gt;<i> &gt;  dropdownedit.dropdown.cols.addrow(['the text of col 0']);
+</I>
+the text included 'col' where I thought you meant 'row'.   ^
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002607.html">[MSEide-MSEgui-talk] Link two dropdown menus
+</A></li>
+	<LI>Next message: <A HREF="002608.html">[MSEide-MSEgui-talk] Link two dropdown menus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2676">[ date ]</a>
+              <a href="thread.html#2676">[ thread ]</a>
+              <a href="subject.html#2676">[ subject ]</a>
+              <a href="author.html#2676">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

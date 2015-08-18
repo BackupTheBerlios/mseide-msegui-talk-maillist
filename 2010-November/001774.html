@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] continue from gue_notlocked
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20continue%20from%20gue_notlocked&In-Reply-To=%3CAANLkTimftbo5Dfs0iOnr4OHwzsB-%3DJJ9%2BKRf8_KXKcQm%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001777.html">
+   <LINK REL="Next"  HREF="001780.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] continue from gue_notlocked</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20continue%20from%20gue_notlocked&In-Reply-To=%3CAANLkTimftbo5Dfs0iOnr4OHwzsB-%3DJJ9%2BKRf8_KXKcQm%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] continue from gue_notlocked">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Fri Nov  5 20:12:36 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001777.html">[MSEide-MSEgui-talk] gui error gue_notlocked
+</A></li>
+        <LI>Next message: <A HREF="001780.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1774">[ date ]</a>
+              <a href="thread.html#1774">[ thread ]</a>
+              <a href="subject.html#1774">[ subject ]</a>
+              <a href="author.html#1774">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If I unactivated &quot;Stop on exception&quot;, I got SIGSEGV at :
+
+procedure tobjectevent.deliver;
+begin
+ if finterface &lt;&gt; nil then begin
+  ievent(finterface).receiveevent(self); --------------&gt;here
+ end;
+end;
+
+
+#0  080F1B57 mseevent.pas:211 TOBJECTEVENT__DELIVER(this=&lt;error
+reading variable&gt;)
+#1  0808912F msegui.pas:14959
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0xb6e8cc60, ONCE=false,
+this=&lt;error reading variable&gt;)
+#2  080894DB msegui.pas:15027
+TINTERNALAPPLICATION__BEGINMODAL(SENDER=0xb6e8cc60, this=&lt;error
+reading variable&gt;)
+#3  080836DA msegui.pas:12529 TWINDOW__BEGINMODAL(this=&lt;error reading variable&gt;)
+#4  0807C8C4 msegui.pas:9602 TWIDGET__INTERNALSHOW(MODAL=true,
+TRANSIENTFOR=0xb6e8b460, WINDOWEVENT=false, this=&lt;error reading
+variable&gt;)
+#5  0807C9F2 msegui.pas:9639 TWIDGET__SHOW(MODAL=true,
+TRANSIENTFOR=0xb6e8b460, this=&lt;error reading variable&gt;)
+#6  08155DF2 msewidgets.pas:1621 INTERNALSHOWMESSAGE(ATEXT=0xb6d47528
+'Akhiri Acosys?', CAPTION=0xb6d4ba48 'Confirmation',
+BUTTONS=0xbfffec34, DEFAULTBUTTON=MR_NO, NOSHORTCUT=[],
+PLACEMENTRECT=0x0, PLACEMENT=CP_CENTER, MINWIDTH=0,
+ACTIONS=0xbfffec34, EXTTEXT=0x0, highBUTTONS=1, highACTIONS=-1)
+#7  08155F50 msewidgets.pas:1662 SHOWMESSAGE(ATEXT=0xb6d47528 'Akhiri
+Acosys?', CAPTION=0xb6d4ba48 'Confirmation', BUTTONS=0xbfffedd8,
+DEFAULTBUTTON=MR_NO, NOSHORTCUT=[], MINWIDTH=0, EXTTEXT=0x0,
+POSITION=MEPO_DEFAULT, highBUTTONS=1)
+#8  08156159 msewidgets.pas:1738 ASKYESNO(ATEXT=0xb6d47528 'Akhiri
+Acosys?', CAPTION=0xb6d4ba48 'Confirmation', DEFAULTBUTTON=MR_NO,
+MINWIDTH=0)
+#9  080A6688 main.pas:429
+TMAINFO__MAINFO_ONCLOSEQUERY(SENDER=0xb749f9e0,
+AMODALRESULT=MR_WINDOWCLOSED, this=&lt;error reading variable&gt;)
+#10  0817AC99 mseforms.pas:926 TCUSTOMMSEFORM__CANCLOSE(NEWFOCUS=0x0,
+this=&lt;error reading variable&gt;)
+#11  0807FBD1 msegui.pas:10946 TWIDGET__CANPARENTCLOSE(NEWFOCUS=0x0,
+this=&lt;error reading variable&gt;)
+#12  08084A0A msegui.pas:12982 TWINDOW__CLOSE(this=&lt;error reading variable&gt;)
+#13  08088CE0 msegui.pas:14796
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=&lt;error reading variable&gt;)
+#14  0808A0DC msegui.pas:15423
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=&lt;error reading
+variable&gt;)
+#15  080EFCA8 mseapplication.pas:1354
+TCUSTOMAPPLICATION__RUN(this=&lt;error reading variable&gt;)
+#16  0804CBAD Acosys.pas:45 main()
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001777.html">[MSEide-MSEgui-talk] gui error gue_notlocked
+</A></li>
+	<LI>Next message: <A HREF="001780.html">[MSEide-MSEgui-talk] continue from gue_notlocked
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1774">[ date ]</a>
+              <a href="thread.html#1774">[ thread ]</a>
+              <a href="subject.html#1774">[ subject ]</a>
+              <a href="author.html#1774">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

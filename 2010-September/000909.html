@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] JPG metadata - one solution.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20JPG%20metadata%20-%20one%20solution.&In-Reply-To=%3Ci5l7q9%24ii6%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000921.html">
+   <LINK REL="Next"  HREF="000939.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] JPG metadata - one solution.</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20JPG%20metadata%20-%20one%20solution.&In-Reply-To=%3Ci5l7q9%24ii6%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] JPG metadata - one solution.">chr.nobel at gmail.com
+       </A><BR>
+    <I>Wed Sep  1 11:53:13 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000921.html">[MSEide-MSEgui-talk] Unable to load a fom to the form designer
+</A></li>
+        <LI>Next message: <A HREF="000939.html">[MSEide-MSEgui-talk] JPG metadata - one solution.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#909">[ date ]</a>
+              <a href="thread.html#909">[ thread ]</a>
+              <a href="subject.html#909">[ subject ]</a>
+              <a href="author.html#909">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Found a way to solve the problem, by using a small external program.
+
+<A HREF="http://johnst.org/sw/exiftags/">http://johnst.org/sw/exiftags/</A>
+
+Thanks to Eric Johnston for creating this little beauty.
+
+(remember to add sysutils,process,classes to uses).
+
+
+procedure tmainfo.openpicture(const sender: TObject);
+var
+  AProcess: TProcess;
+  AStringList: TStringList;
+begin
+if tfiledialog1.execute(fdk_open) = mr_ok then
+	begin
+	  AStringList := TStringList.Create;
+  	AProcess := TProcess.Create(nil);
+  	AProcess.CommandLine := 'exiftags '+tfiledialog1.controller.filename;
+  	AProcess.Options := AProcess.Options + [poWaitOnExit, poUsePipes];
+  	AProcess.Execute;
+  	AStringList.LoadFromStream(AProcess.Output);
+  	tmemoedit1.text:=AStringList.text;
+  	AStringList.Free;
+  	AProcess.Free;
+   timage1.bitmap.LoadFromfile(tfiledialog1.controller.filename);
+  end;
+end;
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000921.html">[MSEide-MSEgui-talk] Unable to load a fom to the form designer
+</A></li>
+	<LI>Next message: <A HREF="000939.html">[MSEide-MSEgui-talk] JPG metadata - one solution.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#909">[ date ]</a>
+              <a href="thread.html#909">[ thread ]</a>
+              <a href="subject.html#909">[ subject ]</a>
+              <a href="author.html#909">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

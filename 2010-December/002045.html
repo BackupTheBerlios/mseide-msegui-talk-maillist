@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SQlite3%3A%20it%20seems%20that%20in-memory%20database%0A%09file%20is%20possible%20for%20this%20backend&In-Reply-To=%3Ce12qf6l5pk0bdad77i3mqhi2a8tp8hf333%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002044.html">
+   <LINK REL="Next"  HREF="002050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SQlite3%3A%20it%20seems%20that%20in-memory%20database%0A%09file%20is%20possible%20for%20this%20backend&In-Reply-To=%3Ce12qf6l5pk0bdad77i3mqhi2a8tp8hf333%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Mon Dec  6 16:59:51 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002044.html">[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend
+</A></li>
+        <LI>Next message: <A HREF="002050.html">[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2045">[ date ]</a>
+              <a href="thread.html#2045">[ thread ]</a>
+              <a href="subject.html#2045">[ subject ]</a>
+              <a href="author.html#2045">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> php5-sqlite3 examples use such approach - filling memory table then
+</I>&gt;&gt;<i> addressing them with SQL (it's the main diferrence from tlocaldataset &amp;
+</I>&gt;&gt;<i> Co).
+</I>&gt;<i>
+</I>&gt;<i>Do you have a link how to setup the sqlite3 connection  params?
+</I>
+<A HREF="http://www.sqlite.org/inmemorydb.html">http://www.sqlite.org/inmemorydb.html</A>
+
+which says:
+
+In-Memory Databases
+
+An SQLite database is normally stored in a single ordinary disk file.
+However, in certain circumstances, the database might be stored in
+memory.
+
+The most common way to force an SQLite database to exist purely in
+memory is to open the database using the special filename &quot;:memory:&quot;.
+In other words, instead of passing the name of a real disk file into
+one of the sqlite3_open(), sqlite3_open16(), or sqlite3_open_v2()
+functions, pass in the string &quot;:memory:&quot;. For example:
+rc = sqlite3_open(&quot;:memory:&quot;, &amp;db);
+
+When this is done, no disk file is opened. Instead, a new database is
+created purely in memory. The database ceases to exist as soon as the
+database connection is closed. Every :memory: database is distinct
+from every other. So, opening two database connections each with the
+filename &quot;:memory:&quot; will create two independent in-memory databases.
+
+The special filename &quot;:memory:&quot; can be used anywhere that a database
+filename is permitted. For example, it can be used as the filename in
+an ATTACH command:
+ATTACH DATABASE ':memory:' AS aux1; 
+
+Note that in order for the special &quot;:memory:&quot; name to apply and to
+create a pure in-memory database, there must be no additional text in
+the filename. Thus, a disk-based database can be created in a file by
+prepending a pathname, like this: &quot;./:memory:&quot;.
+Temporary Databases
+
+When the name of the database file handed to sqlite3_open() or to
+ATTACH is an empty string, then a new temporary file is created to
+hold the database.
+rc = sqlite3_open(&quot;&quot;, &amp;db);
+ATTACH DATABASE '' AS aux2; 
+
+A different temporary file is created each time, so that just like as
+with the special &quot;:memory:&quot; string, two database connections to
+temporary databases each have their own private database. Temporary
+databases are automatically deleted when the connection that created
+them closes.
+
+Even though a disk file is allocated for each temporary database, in
+practice the temporary database usually resides in the in-memory pager
+cache and hence is very little difference between a pure in-memory
+database created by &quot;:memory:&quot; and a temporary database created by an
+empty filename. The sole difference is that a &quot;:memory:&quot; database must
+remain in memory at all times whereas parts of a temporary database
+might be flushed to disk if database becomes large or if SQLite comes
+under memory pressure.
+
+The previous paragraphs describe the behavior of temporary databases
+under the default SQLite configuration. An application can use the
+temp_store pragma and the SQLITE_TEMP_STORE compile-time parameter to
+force temporary databases to behave as pure in-memory databases, if
+desired.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002044.html">[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend
+</A></li>
+	<LI>Next message: <A HREF="002050.html">[MSEide-MSEgui-talk] SQlite3: it seems that in-memory database	file is possible for this backend
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2045">[ date ]</a>
+              <a href="thread.html#2045">[ thread ]</a>
+              <a href="subject.html#2045">[ subject ]</a>
+              <a href="author.html#2045">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

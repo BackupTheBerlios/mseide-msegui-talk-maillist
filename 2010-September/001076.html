@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Sample%20MSEgui%20help%20source%20and%20Doc%20Builder%0A%09application&In-Reply-To=%3CAANLkTikMOY_y0kd_9aDwFoTAsCrPEa1Nq_0RRwvHeyup%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001089.html">
+   <LINK REL="Next"  HREF="001080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Sample%20MSEgui%20help%20source%20and%20Doc%20Builder%0A%09application&In-Reply-To=%3CAANLkTikMOY_y0kd_9aDwFoTAsCrPEa1Nq_0RRwvHeyup%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Sep 17 15:33:37 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001089.html">[MSEide-MSEgui-talk] Sample MSEgui help in INF format
+</A></li>
+        <LI>Next message: <A HREF="001080.html">[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1076">[ date ]</a>
+              <a href="thread.html#1076">[ thread ]</a>
+              <a href="subject.html#1076">[ subject ]</a>
+              <a href="author.html#1076">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+Attached is a quick console application I put together to generate
+fpdoc style documentation from MSEgui sources. This might be useful
+for someone to build further on. I have included in the builddocs.pas
+unit header some TODO list items I think can be added.
+
+What does it do?
+'builddocs' has a couple of command line parameters that could be
+extended. Currently it simply generates a unix script, which in turn
+can be run to generate a msegui.ipf (INF help source file). It has two
+modes. Build build a script only for units that are documented (that
+have .xml description files), or build a complete skeleton help of
+MSEgui.
+
+In also reads the a 'fpdoc' environment variable, so is flexible to
+switch between fpdoc versions. Currently INF docs can only be
+generated with the fpdoc found in FPC 2.5.1 (trunk). The FPC 2.4.x and
+earlier fpdoc versions are severely broken.
+
+What could be added?
+* Generate Linux shell scripts and Windows batch files
+* Use TProcess to run fpdoc directly, without the need for a script
+* more parameters to toggle between the various fpdoc output formats.
+
+I think this file console app source code should live in the
+&lt;msegui&gt;/help directory, but ultimately, it's up to Martin.
+
+Sample XML description files:
+I have also included two example XML description files, which I used
+to generate the sample INF help file (posted earlier). Again, I think
+it is important that such help files should stay close to the MSEgui
+source code, thus I think it should be located in the
+&lt;msegui&gt;/help/xml/ directory. This would mean anybody that has MSEgui
+source code, can easily find the existing help, and maybe make
+contributions. Also they can easily build there own help output, using
+builddocs + fpdoc.
+
+Anyway, the files are attached in the tar.gz archive - do with them as
+you please. ;-)
+
+-- 
+Regards,
+&#160; - Graeme -
+
+
+_______________________________________________
+fpGUI - a cross-platform Free Pascal GUI toolkit
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: doc_builder.tar.gz
+Type: application/x-gzip
+Size: 3830 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100917/1cd96656/attachment.bin">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100917/1cd96656/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001089.html">[MSEide-MSEgui-talk] Sample MSEgui help in INF format
+</A></li>
+	<LI>Next message: <A HREF="001080.html">[MSEide-MSEgui-talk] Sample MSEgui help source and Doc Builder	application
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1076">[ date ]</a>
+              <a href="thread.html#1076">[ thread ]</a>
+              <a href="subject.html#1076">[ subject ]</a>
+              <a href="author.html#1076">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

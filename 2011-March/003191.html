@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] some data in prj file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20some%20data%20in%20prj%20file&In-Reply-To=%3C201103132000.32886.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003190.html">
+   <LINK REL="Next"  HREF="003192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] some data in prj file</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20some%20data%20in%20prj%20file&In-Reply-To=%3C201103132000.32886.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] some data in prj file">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Mar 13 20:00:32 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003190.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+        <LI>Next message: <A HREF="003192.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3191">[ date ]</a>
+              <a href="thread.html#3191">[ thread ]</a>
+              <a href="subject.html#3191">[ subject ]</a>
+              <a href="author.html#3191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 13 March 2011 18:48:16 Coyot.RusH aka &#1045;&#1074;&#1075;&#1077;&#1085;&#1080;&#1081; wrote:
+&gt;<i>
+</I>&gt;<i> I created a test project in Linux
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Error
+</I>&gt;<i>
+</I>&gt;<i>   ../../../home/user/opt/mse/msegui/trunk/lib/common/kernel/mseglob.pas
+</I>&gt;<i>
+</I>This file is not relative to the project directory so it can not be relocated. 
+The projectdir entry in the prj file actually will be used for file 
+relocating as you see in the path above.
+&quot;
+&#160; /media/c/test_p/main.pas
+&#160; /media/c/test_p/test2.pas
+&#160; /media/c/test_p/subf/test3.pas
+&quot;
+were relocated.
+
+If you place the MSEgui source tree in all OS at the same place relative to 
+the project directory relocating will work. If you can't do so I suggest to 
+use different *.prj in the different OS (myproject_win.prj, 
+myproject_lin.prj). There can be a common myproject.prj which can be 
+synchronized with 'Project'-'Settings'+'Load' or 'Save'.
+The 'File not found' error is not dangerous BTW, simply click OK.
+
+&gt;<i>
+</I>&gt;<i> Do not save lastdir in prj file
+</I>&gt;<i>
+</I>I want to have all settings and the complete environment in the project file.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003190.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+	<LI>Next message: <A HREF="003192.html">[MSEide-MSEgui-talk] some data in prj file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3191">[ date ]</a>
+              <a href="thread.html#3191">[ thread ]</a>
+              <a href="subject.html#3191">[ subject ]</a>
+              <a href="author.html#3191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

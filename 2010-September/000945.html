@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Chartrecorder
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3Ci64i3j%24te8%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000943.html">
+   <LINK REL="Next"  HREF="000955.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Chartrecorder</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3Ci64i3j%24te8%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Chartrecorder">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Sep  7 07:21:12 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000943.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+        <LI>Next message: <A HREF="000955.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sieghard wrote:
+
+&gt;<i> Hallo Martin,
+</I>&gt;<i> 
+</I>&gt;<i> as I'm at the project using your GUI, I was thinking of some enhancements,
+</I>&gt;<i> too. (The i18n stuff kind of works now, disregarding a few &quot;quirks&quot;, at
+</I>&gt;<i> least in a simulated environment; I didn't yet test in in a &quot;production&quot;
+</I>&gt;<i> environment.) So I decided to use your chart recorder component, as I
+</I>&gt;<i> still had a self made diagram procedure in use.
+</I>&gt;<i> 
+</I>&gt;<i> I had played a bit with it before, already, and had not found any way to
+</I>&gt;<i> make it start at the left side, filling (&quot;sweeping&quot;) the display with the
+</I>&gt;<i> curves until reaching the right side, and only then starting to shift
+</I>&gt;<i> everything to the left when new samples are added. So I did some more
+</I>&gt;<i> tinkering, but had to find that this was not possible with your original
+</I>&gt;<i> code.
+</I>&gt;<i> 
+</I>&gt;<i> So I modified the component code some, adding a few statements and a new
+</I>&gt;<i> property in the process, to have it do that, somewhat like some digital
+</I>&gt;<i> oscilloscopes do in &quot;rolling&quot; mode. If you should be interested in the
+</I>&gt;<i> extensions, I attached the diff file (towards version 2.2 of MSEGUI).
+</I>&gt;<i> 
+</I>&gt;<i> The modified version provides an additional property named &quot;sweeping&quot;,
+</I>&gt;<i> which has to be set to &quot;true&quot; to invoke the sweep effect; it is set false
+</I>&gt;<i> by the code when shifting starts, so it can be used externally to detect
+</I>&gt;<i> that condition, e.g. for starting to also shift an X scale in parallel to
+</I>&gt;<i> the traces (I use it for that). Of course, that means that it has to be
+</I>&gt;<i> set again if the chart gets cleared and a new recording started.
+</I>&gt;<i> 
+</I>&gt;<i> Also somewhat similar to an oscilloscope - but in no way reminding of a
+</I>&gt;<i> real chart - is the representation of coordinate grid lines. These always
+</I>&gt;<i> appear _in front_ of the traces, like the pane in front of a traditional
+</I>&gt;<i> oscilloscope screen (but not like the grid lines on a modern digital
+</I>&gt;<i> scope) instead of in the background, like on a chart recorder. I didn't
+</I>&gt;<i> care about that yet, but I wonder whether there might be a way to change
+</I>&gt;<i> this (maybe even as an optional setting)?
+</I>&gt;<i> 
+</I>The settings could be done with an &quot;options&quot; property, I'll have a look.
+BTW, there is no attachment.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000943.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+	<LI>Next message: <A HREF="000955.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

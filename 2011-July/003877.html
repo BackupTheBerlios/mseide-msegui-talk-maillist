@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Session information nightmare
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Session%20information%20nightmare&In-Reply-To=%3C201107091249.12915.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003860.html">
+   <LINK REL="Next"  HREF="003879.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Session information nightmare</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Session%20information%20nightmare&In-Reply-To=%3C201107091249.12915.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Session information nightmare">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Jul  9 12:49:12 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003860.html">[MSEide-MSEgui-talk] Session information nightmare
+</A></li>
+        <LI>Next message: <A HREF="003879.html">[MSEide-MSEgui-talk] Session information nightmare
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3877">[ date ]</a>
+              <a href="thread.html#3877">[ thread ]</a>
+              <a href="subject.html#3877">[ subject ]</a>
+              <a href="author.html#3877">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 08 July 2011 09:38:07 Graeme Geldenhuys wrote:
+&gt;<i> On 07/08/2011 09:24 AM, Martin Schreiber wrote:
+</I>&gt;<i> &gt; You should not store your local *.prj in the SCM repository. Instead
+</I>&gt;<i> &gt; export the project settings without window information
+</I>&gt;<i> &gt; by 'Project'-'Options'-'Settings', 'Save' and store that file in SCM.
+</I>&gt;<i> &gt; 'Load' imports the project settings into the current project.
+</I>&gt;<i>
+</I>&gt;<i> So the IDE already supports that type of functionality, it is just a
+</I>&gt;<i> manual process.
+</I>&gt;<i>
+</I>&gt;<i> My project settings normally use the project file name as the suggested
+</I>&gt;<i> name for the executable file name. So I guess I'll have to hard-code the
+</I>&gt;<i> executable name then.
+</I>&gt;<i>
+</I>Or use a local *.prj file with the same name.
+
+&gt;<i> Couldn't the IDE simply load those session information from a separate
+</I>&gt;<i> file when loading the project file? This would make things much simpler.
+</I>&gt;<i> Lazarus and Delphi IDE's do this - so clearly the need has been justified.
+</I>&gt;<i>
+</I>&gt;<i> Plus, your current idea still has problems. Say I use a &quot;personal
+</I>&gt;<i> project file&quot; and a &quot;clean project file&quot;. The latter being the one that
+</I>&gt;<i> is committed to the SCM. Now I make some adjustments to the project
+</I>&gt;<i> settings, add new units to the Project Tree window etc. Then export
+</I>&gt;<i> those settings to the &quot;clean project file&quot;.  Now none of the other
+</I>&gt;<i> developers are going to see these changes, because they use there own
+</I>&gt;<i> personal project file. Luckily I see there is a &quot;load&quot; option, which
+</I>&gt;<i> they can use. But that still means I need to notify each develop to load
+</I>&gt;<i> the new settings. Plus I'll have to remember to do this on my other
+</I>&gt;<i> development PC's too.
+</I>&gt;<i>
+</I>&gt;<i> Also what happens if they made changes to the project settings as well,
+</I>&gt;<i> but hasn't committed yet. Loading settings from the &quot;clean project&quot; will
+</I>&gt;<i> now override there local project setting changes - without warning??
+</I>&gt;<i>
+</I>Trunk 4652 has 'Project'-'Options'-'Storage'-'Auto load' 'Auto save'.
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003860.html">[MSEide-MSEgui-talk] Session information nightmare
+</A></li>
+	<LI>Next message: <A HREF="003879.html">[MSEide-MSEgui-talk] Session information nightmare
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3877">[ date ]</a>
+              <a href="thread.html#3877">[ thread ]</a>
+              <a href="subject.html#3877">[ subject ]</a>
+              <a href="author.html#3877">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

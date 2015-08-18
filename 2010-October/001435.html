@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TDBBooleanEdit%20in%20T%2AWidgetGrid%3A%20how%20to%0A%09make%20single-click%20toggle%20%3F&In-Reply-To=%3Ci93jta%245v9%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001434.html">
+   <LINK REL="Next"  HREF="001437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TDBBooleanEdit%20in%20T%2AWidgetGrid%3A%20how%20to%0A%09make%20single-click%20toggle%20%3F&In-Reply-To=%3Ci93jta%245v9%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Oct 13 08:36:23 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001434.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?
+</A></li>
+        <LI>Next message: <A HREF="001437.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1435">[ date ]</a>
+              <a href="thread.html#1435">[ thread ]</a>
+              <a href="subject.html#1435">[ subject ]</a>
+              <a href="author.html#1435">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ivanko B wrote:
+
+&gt;&gt;<i>Oops, they're zero sized - me again forgot not to attach from space
+</I>&gt;&gt;<i>containing paths. Will be resent tomorrow.
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> Done. They're both PNGs.
+</I>
+Can not use the testcase. There are many errors while restoring the database
+because of KOI8R-utf8 and missing user functions.
+Postgres hangs while loading the project and opening qryAcnt1Index, load
+time about 10 minutes. Then:
+&quot;
+conn : Preparation of query failed.
+ (PostgreSQL: FEHLER:  Spalte &#187;deliv_office&#171; existiert nicht
+ZEILE 25:  deliv_office
+           ^
+)
+An exception occurred at $082582F7 :
+EDatabaseError : conn : Preparation of query failed.
+ (PostgreSQL: FEHLER:  Spalte &#187;deliv_office&#171; existiert nicht
+ZEILE 25:  deliv_office
+           ^
+)
+&quot;
+At start of the program:
+&quot;
+&#1055;&#1088;&#1086;&#1080;&#1079;&#1086;&#1096;&#1083;&#1072; &#1086;&#1096;&#1080;&#1073;&#1082;&#1072; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1103; &#1089; &#1041;&#1044;. &#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077; &#1086;&#1096;&#1080;&#1073;&#1082;&#1080;:
+conn: Execution of query failed (PostgreSQL: FEHLER: 
+Relation &#187;ref_ss_post_office&#171; existiert nicht
+ZEILE 1: ...ref_ss_post_office_id_seq&quot;',(select  max(id) from ref_ss_pos...
+                                                              ^
+)
+&#1054;&#1090;&#1086;&#1073;&#1088;&#1072;&#1079;&#1080;&#1090;&#1100; &#1076;&#1080;&#1072;&#1083;&#1086;&#1075; &#1085;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080; &#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1103;, &#1095;&#1090;&#1086;&#1073;&#1099; &#1080;&#1089;&#1087;&#1088;&#1072;&#1074;&#1080;&#1090;&#1100; &#1101;&#1090;&#1091; &#1086;&#1096;&#1080;&#1073;&#1082;&#1091; ?
+( &#1086;&#1090;&#1074;&#1077;&#1090; &quot;&#1053;&#1077;&#1090;&quot; &#1079;&#1072;&#1074;&#1077;&#1088;&#1096;&#1080;&#1090; &#1088;&#1072;&#1073;&#1086;&#1090;&#1091; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1099; )
+&quot;
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001434.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?
+</A></li>
+	<LI>Next message: <A HREF="001437.html">[MSEide-MSEgui-talk] TDBBooleanEdit in T*WidgetGrid: how to	make single-click toggle ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1435">[ date ]</a>
+              <a href="thread.html#1435">[ thread ]</a>
+              <a href="subject.html#1435">[ subject ]</a>
+              <a href="author.html#1435">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

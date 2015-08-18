@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tdbdataimage - upload
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci43p3i%24f5p%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000609.html">
+   <LINK REL="Next"  HREF="000638.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tdbdataimage - upload</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tdbdataimage%20-%20upload&In-Reply-To=%3Ci43p3i%24f5p%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] tdbdataimage - upload">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Aug 13 17:42:25 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000609.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+        <LI>Next message: <A HREF="000638.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#613">[ date ]</a>
+              <a href="thread.html#613">[ thread ]</a>
+              <a href="subject.html#613">[ subject ]</a>
+              <a href="author.html#613">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;&gt;<i> Aha, ZEOS instead of MSEgui SQLDB family!
+</I>&gt;<i> 
+</I>&gt;<i> Ehh, yes, as I use ZEOS in several other projects, and also makes
+</I>&gt;<i> Lazarus projects, where ZEOS is much more intuitive than the native
+</I>&gt;<i> MySQL components.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> It is because if there is at least one persistent field the automatic
+</I>&gt;&gt;<i> creation of fields for all fielddefs is switched off. Click on the
+</I>&gt;&gt;<i> ellipse in objectinspector tmsezquery1.controller.fields.count in order
+</I>&gt;&gt;<i> to open the fields editor, move the wanted fields from 'Fielddefs' to
+</I>&gt;&gt;<i> 'Fields'.
+</I>&gt;<i> 
+</I>&gt;<i> Still makes no difference, I still get the warning that the operation
+</I>&gt;<i> cannot be performed on an active dataset.
+</I>&gt;<i> 
+</I>As designed, fields can not be added to an open dataset.
+
+&gt;<i> If the fields are moved from Fielddefs to Fields, I can not chose the
+</I>&gt;<i> field in the tmsegraphicfield, and it is always complaining if the
+</I>&gt;<i> dataset is active.
+</I>&gt;<i> 
+</I>&gt;<i> Still inactive I cannot chose the field in tmsegraphicfield, unless I
+</I>&gt;<i> move the fields to Fielddefs in the fields editor, but then the original
+</I>&gt;<i> problem with fields not found reappears.
+</I>&gt;<i> 
+</I>There are two sorts of persistent fields in MSEgui. First field components
+from the DBf palette which are placed into a form or datamodule, second
+persistent fields which are hold in the dataset by controller.fields[n]
+properties. The second kind of persistent fields is created by moving field
+names from 'Fielddefs' to 'Fields'. If you want to use a field component
+from the palette don't create a dataset persistent field.
+So in your case move the graphic field from 'Fields' to 'Fielddefs' or
+delete the according entry from controller.fields[n].
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000609.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+	<LI>Next message: <A HREF="000638.html">[MSEide-MSEgui-talk] tdbdataimage - upload
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#613">[ date ]</a>
+              <a href="thread.html#613">[ thread ]</a>
+              <a href="subject.html#613">[ subject ]</a>
+              <a href="author.html#613">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

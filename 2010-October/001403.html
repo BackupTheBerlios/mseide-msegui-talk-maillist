@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3Ci8n6bg%24mk6%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001402.html">
+   <LINK REL="Next"  HREF="001404.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TThread.WaitFor%20blocks%20the%20MSEgui%20main%0A%09event%20loop&In-Reply-To=%3Ci8n6bg%24mk6%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop">mse00000 at gmail.com
+       </A><BR>
+    <I>Fri Oct  8 15:36:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001402.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main event	loop
+</A></li>
+        <LI>Next message: <A HREF="001404.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1403">[ date ]</a>
+              <a href="thread.html#1403">[ thread ]</a>
+              <a href="subject.html#1403">[ subject ]</a>
+              <a href="author.html#1403">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> Hi Martin,
+</I>&gt;<i> 
+</I>&gt;<i> I just stumbled across this issue in fpGUI, and I see MSEgui has the
+</I>&gt;<i> exact same problem. See attached project.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>The example does not compile with FPC 2.4 because of missing TThread.start.
+MSEgui has it own thread classes because of some problems with the original
+FPC TThread mainly with synchronize(). Instead of synchronize() MSEgui uses
+application.lock/application.unlock. 
+
+&quot;
+procedure TBarThread.Execute;
+begin
+  FFinished := False;
+  while not Terminated do
+  begin
+    writeln(ProgressBar.Value);
+    Synchronize(@UpdateProgressBar); &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;------deadlock
+//    UpdateProgressBar;
+  end;
+  FFinished := True;
+end;
+&quot;
+There is a deadlock because synchronize must be executed in main thread and
+the mainthread waits in
+&quot;
+procedure tmainfo.ButtonClicked(const sender: TObject);
+begin
+  ProgressBar1.Value := 0.0;
+  Label1.Caption := '--';
+  if not Assigned(FThread) then
+  begin
+    writeln('program: creating thread...');
+    FThread := TBarThread.Create(True);
+    FThread.ProgressBar := ProgressBar1;
+  end;
+  writeln('program: starting the thread...');
+  FThread.Start;
+
+  writeln('program: waiting for thread...');
+  FThread.WaitFor;// This freezes up the application  &lt;&lt;&lt;---deadlock
+&quot;
+Anyway, it makes no sense to start a thread from the main thread and then to
+wait on its termination because the main event loop will be dead in the
+meantime. MSEgui has a thread safe tprogressbar where the value can be
+updated by threads without precautions.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001402.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main event	loop
+</A></li>
+	<LI>Next message: <A HREF="001404.html">[MSEide-MSEgui-talk] TThread.WaitFor blocks the MSEgui main	event loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1403">[ date ]</a>
+              <a href="thread.html#1403">[ thread ]</a>
+              <a href="subject.html#1403">[ subject ]</a>
+              <a href="author.html#1403">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

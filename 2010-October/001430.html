@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%20for%20arm-linux%20%28Android%29&In-Reply-To=%3CAANLkTi%3DYO-ehSs6Kg2E7_nNkQfUtKa5o0CxgdyRC0gYT%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001429.html">
+   <LINK REL="Next"  HREF="001431.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)</H1>
+    <B>MSEide MSEgui</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%20for%20arm-linux%20%28Android%29&In-Reply-To=%3CAANLkTi%3DYO-ehSs6Kg2E7_nNkQfUtKa5o0CxgdyRC0gYT%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Tue Oct 12 21:00:52 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001429.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+        <LI>Next message: <A HREF="001431.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1430">[ date ]</a>
+              <a href="thread.html#1430">[ thread ]</a>
+              <a href="subject.html#1430">[ subject ]</a>
+              <a href="author.html#1430">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> I can't compile MSEgui for arm-linux in msebits.pas at :
+</I>&gt;&gt;<i>
+</I>&gt;<i> What error message?
+</I>&gt;<i>
+</I>I use command (from &quot;project options&quot;) :
+/usr/local/lib/fpc/2.4.0/ppcrossarm -otestandroid
+-Fu/home/msegui//lib/addon/osprinter/arm-linux/
+-Fi/home/msegui//lib/addon/osprinter/arm-linux/
+-Fl/home/msegui//lib/addon/osprinter/arm-linux/
+-Fo/home/msegui//lib/addon/osprinter/arm-linux/
+-Fu/home/msegui//lib/addon/*/ -Fi/home/msegui//lib/addon/*/
+-Fl/home/msegui//lib/addon/*/ -Fo/home/msegui//lib/addon/*/
+-Fu/home/msegui/lib/common/kernel/arm-linux/
+-Fu/home/msegui/lib/common/kernel/ -Fi/home/msegui/lib/common/kernel/
+-Fu/home/msegui/lib/common/*/ -l -Mobjfpc -Sh -Flusr/local/arm/lib/
+-FD/usr/local/arm/bin/ -XParm-eabi- -Tlinux -gl -O- testandroid.pas
+
+Free Pascal Compiler version 2.4.0 [2010/10/12] for arm
+Copyright (c) 1993-2009 by Florian Klaempfl
+Target OS: Linux for ARMEL
+Compiling testandroid.pas
+Compiling /home/msegui/lib/common/kernel/msegui.pas
+Compiling /home/msegui/lib/common/kernel/msegraphics.pas
+Compiling /home/msegui/lib/common/kernel/msetypes.pas
+Assembling msetypes
+Compiling /home/msegui/lib/common/kernel/msestrings.pas
+Compiling /home/msegui/lib/common/kernel/msedatalist.pas
+Compiling /home/msegui/lib/common/kernel/msereal.pas
+Compiling /home/msegui/lib/common/kernel/mseformatstr.pas
+Compiling /home/msegui/lib/common/kernel/msesys.pas
+Compiling /home/msegui/lib/common/kernel/mseerr.pas
+Assembling mseerr
+Compiling /home/msegui/lib/common/kernel/msestreaming.pas
+Compiling /home/msegui/lib/common/kernel/msegraphutils.pas
+Compiling /home/msegui/lib/common/kernel/mseglob.pas
+Compiling /home/msegui/lib/common/kernel/mseclasses.pas
+Compiling /home/msegui/lib/common/kernel/mseevent.pas
+Compiling /home/msegui/lib/common/kernel/mselist.pas
+Compiling /home/msegui/lib/common/kernel/msebits.pas
+msebits.pas(203,2) Note: Local variable &quot;by1&quot; is assigned but never used
+msebits.pas(216,2) Note: Local variable &quot;wo1&quot; is assigned but never used
+msebits.pas(229,2) Note: Local variable &quot;wo1&quot; is assigned but never used
+Assembling msebits
+Compiling /home/msegui/lib/common/kernel/msedatalist.pas
+Compiling /home/msegui/lib/common/kernel/msereal.pas
+Compiling /home/msegui/lib/common/kernel/mseformatstr.pas
+Compiling /home/msegui/lib/common/kernel/msedate.pas
+Compiling /home/msegui/lib/common/kernel/arm-linux/msesysintf.pas
+Compiling /home/msegui/lib/common/kernel/arm-linux/msesetlocale.pas
+Compiling /home/msegui/lib/common/kernel/mselibc.pas
+Compiling /home/msegui/lib/common/kernel/msectypes.pas
+...
+...
+...
+Assembling msesumlist
+msewidgetgrid.pas(2502,12) Note: Local variable &quot;int3&quot; not used
+Assembling msewidgetgrid
+mseedit.pas(1275,2) Note: Local variable &quot;int1&quot; not used
+Assembling mseedit
+Compiling main_mfm.pas
+Assembling main_mfm
+Assembling main
+Assembling testandroid
+Linking testandroid
+/usr/local/arm/bin/arm-eabi-ld: ERROR: Source object
+/usr/local/arm/lib//libdl.so has EABI version 0, but target
+testandroid has EABI version 4
+/usr/local/arm/bin/arm-eabi-ld: failed to merge target specific data
+of file /usr/local/arm/lib//libdl.so
+testandroid.pas(12) Error: Error while linking
+testandroid.pas(12) Fatal: There were 1 errors compiling module, stopping
+Fatal: Compilation aborted
+
+When error cannot find -lX11, I just copy libX11.so from
+/usr/local/lib and it's OK, but &quot;cannot find -ldl&quot;, I copy from
+/usr/local/lib, but I got incompatible version EABI.
+
+Any idea?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001429.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+	<LI>Next message: <A HREF="001431.html">[MSEide-MSEgui-talk] MSEgui for arm-linux (Android)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1430">[ date ]</a>
+              <a href="thread.html#1430">[ thread ]</a>
+              <a href="subject.html#1430">[ subject ]</a>
+              <a href="author.html#1430">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

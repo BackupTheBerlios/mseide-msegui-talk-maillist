@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Tmsesqlquery.locate Problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Tmsesqlquery.locate%20Problem&In-Reply-To=%3Cibqrj1%24bjp%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001859.html">
+   <LINK REL="Next"  HREF="001866.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Tmsesqlquery.locate%20Problem&In-Reply-To=%3Cibqrj1%24bjp%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Nov 15 09:42:13 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001859.html">[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem
+</A></li>
+        <LI>Next message: <A HREF="001866.html">[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1860">[ date ]</a>
+              <a href="thread.html#1860">[ thread ]</a>
+              <a href="subject.html#1860">[ subject ]</a>
+              <a href="author.html#1860">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, 15. November 2010 09.10:35 MSEide MSEgui wrote:
+&gt;<i> 2010/11/15 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+</I>&gt;<i> &gt; PS: did you find the reason of not nil fifiserverintf?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Martin
+</I>&gt;<i>
+</I>&gt;<i> Not yet, I don't get any usefull information from watches.  I would
+</I>&gt;<i> search this from other way.
+</I>
+The steps:
+- Compile with -gh in order the memory of destroyed object instances will be
+filled with garbage so the watchpoint will recognize a destroyed object.
+- Set a breakpoint into the the constructor of the form which fails.
+- Run the program.
+- When the program stops at the breakpoint add &quot;fifiserverintf&quot; to watches
+(debug1.png).
+- RightClick on &quot;fifiserverintf&quot;, LeftClick' Address Watchpoint 32'
+(debug2.png).
+- A watchpoint for the memory address of fifiserverintf will be added
+(debug3.png).
+- Run the program with F9, the program stops if the memory of fifiserverintf
+has been written (debug4.png).
+
+Martin
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug1.png
+Type: image/png
+Size: 32130 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug2.png
+Type: image/png
+Size: 22095 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0001.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0001.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug3.png
+Type: image/png
+Size: 34994 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0002.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0002.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: debug4.png
+Type: image/png
+Size: 67428 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0003.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101115/d3aadce8/attachment-0003.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001859.html">[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem
+</A></li>
+	<LI>Next message: <A HREF="001866.html">[MSEide-MSEgui-talk] Tmsesqlquery.locate Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1860">[ date ]</a>
+              <a href="thread.html#1860">[ thread ]</a>
+              <a href="subject.html#1860">[ subject ]</a>
+              <a href="author.html#1860">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

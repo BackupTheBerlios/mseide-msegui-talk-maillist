@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEIDE corrupt screen display
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEIDE%20corrupt%20screen%20display&In-Reply-To=%3Ci4l963%24tai%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000720.html">
+   <LINK REL="Next"  HREF="000721.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEIDE corrupt screen display</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEIDE%20corrupt%20screen%20display&In-Reply-To=%3Ci4l963%24tai%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEIDE corrupt screen display">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Aug 20 09:00:30 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000720.html">[MSEide-MSEgui-talk] TKeyStringEdit doesn't save/retrieve stat	value anymore
+</A></li>
+        <LI>Next message: <A HREF="000721.html">[MSEide-MSEgui-talk] MSEIDE corrupt screen display
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#719">[ date ]</a>
+              <a href="thread.html#719">[ thread ]</a>
+              <a href="subject.html#719">[ subject ]</a>
+              <a href="author.html#719">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Martin,
+
+Since yesterday, I started getting this corrupt screen display when MSEide
+is started. It actually happens at work and at home. The only way to fix
+it, is to close the whole application and restart it. Normally after a
+restart, then everything works fine again. Switching virtual desktops
+doesn't help either, the vertical color bands just get more.
+
+Work PC: 64-bit Ubuntu 10.04, FPC 2.4.3, Nvidia proprietary graphics driver
+         Intel Quad core, 64-bit MSEide
+
+Home PC: 32-bit Ubuntu 8.04.4, FPC 2.4.3, ATI proprietary graphics driver
+         Intel P4, 32-bit MSEide
+
+
+Both systems have MSEide r3836. And MSEide is compiled using the following
+script.
+
+----------------------
+#!/bin/sh
+
+rm units/*
+
+fpc \
+  -XX -Xs -ve -O1 -B \
+  -FUunits \
+  -Fi${PWD}/lib/common/kernel \
+  -Fu${PWD}/lib/common/kernel -Fu${PWD}/lib/common/db \
+  -Fu${PWD}/lib/common/designutils -Fu${PWD}/lib/common/dialogs \
+  -Fu${PWD}/lib/common/editwidgets -Fu${PWD}/lib/common/i18n \
+  -Fu${PWD}/lib/common/ifi -Fu${PWD}/lib/common/image \
+  -Fu${PWD}/lib/common/opengl -Fu${PWD}/lib/common/pascalscript \
+  -Fu${PWD}/lib/common/printer -Fu${PWD}/lib/common/regcomponents \
+  -Fu${PWD}/lib/common/report -Fu${PWD}/lib/common/serialcomm \
+  -Fu${PWD}/lib/common/sysutils -Fu${PWD}/lib/common/unicode \
+  -Fu${PWD}/lib/common/widgets -Fu${PWD}/lib/common/kernel/i386-linux \
+  -Fu${PWD}/lib/common/math \
+  -dmse_withoutdb -dmse_no_ifi \
+  -o./mseide.elf apps/ide/mseide.pas
+
+----------------------
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://opensoft.homeip.net/fpgui/">http://opensoft.homeip.net/fpgui/</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Screenshot.png
+Type: image/png
+Size: 12316 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100820/7fe0a03a/attachment.png">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100820/7fe0a03a/attachment.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000720.html">[MSEide-MSEgui-talk] TKeyStringEdit doesn't save/retrieve stat	value anymore
+</A></li>
+	<LI>Next message: <A HREF="000721.html">[MSEide-MSEgui-talk] MSEIDE corrupt screen display
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#719">[ date ]</a>
+              <a href="thread.html#719">[ thread ]</a>
+              <a href="subject.html#719">[ subject ]</a>
+              <a href="author.html#719">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

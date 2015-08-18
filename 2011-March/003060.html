@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Fonts and antialias
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTi%3DCXY_55SaQ4yzOVJczVyHZ-nmXYTqS_DFnKY_H%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003059.html">
+   <LINK REL="Next"  HREF="003061.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Fonts and antialias</H1>
+    <B>Julio Jim&#233;nez</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Fonts%20and%20antialias&In-Reply-To=%3CAANLkTi%3DCXY_55SaQ4yzOVJczVyHZ-nmXYTqS_DFnKY_H%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Fonts and antialias">jujibo at gmail.com
+       </A><BR>
+    <I>Fri Mar  4 16:44:11 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003059.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+        <LI>Next message: <A HREF="003061.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3060">[ date ]</a>
+              <a href="thread.html#3060">[ thread ]</a>
+              <a href="subject.html#3060">[ subject ]</a>
+              <a href="author.html#3060">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2011/3/4 Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;
+
+&gt;<i> On Friday 04 March 2011 15:24:16 Julio Jim&#233;nez wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Probably CLEARTYPE_QUALITY does nothing in win9X because not
+</I>&gt;<i> &gt; defined....or... it was a MS hidden feature.. hehe.... tests welcome.
+</I>&gt;<i> &gt;
+</I>&gt;<i> ANTIALIASED_QUALITY+1 does not antialias on win2000.
+</I>
+
+I think this is normal, AFAIK no cleartype in win2000
+
+
+&gt;<i> And I fear the problems
+</I>&gt;<i> with the different metrics. Does the code in gdi_getchar16widths work with
+</I>&gt;<i> cleartype? Please test if the cursor placement in a long edit widget is
+</I>&gt;<i> correct with cleartype.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>I did the text, with long text, I can edit, move cursor copy, paste,
+select... all works fine and equal in both widgets.
+
+That's why I said to add a new flag for cleartype so you can keep
+foo_antialiased and foo_cleartype or another flag switching between grayed
+and color antialiasing.
+
+In fact the same happens in Linux, we have different hinting methods.. and
+in gray or color.
+
+Why is not going to work cleartype? it's enabled by default in windows vista
+and up I think. Probably you can add a flag to enable this option when using
+foo_antialiased, in this way you keep old compatibility... if used this flag
+in linux must ignore it, in windows.. using ANTIALIASED_QUALITY+1 instead of
+ANTIALIASED_QUALITY  and this is CLEARTYPE_QUALITY.. in this way we all can
+check it before using it by default or making it permanent in the code..
+like something experimental :)
+
+Thanks.
+
+
+Julio
+
+
+BTW, in Linux+MSEide we can't modify the font hinting, right? if I'm right,
+it uses the default settings.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/24e9d825/attachment.html">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20110304/24e9d825/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003059.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+	<LI>Next message: <A HREF="003061.html">[MSEide-MSEgui-talk] Fonts and antialias
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3060">[ date ]</a>
+              <a href="thread.html#3060">[ thread ]</a>
+              <a href="subject.html#3060">[ subject ]</a>
+              <a href="author.html#3060">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

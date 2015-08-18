@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEide code templates
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20code%20templates&In-Reply-To=%3Ci7vfbl%245ai%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001258.html">
+   <LINK REL="Next"  HREF="001272.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEide code templates</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEide%20code%20templates&In-Reply-To=%3Ci7vfbl%245ai%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEide code templates">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Sep 29 15:37:28 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001258.html">[MSEide-MSEgui-talk] DocView and FPC documentation release
+</A></li>
+        <LI>Next message: <A HREF="001272.html">[MSEide-MSEgui-talk] MSEide code templates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1264">[ date ]</a>
+              <a href="thread.html#1264">[ thread ]</a>
+              <a href="subject.html#1264">[ subject ]</a>
+              <a href="author.html#1264">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin Schreiber wrote:
+
+&gt;<i> Graeme Geldenhuys wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> BTW:
+</I>&gt;&gt;<i> Is there any existing feature request for code templates in MSEid; or
+</I>&gt;&gt;<i> does it already exist - I just overlooked it?
+</I>&gt;&gt;<i> 
+</I>&gt;<i> Trunk 3953 has experimental support for code templates in MSEide.
+</I>&gt;<i> 
+</I>Trunk 3959 has some more options:
+&quot;
+Extension for template files is *.mct
+Example of a template file:
+&quot;
+[header]
+name=thename
+comment=Comment abcdefg HIKLMNO
+params=3
+ param1
+ param2
+ param3
+noselect=1
+cursorcol=12
+cursorrow=1
+[]
+The Template Text with macros ${param1}
+more text
+${param2} ${param3} more params
+&quot;
+If noselect=0 or not defined the templateblock will be selected in editor.
+If noselect=1 the cursor will be placed at the offset by cursorcol,
+cursorrow.
+Minimal template file:
+&quot;
+[header]
+name=thename
+[]
+&quot;
+Parameters can be entered in editor:
+&quot;
+thename,valueforparam1,valueforparam2
+&quot;
+A dialog window will be displayed if there are more params defined than
+supplied for param entry or if the templatename can not be found.
+&quot;
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001258.html">[MSEide-MSEgui-talk] DocView and FPC documentation release
+</A></li>
+	<LI>Next message: <A HREF="001272.html">[MSEide-MSEgui-talk] MSEide code templates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1264">[ date ]</a>
+              <a href="thread.html#1264">[ thread ]</a>
+              <a href="subject.html#1264">[ subject ]</a>
+              <a href="author.html#1264">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

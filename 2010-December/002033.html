@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dump MYSQL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3C201012011023.45886.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002032.html">
+   <LINK REL="Next"  HREF="002034.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dump MYSQL</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3C201012011023.45886.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Dump MYSQL">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Dec  1 10:23:45 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002032.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+        <LI>Next message: <A HREF="002034.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2033">[ date ]</a>
+              <a href="thread.html#2033">[ thread ]</a>
+              <a href="subject.html#2033">[ subject ]</a>
+              <a href="author.html#2033">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 29 November 2010 16:34:25 dan wrote:
+
+&gt;<i> I just have tried this code. but it doesn't success, the
+</I>&gt;<i> 'tempfile.sql' isn't created.
+</I>&gt;<i> When I make run.bat file, contains:
+</I>&gt;<i>
+</I>&gt;<i> @echo off
+</I>&gt;<i> mysql -h localhost -u root -padmin test table1 &lt; tempfile.sql
+</I>&gt;<i>
+</I>&gt;<i> It's worked when i set AProcess.CommandLine:= 'run.bat',
+</I>&gt;<i> but i don't want that, because the mysql password is in that run.bat file
+</I>&gt;<i> Note: table1 has blob field.
+</I>&gt;<i>
+</I>&gt;<i> How about execmse or execmse2 (Msegui), Martin? I have tried, but
+</I>&gt;<i> doesn't success too.
+</I>&gt;<i>
+</I>Isn't the '&lt;' wrong and should be '&gt;'? Input/output redirection with the 
+exec*() procedures works on linux only. Suggestion: use the --result-file= 
+switch:
+<A HREF="http://dev.mysql.com/doc/refman/5.1/en/mysqldump.html#option_mysqldump_result-file">http://dev.mysql.com/doc/refman/5.1/en/mysqldump.html#option_mysqldump_result-file</A>
+
+Martin
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002032.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+	<LI>Next message: <A HREF="002034.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2033">[ date ]</a>
+              <a href="thread.html#2033">[ thread ]</a>
+              <a href="subject.html#2033">[ subject ]</a>
+              <a href="author.html#2033">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

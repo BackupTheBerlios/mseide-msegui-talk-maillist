@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] More grid artifacts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20More%20grid%20artifacts&In-Reply-To=%3C20110504214552.2c48cfd4.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003549.html">
+   <LINK REL="Next"  HREF="003558.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] More grid artifacts</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20More%20grid%20artifacts&In-Reply-To=%3C20110504214552.2c48cfd4.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] More grid artifacts">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Wed May  4 21:45:52 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003549.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+        <LI>Next message: <A HREF="003558.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3553">[ date ]</a>
+              <a href="thread.html#3553">[ thread ]</a>
+              <a href="subject.html#3553">[ subject ]</a>
+              <a href="author.html#3553">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Wed, 04 May 2011 05:25:09 +0100:
+
+&gt;<i> &gt;&gt;     &lt;parentfontownerinstance&gt;.font:=&lt;parentfontownerinstance&gt;.font;
+</I>...
+&gt;<i> &gt; Enormously intuitive, dare I say?
+</I>
+&gt;<i> MSEgui has &quot;optional object properties&quot;, examples are twidget.frame and 
+</I>&gt;<i> twidget.face. &quot;optional object properties&quot; are NIL by default and don't 
+</I>&gt;<i> use more resources than the NIL instance pointer.
+</I>[and following lengthy explanation deleted...]
+
+Thank you for the explanation - it really _does_ clarify the workings of
+the feature.
+Anyway, the &quot;wording&quot;'s still a bit awkward and counters intuition, when
+assigning a &quot;variable&quot; its &quot;current value&quot; does anything of significance.
+
+I realize that in programming with objects, the rules are different from
+what they are for simple data types, especially when the working of
+operators can be modified.
+Using properties is one area where this can be done with FPC / Object
+Pascal, even though this method preserves most of the basic operational
+features, as it only pertains to retrieving and setting of &quot;values&quot;.
+
+As much as object orientation _can_ ease programming of complex software,
+the programmer has to be aware of the special cases and pitfalls of object
+workings and properties (in every respect) to not create enormous
+inefficiencies or righteously malfunctioning software.
+
+(Using objects also requires a very detailed knowledge of the intentions
+of their creator - deviation from the intended use, even unintended ones
+because of a misconception caused by syntax equivalences, may produce
+strange side effects and malfunctions that are hard to correct.)
+
+The other area for changing of the behaviour of operators, directly
+redefining them, can be even more distracting...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u._. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder _hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr__en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003549.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+	<LI>Next message: <A HREF="003558.html">[MSEide-MSEgui-talk] More grid artifacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3553">[ date ]</a>
+              <a href="thread.html#3553">[ thread ]</a>
+              <a href="subject.html#3553">[ subject ]</a>
+              <a href="author.html#3553">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

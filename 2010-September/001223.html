@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Cursor.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Cursor.&In-Reply-To=%3Ci7o39h%24ms8%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001222.html">
+   <LINK REL="Next"  HREF="001224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Cursor.</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Cursor.&In-Reply-To=%3Ci7o39h%24ms8%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Cursor.">mse00000 at gmail.com
+       </A><BR>
+    <I>Sun Sep 26 20:28:22 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001222.html">[MSEide-MSEgui-talk] Cursor.
+</A></li>
+        <LI>Next message: <A HREF="001224.html">[MSEide-MSEgui-talk] Cursor.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1223">[ date ]</a>
+              <a href="thread.html#1223">[ thread ]</a>
+              <a href="subject.html#1223">[ subject ]</a>
+              <a href="author.html#1223">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Christian Nobel wrote:
+
+&gt;<i> On 24-09-2010 16:14, Martin Schreiber wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I would use application.beginwait, application.endwait. ;-)
+</I>&gt;<i> 
+</I>&gt;<i> Is it not possible to something like
+</I>&gt;<i> 
+</I>&gt;<i> mainfo.cursor:=cr_wait;
+</I>&gt;<i> mainfo.refresh;
+</I>&gt;<i> 
+</I>&gt;<i> This should be done (before) reading large files in, and I am such not
+</I>&gt;<i> interested in making it multi-threaded, as I can live without the
+</I>&gt;<i> possibility to interrupt the procedure.
+</I>&gt;<i> 
+</I>&gt;<i> And then:
+</I>&gt;<i> 
+</I>&gt;<i> mainfo.cursor:=cr_default;
+</I>&gt;<i> mainfo.refresh;
+</I>&gt;<i> 
+</I>??? I use application.beginwait()/endwait() exactly for that. It has the
+advantage that it can be nested, it switches the cursor for the whole
+application and it ignores queued key, mouse and mousewheel events which
+happend while waiting.
+But if you want to do it &quot;Delphi like&quot; use
+&quot;
+ mainfo.cursor:= cr_wait;
+ application.processmessages;
+ [...]
+ mainfo.cursor:= cr_default;
+&quot;
+It will not work if the mouse pointer is above a widget with own cursor
+shape.
+Better but less &quot;Delphi compatible&quot;:
+&quot;
+ application.cursorshape:= cr_wait;
+ [...]
+ //original cursor will be restored in maineventloop automatically
+&quot;
+The MSEgui way:
+&quot;
+ application.beginwait;
+ [...]
+ application.endwait;
+&quot;
+or
+&quot;
+ application.beginwait;
+ try
+  [...]
+ finally
+  application.endwait;
+ end;
+&quot;
+MSEgui has good support for threading so a threaded approach with
+tthreadcomp is also possible.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001222.html">[MSEide-MSEgui-talk] Cursor.
+</A></li>
+	<LI>Next message: <A HREF="001224.html">[MSEide-MSEgui-talk] Cursor.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1223">[ date ]</a>
+              <a href="thread.html#1223">[ thread ]</a>
+              <a href="subject.html#1223">[ subject ]</a>
+              <a href="author.html#1223">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

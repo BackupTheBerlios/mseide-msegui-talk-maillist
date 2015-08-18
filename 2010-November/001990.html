@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Dump MYSQL
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3Cicvm8b%2449a%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001988.html">
+   <LINK REL="Next"  HREF="002005.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Dump MYSQL</H1>
+    <B>Christian Nobel</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Dump%20MYSQL&In-Reply-To=%3Cicvm8b%2449a%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] Dump MYSQL">chr.nobel at gmail.com
+       </A><BR>
+    <I>Mon Nov 29 08:54:51 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001988.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+        <LI>Next message: <A HREF="002005.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1990">[ date ]</a>
+              <a href="thread.html#1990">[ thread ]</a>
+              <a href="subject.html#1990">[ subject ]</a>
+              <a href="author.html#1990">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29-11-2010 02:39, dan wrote:
+&gt;<i> On Sun, Nov 28, 2010 at 11:27 PM, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i> MSEgui has no internal DB dump facility, please use the MySQL tools.
+</I>&gt;<i> Ok. Another question, I want to copy tables data from one to another
+</I>&gt;<i> server (Mysql 5.1 and Mysql 4.1).
+</I>&gt;<i> How to use different libmysql.dll ( for 5.1 and 4.1) in the program?
+</I>&gt;<i> Ex: libmysql41.dll, this for tmsemysql41connection1 and
+</I>&gt;<i> libmysql51.dll this for tmsemysqlconnection1
+</I>&gt;<i> 
+</I>&gt;<i> i see in mysqldyn.pp (62:10)
+</I>&gt;<i> mysqllib: array[0..0] of filenamety = ('libmysql.dll');
+</I>&gt;<i> That's mean is only one server version can be used.(CMIIW)
+</I>&gt;<i> 
+</I>&gt;<i> Thanks.
+</I>
+My suggestion is to use Zeoslib.
+
+Then you can make 2 connections, where the protocol is set to mysql-5 in
+one, and mysql-4.1 in the other one.
+
+/Christian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001988.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+	<LI>Next message: <A HREF="002005.html">[MSEide-MSEgui-talk] Dump MYSQL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1990">[ date ]</a>
+              <a href="thread.html#1990">[ thread ]</a>
+              <a href="subject.html#1990">[ subject ]</a>
+              <a href="author.html#1990">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

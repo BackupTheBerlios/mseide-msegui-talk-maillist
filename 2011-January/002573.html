@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%09icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3C201101190852.21801.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002571.html">
+   <LINK REL="Next"  HREF="002577.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%09icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3C201101190852.21801.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?">mse00000 at gmail.com
+       </A><BR>
+    <I>Wed Jan 19 08:52:21 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002571.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+        <LI>Next message: <A HREF="002577.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2573">[ date ]</a>
+              <a href="thread.html#2573">[ thread ]</a>
+              <a href="subject.html#2573">[ subject ]</a>
+              <a href="author.html#2573">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 19 January 2011 08:34:26 IvankoB wrote:
+&gt;<i> &gt; There is no GUI-encoding in Linux, &quot;locale&quot; on Windows means the current
+</I>&gt;<i> &gt; 8 bit
+</I>&gt;<i> &gt; Ansi codepage, the &quot;OEM console encoding&quot; is another thing AFAIK.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Martin
+</I>&gt;<i>
+</I>&gt;<i> Opps, me mixed with win-9x (OEM = DOS encoding, CP866 for russian).
+</I>&gt;<i>
+</I>&gt;<i> But on russian WINNT5, console encoding is cp1251 but GUI is uni-coded and
+</I>&gt;<i> cp1251 isn't the default layer in UNICODE so there're huge troubles with
+</I>&gt;<i> dipalying text constants (written in source code) in messageboxes &amp; GUI
+</I>&gt;<i> widgets. Lazarus users have to explicitly recode theses constants to
+</I>&gt;<i> UTF-8, AFAIK.
+</I>&gt;<i>
+</I>In MSEgui the source must be stored in utf8 and the compiler option -Fcutf8 
+must be used.
+Lazarus users can *not* use -Fcutf8 therfore the problems they have to work 
+with unicode string constants. With -Fcutf8 FPC converts the string constants 
+to utf-16 on compiletime if necessary.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002571.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+	<LI>Next message: <A HREF="002577.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2573">[ date ]</a>
+              <a href="thread.html#2573">[ thread ]</a>
+              <a href="subject.html#2573">[ subject ]</a>
+              <a href="author.html#2573">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

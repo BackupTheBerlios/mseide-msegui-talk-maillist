@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Watch window doesn't display string	variable contents
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Watch%20window%20doesn%27t%20display%0A%20string%09variable%20contents&In-Reply-To=%3C4DE8C5A6.1050106%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003754.html">
+   <LINK REL="Next"  HREF="003757.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents</H1>
+    <B>Graeme Geldenhuys</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Watch%20window%20doesn%27t%20display%0A%20string%09variable%20contents&In-Reply-To=%3C4DE8C5A6.1050106%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents">graemeg.lists at gmail.com
+       </A><BR>
+    <I>Fri Jun  3 13:29:42 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003754.html">[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents
+</A></li>
+        <LI>Next message: <A HREF="003757.html">[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3756">[ date ]</a>
+              <a href="thread.html#3756">[ thread ]</a>
+              <a href="subject.html#3756">[ subject ]</a>
+              <a href="author.html#3756">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/06/2011 12:42, Martin Schreiber wrote:
+&gt;<i> Works for me, see attachment. Did you ad -O- to compiler options?
+</I>
+I guess you are using 32-bit system? From memory, I think this is a
+similar issue I reported some months back in Lazarus too. Worked under
+32-bit ide/gdb, but not under 64-bit ide/gdb. Currently the same piece
+of code with the same watch variable setup works under Lazarus, but not
+MSEide.
+
+And yes, I pass -O- compiler option. I use the MSEide build groups.
+Normal compiling includes lots of debug info and checks - only release
+builds do optimization. Here is my projects full compiler string as show
+by &quot;Project &gt; Options &gt; Show Command Line&quot; button.
+
+/opt/fpc-2.5.1/x86_64-linux/bin/ppcx64
+-o../../Bin/x86_64-linux/tutoradmin
+-Fu/home/graemeg/programming/3rdParty/onguard/source/
+-Fi/home/graemeg/programming/3rdParty/onguard/source/
+-Fu/home/graemeg/programming/3rdParty/tiOPF2/Source/GUI/fpGUI/
+-Fu/home/graemeg/programming/3rdParty/tiOPF2/Source/Options/
+-Fu/home/graemeg/programming/3rdParty/tiOPF2/Source/Core/
+-Fi/home/graemeg/programming/3rdParty/tiOPF2/Source/Core/ -Fucomponents/
+-Fu../ -Fi../ -Fi/home/graemeg/programming/fpgui/src/
+-Fu/home/graemeg/programming/fpgui/src/corelib/x11/
+-Fi/home/graemeg/programming/fpgui/src/corelib/x11/
+-Fu/home/graemeg/programming/fpgui/src/gui/
+-Fu/home/graemeg/programming/fpgui/src/corelib/ -l -Mobjfpc -Sh -Sc -Si
+-gl -O- -gh -FUunits/x86_64-linux/ -dUseCThreads -dLINK_SQLDB_IB -viewn
+-Os -dTADEBUG tutoradmin.lpr
+
+
+I updated my FPC (both 2.5.1 and 2.4.5) and there is no difference under
+MSEide, no matter which version of the compiler I use.
+
+
+I did a quick commit history search, and I think Lazarus fixed this same
+issue in commit r25523 in their repository.
+
+------------------------------------------
+$ git show 94d483056632
+commit 94d4830566326d6409b2d563fe7b957a4505e820
+Author: marc &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">marc at freepascal.org</A>&gt;
+Date:   Wed May 19 23:28:46 2010 +0000
+
+    * Dbg: Added debug expressions. Modyfied patch #16474 by Flavio Etrusco
+    * Dbg: Improved pascal to gdb string conversion, so valid gdb
+strings will
+           be used for breakpoint expresions and string modification
+    * Dbg: some cleanup
+
+
+    git-svn-id: <A HREF="http://svn2.freepascal.org/svn/lazarus/trunk@25523">http://svn2.freepascal.org/svn/lazarus/trunk@25523</A>
+4005530d-fff6-0310-9dd1-cebe43e6787f
+------------------------------------------
+
+
+Regards,
+  - Graeme -
+
+-- 
+fpGUI Toolkit - a cross-platform GUI toolkit using Free Pascal
+<A HREF="http://fpgui.sourceforge.net/">http://fpgui.sourceforge.net/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003754.html">[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents
+</A></li>
+	<LI>Next message: <A HREF="003757.html">[MSEide-MSEgui-talk] Watch window doesn't display string	variable contents
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3756">[ date ]</a>
+              <a href="thread.html#3756">[ thread ]</a>
+              <a href="subject.html#3756">[ subject ]</a>
+              <a href="author.html#3756">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

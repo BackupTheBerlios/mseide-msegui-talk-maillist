@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Strange%20reset%20of%20T%2AField%20on%20return%20from%0A%20BeforeApplyUpdate%20%28the%20PODPISKA%29&In-Reply-To=%3CAANLkTi%3DAhY8OLeE4Jgm7TqgEpLXU9qHxYAm%2BKyXPS5Yh%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001376.html">
+   <LINK REL="Next"  HREF="001373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)</H1>
+    <B>IvankoB for-mse</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Strange%20reset%20of%20T%2AField%20on%20return%20from%0A%20BeforeApplyUpdate%20%28the%20PODPISKA%29&In-Reply-To=%3CAANLkTi%3DAhY8OLeE4Jgm7TqgEpLXU9qHxYAm%2BKyXPS5Yh%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Strange reset of T*Field on return from BeforeApplyUpdate (the PODPISKA)">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Oct  5 20:34:45 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001376.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+        <LI>Next message: <A HREF="001373.html">[MSEide-MSEgui-talk] Reasigning &quot;tmsesqlqury.OnAppyRecUpdate&quot;	doesn't place MSESQLDB to USES.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1377">[ date ]</a>
+              <a href="thread.html#1377">[ thread ]</a>
+              <a href="subject.html#1377">[ subject ]</a>
+              <a href="author.html#1377">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>And it is OK that the fieldbyname('office_code') value and
+dmmainmo.fldWPOfficeCode value are different? No bug?
+==============
+The latter is read from a stat file thus providing the workplace stamp.
+Some complication &amp; overcopying is the price of form inhertiance.
+
+
+2010/10/5, Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at gmail.com</A>&gt;:
+&gt;<i> Ivanko B wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>Then how to do it (after-inrefactive-edit modification to a record
+</I>&gt;&gt;&gt;<i>before writting its new contents to the DB ) correctly ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> There's a &quot;solution&quot; found to override OnApplyRecUpdate:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> //-----------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> procedure trefoperatorviewfo.operatorapplyrecupdate(const sender:
+</I>&gt;&gt;<i> tmsesqlquery;
+</I>&gt;&gt;<i>                const updatekind: TUpdateKind; var asql: AnsiString;
+</I>&gt;&gt;<i>                var done: Boolean);
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i>   sender.fieldbyname('office_code').aswidestring:=
+</I>&gt;&gt;<i> dmmainmo.fldWPOfficeCode.aswidestring;
+</I>&gt;&gt;<i>   inherited applyrecupdate(sender,updatekind,asql,done);
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> //------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Seems working. Is it ugly ?
+</I>&gt;<i>
+</I>&gt;<i> operatorapplyrecupdate() is virtual? Seems OK for me. Field values are
+</I>&gt;<i> writable in MSEgui applyrecupdate(). Exactly made for such a case. :-)
+</I>&gt;<i> And it is OK that the fieldbyname('office_code') value and
+</I>&gt;<i> dmmainmo.fldWPOfficeCode value are different? No bug?
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> MSEide-MSEgui-talk mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">MSEide-MSEgui-talk at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001376.html">[MSEide-MSEgui-talk] Strange reset of T*Field on return from	BeforeApplyUpdate (the PODPISKA)
+</A></li>
+	<LI>Next message: <A HREF="001373.html">[MSEide-MSEgui-talk] Reasigning &quot;tmsesqlqury.OnAppyRecUpdate&quot;	doesn't place MSESQLDB to USES.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1377">[ date ]</a>
+              <a href="thread.html#1377">[ thread ]</a>
+              <a href="subject.html#1377">[ subject ]</a>
+              <a href="author.html#1377">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

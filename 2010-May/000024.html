@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3C201005181835.03083.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20TAction%20vs%20FPC%27s%20TBasicAction&In-Reply-To=%3C201005181835.03083.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue May 18 18:35:02 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[MSEide-MSEgui-talk] test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday, 18. May 2010 16.17:55 Graeme Geldenhuys wrote:
+&gt;<i>
+</I>&gt;<i> Yet another developer (and including myself) that would benefit from a
+</I>&gt;<i> &quot;friend class concept&quot; support in FPC. Where a Friend Class can access
+</I>&gt;<i> protected and maybe even private information from another class,
+</I>&gt;<i> without being declared in the same unit.
+</I>
+Or &quot;Friend Units&quot; where protected class members are visible. Sometimes if I 
+mention such a construct on FPC mailing list I get the comment &quot;Fix your 
+flawed design.&quot; :-)
+I think private should stay private and accessible in own unit only. I need 
+access to private fields because I want to do things with FPC base classes 
+which were not foreseen. A better solution is to do all ourselves from 
+scratch. The biggest problem is TComponent which can not be forked without 
+loosing the possibility to install foreign components into the IDE.
+
+&quot;Friend Units&quot; would be convenient and better than local class alias because 
+FPC AFAIK uses runtime resources for a definition like:
+&quot;
+implementation
+type
+ txclass1 = class(txclass);
+[...]
+ txclass1(xclass).dosomething();
+&quot;
+
+Martin
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[MSEide-MSEgui-talk] TAction vs FPC's TBasicAction
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[MSEide-MSEgui-talk] test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

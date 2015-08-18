@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20%2B%20PODPISKA&In-Reply-To=%3Ch8u3965gslnuc0vt9atrjumel3v3cshq48%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001040.html">
+   <LINK REL="Next"  HREF="001054.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20SigSegv%20in%20the%20IDE%20%2B%20PODPISKA&In-Reply-To=%3Ch8u3965gslnuc0vt9atrjumel3v3cshq48%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Sep 16 13:07:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001040.html">[MSEide-MSEgui-talk] Two taskbar icons for MSEide (winXP)
+</A></li>
+        <LI>Next message: <A HREF="001054.html">[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1052">[ date ]</a>
+              <a href="thread.html#1052">[ thread ]</a>
+              <a href="subject.html#1052">[ subject ]</a>
+              <a href="author.html#1052">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems that to occur  when trying text view for
+&quot;trefviewform_intcode&quot;.
+
+/////////////////////////////////
+
+#0  0042EBF7 msegui.pas:14961
+TINTERNALAPPLICATION__CHECKWINDOWSTACK(this=0x771d8)
+#1  0042F1E2 msegui.pas:15154
+TINTERNALAPPLICATION__UPDATEWINDOWSTACK(this=0x771d8)
+#2  0042E001 msegui.pas:14612
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=true,
+this=0x771d8)
+#3  0042FB6F msegui.pas:15419 TGUIAPPLICATION__EVENTLOOP(ONCE=true,
+this=0x771d8)
+#4  00463445 mseguiintf.pas:4545 WINDOWPROC(AHWND=1509366, MSG=133,
+WPARAM=-1140586280, LPARAM=0)
+#5  7E368734 mseguiintf.pas:0 USER32!GetDC()
+#6  001707F6 mseguiintf.pas:0 ??()
+#7  00000085 mseguiintf.pas:0 ??()
+#8  BC0408D8 mseguiintf.pas:0 ??()
+#9  00000000 mseguiintf.pas:0 ??()
+
+/////////////////////
+procedure tinternalapplication.checkwindowstack;
+
+ function findlevel(var item: windowstackinfoty): integer;
+ var
+  int1: integer;
+ begin
+  with item do begin
+   if (level = 0) and (lower &lt;&gt; nil) and not recursion then begin
+    if upper = nil then begin
+     result:= -bigint;
+    end
+    else begin
+     result:= 1; //not found upper
+     recursion:= true;
+     for int1:= 0 to high(fwindowstack) do begin
+      with fwindowstack[int1] do begin
+       if lower = item.upper then begin
+        result:= findlevel(fwindowstack[int1]) + 1;
+        break;
+       end;
+      end;
+     end;
+     recursion:= false;
+    end;
+   end
+   else begin
+    result:= level;
+   end;
+   level:= result;
+  end;
+ end;
+
+var
+ int1: integer;
+begin
+ if fwindowstack &lt;&gt; nil then begin
+  if not nozorderhandling then begin
+ {$ifdef mse_debugzorder}
+   debugwriteln('****checkwindowstack****');
+ {$endif}
+   for int1:= 0 to high(fwindowstack) do begin
+    findlevel(fwindowstack[int1]);
+   end;
+   sortarray(fwindowstack,{$ifdef FPC}@{$endif}cmpwindowstack,
+ sizeof(windowstackinfoty));
+   if gui_canstackunder then begin
+    for int1:= 0 to high(fwindowstack) do begin
+     with fwindowstack[int1] do begin
+      if lower &lt;&gt; nil then begin &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; STOPPED  HERE &lt;&lt;&lt;&lt;&lt;
+       if upper = nil then begin
+        gui_raisewindow(lower.winid);
+       end
+       else begin
+        gui_stackunderwindow(lower.winid,upper.winid);
+       end;
+      end;
+     end;
+    end;
+   end
+   else begin
+    for int1:= high(fwindowstack) downto 0 do begin
+     with fwindowstack[int1] do begin
+      if (lower &lt;&gt; nil) then begin
+       gui_raisewindow(fwindowstack[int1].lower.winid);
+      end;
+     end;
+    end;
+    for int1:= 0 to high(fwindowstack) do begin //raise top level
+window
+     with fwindowstack[int1] do begin
+      if lower &lt;&gt; nil then begin
+       if upper &lt;&gt; nil then begin
+        gui_raisewindow(fwindowstack[int1].upper.winid);
+       end;
+       break;
+      end;
+     end;
+    end;
+   end;
+   exclude(fstate,aps_zordervalid);
+  end;
+  fwindowstack:= nil;
+ end;
+end;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001040.html">[MSEide-MSEgui-talk] Two taskbar icons for MSEide (winXP)
+</A></li>
+	<LI>Next message: <A HREF="001054.html">[MSEide-MSEgui-talk] SigSegv in the IDE + PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1052">[ date ]</a>
+              <a href="thread.html#1052">[ thread ]</a>
+              <a href="subject.html#1052">[ subject ]</a>
+              <a href="author.html#1052">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

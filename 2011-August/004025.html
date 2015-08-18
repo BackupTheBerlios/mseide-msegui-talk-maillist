@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] What is TTrayWidget for?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20What%20is%20TTrayWidget%20for%3F&In-Reply-To=%3C201108041020.44886.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004022.html">
+   <LINK REL="Next"  HREF="004027.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] What is TTrayWidget for?</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20What%20is%20TTrayWidget%20for%3F&In-Reply-To=%3C201108041020.44886.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] What is TTrayWidget for?">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug  4 10:20:44 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004022.html">[MSEide-MSEgui-talk] What is TTrayWidget for?
+</A></li>
+        <LI>Next message: <A HREF="004027.html">[MSEide-MSEgui-talk] What is TTrayWidget for?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4025">[ date ]</a>
+              <a href="thread.html#4025">[ thread ]</a>
+              <a href="subject.html#4025">[ subject ]</a>
+              <a href="author.html#4025">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Donnerstag 04 August 2011, 10:07:38 schrieb Graeme Geldenhuys:
+&gt;<i> Playing around with the Face property of TTrayWidget, I set a
+</I>&gt;<i> Red-to-Blue fade. Then when I run the application, I see a small
+</I>&gt;<i> sliver of Red in the tray area of Gnome. Positioning the mouse very
+</I>&gt;<i> carefully, I did manage to get the popup menu to appear.  See attached
+</I>&gt;<i> image. But how to I get the tray area to show text. eg: &quot;MSE&quot;?  I have
+</I>&gt;<i> TTrayWidget.Caption = &quot;MSE&quot; set, but I don't see any text.
+</I>&gt;<i> 
+</I>Please use frame.caption. ttraywidget.caption is a property handled over to 
+the window manager and is not drawn by the widget.
+&gt;<i> 
+</I>&gt;<i> Also, as I mentioned, I can't use the Image property as that gives
+</I>&gt;<i> &quot;Access Violation&quot; error as soon as I select any image form my hard
+</I>&gt;<i> drive.
+</I>
+Works for me, please provide steps how you can trigger the AV.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004022.html">[MSEide-MSEgui-talk] What is TTrayWidget for?
+</A></li>
+	<LI>Next message: <A HREF="004027.html">[MSEide-MSEgui-talk] What is TTrayWidget for?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4025">[ date ]</a>
+              <a href="thread.html#4025">[ thread ]</a>
+              <a href="subject.html#4025">[ subject ]</a>
+              <a href="author.html#4025">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

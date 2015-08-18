@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] New product developed with MSEide+MSEgui	is released!!!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20New%20product%20developed%20with%20MSEide%2BMSEgui%0A%09is%20released%21%21%21&In-Reply-To=%3C20110112230556.d8006003.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002412.html">
+   <LINK REL="Next"  HREF="002437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui	is released!!!</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20New%20product%20developed%20with%20MSEide%2BMSEgui%0A%09is%20released%21%21%21&In-Reply-To=%3C20110112230556.d8006003.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui	is released!!!">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Wed Jan 12 23:05:56 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002412.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui is released!!!
+</A></li>
+        <LI>Next message: <A HREF="002437.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui	is released!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2429">[ date ]</a>
+              <a href="thread.html#2429">[ thread ]</a>
+              <a href="subject.html#2429">[ subject ]</a>
+              <a href="author.html#2429">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo IvankoB,
+
+Du schriebst am Wed, 12 Jan 2011 10:19:23 +0500:
+
+&gt;<i> &gt;&gt; - add files to execute before/after installation
+</I>&gt;<i> 
+</I>&gt;<i> &gt; What for?
+</I>&gt;<i> 
+</I>&gt;<i> Adjusting system,
+</I>
+I.e. mangling with system internals until previously flawlessly working
+software gets disrupted? The way Windows software overthrows working
+configurations, even replaces system constituents by older or flawed
+versions?
+No, thank you.
+
+&gt;<i> Adjusting system, checking &amp; editing external configs,
+</I>
+What &quot;external configs&quot; have to be &quot;checked&quot; and &quot;edited&quot; that the software
+or its user couldn't &quot;check&quot; and &quot;edit&quot; themselves? If there's no
+configuration file available, the program should use viable defaults built
+into it. There's not very much beyond a program that crashes if it cannot
+find a &quot;suitable&quot; configuration that I dislike.
+No, thank you.
+
+&gt;<i> Adjusting system, checking &amp; editing external configs, restarting
+</I>&gt;<i> daemons,
+</I>
+_What_ daemons does a newly to install program should have to fiddle with -
+except, maybe, if it's one itself? And even in the latter case, it shouldn't
+bring down its elder without the user's knowledge - after all, it could
+disrupt some important activity it just performs.
+Yes, that's a reason why I _dislike_ the Debian approach to system upgrades,
+and any unattended updating method at all. I just wonder why there's not
+yet surfaced a fake update to some system that installs some spy service,
+backdoor, server for illegal activity or some such. But maybe there is
+already, but no one's yet recognized it, like the &quot;stuxnet&quot; worm...
+There are so many &quot;opportunties&quot; for bad people - and their number keeps
+growing fast. You will soon be able to &quot;download&quot; the latest motor
+controller update to your car - could be interesting if - when - someone
+provides a &quot;specially tuned&quot; variant that, e.g., makes it running
+backwards...
+No, thank you.
+
+&gt;<i> daemons, creating databases &amp; users, downloading extra files, etc...
+</I>
+Well, basically the same as above applies here, too.
+No, thank you.
+
+&gt;<i> Using the extreme power of bash/awk/sed/perl.
+</I>
+Provide support scripts that the user may call on his own - then he has the
+chance to check them before they can wreak havoc on his setup, at least.
+
+&gt;<i> DEB package's &quot;preinst&quot; &amp; &quot;postinst&quot; allow to make the package a large  
+</I>&gt;<i> program complex :)
+</I>
+A complex, opaque bunch that does unknown and sometimes even disruptive
+things to their user's machines. Although the processes often work without
+causing noticeable problems, there are cases when something doesn't work
+right afterwards, or things don't work any more the packet shouldn't have
+touched at all, or even the system won't start again altogether.
+Packetized updating does have its problems in any case - I found out yet
+again, as I've just updated two machines (Arch Linux, not Debian), where
+quite some subtle (and some not-so-subtle) issues arose. It took me quite
+some time to readjust most of them, some only surfaced during early use,
+when I couldn't address them, and some I just simply haven't seen yet.
+
+If you present these issues to an unknowledgable user, what do you think he
+will do and say?
+
+With Windows, the most prominent measure is &quot;reinstall&quot; - loosing most, if
+not all of your personal setup. And that's why most Windows users have
+already resigned and use all of their software &quot;as is&quot; - forgoing the
+purpose of all those delicately engineered settings that could be used to
+adjust the workings to their needs, just using them in the crudest way
+possible, because the time spent for personalization will be lost in time...
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002412.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui is released!!!
+</A></li>
+	<LI>Next message: <A HREF="002437.html">[MSEide-MSEgui-talk] New product developed with MSEide+MSEgui	is released!!!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2429">[ date ]</a>
+              <a href="thread.html#2429">[ thread ]</a>
+              <a href="subject.html#2429">[ subject ]</a>
+              <a href="author.html#2429">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

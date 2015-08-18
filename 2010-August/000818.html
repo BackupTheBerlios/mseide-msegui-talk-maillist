@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100825225747.7209c3a1.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000803.html">
+   <LINK REL="Next"  HREF="000821.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Handling window layouts or different	resolutions</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Handling%20window%20layouts%20or%20different%0A%09resolutions&In-Reply-To=%3C20100825225747.7209c3a1.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Handling window layouts or different	resolutions">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Wed Aug 25 22:57:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000803.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+        <LI>Next message: <A HREF="000821.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#818">[ date ]</a>
+              <a href="thread.html#818">[ thread ]</a>
+              <a href="subject.html#818">[ subject ]</a>
+              <a href="author.html#818">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+Du schriebst am Wed, 25 Aug 2010 07:03:54 +0200:
+
+&gt;<i> &gt; because of some error in the code. Because of time issues then, I just
+</I>&gt;<i> &gt; used a &quot;Halt&quot; to &quot;tear it down&quot; forcedly, when it should simply stop.
+</I>&gt;<i> 
+</I>&gt;<i> Ouh, this is dangerous because the finalization sections in MSEgui library
+</I>&gt;<i> will be called in undefined state.
+</I>
+As said above, I did that &quot;because of time issues then&quot; - it's been changed
+now that I'm working at it again. But there's still one place where I
+can hardly avoid a similar approach - that is when another process has to
+replace the current one _seamlessly_. That's why I deinitialize most
+everything except the window just before executing the new process, do a
+fork there and have the child process keep the display for a couple seconds
+so the newly started process can build its windows above it. This does work
+quite well, and since the old process is torn down completely, it didn't
+show any bad effects yet, even running this way for several weeks, even
+months. The Linux system cleans up quite thourughly after a process is
+gone. ;-)
+But I might even try to have the child process terminate normally after
+it's through - the chaining routine just was meant to serve for non Gooey
+applications also. For Gooy^WGUI use, simply returning should suffice.
+(If you'd want to have a look at the code, I can post it. It's not very
+difficult. But I wonder if anyone can make use of it - it was created for
+a very special purpose, after all.)
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000803.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+	<LI>Next message: <A HREF="000821.html">[MSEide-MSEgui-talk] Handling window layouts or different	resolutions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#818">[ date ]</a>
+              <a href="thread.html#818">[ thread ]</a>
+              <a href="subject.html#818">[ subject ]</a>
+              <a href="author.html#818">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%20icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3Cop.vph48cs3yl4sxz%40vano%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002523.html">
+   <LINK REL="Next"  HREF="002530.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?</H1>
+    <B>IvankoB</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Is%20there%20a%20easy%20way%20to%20set/change%20main%0A%20icon%20for%20application%20in%20mseide%3F&In-Reply-To=%3Cop.vph48cs3yl4sxz%40vano%3E"
+       TITLE="[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Jan 18 12:37:14 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002523.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+        <LI>Next message: <A HREF="002530.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2528">[ date ]</a>
+              <a href="thread.html#2528">[ thread ]</a>
+              <a href="subject.html#2528">[ subject ]</a>
+              <a href="author.html#2528">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;<i> to &quot;mseide.pas&quot;, the SVN manistream - it'll be neccessary for win-23
+</I>&gt;&gt;<i> installer.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Done, trunk 4272.
+</I>&gt;<i>
+</I>
+The installer is reasy but needs some polishing.
+Its package weights 7.3M built from sources, docs (incl. the NNTP archive)  
+&amp; tools. But may be squeezed more if to delete the IFI* tutorial  
+executables. Should me ?
+
+But found that
+
+&quot;form2pas.prj&quot; builds well if
+
+${MSEDIR}=D:\Program Files\MSEide+MSEgui\ via IDE configure
+
+but can't find MSEgui units if ${MSEDIR} passed via macro:
+
+&quot;D:\Program Files\MSEide+MSEgui\apps\ide\mseide.exe&quot;  
+'--macrodef=MSEDIR,D:\Program Files\MSEide+MSEgui\
+
+or
+
+&quot;D:\Program Files\MSEide+MSEgui\apps\ide\mseide.exe&quot;  
+'--macrodef=MSEDIR,&quot;D:\Program Files\MSEide+MSEgui\&quot;
+
+Possily because the macro parser should do UNC-vc-Win path convertions.
+
+PS:
+Here, passing through macro is needed for running out-of-box. The  
+installer also expects that FPC, winders and GDB are %PATH%-ed - it's the  
+case if FPC is installed via precreated win-32 installer. So, te only  
+macro to ajust remamins ${MSEDIR}.
+
+Also, the installer doesn't create shortcuts for documenting. Two options  
+available -  1) to display the very partial &quot;mse-help.txt&quot; or 2) just to  
+bring user to the &quot;/help&quot; directory for browsing. Which one or none until  
+documentation is ready ?
+
+Also me install MSE* to the space containing &quot;\Program Files\&quot; just for  
+MSE* not to look a white crow :)
+
+It seems that the thing are much-much better that we were affraid of :)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002523.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main	icon for application in mseide?
+</A></li>
+	<LI>Next message: <A HREF="002530.html">[MSEide-MSEgui-talk] Is there a easy way to set/change main icon for application in mseide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2528">[ date ]</a>
+              <a href="thread.html#2528">[ thread ]</a>
+              <a href="subject.html#2528">[ subject ]</a>
+              <a href="author.html#2528">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

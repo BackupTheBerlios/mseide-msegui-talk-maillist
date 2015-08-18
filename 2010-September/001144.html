@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] about datalist  getastext
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20datalist%20%20getastext&In-Reply-To=%3Ci7ahj5%24vjh%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001143.html">
+   <LINK REL="Next"  HREF="001153.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] about datalist  getastext</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20about%20datalist%20%20getastext&In-Reply-To=%3Ci7ahj5%24vjh%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] about datalist  getastext">mse00000 at gmail.com
+       </A><BR>
+    <I>Tue Sep 21 17:06:27 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001143.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+        <LI>Next message: <A HREF="001153.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1144">[ date ]</a>
+              <a href="thread.html#1144">[ thread ]</a>
+              <a href="subject.html#1144">[ subject ]</a>
+              <a href="author.html#1144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>liuzg2 wrote:
+
+&gt;<i> 
+</I>&gt;&gt;<i> liuzg2 wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>   function getastext(const index: integer): msestring; virtual;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> function tintegerdatalist.getastext(const index: integer): msestring;
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i>   result:= inttostr(items[index]);
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> function tcurrencydatalist.getastext(const index: integer): msestring;
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i>   result:= currtostr(items[index]);
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> function trealdatalist.getastext(const index: integer): msestring;
+</I>&gt;&gt;<i> var
+</I>&gt;&gt;<i>   rea1: realty;
+</I>&gt;&gt;<i> begin
+</I>&gt;&gt;<i>   result:= '';
+</I>&gt;&gt;<i>   rea1:= items[index];
+</I>&gt;&gt;<i>   if not isemptyreal(rea1) then begin
+</I>&gt;&gt;<i>    result:= doubletostring(rea1,0,fsm_default,
+</I>&gt;&gt;<i>                               
+</I>defaultformatsettingsmse.decimalseparator);
+&gt;&gt;<i>   end;
+</I>&gt;&gt;<i> end;
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i>
+</I>&gt;<i>   i means
+</I>&gt;<i> 
+</I>&gt;<i>   tdatalist = class(tlinkedpersistent)
+</I>&gt;<i>   function getastext(const index: integer): msestring; virtual;
+</I>&gt;<i> 
+</I>&gt;<i> then
+</I>&gt;<i> 
+</I>&gt;<i> trealdatalist = class(tdatalist)
+</I>&gt;<i> function getastext(const index: integer): msestring; override;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> trealdatalist inherited from tdatalist
+</I>&gt;<i> so   override getastext  not virtual;
+</I>&gt;<i> 
+</I>&gt;<i> same with setastext(const index: integer; const avalue: msestring);
+</I>
+O.o ???
+&quot;virtual&quot; is the modifier for the base method, &quot;override&quot; can be used in a
+descendant class. Example:
+
+var
+ list1: tdatalist;
+ mstr1: msestring;
+[...]
+ list1:= trealdatalist.create;
+ list1.count:= 200;
+ mstr1:= list1.getastext(123); //calls trealdatalist.getastext.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001143.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+	<LI>Next message: <A HREF="001153.html">[MSEide-MSEgui-talk] about datalist  getastext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1144">[ date ]</a>
+              <a href="thread.html#1144">[ thread ]</a>
+              <a href="subject.html#1144">[ subject ]</a>
+              <a href="author.html#1144">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

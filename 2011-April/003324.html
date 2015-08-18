@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] how to execut a sql procedure with output	and get the output
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20execut%20a%20sql%20procedure%20with%20output%0A%09and%20get%20the%20output&In-Reply-To=%3C201104021126.21547.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003323.html">
+   <LINK REL="Next"  HREF="003319.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] how to execut a sql procedure with output	and get the output</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20how%20to%20execut%20a%20sql%20procedure%20with%20output%0A%09and%20get%20the%20output&In-Reply-To=%3C201104021126.21547.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] how to execut a sql procedure with output	and get the output">mse00000 at gmail.com
+       </A><BR>
+    <I>Sat Apr  2 11:26:21 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003323.html">[MSEide-MSEgui-talk] how to execut a sql procedure with output	and get the output
+</A></li>
+        <LI>Next message: <A HREF="003319.html">[MSEide-MSEgui-talk] Hint/tooltip problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3324">[ date ]</a>
+              <a href="thread.html#3324">[ thread ]</a>
+              <a href="subject.html#3324">[ subject ]</a>
+              <a href="author.html#3324">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 02 April 2011 10:55:10 liuzg2 wrote:
+
+&gt;<i> &gt;&gt; mssql 2005 odbc  tmsesqlquery,tmsesqlscript1 .sql.txt:='exec test :a
+</I>&gt;<i> &gt;&gt; out,:b out;'
+</I>&gt;<i> &gt;&gt; can work.  but can not get return value;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Please set StatementType to stSelect.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Martin
+</I>&gt;<i>
+</I>&gt;<i> yes set ParseSQL:=false;
+</I>&gt;<i>     StatementType to stSelect
+</I>&gt;<i>   and sql.text:='exec liu_test :a out,:b out ;'
+</I>&gt;<i> it will query a procedure with result table  ;
+</I>&gt;<i> but  the out params . can not get  anything !
+</I>
+Output parameters are not supported. Another possibility is tsqlresult.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003323.html">[MSEide-MSEgui-talk] how to execut a sql procedure with output	and get the output
+</A></li>
+	<LI>Next message: <A HREF="003319.html">[MSEide-MSEgui-talk] Hint/tooltip problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3324">[ date ]</a>
+              <a href="thread.html#3324">[ thread ]</a>
+              <a href="subject.html#3324">[ subject ]</a>
+              <a href="author.html#3324">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

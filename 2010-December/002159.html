@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%09exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3Cggmjg61e77du0d5psm13spgd4g420hs2l8%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002146.html">
+   <LINK REL="Next"  HREF="002160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Error%20writting%20the%20MSEide%20statfile%20when%0A%09exiting%20%28File-%3EExit%29%20the%20IDE%20after%20closing%20the%20PODPISKA&In-Reply-To=%3Cggmjg61e77du0d5psm13spgd4g420hs2l8%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Thu Dec 16 10:26:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002146.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+        <LI>Next message: <A HREF="002160.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2159">[ date ]</a>
+              <a href="thread.html#2159">[ thread ]</a>
+              <a href="subject.html#2159">[ subject ]</a>
+              <a href="author.html#2159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Wik all today updates  - podpiska-in-ide-in-ide:
+The call stack on file exception (&quot;can't find ...&quot;) in the outer IDE
+when closing PODPISKA then the inner IDE:
+
+#0  7C90E514 :0 ntdll!LdrAccessResource()
+#1  7C90D9DA :0 ntdll!ZwReadFile()
+#2  7C801879 :0 ReadFile()
+#3  00000638 :0 ??()
+#4  00000000 :0 ??()
+#5  00000000 :0 ??()
+#6  00000000 :0 ??()
+#7  05E6FE88 :0 ??()
+#8  03BE8A58 :0 ??()
+#9  00000800 :0 ??()
+#10  00000000 :0 ??()
+#11  00000000 :0 ??()
+#12  00040208 :0 ??()
+#13  03C610F8 :0 ??()
+#14  03BE8A58 :0 ??()
+#15  00000654 :0 ??()
+#16  00000000 :0 ??()
+#17  05E6FEA0 :0 ??()
+#18  00509BA1 :0 MSESYSINTF_SYS_CONDBROADCAST$CONDTY$$SYSERRORTY()
+#19  00508C8B :0
+MSESYSINTF_SYS_READ$LONGINT$POINTER$LONGWORD$$LONGINT()
+#20  00532C89 :0
+MSEPIPESTREAM_TPIPEREADER_$__EXECTHREAD$TMSETHREAD$$LONGINT()
+#21  00514D63 :0 MSETHREAD_TMSETHREAD_$__INTERNALTHREADPROC$$LONGINT()
+#22  005094C1 :0 MSESYSINTF_THREADEXEC$POINTER$$LONGINT()
+#23  0040EEF9 :0 SYSTEM_THREADMAIN$POINTER$$LONGINT()
+#24  7C80B729 :0 KERNEL32!GetModuleFileNameA()
+#25  039E5978 :0 ??()
+#26  00040208 :0 ??()
+#27  03C826C8 :0 ??()
+#28  039E5978 :0 ??()
+#29  7FFDC000 :0 ??()
+#30  82FC2600 :0 ??()
+#31  05E6FFC0 :0 ??()
+#32  82B6DC70 :0 ??()
+#33  FFFFFFFF :0 ??()
+#34  7C839AA8 :0 ValidateLocale()
+#35  7C80B730 :0 KERNEL32!GetModuleFileNameA()
+#36  00000000 :0 ??()
+#37  00000000 :0 ??()
+#38  00000000 :0 ??()
+#39  0040EEC0 :0 SYSTEM_SYSRELEASETHREADVARS()
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002146.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+	<LI>Next message: <A HREF="002160.html">[MSEide-MSEgui-talk] Error writting the MSEide statfile when	exiting (File-&gt;Exit) the IDE after closing the PODPISKA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2159">[ date ]</a>
+              <a href="thread.html#2159">[ thread ]</a>
+              <a href="subject.html#2159">[ subject ]</a>
+              <a href="author.html#2159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

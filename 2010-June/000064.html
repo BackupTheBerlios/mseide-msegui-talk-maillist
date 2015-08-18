@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%27s%20order%20of%20processing%20keyboard%0A%09shortcuts&In-Reply-To=%3Chu8nml%24lrb%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000063.html">
+   <LINK REL="Next"  HREF="000065.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20MSEgui%27s%20order%20of%20processing%20keyboard%0A%09shortcuts&In-Reply-To=%3Chu8nml%24lrb%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Jun  3 19:11:01 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000063.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard shortcuts
+</A></li>
+        <LI>Next message: <A HREF="000065.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> Hi Martin,
+</I>&gt;<i> 
+</I>&gt;<i> What's the order that MSEgui follows to process keyboard shortcuts.
+</I>&gt;<i> I'm thinking in line of a multi-form (non-modal) application design.
+</I>&gt;<i> 
+</I>The flow of a keydown event:
+
+- The main event loop calls tinternalapplication.processkeyevent().
+- tinternalapplication.processkeyevent() sets up a keyeventinfoty record
+with information about the keyevent:
+&quot;
+ eventstatety = (es_processed,es_child,es_preview,
+                 es_transientfor, //mousewheel from upper modal window
+                 es_local,es_broadcast,es_modal,es_drag,
+                 es_reflected,es_nofocus);
+ eventstatesty = set of eventstatety;
+
+ keyeventinfoty = record
+  eventkind: eventkindty;
+  key,keynomod: keyty;
+  chars: msestring;
+  shiftstate: shiftstatesty;
+  eventstate: eventstatesty;
+  timestamp: longword; //usec
+ end;
+&quot;
+Processing stops if es_processed is set in the key handling chain. The full
+chain if es_processed is never set:
+
+- tinternalapplication.processkeyevent() calls
+application.fonkeypresslist.dokeyevent(widget1,info), key previews can be
+registered by application.registeronkeypress().
+- tinternalapplication.processkeyevent() calls dispatchkeyevent() of the
+active window.
+- twindow.dispatchkeyevent() calls internalkeydown() of the focused widget.
+
+- twidget.internalkeydown() sets es_preview and calls twidget.doshortcut().
+This first doshortcut() call can be used to catch multi-key shortcuts where
+the key would be eaten by the edit widgets.
+
+- twidget.doshortcut() calls doshortcut() of their siblings and children.
+optionswidget ow_noparenshortcut stops propagating to children.
+- doshortcut() of the parentwidget is called up to the top level widget.
+ow_nochildshortcut stops propagating to parent.
+
+- the top level widget calls window.doshortcut().
+- twindow.doshortcut() calls application.fonshortcutlist() with es_local
+set, taction hooks here if options ao_localshortcut is set.
+- twindow.doshortcut() calls application.checkshortcut() if localshortcuts
+in is false, localshortcut can be set by tform.options fo_localshortcuts.
+- application.checkshortcut() sets es_broadcast and calls doshortcut() of
+the windows except the caller.
+
+- The windows propagate to the widgets if globalshortcuts is true,
+globalshortcuts can be set by tform.options fo_globalshortcuts.
+
+- application.checkshortcut() calls fonshortcutlist.dokeyevent(), taction
+hooks here if options ao_globalshortcut is set.
+- application.checkshortcut() clears es_broadcast.
+
+- twidget.internalkeydown() clears es_preview.
+
+- twidget.internalkeydown() calls dokeydown().
+- twidget.dokeydown() calls dokeydown() of the parent widgets with es_child
+set.
+
+- twidget.internalkeydown() calls twidget.doshortcut() again without
+es_preview, the whole shortcut chain works again for handling of single key
+shortcuts.
+- twidget.internalkeydown() calls twidget.dokeydownaftershortcut(), it
+handles tab and arrow focus and the like.
+- twidget.dokeydownaftershortcut() calls dokeydownaftershortcut() of the
+parent widgets with es_child set.
+
+&gt;<i> Using our company project as an example: We have one main form which
+</I>&gt;<i> basically has a main menu and toolbar buttons. We have one non-modal
+</I>&gt;<i> form which shows a listing of learners - this form also has a menu
+</I>&gt;<i> with keyboard shortcuts (eg: Print, Export List, Refresh, Add Learner
+</I>&gt;<i> etc). Then if they double click a learner, it opens a non-model
+</I>&gt;<i> Learner Maint screen, which might have shortcuts via labels.
+</I>&gt;<i> 
+</I>&gt;<i> Now say I have a Learner Maint form open and it has focus. I then
+</I>&gt;<i> press say Ctrl+O which is the keyboard shortcut on the main form to
+</I>&gt;<i> open a new School database. How doesn't the Ctrl+O keyboard shortcut
+</I>&gt;<i> get traversed through the program to execute the correct menu item (or
+</I>&gt;<i> action)?
+</I>&gt;<i> 
+</I>&gt;<i> eg:
+</I>&gt;<i>   Learner Maint &gt; Leaner List &gt; Main Form &gt; Application instance variable
+</I>&gt;<i> 
+</I>&gt;<i> or
+</I>&gt;<i> 
+</I>&gt;<i>   Learner Maint &gt; Main form &gt; Application
+</I>&gt;<i> 
+</I>&gt;<i> or
+</I>&gt;<i> 
+</I>&gt;<i>   Learner Maint &gt; Application &gt; then any open form in application
+</I>&gt;<i>   (one-by-one)
+</I>&gt;<i> 
+</I>&gt;<i> ???
+</I>&gt;<i> 
+</I>It depends on the setting of the different option flags.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000063.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard shortcuts
+</A></li>
+	<LI>Next message: <A HREF="000065.html">[MSEide-MSEgui-talk] MSEgui's order of processing keyboard	shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

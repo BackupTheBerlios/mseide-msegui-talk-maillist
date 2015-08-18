@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] globally more visible active tab
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20globally%20more%20visible%20active%20tab&In-Reply-To=%3Ci4iv8i%24fcp%241%40dough.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000710.html">
+   <LINK REL="Next"  HREF="000714.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] globally more visible active tab</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20globally%20more%20visible%20active%20tab&In-Reply-To=%3Ci4iv8i%24fcp%241%40dough.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] globally more visible active tab">mse00000 at gmail.com
+       </A><BR>
+    <I>Thu Aug 19 11:59:50 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000710.html">[MSEide-MSEgui-talk] globally more visible active tab
+</A></li>
+        <LI>Next message: <A HREF="000714.html">[MSEide-MSEgui-talk] If &quot;tmbufdataset.Locate&quot; correct for multiple	fileds ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#709">[ date ]</a>
+              <a href="thread.html#709">[ thread ]</a>
+              <a href="subject.html#709">[ subject ]</a>
+              <a href="author.html#709">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Graeme Geldenhuys wrote:
+
+&gt;<i> Hi Martin,
+</I>&gt;<i> 
+</I>&gt;<i> I'm modified the source editor window so the active tab is a lot more
+</I>&gt;<i> visible. Is there a property I can modify in the tab component, so by
+</I>&gt;<i> default all tabs have this &quot;more visible&quot; colour defined?
+</I>&gt;<i> 
+</I>&gt;<i> More specifically, the Project Options have lots of tabs, and I find it
+</I>&gt;<i> hard to see the active tab, and would like to use the same thing as I have
+</I>&gt;<i> done for the Editor window. But I don't want to go and edit every single
+</I>&gt;<i> place in the IDE where tabs are used.
+</I>&gt;<i> 
+</I>&gt;<i> See attached screenshot for how my Editor Window tabs look.
+</I>&gt;<i> 
+</I>- Open apps/ide/guitemplates.pas.
+- Click on 'skin' component.
+
+The active tabs use cl_active by default. In order to change the RGB value
+for cl_active 
+- add an item to colors.count in objectinspector.
+- set 'color' to &quot;cl_active&quot;.
+- set 'rgb' to the appropriate value.
+
+In order to change the color of the tabs only
+- change tabbar_*_tab_coloractive.
+
+Martin
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000710.html">[MSEide-MSEgui-talk] globally more visible active tab
+</A></li>
+	<LI>Next message: <A HREF="000714.html">[MSEide-MSEgui-talk] If &quot;tmbufdataset.Locate&quot; correct for multiple	fileds ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#709">[ date ]</a>
+              <a href="thread.html#709">[ thread ]</a>
+              <a href="subject.html#709">[ subject ]</a>
+              <a href="author.html#709">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

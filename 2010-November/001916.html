@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20in%20the%20IDE%20when%20loading%20the%20PODPISKA%2C%0A%09with%20MSE%20win-32%20rebuilt%20for%20fpc-fixes_2.4%20SVN%20%2B%20the%202.4.2%20patch&In-Reply-To=%3C32tme6dbu1snm8clv0po442k2ph24dubeo%404ax.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001914.html">
+   <LINK REL="Next"  HREF="001917.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch</H1>
+    <B>Ivanko B</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20AV%20in%20the%20IDE%20when%20loading%20the%20PODPISKA%2C%0A%09with%20MSE%20win-32%20rebuilt%20for%20fpc-fixes_2.4%20SVN%20%2B%20the%202.4.2%20patch&In-Reply-To=%3C32tme6dbu1snm8clv0po442k2ph24dubeo%404ax.com%3E"
+       TITLE="[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch">ivankob4mse2 at gmail.com
+       </A><BR>
+    <I>Tue Nov 23 09:04:12 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001914.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+        <LI>Next message: <A HREF="001917.html">[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1916">[ date ]</a>
+              <a href="thread.html#1916">[ thread ]</a>
+              <a href="subject.html#1916">[ subject ]</a>
+              <a href="author.html#1916">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The project file is here attached.
+
+The call stack is as follows :
+
+#0  004F16F3 :0
+SYSUTILS_WIN32ANSICOMPARETEXT$ANSISTRING$ANSISTRING$$LONGINT()
+#1  005BF4E8 :0 DB_TDEFCOLLECTION_$__INDEXOF$ANSISTRING$$LONGINT()
+#2  00672819 msedb.pas:6248 TDSCONTROLLER__INTERNALOPEN(this=&lt;error
+reading variable&gt;)
+#3  0068EE97 msesqldb.pas:420 TMSESQLQUERY__INTERNALOPEN(this=&lt;error
+reading variable&gt;)
+#4  005C0952 msesqldb.pas:0 DB_TDATASET_$__DOINTERNALOPEN()
+#5  04F74CA0 msesqldb.pas:0 ??()
+#6  005C1945 msesqldb.pas:0 DB_TDATASET_$__SETACTIVE$BOOLEAN()
+#7  006B6A02 msebufdataset.pas:4325
+TMSEBUFDATASET__SETACTIVE(VALUE=true, this=&lt;error reading variable&gt;)
+#8  006BDDB7 msqldb.pas:2557 TSQLQUERY__SETACTIVE(VALUE=true,
+this=&lt;error reading variable&gt;)
+#9  0068F61E msesqldb.pas:566 TMSESQLQUERY__SETACTIVE(AVALUE=true,
+this=&lt;error reading variable&gt;)
+#10  00671D24 msedb.pas:5899
+TDSCONTROLLER__SETOWNERACTIVE(AVALUE=true, this=&lt;error reading
+variable&gt;)
+#11  00516438 mseapplication.pas:1549
+TACTIVATORCONTROLLER__LOADED(this=&lt;error reading variable&gt;)
+#12  0068ED54 msesqldb.pas:385 TMSESQLQUERY__LOADED(this=&lt;error
+reading variable&gt;)
+#13  0047B012 msesqldb.pas:0 CLASSES_NOTIFYGLOBALLOADING()
+#14  0011F7F8 msesqldb.pas:0 ??()
+#15  00457B63 main.pas:1447 TMAINFO__OPENFORMFILE(FILENAME=0x8bda8
+'/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/dmmain.mfm',
+ASHOW=false, AACTIVATE=false, SHOWSOURCE=false, CREATEMENU=false,
+this=&lt;error reading variable&gt;)
+#16  00453BC5 main.pas:387 DOFIND(MODULENAMES=0x4e6e458,
+MODULEFILENAMES=0x4e6e958, parentfp=0x461f5d8)
+#17  004537E2 main.pas:411
+TMAINFO__DOFINDMODULEBYNAME(AMODULE=0x4e7d498, ANAME=0x4f3f4a0
+'dmmainmo.dsChoices', ACTION=MR_CANCEL, this=&lt;error reading variable&gt;)
+#18  0057C4D4 msedesigner.pas:3900
+TDESIGNER__LOADFORMFILE(FILENAME=0x8b6c8 '/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/main.mfm',
+this=&lt;error reading variable&gt;)
+#19  00457B63 main.pas:1447 TMAINFO__OPENFORMFILE(FILENAME=0x8b568
+'/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/main.mfm',
+ASHOW=true, AACTIVATE=false, SHOWSOURCE=false, CREATEMENU=true,
+this=&lt;error reading variable&gt;)
+#20  0043CD6A sourceform.pas:481
+TSOURCEFO__UPDATESTAT(STATFILER=0x4e773d8, this=&lt;error reading
+variable&gt;)
+#21  0060F294 projectoptionsform.pas:1554
+UPDATEPROJECTOPTIONS(STATFILER=0x4e773d8, AFILENAME=0x89b48
+'/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/podpiska.prj')
+#22  00611B75 projectoptionsform.pas:1911
+READPROJECTOPTIONS(FILENAME=0x89b48 '/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/podpiska.prj')
+#23  0045A0E7 main.pas:2096 TMAINFO__OPENPROJECT(ANAME=0x89b48
+'/D:/Documents and
+Settings/Loner/MSE_PROJECTS/podpiska_reports_ref/podpiska.prj',
+ASCOPY=false, this=&lt;error reading variable&gt;)
+#24  0045AD6B main.pas:2287
+TMAINFO__OPENPROJECTONEXECUTE(SENDER=0x4e7c448, this=&lt;error reading
+variable&gt;)
+#25  00522186 mseact.pas:347 DOACTIONEXECUTE(SENDER=0x4e7c448,
+INFO={ACTION = 0x0, CAPTIONTEXT = 0x4e83608 'Open', CAPTION1 = {TEXT =
+0x4e835c8 'Open', FORMAT = 0x0, FLAGS = []}, STATE = [AS_LOCALCAPTION,
+AS_LOCALONEXECUTE], OPTIONS = [MAO_SHORTCUTCAPTION], SHORTCUT = 0x0,
+SHORTCUT1 = 0x0, GROUP = 0, IMAGENR = -1, IMAGENRDISABLED = -2,
+COLORGLYPH = 2147483649, COLOR = 2147483649, IMAGECHECKEDOFFSET = 0,
+IMAGELIST = 0x0, HINT = 0x0, TAG = 0, TAGPOINTER = 0x0, ONEXECUTE =
+0x45ad20 &lt;TMAINFO__OPENPROJECTONEXECUTE&gt;}, NOCHECKBOX=true,
+NOCANDEFOCUS=false)
+#26  0049F714 msemenus.pas:532 TCUSTOMMENU__CHECKEXEC(this=&lt;error
+reading variable&gt;)
+#27  00541EDD msemenuwidgets.pas:1347
+TPOPUPMENUWIDGET__ACTIVATEMENU(KEYMODE=false, ACLICKED=false,
+this=&lt;error reading variable&gt;)
+#28  005415DD msemenuwidgets.pas:1152
+TPOPUPMENUWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_MOUSEMOVE,
+SHIFTSTATE = [], POS = {X = 154, Y = 19}, EVENTSTATE = [], TIMESTAMP =
+2205113112, BUTTON = MB_NONE}, this=&lt;error reading variable&gt;)
+#29  005432CA msemenuwidgets.pas:1882
+TCUSTOMMAINMENUWIDGET__MOUSEEVENT(INFO={EVENTKIND = EK_MOUSEMOVE,
+SHIFTSTATE = [], POS = {X = 154, Y = 19}, EVENTSTATE = [], TIMESTAMP =
+2205113112, BUTTON = MB_NONE}, this=&lt;error reading variable&gt;)
+#30  00429F76 msegui.pas:12740 TWINDOW__DISPATCHMOUSEEVENT(INFO={MOUSE
+= {EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 154, Y = 19},
+EVENTSTATE = [], TIMESTAMP = 2205113112, BUTTON = MB_NONE}, WHEEL =
+{EVENTKIND = EK_MOUSEMOVE, SHIFTSTATE = [], POS = {X = 154, Y = 19},
+EVENTSTATE = [], TIMESTAMP = 2205113112, WHEEL = MW_NONE, DELTA = 0}},
+CAPTURE=0x4e4ca58, this=&lt;error reading variable&gt;)
+#31  0042CE47 msegui.pas:14164
+TINTERNALAPPLICATION__PROCESSMOUSEEVENT(EVENT=0x4e76778, this=&lt;error
+reading variable&gt;)
+#32  0042E9BE msegui.pas:14957
+TINTERNALAPPLICATION__EVENTLOOP(AMODALWINDOW=0x0, ONCE=false,
+this=&lt;error reading variable&gt;)
+#33  0042FA8C msegui.pas:15466
+TINTERNALAPPLICATION__DOEVENTLOOP(ONCE=false, this=&lt;error reading
+variable&gt;)
+#34  00515F38 mseapplication.pas:1382
+TCUSTOMAPPLICATION__RUN(this=&lt;error reading variable&gt;)
+#35  004025D7 mseide.pas:61 main()
+
+PS:
+Me'm returned from vacation - alongwith Your &quot;lovely&quot; PODPISKA :) 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: not available
+Type: application/octet-stream
+Size: 26384 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101123/25192798/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20101123/25192798/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001914.html">[MSEide-MSEgui-talk] [patch] to fix compilation bug under FPC	2.4.3
+</A></li>
+	<LI>Next message: <A HREF="001917.html">[MSEide-MSEgui-talk] AV in the IDE when loading the PODPISKA,	with MSE win-32 rebuilt for fpc-fixes_2.4 SVN + the 2.4.2 patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1916">[ date ]</a>
+              <a href="thread.html#1916">[ thread ]</a>
+              <a href="subject.html#1916">[ subject ]</a>
+              <a href="author.html#1916">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

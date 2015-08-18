@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] tterminal again
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C201110171145.19783.mse00000%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="004339.html">
+   <LINK REL="Next"  HREF="004342.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] tterminal again</H1>
+    <B>Martin Schreiber</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20tterminal%20again&In-Reply-To=%3C201110171145.19783.mse00000%40gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] tterminal again">mse00000 at gmail.com
+       </A><BR>
+    <I>Mon Oct 17 11:45:19 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="004339.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+        <LI>Next message: <A HREF="004342.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4340">[ date ]</a>
+              <a href="thread.html#4340">[ thread ]</a>
+              <a href="subject.html#4340">[ subject ]</a>
+              <a href="author.html#4340">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 17 October 2011 11.09:21 minoshi wrote:
+&gt;<i> 17.10.2011 09:01, Martin Schreiber &#1087;&#1080;&#1096;&#1077;&#1090;:
+</I>&gt;<i> &gt; So tterminal actually shows the correct output.
+</I>&gt;<i> &gt; Is&lt;tterminal&gt;.optionsprocess pro_tty active? It should use pseudo
+</I>&gt;<i> &gt; terminal if active.
+</I>&gt;<i> 
+</I>&gt;<i> yes
+</I>&gt;<i> 
+</I>&gt;<i> [pro_output,pro_input,pro_errorouttoout,pro_tty]
+</I>
+I tested with the &quot;ls&quot; command which has different output on a PTY, works for 
+me.
+
+With pro_tty:
+&quot;
+dummy.pas      echo.pas.bak   main_mfm.o    main.pas.bak1  terminal.prj
+dummy.pas.bak  echo.pas.bak1  main_mfm.pas  main.ppu	   test.mp3
+dummy.prj      echo.prj       main_mfm.ppu  status.sta
+echo	       main.mfm       main.o	    terminal
+echo.o	       main.mfm.bak   main.pas	    terminal.o
+echo.pas       main.mfm.bak1  main.pas.bak  terminal.pas
+&quot;
+
+Without pro_tty:
+&quot;
+dummy.pas
+dummy.pas.bak
+dummy.prj
+echo
+echo.o
+echo.pas
+echo.pas.bak
+echo.pas.bak1
+echo.prj
+main.mfm
+main.mfm.bak
+main.mfm.bak1
+main_mfm.o
+main_mfm.pas
+main_mfm.ppu
+main.o
+main.pas
+main.pas.bak
+main.pas.bak1
+main.ppu
+status.sta
+terminal
+terminal.o
+terminal.pas
+terminal.prj
+test.mp3
+&quot;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="004339.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+	<LI>Next message: <A HREF="004342.html">[MSEide-MSEgui-talk] tterminal again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4340">[ date ]</a>
+              <a href="thread.html#4340">[ thread ]</a>
+              <a href="subject.html#4340">[ subject ]</a>
+              <a href="author.html#4340">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

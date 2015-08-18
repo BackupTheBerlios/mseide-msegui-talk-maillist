@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] doc simple treeview example update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20doc%20simple%20treeview%20example%20update&In-Reply-To=%3Cloom.20110724T151143-761%40post.gmane.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003943.html">
+   <LINK REL="Next"  HREF="003946.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] doc simple treeview example update</H1>
+    <B>Patrick Goupell</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20doc%20simple%20treeview%20example%20update&In-Reply-To=%3Cloom.20110724T151143-761%40post.gmane.org%3E"
+       TITLE="[MSEide-MSEgui-talk] doc simple treeview example update">pgoupell at upmerchants.com
+       </A><BR>
+    <I>Sun Jul 24 15:15:23 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003943.html">[MSEide-MSEgui-talk] doc simple treeview example update
+</A></li>
+        <LI>Next message: <A HREF="003946.html">[MSEide-MSEgui-talk] doc simple treeview example update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3945">[ date ]</a>
+              <a href="thread.html#3945">[ thread ]</a>
+              <a href="subject.html#3945">[ subject ]</a>
+              <a href="author.html#3945">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Martin Schreiber &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">mse00000 at ...</A>&gt; writes:
+
+&gt;<i> 
+</I>&gt;<i> Am Samstag 23 Juli 2011, 17:40:56 schrieb Patrick Goupell:
+</I>&gt;<i> &gt; I have updated the simple treeview example in the doc svn tree.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; How do I get the updated example into the svn tree?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Please register on BerliOS:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/account/register.php">http://developer.berlios.de/account/register.php</A>
+</I>&gt;<i> and report your BerliOS login name, I'll add you to MSEuniverse developers if 
+</I>&gt;<i> you want.
+</I>&gt;<i> The treeview example is in
+</I>&gt;<i>
+</I><A HREF="http://svn.berlios.de/viewvc/mseuniverse/attic/msedocumenting/mse/trunk/help/tutorials/treeview/simple/">http://svn.berlios.de/viewvc/mseuniverse/attic/msedocumenting/mse/trunk/help/tutorials/treeview/simple/</A>
+&gt;<i> at the moment. MSEdocumenting is not maintained by me anymore.
+</I>&gt;<i> I think we should move the examples from attic into the trunk tree of 
+</I>&gt;<i> MSEuniverse and place a message on MSEdocumenting that the examples have been 
+</I>&gt;<i> moved to MSEuniverse.
+</I>&gt;<i> MSEuniverse trunk/sample should probably renamed to trunk/examples and divided 
+</I>&gt;<i> into subdirectories (addon,widgets,db,thread...).
+</I>&gt;<i> Who wants to volunteer?
+</I>&gt;<i> 
+</I>&gt;<i> Martin
+</I>&gt;<i> 
+</I>
+Here is the code I changed in the main.pas source file.  Replace the 
+tmainfo.initdata procedure with this.
+
+procedure tmainfo.initdata(const sender: TObject);
+begin
+ treeedit.itemlist.add(tmynode.create); //root nodes
+ with tmynode(treeedit[0]) do begin
+  caption:= 'A0';
+  str := 'A0';
+  int := 1;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'AA0';
+  tmynode(items[count-1]).str := 'AA0';
+  tmynode(items[count-1]).int := 0;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'AA1';
+  tmynode(items[count-1]).str := 'AA1';
+  tmynode(items[count-1]).int := 1;
+
+  with items [count-1]
+  do begin
+	add(1,tmynode);
+	items[count-1].caption:= 'AA1a';
+	tmynode(items[count-1]).str := 'AA1a';
+	tmynode(items[count-1]).int := 1;
+  end;
+
+  add(1,tmynode);
+  items[count -1].caption:= 'AA2';
+  tmynode(items[count-1]).str := 'AA2';
+  tmynode(items[count-1]).int := 2;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'AA3';
+  tmynode(items[count-1]).str := 'AA3';
+  tmynode(items[count-1]).int := 3;
+ end;
+ 
+ // in a like manner you can do the same for the 2nd treeedit item
+ treeedit.itemlist.add(tmynode.create); 
+
+ with tmynode(treeedit[1]) do begin
+ 
+  caption:= 'B0';
+  str := 'B0';
+  int := 1;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'BB0';
+  tmynode(items[count-1]).str := 'BB0';
+  tmynode(items[count-1]).int := 0;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'BB1';
+  tmynode(items[count-1]).str := 'BB1';
+  tmynode(items[count-1]).int := 1;
+
+  add(1,tmynode);
+  items[count -1].caption:= 'BB2';
+  tmynode(items[count-1]).str := 'BB2';
+  tmynode(items[count-1]).int := 2;
+  
+  add(1,tmynode);
+  items[count -1].caption:= 'BB3';
+  tmynode(items[count-1]).str := 'BB3';
+  tmynode(items[count-1]).int := 3; 
+
+  add(5,tmynode);
+  items[4].caption:= 'BB0';
+  items[5].caption:= 'B1';
+  with tmynode(items[6]) do begin
+   add(5,tmynode);
+   items[0].caption:= 'B1a';
+   items[1].caption:= 'B1b';
+   items[2].caption:= 'B1c';
+   items[3].caption:= 'B1d';
+   items[4].caption:= 'B1e';
+  end;
+  items[6].caption:= 'BBBBBB2';
+  items[7].caption:= 'B3';
+  items[8].caption:= 'B4';
+
+ end;
+
+end;
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003943.html">[MSEide-MSEgui-talk] doc simple treeview example update
+</A></li>
+	<LI>Next message: <A HREF="003946.html">[MSEide-MSEgui-talk] doc simple treeview example update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3945">[ date ]</a>
+              <a href="thread.html#3945">[ thread ]</a>
+              <a href="subject.html#3945">[ subject ]</a>
+              <a href="author.html#3945">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

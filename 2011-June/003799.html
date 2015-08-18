@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Repaz%3A%20Does%20it%20compile%20in%20latest%20MSE%20trunk%0A%09%3F&In-Reply-To=%3CBANLkTin-v82cCT-AnXF363RhFdLnAdD7uA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="003793.html">
+   <LINK REL="Next"  HREF="003800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?</H1>
+    <B>Sri Wahono</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Repaz%3A%20Does%20it%20compile%20in%20latest%20MSE%20trunk%0A%09%3F&In-Reply-To=%3CBANLkTin-v82cCT-AnXF363RhFdLnAdD7uA%40mail.gmail.com%3E"
+       TITLE="[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?">mseidemsegui at gmail.com
+       </A><BR>
+    <I>Tue Jun 14 23:40:08 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="003793.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+        <LI>Next message: <A HREF="003800.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3799">[ date ]</a>
+              <a href="thread.html#3799">[ thread ]</a>
+              <a href="subject.html#3799">[ subject ]</a>
+              <a href="author.html#3799">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> Please check why there is no intersection in msegraphics.pas:3141.
+</I>&gt;<i>
+</I>&gt;<i> Martin
+</I>
+I found the problem. It caused by clibbox results area before multiply
+with ppmm (tcanvas.size).
+
+But I have others problem, I hope you can help. :
+- Converting monochrome bitmap from MSEgui to cairo image (C image) =
+universalprinter.pas: 383
+- converting cairo_drawarc (universalprinter.pas: 686) and
+cairo_fillarc (universalprinter.pas: 702), I confused with arc
+concept.
+You can test it with preview from RepazDemo at chart.raz, and double
+click chart in preview form to change chart type to Pie type. Than
+export to PDF and you will see arc area is not same with preview
+result.
+
+Thanks very much.
+Wahono
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="003793.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+	<LI>Next message: <A HREF="003800.html">[MSEide-MSEgui-talk] Repaz: Does it compile in latest MSE trunk	?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3799">[ date ]</a>
+              <a href="thread.html#3799">[ thread ]</a>
+              <a href="subject.html#3799">[ subject ]</a>
+              <a href="author.html#3799">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>

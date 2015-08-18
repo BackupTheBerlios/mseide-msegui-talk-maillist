@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [MSEide-MSEgui-talk] Chartrecorder
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/mseide-msegui-talk/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3C20100907014658.7de811f7.s_c_h_s%40arcor.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000957.html">
+   <LINK REL="Next"  HREF="000945.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[MSEide-MSEgui-talk] Chartrecorder</H1>
+    <B>Sieghard</B> 
+    <A HREF="mailto:mseide-msegui-talk%40lists.berlios.de?Subject=Re%3A%20%5BMSEide-MSEgui-talk%5D%20Chartrecorder&In-Reply-To=%3C20100907014658.7de811f7.s_c_h_s%40arcor.de%3E"
+       TITLE="[MSEide-MSEgui-talk] Chartrecorder">s_c_h_s at arcor.de
+       </A><BR>
+    <I>Tue Sep  7 01:46:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000957.html">[MSEide-MSEgui-talk] What's up?
+</A></li>
+        <LI>Next message: <A HREF="000945.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hallo Martin,
+
+as I'm at the project using your GUI, I was thinking of some enhancements,
+too. (The i18n stuff kind of works now, disregarding a few &quot;quirks&quot;, at
+least in a simulated environment; I didn't yet test in in a &quot;production&quot;
+environment.) So I decided to use your chart recorder component, as I still
+had a self made diagram procedure in use.
+
+I had played a bit with it before, already, and had not found any way to
+make it start at the left side, filling (&quot;sweeping&quot;) the display with the
+curves until reaching the right side, and only then starting to shift
+everything to the left when new samples are added. So I did some more
+tinkering, but had to find that this was not possible with your original
+code.
+
+So I modified the component code some, adding a few statements and a new
+property in the process, to have it do that, somewhat like some digital
+oscilloscopes do in &quot;rolling&quot; mode. If you should be interested in the
+extensions, I attached the diff file (towards version 2.2 of MSEGUI).
+
+The modified version provides an additional property named &quot;sweeping&quot;,
+which has to be set to &quot;true&quot; to invoke the sweep effect; it is set false
+by the code when shifting starts, so it can be used externally to detect
+that condition, e.g. for starting to also shift an X scale in parallel to
+the traces (I use it for that). Of course, that means that it has to be set
+again if the chart gets cleared and a new recording started.
+
+Also somewhat similar to an oscilloscope - but in no way reminding of a
+real chart - is the representation of coordinate grid lines. These always
+appear _in front_ of the traces, like the pane in front of a traditional
+oscilloscope screen (but not like the grid lines on a modern digital scope)
+instead of in the background, like on a chart recorder. I didn't care about
+that yet, but I wonder whether there might be a way to change this (maybe
+even as an optional setting)?
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+
+-- 
+(Weitergabe von Adressdaten, Telefonnummern u.&#228;. ohne Zustimmung
+nicht gestattet, ebenso Zusendung von Werbung oder &#228;hnlichem)
+-----------------------------------------------------------
+Mit freundlichen Gr&#252;&#223;en, S. Schicktanz
+-----------------------------------------------------------
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: msechart.diff
+Type: application/octet-stream
+Size: 943 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100907/4235bfdf/attachment.obj">https://lists.berlios.de/pipermail/mseide-msegui-talk/attachments/20100907/4235bfdf/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000957.html">[MSEide-MSEgui-talk] What's up?
+</A></li>
+	<LI>Next message: <A HREF="000945.html">[MSEide-MSEgui-talk] Chartrecorder
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/mseide-msegui-talk">More information about the MSEide-MSEgui-talk
+mailing list</a><br>
+</body></html>
